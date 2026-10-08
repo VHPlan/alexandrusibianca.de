@@ -1,6 +1,6 @@
 /**
  * ALEX & BIANCA — THE WEDDING
- * Fullscreen Cinematic Editorial Gallery
+ * Fullscreen Cinematic Gallery with Swipe & Lightbox
  */
 
 class LuxuryGallery {
@@ -16,7 +16,7 @@ class LuxuryGallery {
     this.lightboxClose = document.getElementById('lightbox-close-btn');
 
     this.currentIndex = 0;
-    this.cardWidth = 360;
+    this.cardWidth = 340;
     this.cards = [];
     this.startX = 0;
     this.currentTranslate = 0;
@@ -29,7 +29,7 @@ class LuxuryGallery {
 
   init() {
     if (!this.track || !this.wrapper) return;
-    this.cards = Array.from(this.track.querySelectorAll('.gallery-frame-item'));
+    this.cards = Array.from(this.track.querySelectorAll('.gallery-card-item, .gallery-frame-item'));
     if (!this.cards.length) return;
 
     this.updateDimensions();
@@ -44,9 +44,9 @@ class LuxuryGallery {
     this.wrapper.addEventListener('pointerleave', () => this.dragEnd());
 
     this.cards.forEach((card) => {
-      const img = card.querySelector('.gallery-frame-img');
+      const img = card.querySelector('img');
       card.addEventListener('click', () => {
-        if (Math.abs(this.currentTranslate - this.prevTranslate) < 8) {
+        if (Math.abs(this.currentTranslate - this.prevTranslate) < 10) {
           this.openLightbox(img ? img.src : '');
         }
       });
@@ -98,53 +98,54 @@ class LuxuryGallery {
     const moved = this.currentTranslate - this.prevTranslate;
     if (moved < -50 && this.currentIndex < this.cards.length - 1) {
       this.currentIndex += 1;
-    }
-    if (moved > 50 && this.currentIndex > 0) {
+    } else if (moved > 50 && this.currentIndex > 0) {
       this.currentIndex -= 1;
     }
+
     this.setPositionByIndex();
   }
 
   animate() {
-    if (this.track) this.track.style.transform = `translateX(${this.currentTranslate}px)`;
-    if (this.isDragging) requestAnimationFrame(() => this.animate());
+    if (this.isDragging) {
+      this.setTrackPosition(this.currentTranslate);
+      requestAnimationFrame(() => this.animate());
+    }
+  }
+
+  setTrackPosition(pos) {
+    this.track.style.transform = `translateX(${pos}px)`;
   }
 
   setPositionByIndex() {
     this.currentTranslate = this.currentIndex * -this.cardWidth;
     this.prevTranslate = this.currentTranslate;
-    if (this.track) this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+    this.setTrackPosition(this.currentTranslate);
   }
 
   prev() {
     if (this.currentIndex > 0) {
-      this.currentIndex--;
-      if (this.audio) this.audio.playClick();
+      this.currentIndex -= 1;
       this.setPositionByIndex();
     }
   }
 
   next() {
     if (this.currentIndex < this.cards.length - 1) {
-      this.currentIndex++;
-      if (this.audio) this.audio.playClick();
+      this.currentIndex += 1;
       this.setPositionByIndex();
     }
   }
 
   openLightbox(src) {
-    if (!this.lightbox || !this.lightboxImg) return;
+    if (!this.lightbox || !this.lightboxImg || !src) return;
     this.lightboxImg.src = src;
     this.lightbox.classList.add('active');
-    if (this.audio) this.audio.playClick();
     document.body.style.overflow = 'hidden';
   }
 
   closeLightbox() {
     if (!this.lightbox) return;
     this.lightbox.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
   }
 }
-
-window.LuxuryGallery = LuxuryGallery;

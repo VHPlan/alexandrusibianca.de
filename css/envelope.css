@@ -1,128 +1,136 @@
 /* ==========================================================================
-   ALEX & BIANCA — PURE PEARL WHITE & 24K GOLD 3D ENVELOPE CEREMONY
+   ALEX & BIANCA — INTRO EXPERIENCE EXACT DIN BRIEF (WHITE & GOLD 3D ENVELOPE)
    ========================================================================== */
 
-.envelope-stage-viewport {
+.envelope-ceremony-screen {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: 
-    radial-gradient(circle at 50% 40%, #ffffff 0%, #faf7f0 55%, #ede6d6 100%);
+  background: radial-gradient(circle at 50% 40%, #ffffff 0%, #faf6ee 60%, #eee6d4 100%);
   z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  perspective: 1600px;
+  perspective: 1500px;
   overflow: hidden;
   transition: opacity 1.4s cubic-bezier(0.7, 0, 0.2, 1), transform 1.4s cubic-bezier(0.7, 0, 0.2, 1), visibility 1.4s;
 }
 
-.envelope-stage-viewport.opened {
+.envelope-ceremony-screen.opened {
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.18) translateY(-40px);
+  transform: scale(1.15) translateY(-35px);
   pointer-events: none;
 }
 
-/* Radiant Golden Halo */
-.envelope-ambient-aura {
+/* Radiant Gold Halo */
+.royal-glow-emitter {
   position: absolute;
-  width: 750px;
-  height: 750px;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, rgba(212, 175, 55, 0.12) 50%, transparent 70%);
-  filter: blur(60px);
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+  filter: blur(55px);
   pointer-events: none;
-  animation: auraFloatWhite 7s ease-in-out infinite alternate;
+  animation: haloBreath 6s ease-in-out infinite alternate;
 }
 
-@keyframes auraFloatWhite {
-  0% { transform: scale(0.9) translate(-15px, -15px); opacity: 0.7; }
-  100% { transform: scale(1.2) translate(15px, 15px); opacity: 1; }
+@keyframes haloBreath {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 1; }
 }
 
-/* Header over Envelope */
-.envelope-cinematic-header {
+/* Intro Centered Typography */
+.intro-royal-header {
   position: relative;
   z-index: 10;
   text-align: center;
-  margin-bottom: 2.5rem;
-  animation: introDropWhite 1.2s var(--ease-haute) forwards;
+  margin-bottom: 2.2rem;
+  animation: introSlowFade 1.6s var(--ease-royale) forwards;
 }
 
-@keyframes introDropWhite {
-  from { opacity: 0; transform: translateY(-30px); }
+@keyframes introSlowFade {
+  from { opacity: 0; transform: translateY(-25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.envelope-crown-mini {
-  width: 36px;
-  height: 36px;
-  fill: var(--c-gold-400);
-  filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.4));
-  margin-bottom: 0.5rem;
-}
-
-.envelope-header-title {
-  font-family: var(--font-royal);
-  font-size: clamp(2.2rem, 7vw, 3.6rem);
+.intro-royal-names {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 7.5vw, 4rem);
   font-weight: 600;
+  line-height: 1.1;
   letter-spacing: 0.22em;
-  color: #1a160d;
-  text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
-  margin-bottom: 0.3rem;
+  color: #14120e;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
 }
 
-.envelope-header-title span {
+.intro-royal-names span {
   font-family: var(--font-script);
-  color: var(--c-gold-400);
   font-size: 1.15em;
+  color: var(--gold-dark);
   padding: 0 0.3rem;
 }
 
-.envelope-header-tag {
+.intro-royal-sub {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.5em;
   text-transform: uppercase;
-  color: var(--c-gold-500);
+  color: var(--gold-dark);
 }
 
-/* 3D Envelope Container */
-.envelope-3d-box {
+.intro-gold-line {
+  width: 60px;
+  height: 1.5px;
+  background: var(--grad-gold);
+  margin: 1rem auto 0;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* 3D Envelope Stage */
+.royal-box-stage {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.royal-box-3d {
   width: min(92vw, 430px);
   height: min(58vh, 290px);
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;
   transition: transform 0.25s cubic-bezier(0.2, 0, 0.1, 1), box-shadow 0.4s ease;
-  box-shadow: 0 35px 80px rgba(170, 124, 17, 0.25), 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 30px 70px rgba(170, 124, 17, 0.22), 0 10px 30px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
 }
 
-/* Envelope Body (Back & Pocket in Pearl White) */
-.envelope-back-wall {
+/* Envelope Back Layer */
+.royal-box-interior {
   position: absolute;
   inset: 0;
   background: linear-gradient(145deg, #ffffff 0%, #f7f4ed 100%);
-  border: 2px solid var(--c-gold-300);
+  border: 2px solid var(--gold-border);
   border-radius: 8px;
   z-index: 1;
-  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.12);
+  box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.1);
 }
 
-/* Rising Luxury Letter in Pure White with Gold Foil */
-.envelope-rising-letter {
+/* Rising White & Gold Invitation Card */
+.royal-invitation-card {
   position: absolute;
   inset: 12px;
   background: 
-    radial-gradient(circle at 50% 20%, rgba(255, 234, 167, 0.2) 0%, transparent 60%),
+    radial-gradient(circle at 50% 20%, rgba(255, 234, 167, 0.25) 0%, transparent 60%),
     linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
-  border: 2px solid var(--c-gold-400);
+  border: 2px solid var(--gold-border-bright);
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -131,28 +139,28 @@
   padding: 1.5rem;
   text-align: center;
   z-index: 2;
-  box-shadow: 0 12px 35px rgba(170, 124, 17, 0.18), inset 0 0 25px rgba(212, 175, 55, 0.1);
+  box-shadow: 0 12px 35px rgba(170, 124, 17, 0.18);
   transform: translateZ(2px);
   transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.envelope-3d-box.open .envelope-rising-letter {
+.royal-box-3d.open .royal-invitation-card {
   transform: translateY(-95px) translateZ(85px) scale(1.05);
-  box-shadow: 0 30px 70px rgba(170, 124, 17, 0.35), 0 0 45px rgba(255, 215, 0, 0.45);
+  box-shadow: 0 30px 70px rgba(170, 124, 17, 0.35), 0 0 40px rgba(255, 215, 0, 0.4);
 }
 
-.letter-top-label {
+.royal-card-badge {
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.35em;
-  color: var(--c-gold-500);
+  color: var(--gold-dark);
   text-transform: uppercase;
   margin-bottom: 0.6rem;
 }
 
-.letter-monogram-huge {
-  font-family: var(--font-royal);
+.royal-card-monogram {
+  font-family: var(--font-serif);
   font-size: 3rem;
   font-weight: 700;
   line-height: 1;
@@ -160,33 +168,33 @@
   margin-bottom: 0.5rem;
 }
 
-.letter-names-subtitle {
-  font-family: var(--font-royal);
+.royal-card-names {
+  font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.18em;
-  color: #1a160d;
+  color: #14120e;
   text-transform: uppercase;
   margin-bottom: 0.4rem;
 }
 
-.letter-venue-date {
+.royal-card-date {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.25em;
-  color: var(--c-gold-600);
+  color: var(--gold-dark);
 }
 
-/* Envelope Pocket (Front Layer in White & Gold) */
-.envelope-pocket-front {
+/* Envelope Front Pocket in White & Gold */
+.royal-door-left {
   position: absolute;
   inset: 0;
   z-index: 4;
   pointer-events: none;
 }
 
-.envelope-pocket-front::before {
+.royal-door-left::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -195,12 +203,12 @@
   height: 60%;
   background: linear-gradient(180deg, #ffffff 0%, #f6f2e8 100%);
   clip-path: polygon(0 45%, 50% 0, 100% 45%, 100% 100%, 0 100%);
-  border-bottom: 2px solid var(--c-gold-400);
+  border-bottom: 2px solid var(--gold-border-bright);
   box-shadow: 0 -6px 25px rgba(170, 124, 17, 0.12);
 }
 
-/* 3D Top Flap in Pearl White & Gold */
-.envelope-flap-3d {
+/* Top 3D Flap */
+.royal-door-right {
   position: absolute;
   top: 0;
   left: 0;
@@ -208,7 +216,7 @@
   height: 56%;
   background: linear-gradient(180deg, #ffffff 0%, #f3ede0 100%);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  border-top: 2px solid var(--c-gold-300);
+  border-top: 2px solid var(--gold-border-bright);
   transform-origin: top center;
   transform-style: preserve-3d;
   transition: transform 1.2s cubic-bezier(0.2, 0.85, 0.2, 1);
@@ -216,32 +224,32 @@
   box-shadow: 0 15px 35px rgba(170, 124, 17, 0.2);
 }
 
-.envelope-3d-box.open .envelope-flap-3d {
+.royal-box-3d.open .royal-door-right {
   transform: rotateX(180deg);
   z-index: 1;
 }
 
-/* Silk Golden Ribbon */
-.envelope-silk-ribbon {
+/* Silk Gold Ribbon */
+.royal-ribbon-line {
   position: absolute;
   top: 52%;
   left: 0;
   right: 0;
   height: 24px;
   transform: translateY(-50%) translateZ(15px);
-  background: var(--grad-gold-foil);
+  background: var(--grad-gold);
   box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
   z-index: 6;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.envelope-silk-ribbon.dissolve {
+.royal-ribbon-line.hide {
   opacity: 0;
   transform: translateY(-50%) scaleX(0);
 }
 
-/* 3D Gold Wax Seal */
-.envelope-wax-seal {
+/* 3D Wax Seal */
+.royal-central-seal {
   position: absolute;
   top: 52%;
   left: 50%;
@@ -263,33 +271,33 @@
   z-index: 10;
   cursor: pointer;
   transition: transform 0.35s ease, opacity 0.5s ease;
-  animation: sealPulseGlowWhite 3s ease-in-out infinite alternate;
+  animation: sealPulse 3s ease-in-out infinite alternate;
 }
 
-@keyframes sealPulseGlowWhite {
+@keyframes sealPulse {
   0% { box-shadow: 0 15px 40px rgba(170, 124, 17, 0.35), 0 0 25px rgba(255, 215, 0, 0.5); }
   100% { box-shadow: 0 18px 50px rgba(170, 124, 17, 0.5), 0 0 45px rgba(255, 234, 167, 1); }
 }
 
-.envelope-wax-seal:hover {
+.royal-central-seal:hover {
   transform: translate(-50%, -50%) translateZ(45px) scale(1.1);
 }
 
-.envelope-wax-seal.shattered {
+.royal-central-seal.broken {
   transform: translate(-50%, -50%) translateZ(100px) scale(1.5);
   opacity: 0;
   pointer-events: none;
 }
 
-.seal-crown-icon {
+.seal-crown-mini {
   width: 22px;
   height: 22px;
   fill: #3b2808;
   filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6));
 }
 
-.seal-monogram-initials {
-  font-family: var(--font-royal);
+.seal-monogram-text {
+  font-family: var(--font-serif);
   font-size: 1.55rem;
   font-weight: 800;
   color: #382405;
@@ -298,13 +306,13 @@
   margin-top: -2px;
 }
 
-/* Bottom CTA Button */
-.envelope-open-button {
+/* Call to Action Button */
+.royal-box-cta-btn {
   margin-top: 2.5rem;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: var(--grad-gold-foil);
+  background: var(--grad-gold);
   color: #ffffff;
   font-family: var(--font-sans);
   font-size: 0.85rem;
@@ -317,15 +325,15 @@
   cursor: pointer;
   box-shadow: 0 10px 35px rgba(170, 124, 17, 0.45);
   transition: all 0.35s ease;
-  animation: btnPulseGlowWhite 2.5s infinite;
+  animation: ctaPulseWhite 2.5s infinite;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes btnPulseGlowWhite {
+@keyframes ctaPulseWhite {
   0%, 100% { transform: scale(1); box-shadow: 0 10px 35px rgba(170, 124, 17, 0.35); }
   50% { transform: scale(1.05); box-shadow: 0 15px 50px rgba(255, 215, 0, 0.7); }
 }
 
-.envelope-open-button:hover {
+.royal-box-cta-btn:hover {
   transform: scale(1.08);
 }

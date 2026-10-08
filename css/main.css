@@ -1,46 +1,43 @@
 /* ==========================================================================
-   ALEX & BIANCA — THE WEDDING | PURE WHITE & 24K ROYAL GOLD EDITION
-   Ultra-Luxury Pearl Silk, White Carrara Marble & Metallic Gold Foil
+   ALEX & BIANCA — THE WEDDING | PURE WHITE & 24K GOLD HAUTE LUXURY
+   Master Styling (White Silk, Gold Leaf Emboss & Luminous Elegance)
    ========================================================================== */
 
 :root {
-  /* Pure White & Pearl Tones */
-  --c-white-pure: #ffffff;
-  --c-pearl: #fbfaf7;
-  --c-ivory: #f7f4ed;
-  --c-surface-white: rgba(255, 255, 255, 0.92);
-  --c-glass-white: rgba(255, 255, 255, 0.75);
-  --c-glass-border: rgba(212, 175, 55, 0.45);
-  
-  /* Text Colors for Crisp Readability on White/Pearl */
-  --c-text-primary: #1a160d;
-  --c-text-secondary: #5c5543;
-  --c-text-muted: #8c8269;
+  /* White & Pearl Tones */
+  --bg-primary: #ffffff;
+  --bg-pearl: #faf8f5;
+  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-card-subtle: #fcfbf9;
+  --bg-glass: rgba(255, 255, 255, 0.85);
 
-  /* 24K Imperial Gold Palette */
-  --c-gold-100: #fff9db;
-  --c-gold-200: #ffeaa7;
-  --c-gold-300: #d4af37;
-  --c-gold-400: #c59b3f;
-  --c-gold-500: #aa7c11;
-  --c-gold-600: #7a5808;
+  /* Text Hierarchy */
+  --color-heading: #14120e;
+  --color-body: #4a4436;
+  --color-muted: #857c67;
 
-  /* Gold Liquid Gradients */
-  --grad-gold-foil: linear-gradient(135deg, #aa7c11 0%, #ffd700 25%, #c59b3f 50%, #fff2a3 75%, #aa7c11 100%);
-  --grad-gold-text: linear-gradient(90deg, #8a6409 0%, #d4af37 25%, #6a4c05 50%, #d4af37 75%, #8a6409 100%);
-  --grad-gold-border: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(255, 234, 167, 0.3), rgba(170, 124, 17, 0.8));
-  --grad-pearl-silk: linear-gradient(180deg, #ffffff 0%, #f9f7f2 50%, #f4f0e6 100%);
-  --grad-gold-glow: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.22) 0%, transparent 70%);
+  /* 24K Royal Gold Tones */
+  --gold-pure: #ffd700;
+  --gold-light: #ffeaa7;
+  --gold-main: #d4af37;
+  --gold-dark: #aa7c11;
+  --gold-deep: #6e4e04;
+  --gold-border: rgba(212, 175, 55, 0.45);
+  --gold-border-bright: rgba(212, 175, 55, 0.85);
+
+  /* Gold Gradients */
+  --grad-gold: linear-gradient(135deg, #aa7c11 0%, #ffd700 25%, #c59b3f 50%, #fff2a3 75%, #aa7c11 100%);
+  --grad-gold-text: linear-gradient(90deg, #8a6409 0%, #d4af37 25%, #5e4304 50%, #d4af37 75%, #8a6409 100%);
+  --grad-gold-soft: linear-gradient(180deg, rgba(212,175,55,0.12) 0%, transparent 100%);
 
   /* Typography */
-  --font-royal: 'Cinzel', serif;
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Cinzel', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', Garamond, serif;
+  --font-sans: 'Montserrat', -apple-system, sans-serif;
   --font-script: 'Pinyon Script', cursive;
 
-  /* Easing */
-  --ease-haute: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  /* Transitions */
+  --ease-royale: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after {
@@ -50,31 +47,30 @@
 }
 
 html {
-  background-color: var(--c-pearl);
-  color: var(--c-text-primary);
-  font-family: var(--font-serif);
   font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--color-body);
+  font-family: var(--font-editorial);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 body {
-  background: var(--c-pearl);
+  background: var(--bg-primary);
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at 10% 40%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, #fdfbf7 30%, #f8f5ee 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 40%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 15% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #faf8f5 50%, #f4f0e6 100%);
   background-attachment: fixed;
-  color: var(--c-text-primary);
-  line-height: 1.65;
+  color: var(--color-body);
+  line-height: 1.7;
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -82,123 +78,111 @@ body {
   background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--grad-gold-foil);
-  border-radius: 10px;
+  background: var(--grad-gold);
+  border-radius: 4px;
 }
 
-/* Background Canvas */
 #particles-canvas {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Container */
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 .container-narrow {
-  max-width: 800px;
+  max-width: 820px;
 }
 
-/* Gold Text Shimmer for White Background */
-.gold-text-liquid {
+/* Gold Foil Liquid Text */
+.gold-shimmer {
   background: var(--grad-gold-text);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: goldLiquidFlow 8s linear infinite;
+  animation: goldFlow 7s linear infinite;
   display: inline-block;
   font-weight: 700;
 }
 
-@keyframes goldLiquidFlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@keyframes goldFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
-/* Section Framework */
-.scene-section {
+/* Section Shell */
+.section {
   position: relative;
-  padding: 7rem 0;
+  padding: 7.5rem 0;
   z-index: 5;
 }
 
-.scene-header {
+.section-header {
   text-align: center;
   margin-bottom: 4.5rem;
   position: relative;
 }
 
-.scene-category {
+.section-tag {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: var(--c-gold-500);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  background: rgba(255, 255, 255, 0.8);
+  color: var(--gold-dark);
+  display: inline-block;
   padding: 0.4rem 1.4rem;
-  border-radius: 40px;
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  border: 1px solid var(--gold-border);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.8rem;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
 }
 
-.scene-category::before,
-.scene-category::after {
-  content: '♦';
-  color: var(--c-gold-400);
-  font-size: 0.6rem;
-}
-
-.scene-main-title {
-  font-family: var(--font-royal);
+.section-title {
+  font-family: var(--font-serif);
   font-size: clamp(2.2rem, 6vw, 3.8rem);
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #1a160d;
+  color: var(--color-heading);
   margin-bottom: 1.2rem;
-  text-shadow: 0 2px 15px rgba(212, 175, 55, 0.2);
 }
 
-.scene-divider-diamond {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+.gold-glow-line {
+  width: 70px;
+  height: 2px;
+  background: var(--grad-gold);
+  margin: 0 auto;
+  position: relative;
 }
 
-.scene-divider-diamond span {
-  width: 50px;
-  height: 1.5px;
-  background: var(--grad-gold-foil);
+.gold-glow-line::after {
+  content: '♦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold-dark);
+  font-size: 0.75rem;
+  background: #ffffff;
+  padding: 0 0.4rem;
 }
 
-.scene-divider-diamond svg {
-  width: 16px;
-  height: 16px;
-  fill: var(--c-gold-400);
-}
-
-/* Luxury White & Gold Buttons */
-.btn-gold-couture {
+/* White & Gold Buttons */
+.btn-luxury-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  background: var(--grad-gold-foil);
+  background: var(--grad-gold);
   background-size: 200% auto;
   color: #ffffff;
   font-family: var(--font-sans);
@@ -211,26 +195,26 @@ body {
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(170, 124, 17, 0.35), 0 0 20px rgba(255, 215, 0, 0.25);
-  transition: all 0.4s var(--ease-haute);
+  box-shadow: 0 10px 30px rgba(170, 124, 17, 0.35), 0 0 20px rgba(255, 215, 0, 0.2);
+  transition: all 0.4s var(--ease-royale);
   position: relative;
   overflow: hidden;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.btn-gold-couture:hover {
+.btn-luxury-primary:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 45px rgba(170, 124, 17, 0.5), 0 0 30px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 15px 45px rgba(170, 124, 17, 0.5), 0 0 30px rgba(255, 215, 0, 0.4);
   background-position: right center;
 }
 
-.btn-dark-couture {
+.btn-luxury-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
   background: #ffffff;
-  color: var(--c-gold-600);
+  color: var(--gold-deep);
   font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 800;
@@ -239,29 +223,29 @@ body {
   text-decoration: none;
   padding: 1.2rem 2.5rem;
   border-radius: 4px;
-  border: 1.5px solid var(--c-gold-300);
+  border: 1.5px solid var(--gold-main);
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
-  transition: all 0.4s var(--ease-haute);
+  transition: all 0.4s var(--ease-royale);
 }
 
-.btn-dark-couture:hover {
-  background: var(--c-pearl);
-  border-color: var(--c-gold-500);
-  color: var(--c-gold-600);
+.btn-luxury-outline:hover {
+  background: var(--bg-pearl);
+  border-color: var(--gold-dark);
+  color: var(--gold-deep);
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
 }
 
 /* Reveal Transitions */
-.reveal-item {
+.reveal {
   opacity: 0;
   transform: translateY(35px);
-  transition: opacity 1.2s var(--ease-haute), transform 1.2s var(--ease-haute);
+  transition: opacity 1.2s var(--ease-royale), transform 1.2s var(--ease-royale);
   will-change: opacity, transform;
 }
 
-.reveal-item.active {
+.reveal.active {
   opacity: 1;
   transform: translateY(0);
 }

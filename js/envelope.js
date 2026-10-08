@@ -1,5 +1,5 @@
 /**
- * ALEX & BIANCA — TRUE 3D ENVELOPE & LETTER MECHANICS
+ * ALEX & BIANCA — TRUE 3D ENVELOPE OPENING CEREMONY (WHITE & GOLD)
  */
 
 class EnvelopeCeremony {
@@ -8,12 +8,11 @@ class EnvelopeCeremony {
     this.particles = particleEngine;
 
     this.screen = document.getElementById('envelope-screen');
-    this.box = document.getElementById('envelope-3d-box');
-    this.seal = document.getElementById('envelope-seal');
-    this.ribbon = document.getElementById('envelope-ribbon');
-    this.letter = document.getElementById('envelope-letter');
-    this.flap = document.getElementById('envelope-flap');
-    this.openBtn = document.getElementById('envelope-open-btn');
+    this.box = document.getElementById('royal-box-3d') || document.getElementById('envelope-3d-box');
+    this.seal = document.getElementById('royal-seal') || document.getElementById('envelope-seal');
+    this.ribbon = document.getElementById('royal-ribbon') || document.getElementById('envelope-ribbon');
+    this.card = document.getElementById('royal-card') || document.getElementById('envelope-letter');
+    this.openBtn = document.getElementById('royal-box-cta') || document.getElementById('envelope-open-btn');
 
     this.isOpening = false;
     this.isOpened = false;
@@ -24,8 +23,21 @@ class EnvelopeCeremony {
   init() {
     if (!this.screen || !this.box) return;
 
-    // 3D Parallax Tilt
+    // 3D Parallax Tilt with Mouse
     document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+
+    // 3D Tilt with Device Orientation (Mobile)
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      this.screen.addEventListener('click', () => {
+        DeviceOrientationEvent.requestPermission().then(res => {
+          if (res === 'granted') {
+            window.addEventListener('deviceorientation', (e) => this.handleOrientation(e));
+          }
+        }).catch(() => {});
+      }, { once: true });
+    } else if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => this.handleOrientation(e));
+    }
 
     const triggerOpen = (e) => {
       e.stopPropagation();
@@ -49,6 +61,17 @@ class EnvelopeCeremony {
     this.box.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
   }
 
+  handleOrientation(e) {
+    if (this.isOpened || this.isOpening || !this.box) return;
+    const gamma = e.gamma || 0;
+    const beta = e.beta || 0;
+
+    const rotY = Math.min(14, Math.max(-14, gamma * 0.4));
+    const rotX = Math.min(14, Math.max(-14, (beta - 45) * 0.3));
+
+    this.box.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
+  }
+
   openEnvelope() {
     if (this.isOpening || this.isOpened) return;
     this.isOpening = true;
@@ -56,7 +79,7 @@ class EnvelopeCeremony {
     // Reset 3D transform for clean unfolding
     this.box.style.transform = 'rotateX(0deg) rotateY(0deg)';
 
-    // 1. Play Lele & Andra Voloș love song instantly
+    // 1. Play Lele & Andra Voloș song instantly
     if (this.audio) {
       this.audio.play();
     }
@@ -65,12 +88,12 @@ class EnvelopeCeremony {
     if (this.seal && this.particles) {
       const rect = this.seal.getBoundingClientRect();
       this.particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 85);
-      this.seal.classList.add('shattered');
+      this.seal.classList.add('broken');
     }
 
     // 3. Dissolve Ribbon
     if (this.ribbon) {
-      this.ribbon.classList.add('dissolve');
+      this.ribbon.classList.add('hide');
     }
 
     // 4. Open Flap & Rise Letter

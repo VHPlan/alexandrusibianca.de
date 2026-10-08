@@ -1,5 +1,5 @@
 /**
- * ALEX & BIANCA — VIP GOLD TICKET RSVP ENGINE
+ * ALEX & BIANCA — THE WEDDING | RSVP ENGINE EXACT DUPĂ BRIEF
  */
 
 class LuxuryRSVP {
@@ -14,7 +14,6 @@ class LuxuryRSVP {
     this.detailedFields = document.getElementById('rsvp-detailed-fields');
     this.guestDetailsGroup = document.getElementById('rsvp-guest-details-group');
     this.successContainer = document.getElementById('rsvp-success-container');
-    this.ticketGuestName = document.getElementById('ticket-guest-name');
     this.editBtn = document.getElementById('rsvp-edit-response-btn');
 
     this.selectedAttendance = null;
@@ -47,17 +46,6 @@ class LuxuryRSVP {
         this.successContainer.style.display = 'none';
         this.formContainer.style.display = 'block';
       });
-    }
-
-    // Check saved state
-    const saved = localStorage.getItem('alex_bianca_rsvp_2027');
-    if (saved) {
-      try {
-        const data = JSON.parse(saved);
-        if (data.name && this.ticketGuestName) {
-          this.ticketGuestName.textContent = data.name;
-        }
-      } catch (e) {}
     }
   }
 
@@ -96,13 +84,8 @@ class LuxuryRSVP {
 
     localStorage.setItem('alex_bianca_rsvp_2027', JSON.stringify(payload));
 
-    if (this.ticketGuestName) {
-      this.ticketGuestName.textContent = name;
-    }
-
-    // Gold particle burst
     if (this.particles) {
-      this.particles.createBurst(window.innerWidth / 2, window.innerHeight / 2, 90);
+      this.particles.createBurst(window.innerWidth / 2, window.innerHeight / 2, 80);
     }
 
     this.formContainer.style.display = 'none';

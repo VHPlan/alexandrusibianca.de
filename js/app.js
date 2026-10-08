@@ -1,11 +1,12 @@
 /**
- * ALEX & BIANCA — HAUTE COUTURE MAIN APP CONTROLLER
+ * ALEX & BIANCA — THE WEDDING | MAIN APP CONTROLLER
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const particles = new ParticleEngine('particles-canvas');
   const audio = new AudioEngine();
   const envelope = new EnvelopeCeremony(audio, particles);
+  const gallery = new LuxuryGallery(audio);
   const rsvp = new LuxuryRSVP(audio, particles);
 
   initGuestPersonalization();
@@ -38,7 +39,7 @@ function initGuestPersonalization() {
 }
 
 /**
- * 2. LIVE ROLEX-STYLE COUNTDOWN TIMER (20 IUNIE 2027)
+ * 2. LIVE COUNTDOWN TIMER (20 IUNIE 2027, 14:00:00)
  */
 function initCountdown() {
   const targetDate = new Date('2027-06-20T14:00:00+03:00').getTime();
@@ -78,14 +79,14 @@ function initCountdown() {
 }
 
 /**
- * 3. CALENDAR ACTIONS (GOOGLE CALENDAR & .ICS)
+ * 3. CALENDAR ACTIONS (GOOGLE CALENDAR & .ICS DOWNLOAD)
  */
 function initCalendarActions() {
   const googleBtn = document.getElementById('btn-add-google-cal');
   const icsBtn = document.getElementById('btn-add-apple-cal');
 
   const eventData = {
-    title: 'Nunta Alex & Bianca (The Wedding Gala)',
+    title: 'Nunta Alex & Bianca',
     description: 'Vă invităm cu drag să sărbătoriți alături de noi nunta noastră!',
     location: 'Palatul Snagov, România',
     startTime: '20270620T110000Z',
@@ -110,7 +111,7 @@ function downloadIcs(data) {
   const icsContent = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Alex & Bianca//The Wedding Gala//RO',
+    'PRODID:-//Alex & Bianca//The Wedding//RO',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -149,7 +150,7 @@ function initWhatsAppShare() {
   if (!shareBtn) return;
 
   shareBtn.addEventListener('click', () => {
-    const text = `Te invităm la nunta noastră! ✨\nALEX & BIANCA — THE WEDDING GALA\n20 Iunie 2027 • Palatul Snagov\n\nDeschide invitația digitală aici:\n${window.location.href}`;
+    const text = `Te invităm la nunta noastră! ✨\nALEX & BIANCA — THE WEDDING\n20 Iunie 2027 • Palatul Snagov\n\nDeschide invitația digitală aici:\n${window.location.href}`;
     const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   });
@@ -159,7 +160,7 @@ function initWhatsAppShare() {
  * 5. SCROLL REVEAL (INTERSECTION OBSERVER)
  */
 function initScrollAnimations() {
-  const reveals = document.querySelectorAll('.reveal-item');
+  const reveals = document.querySelectorAll('.reveal, .reveal-item');
   if (!reveals.length) return;
 
   const observer = new IntersectionObserver((entries) => {
@@ -170,7 +171,7 @@ function initScrollAnimations() {
     });
   }, {
     threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
+    rootMargin: '0px 0px -30px 0px'
   });
 
   reveals.forEach(el => observer.observe(el));
