@@ -51,20 +51,64 @@
     size(); addEventListener('resize', size);
     const mk = (init) => ({ x: Math.random() * W, y: init ? Math.random() * H : H + 20, r: 5 + Math.random() * 11, vy: .06 + Math.random() * .18, ph: Math.random() * 6.3, sp: .004 + Math.random() * .009, a: .2 + Math.random() * .4 });
     for (let i = 0; i < (RM ? 0 : MOBILE ? 12 : 22); i++) motes.push(mk(true));
-    const GOLD = ['#d9bd80', '#b8913f', '#a07a34', '#e3cc98', '#8a6a2c', '#c9a24f'];
+    const GOLD = ['#d9bd80', '#b8913f', '#a07a34', '#e3cc98', '#8a6a2c', '#c9a24f', '#f1e2bb', '#fff3d6', '#c79a4a'];
+    const glit = [];
+    const pick = () => GOLD[(Math.random() * GOLD.length) | 0];
 
+    // one confetti piece launched from (x,y) at angle a with speed v
+    function shoot(x, y, a, v) {
+      const shape = Math.random();
+      bits.push({
+        x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v,
+        w: shape < .2 ? 4 + Math.random() * 3 : 3 + Math.random() * 4,
+        h: shape < .2 ? 0 : 8 + Math.random() * 10,          // h:0 → round sequin
+        rot: Math.random() * 6.3, vr: (Math.random() - .5) * .35, fl: Math.random() * 6.3, fs: .08 + Math.random() * .14,
+        c: pick(), life: 0, max: 420 + Math.random() * 260
+      });
+    }
+    function glitter(n, fromTop) {
+      for (let i = 0; i < n; i++) {
+        glit.push({
+          x: Math.random() * W, y: fromTop ? -10 - Math.random() * H * .5 : H * (.2 + Math.random() * .6),
+          vx: (Math.random() - .5) * .5, vy: .5 + Math.random() * 1.3,
+          s: 2.5 + Math.random() * 5, ph: Math.random() * 6.3, sp: .12 + Math.random() * .2,
+          life: 0, max: 260 + Math.random() * 260
+        });
+      }
+    }
+    // speed needed to reach height h with drag .985 / gravity .2 (fitted: h ≈ 41.8·v − 310)
+    const vFor = (h) => (h + 310) / 41.8;
+    // cannons: bottom-left, bottom-right, and a central fountain — all shooting UP to the top of the screen
+    function volley(scale) {
+      const n = Math.round((MOBILE ? 75 : 120) * scale);
+      const hv = () => vFor(H * (.55 + Math.random() * .6));
+      for (let i = 0; i < n; i++) {
+        shoot(-10, H + 10, -Math.PI / 2 + .12 + Math.random() * .38, hv() * 1.08);
+        shoot(W + 10, H + 10, -Math.PI / 2 - .12 - Math.random() * .38, hv() * 1.08);
+      }
+      for (let i = 0; i < n * .9; i++) shoot(W / 2 + (Math.random() - .5) * W * .3, H + 10, -Math.PI / 2 + (Math.random() - .5) * .55, hv());
+    }
     function confetti(n) {
       if (RM) return;
-      n = n || (MOBILE ? 120 : 200);
-      for (let i = 0; i < n; i++) {
-        const a = -Math.PI / 2 + (Math.random() - .5) * 2, v = 6 + Math.random() * 9;
-        bits.push({ x: W / 2 + (Math.random() - .5) * 50, y: H * .6, vx: Math.cos(a) * v, vy: Math.sin(a) * v, w: 1.6 + Math.random() * 2.4, h: 5 + Math.random() * 8, rot: Math.random() * 6.3, vr: (Math.random() - .5) * .3, fl: Math.random() * 6.3, c: GOLD[(Math.random() * GOLD.length) | 0], life: 0, max: 260 + Math.random() * 160 });
-      }
-      burst(W / 2, H * .45, MOBILE ? 36 : 60);
+      if (n) { volley(.55); glitter(MOBILE ? 50 : 80, true); return; }
+      volley(1);
+      glitter(MOBILE ? 90 : 150, true);
+      glitter(MOBILE ? 40 : 60, false);
+      burst(W / 2, H * .42, MOBILE ? 40 : 70);
+      setTimeout(() => volley(.6), 600);
+      setTimeout(() => { glitter(MOBILE ? 70 : 110, true); burst(W * .3, H * .3, 24); burst(W * .7, H * .35, 24); }, 1300);
+      setTimeout(() => { volley(.45); glitter(MOBILE ? 60 : 90, true); }, 3200);
+      setTimeout(() => { volley(.35); glitter(MOBILE ? 60 : 90, true); }, 5600);
+      setTimeout(() => glitter(MOBILE ? 50 : 80, true), 8000);
     }
     function burst(x, y, n) {
       if (RM) return;
       for (let i = 0; i < n; i++) { const a = Math.random() * 6.3, v = .8 + Math.random() * 4; sparks.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: 7 + Math.random() * 14, life: 0, max: 70 + Math.random() * 80 }); }
+    }
+    function star(x, y, s) {               // 4-point glitter star
+      ctx.beginPath();
+      ctx.moveTo(x, y - s); ctx.quadraticCurveTo(x, y, x + s, y); ctx.quadraticCurveTo(x, y, x, y + s);
+      ctx.quadraticCurveTo(x, y, x - s, y); ctx.quadraticCurveTo(x, y, x, y - s); ctx.fill();
     }
     function tick() {
       if (!run) return;
@@ -83,14 +127,26 @@
         const k = 1 - s.life / s.max; if (k <= 0) { sparks.splice(i, 1); continue; }
         ctx.globalAlpha = k; ctx.drawImage(sprite, s.x - s.r / 2, s.y - s.r / 2, s.r, s.r);
       }
-      ctx.globalCompositeOperation = 'source-over';
+      // confetti: shoots up, slows, then flutters down
       for (let i = bits.length - 1; i >= 0; i--) {
         const b = bits[i]; b.life++;
-        b.vx *= .985; b.vy = Math.min(b.vy * .985 + .09, 1.5); b.fl += .12;
-        b.x += b.vx + Math.sin(b.fl) * .6; b.y += b.vy; b.rot += b.vr;
-        const k = clamp((b.max - b.life) / 60, 0, 1); if (k <= 0 || b.y > H + 20) { bits.splice(i, 1); continue; }
-        ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.rot); ctx.scale(1, Math.cos(b.fl));
-        ctx.globalAlpha = k * .95; ctx.fillStyle = b.c; ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h); ctx.restore();
+        b.vx *= .985; b.vy = b.vy < 0 ? b.vy * .985 + .2 : Math.min(b.vy * .99 + .045, 1.8); b.fl += b.fs;
+        b.x += b.vx + (b.vy > 0 ? Math.sin(b.fl) * .9 : 0); b.y += b.vy; b.rot += b.vr;
+        const k = clamp((b.max - b.life) / 60, 0, 1); if (k <= 0 || (b.y > H + 30 && b.vy > 0)) { bits.splice(i, 1); continue; }
+        const shine = Math.abs(Math.cos(b.fl));
+        ctx.globalAlpha = k * (.55 + shine * .45);
+        ctx.fillStyle = shine > .93 ? '#fff6dc' : b.c;
+        if (!b.h) { ctx.beginPath(); ctx.ellipse(b.x, b.y, b.w / 2, Math.max(.4, b.w / 2 * shine), b.rot, 0, 6.3); ctx.fill(); }
+        else { ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.rot); ctx.scale(1, Math.cos(b.fl)); ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h); ctx.restore(); }
+      }
+      // glitter: twinkling stars drifting down
+      for (let i = glit.length - 1; i >= 0; i--) {
+        const g = glit[i]; g.life++; g.ph += g.sp; g.x += g.vx + Math.sin(g.ph * .3) * .3; g.y += g.vy;
+        const k = clamp((g.max - g.life) / 50, 0, 1); if (k <= 0 || g.y > H + 20) { glit.splice(i, 1); continue; }
+        if (g.y < -5) continue;
+        const tw = .35 + .65 * Math.abs(Math.sin(g.ph));
+        ctx.globalAlpha = k * tw * .55; ctx.drawImage(sprite, g.x - g.s * 1.6, g.y - g.s * 1.6, g.s * 3.2, g.s * 3.2);
+        ctx.globalAlpha = k * tw; ctx.fillStyle = tw > .85 ? '#fffaf0' : '#d8b56a'; star(g.x, g.y, g.s * tw);
       }
       ctx.globalAlpha = 1;
       requestAnimationFrame(tick);
@@ -441,7 +497,7 @@
       later(() => l.classList.add('on'), base + T(d));
       if (l.dataset.out) later(() => l.classList.add('gone'), base + T(parseFloat(l.dataset.out)));
     });
-    if (sc.dataset.fx === 'confetti') { later(() => Fx.confetti(), base + T(.4)); later(() => Fx.confetti(MOBILE ? 50 : 90), base + T(2.4)); }
+    if (sc.dataset.fx === 'confetti') later(() => Fx.confetti(), base + T(.1));
     if (sc.dataset.flash) later(() => Fx.burst(innerWidth / 2, innerHeight * .46, MOBILE ? 20 : 34), base + T(4.4));
 
     if (hold > 0) {
