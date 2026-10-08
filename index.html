@@ -3,96 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <meta name="theme-color" content="#030305">
+  <meta name="theme-color" content="#000000">
   <title>ALEX &amp; BIANCA — THE WEDDING | 20.06.2027</title>
   
-  <meta name="description" content="Invitație digitală de nuntă interactivă • Alex &amp; Bianca • 20 Iunie 2027">
+  <meta name="description" content="Invitație digitală de nuntă exclusivistă • Alex &amp; Bianca • 20 Iunie 2027">
   <meta property="og:title" content="ALEX &amp; BIANCA — THE WEDDING">
-  <meta property="og:description" content="Invitație digitală de nuntă interactivă • 20 Iunie 2027">
+  <meta property="og:description" content="Invitație digitală de nuntă exclusivistă • 20 Iunie 2027">
   <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop">
 
-  <!-- Luxury Google Fonts -->
+  <!-- Haute Couture Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=200k_royal_v2">
-  <link rel="stylesheet" href="css/envelope.css?v=200k_royal_v2">
-  <link rel="stylesheet" href="css/components.css?v=200k_royal_v2">
+  <!-- Haute Couture Stylesheets (Bust Cache) -->
+  <link rel="stylesheet" href="css/main.css?v=couture_2027">
+  <link rel="stylesheet" href="css/envelope.css?v=couture_2027">
+  <link rel="stylesheet" href="css/components.css?v=couture_2027">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23030305%22 stroke=%22%23ffe899%22 stroke-width=%223%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Cinzel%22 font-size=%2232%22 fill=%22%23ffe899%22>AB</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000000%22 stroke=%22%23ffd700%22 stroke-width=%223%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Cinzel%22 font-size=%2232%22 fill=%22%23ffd700%22>AB</text></svg>">
 </head>
 <body>
 
-  <!-- Golden Particle Canvas Layer -->
+  <!-- Golden Stardust Particle Canvas -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- Floating Luxury Vinyl Jukebox: Lele & Andra Volos / Florin Salam -->
-  <aside class="floating-music-player" id="floating-music-player" title="Apasă pentru Play / Pause">
-    <div class="vinyl-disc" id="vinyl-disc"></div>
-    <div class="player-text-wrap">
-      <span class="player-track-tag" id="player-track-tag">👑 Melodia Oficială a Mirilor</span>
-      <span class="player-track-title" id="player-track-title">LeLe — Dacă lumea se termină (feat. Andra Voloș)</span>
+  <!-- Sleek Floating Soundwave Equalizer (LeLe feat. Andra Voloș) -->
+  <aside class="floating-soundwave-bar" id="floating-soundwave-bar" title="Apasă pentru Play / Pause">
+    <div class="equalizer-anim-bars" id="eq-bars">
+      <div class="equalizer-bar"></div>
+      <div class="equalizer-bar"></div>
+      <div class="equalizer-bar"></div>
+      <div class="equalizer-bar"></div>
     </div>
-    <button class="player-action-btn" id="player-play-btn" title="Play / Pause">▶</button>
-    <button class="player-action-btn" id="player-next-btn" title="Următoarea piesă">⏭</button>
+    <div class="soundwave-meta-wrap">
+      <span class="soundwave-track-badge" id="soundwave-badge">👑 Melodia Mirilor</span>
+      <span class="soundwave-track-name" id="soundwave-title">LeLe — Dacă lumea se termină</span>
+    </div>
+    <button class="soundwave-btn-action" id="soundwave-play-btn" title="Play / Pause">▶</button>
+    <button class="soundwave-btn-action" id="soundwave-next-btn" title="Următoarea piesă">⏭</button>
   </aside>
 
   <!-- =========================================================================
-       INTRO: 3D ROYAL FRENCH GATE & VELVET BOX
+       1. TRUE 3D HAUTE COUTURE ENVELOPE CEREMONY
        ========================================================================= -->
-  <div class="envelope-ceremony-screen" id="envelope-screen">
-    <div class="royal-glow-emitter"></div>
+  <div class="envelope-stage-viewport" id="envelope-screen">
+    <div class="envelope-ambient-aura"></div>
 
-    <!-- Intro Header -->
-    <div class="intro-royal-header">
-      <svg class="intro-crown-symbol" viewBox="0 0 24 24">
+    <div class="envelope-cinematic-header">
+      <svg class="envelope-crown-mini" viewBox="0 0 24 24">
         <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
       </svg>
-      <h1 class="intro-royal-names">
+      <h1 class="envelope-header-title">
         ALEX <span>&amp;</span> BIANCA
       </h1>
-      <p class="intro-royal-sub">THE WEDDING • 20.06.2027</p>
+      <p class="envelope-header-tag">THE WEDDING GALA • 20.06.2027</p>
     </div>
 
-    <!-- 3D French Gate Box Stage -->
-    <div class="royal-box-stage">
-      <div class="royal-box-3d" id="royal-box-3d">
-        <!-- Chamber Interior -->
-        <div class="royal-box-interior"></div>
+    <!-- 3D Realistic Envelope -->
+    <div class="envelope-3d-box" id="envelope-3d-box">
+      <!-- Back Wall -->
+      <div class="envelope-back-wall"></div>
 
-        <!-- Rising Invitation Card -->
-        <div class="royal-invitation-card" id="royal-card">
-          <div class="royal-card-badge">INVITAȚIE REGALĂ</div>
-          <div class="royal-card-monogram gold-shimmer">AB</div>
-          <div class="royal-card-names">ALEX &amp; BIANCA</div>
-          <div class="royal-card-date">20 • 06 • 2027 • PALATUL SNAGOV</div>
-        </div>
-
-        <!-- 3D Double French Doors -->
-        <div class="royal-door-left" id="door-left"></div>
-        <div class="royal-door-right" id="door-right"></div>
-
-        <!-- Golden Silk Ribbon -->
-        <div class="royal-ribbon-line" id="royal-ribbon"></div>
-
-        <!-- 3D Central Gold Wax Seal -->
-        <div class="royal-central-seal" id="royal-seal" title="Apasă pentru a deschide invitația">
-          <svg class="seal-crown-mini" viewBox="0 0 24 24">
-            <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
-          </svg>
-          <span class="seal-monogram-text">AB</span>
-        </div>
+      <!-- Rising Gold Invitation Letter -->
+      <div class="envelope-rising-letter" id="envelope-letter">
+        <div class="letter-top-label">INVITAȚIE EXCLUSIVĂ</div>
+        <div class="letter-monogram-huge gold-text-liquid">AB</div>
+        <div class="letter-names-subtitle">ALEX &amp; BIANCA</div>
+        <div class="letter-venue-date">20 • 06 • 2027 • PALATUL SNAGOV</div>
       </div>
 
-      <button class="royal-box-cta-btn" id="royal-box-cta">
-        <svg style="width:16px; height:16px; fill:currentColor;" viewBox="0 0 24 24">
-          <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+      <!-- Pocket Front -->
+      <div class="envelope-pocket-front"></div>
+
+      <!-- 3D Folding Top Flap -->
+      <div class="envelope-flap-3d" id="envelope-flap"></div>
+
+      <!-- Silk Gold Ribbon -->
+      <div class="envelope-silk-ribbon" id="envelope-ribbon"></div>
+
+      <!-- 3D Wax Seal -->
+      <div class="envelope-wax-seal" id="envelope-seal" title="Apasă pentru a deschide invitația">
+        <svg class="seal-crown-icon" viewBox="0 0 24 24">
+          <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
         </svg>
-        DESCHIDE INVITAȚIA &amp; ASCULTĂ MUZICA
-      </button>
+        <span class="seal-monogram-initials">AB</span>
+      </div>
     </div>
+
+    <button class="envelope-open-button" id="envelope-open-btn">
+      <svg style="width:18px; height:18px; fill:currentColor;" viewBox="0 0 24 24">
+        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+      </svg>
+      DESCHIDE INVITAȚIA &amp; PORNEȘTE MUZICA
+    </button>
   </div>
 
   <!-- =========================================================================
@@ -100,274 +104,293 @@
        ========================================================================= -->
   <main id="main-site">
 
-    <!-- 1. HERO SECTION -->
-    <header class="hero-section" id="hero">
-      <div class="hero-bg-layer">
-        <img class="hero-bg-img" 
+    <!-- 1. HERO GALA SECTION -->
+    <header class="hero-gala-section" id="hero">
+      <div class="hero-backdrop-layer">
+        <img class="hero-backdrop-image" 
              src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" 
              alt="Alex & Bianca" 
              loading="eager">
-        <div class="hero-dark-vignette"></div>
+        <div class="hero-vignette-glass"></div>
       </div>
 
-      <div class="hero-content">
-        <!-- Personalized Guest Pill (via ?guest=...) -->
-        <div class="guest-personalized-banner" id="guest-personalization-banner" style="margin-bottom:1.5rem;">
-          <span id="personalized-guest-name"></span>, vă invităm să fiți alături de noi.
+      <div class="hero-gala-content">
+        <!-- Personalized VIP Guest Badge (via ?guest=Familia%20Popescu) -->
+        <div class="vip-guest-pill-banner" id="guest-personalization-banner">
+          👑 <span id="personalized-guest-name"></span>, vă invităm la nunta noastră
         </div>
 
-        <div class="hero-crown-monogram reveal">
-          <svg class="hero-crown-svg" viewBox="0 0 24 24">
+        <div class="hero-crown-emblem reveal-item">
+          <svg class="hero-crown-icon-svg" viewBox="0 0 24 24">
             <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
           </svg>
-          <span class="hero-monogram-txt gold-shimmer">AB</span>
+          <span class="hero-emblem-text gold-text-liquid">AB</span>
         </div>
 
-        <p class="hero-sub-header reveal reveal-delay-1">NE CĂSĂTORIM</p>
+        <p class="hero-invitation-subtag reveal-item reveal-delay-1">NE CĂSĂTORIM</p>
 
-        <h1 class="hero-main-title reveal reveal-delay-2">
+        <h1 class="hero-monumental-names reveal-item reveal-delay-2">
           ALEX<br>
-          <span class="hero-script-amp">&amp;</span>
+          <span class="hero-script-ampersand">&amp;</span>
           BIANCA
         </h1>
 
-        <div class="hero-date-block reveal reveal-delay-3">
-          <div class="hero-date-line"></div>
-          <span class="hero-date-text gold-shimmer">20 IUNIE 2027 • PALATUL SNAGOV</span>
-          <div class="hero-date-line"></div>
+        <div class="hero-date-accent-block reveal-item reveal-delay-3">
+          <div class="line"></div>
+          <span class="date-text gold-text-liquid">20 IUNIE 2027 • PALATUL SNAGOV</span>
+          <div class="line"></div>
         </div>
 
-        <div class="reveal reveal-delay-3" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-          <a href="#rsvp" class="btn-luxury-primary">CONFIRMĂ PREZENȚA</a>
-          <a href="#save-the-date" class="btn-luxury-outline">SALVEAZĂ DATA</a>
+        <div class="reveal-item reveal-delay-3" style="display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap;">
+          <a href="#rsvp" class="btn-gold-couture">CONFIRMĂ PREZENȚA</a>
+          <a href="#save-the-date" class="btn-dark-couture">SALVEAZĂ DATA</a>
         </div>
       </div>
 
-      <a href="#save-the-date" class="hero-scroll-cue" aria-label="Derulează">
+      <a href="#save-the-date" class="hero-scroll-cue-wrap" aria-label="Derulează">
         <span>EXPLOREAZĂ</span>
-        <div class="scroll-indicator-line"></div>
+        <div class="hero-scroll-line-anim"></div>
       </a>
     </header>
 
-    <!-- 2. SAVE THE DATE & LIVE COUNTDOWN -->
-    <section class="section save-the-date-section" id="save-the-date">
+    <!-- 2. HAUTE HORLOGERIE COUNTDOWN (Save The Date) -->
+    <section class="scene-section" id="save-the-date">
       <div class="container container-narrow">
-        <div class="section-header reveal">
-          <h2 class="std-title-text gold-shimmer">SAVE<br>THE<br>DATE</h2>
-          <div class="std-date-pill">20 • 06 • 2027</div>
-        </div>
-
-        <!-- Live Countdown -->
-        <div class="countdown-grid reveal reveal-delay-1">
-          <div class="countdown-box">
-            <span class="countdown-num gold-shimmer" id="count-days">--</span>
-            <span class="countdown-unit">ZILE</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-num gold-shimmer" id="count-hours">--</span>
-            <span class="countdown-unit">ORE</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-num gold-shimmer" id="count-minutes">--</span>
-            <span class="countdown-unit">MINUTE</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-num gold-shimmer" id="count-seconds">--</span>
-            <span class="countdown-unit">SECUNDE</span>
+        <div class="scene-header reveal-item">
+          <span class="scene-category">NUMĂRĂTOAREA INVERSĂ</span>
+          <h2 class="scene-main-title gold-text-liquid">SAVE THE DATE</h2>
+          <p style="font-family:var(--font-sans); font-size:1.1rem; letter-spacing:0.3em; color:var(--c-gold-200); margin-bottom:1rem;">20 • 06 • 2027</p>
+          <div class="scene-divider-diamond">
+            <span></span>
+            <svg viewBox="0 0 24 24"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+            <span></span>
           </div>
         </div>
 
-        <div class="reveal reveal-delay-2" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-          <a href="#" id="btn-add-google-cal" class="btn-luxury-outline">
+        <div class="countdown-dial-grid reveal-item reveal-delay-1">
+          <div class="countdown-dial-item">
+            <div class="countdown-dial-num gold-text-liquid" id="count-days">--</div>
+            <div class="countdown-dial-label">ZILE</div>
+          </div>
+          <div class="countdown-dial-item">
+            <div class="countdown-dial-num gold-text-liquid" id="count-hours">--</div>
+            <div class="countdown-dial-label">ORE</div>
+          </div>
+          <div class="countdown-dial-item">
+            <div class="countdown-dial-num gold-text-liquid" id="count-minutes">--</div>
+            <div class="countdown-dial-label">MINUTE</div>
+          </div>
+          <div class="countdown-dial-item">
+            <div class="countdown-dial-num gold-text-liquid" id="count-seconds">--</div>
+            <div class="countdown-dial-label">SECUNDE</div>
+          </div>
+        </div>
+
+        <div class="reveal-item reveal-delay-2" style="display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap;">
+          <a href="#" id="btn-add-google-cal" class="btn-dark-couture">
             GOOGLE CALENDAR
           </a>
-          <a href="#" id="btn-add-apple-cal" class="btn-luxury-outline">
+          <a href="#" id="btn-add-apple-cal" class="btn-dark-couture">
             DESCARCĂ (.ICS)
           </a>
         </div>
       </div>
     </section>
 
-    <!-- 3. OUR STORY ("POVESTEA NOASTRĂ") -->
-    <section class="section story-section" id="povestea-noastra">
+    <!-- 3. EDITORIAL CINEMA REEL ("POVESTEA NOASTRĂ") -->
+    <section class="scene-section" id="povestea-noastra">
       <div class="container">
-        <div class="section-header reveal">
-          <span class="section-tag">CAPITOLUL I</span>
-          <h2 class="section-title">POVESTEA NOASTRĂ</h2>
-          <div class="gold-glow-line"></div>
+        <div class="scene-header reveal-item">
+          <span class="scene-category">CAPITOLUL I</span>
+          <h2 class="scene-main-title">POVESTEA NOASTRĂ</h2>
+          <div class="scene-divider-diamond">
+            <span></span>
+            <svg viewBox="0 0 24 24"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+            <span></span>
+          </div>
         </div>
 
-        <div class="story-editorial-grid">
-          <div class="story-layered-wrap reveal">
-            <div class="story-frame-primary">
-              <img class="story-img-primary" 
-                   src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000&auto=format&fit=crop" 
+        <div class="cinema-story-grid">
+          <div class="cinema-frames-stack reveal-item">
+            <div class="cinema-frame-hero">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000&auto=format&fit=crop" 
                    alt="Alex & Bianca" 
                    loading="lazy">
             </div>
-            <div class="story-frame-secondary">
-              <img class="story-img-secondary" 
-                   src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" 
+            <div class="cinema-frame-accent">
+              <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" 
                    alt="Love Story" 
                    loading="lazy">
             </div>
           </div>
 
-          <div class="story-text-content reveal reveal-delay-1">
-            <p class="story-quote-lead">„Dincolo de cuvinte, am știut că aparținem aceleiași povești.”</p>
-            <p class="story-text-p">
-              Ceea ce a început într-o seară caldă s-a transformat în cel mai frumos legământ al vieții noastre. Privirile noastre au spus totul încă din prima clipă.
+          <div class="cinema-story-text-wrap reveal-item reveal-delay-1">
+            <p class="cinema-story-lead">„Dacă lumea se termină, dragostea noastră rămâne pentru totdeauna.”</p>
+            <p class="cinema-story-paragraph">
+              Ceea ce a început ca o privire fugară s-a transformat în cel mai profund legământ al vieții noastre. Am învățat că iubirea adevărată înseamnă să privești în aceeași direcție și să construiești un imperiu de suflet.
             </p>
-            <p class="story-text-p">
-              Am construit împreună un univers ghidat de eleganță, respect și dragoste curată. Pe 20 Iunie 2027, vă așteptăm să sărbătoriți alături de noi acest moment unic!
+            <p class="cinema-story-paragraph">
+              Pe 20 Iunie 2027, la Palatul Snagov, deschidem cel mai grandios capitol al vieții noastre și vă așteptăm cu dragoste să scriem această pagină împreună!
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. DRESS CODE (Celebrity / Lele & Andra Voloș Style) -->
-    <section class="section dress-code-section" id="dress-code">
+    <!-- 4. HAUTE COUTURE DRESS CODE LOOKBOOK -->
+    <section class="scene-section" id="dress-code">
       <div class="container container-narrow">
-        <div class="section-header reveal">
-          <span class="section-tag">ETICHETĂ &amp; RAFINAMENT</span>
-          <h2 class="section-title">DRESS CODE</h2>
-          <div class="gold-glow-line"></div>
+        <div class="scene-header reveal-item">
+          <span class="scene-category">ETICHETĂ &amp; STIL</span>
+          <h2 class="scene-main-title">DRESS CODE</h2>
+          <div class="scene-divider-diamond">
+            <span></span>
+            <svg viewBox="0 0 24 24"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+            <span></span>
+          </div>
         </div>
 
-        <div class="dress-code-card reveal reveal-delay-1">
-          <h3 class="dress-code-tagline gold-shimmer">BLACK TIE &amp; HAUTE ELEGANCE</h3>
-          <p class="dress-code-desc">
-            Pentru a desăvârși atmosfera grandioasă a serii noastre de poveste, vă rugăm să optați pentru o ținută de gală demnă de covorul roșu:
+        <div class="dresscode-couture-card reveal-item reveal-delay-1">
+          <h3 class="dresscode-banner-title gold-text-liquid">BLACK TIE &amp; HAUTE ELEGANCE</h3>
+          <p class="dresscode-editorial-text">
+            Pentru a desăvârși tabloul serii noastre de gală, vă rugăm să onorați evenimentul printr-o ținută de excepție:
             <br><br>
-            <strong style="color:var(--gold-bright);">DOMNII:</strong> Smoking / Costum elegant de culoare neagră sau bleumarin închis cu papion.<br>
-            <strong style="color:var(--gold-bright);">DOAMNELE:</strong> Rochie lungă de seară în nuanțe nobile de Negru, Auriu, Champagne sau Smarald.
+            <strong style="color:var(--c-gold-300);">DOMNII:</strong> Smoking clasic / Costum negru impecabil cu papion sau cravată de mătase.<br>
+            <strong style="color:var(--c-gold-300);">DOAMNELE:</strong> Rochie lungă de seară în nuanțe nobile de Negru, Auriu, Champagne sau Smarald.
           </p>
 
-          <div class="palette-swatches">
-            <div class="swatch-item">
-              <div class="swatch-circle swatch-obsidian"></div>
-              <span class="swatch-label">Obsidian</span>
+          <div class="dresscode-palette-row">
+            <div class="palette-swatch-item">
+              <div class="palette-swatch-disc disc-obsidian"></div>
+              <span class="palette-swatch-name">Obsidian</span>
             </div>
-            <div class="swatch-item">
-              <div class="swatch-circle swatch-onyx"></div>
-              <span class="swatch-label">Midnight</span>
+            <div class="palette-swatch-item">
+              <div class="palette-swatch-disc disc-midnight"></div>
+              <span class="palette-swatch-name">Midnight</span>
             </div>
-            <div class="swatch-item">
-              <div class="swatch-circle swatch-gold"></div>
-              <span class="swatch-label">24K Gold</span>
+            <div class="palette-swatch-item">
+              <div class="palette-swatch-disc disc-gold-24k"></div>
+              <span class="palette-swatch-name">24K Gold</span>
             </div>
-            <div class="swatch-item">
-              <div class="swatch-circle swatch-champagne"></div>
-              <span class="swatch-label">Champagne</span>
+            <div class="palette-swatch-item">
+              <div class="palette-swatch-disc disc-champagne"></div>
+              <span class="palette-swatch-name">Champagne</span>
             </div>
-            <div class="swatch-item">
-              <div class="swatch-circle swatch-emerald"></div>
-              <span class="swatch-label">Emerald</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. TIMELINE ("PROGRAMUL ZILEI") -->
-    <section class="section timeline-section" id="program">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-tag">DESFĂȘURĂTOR</span>
-          <h2 class="section-title">PROGRAMUL ZILEI</h2>
-          <div class="gold-glow-line"></div>
-        </div>
-
-        <div class="timeline-track-wrap">
-          <!-- 14:00 CUNUNIA CIVILĂ -->
-          <div class="timeline-item-row reveal">
-            <div class="timeline-glow-bead"></div>
-            <div class="timeline-box-card">
-              <span class="timeline-hour">14:00</span>
-              <h3 class="timeline-name">CUNUNIA CIVILĂ</h3>
-            </div>
-          </div>
-
-          <!-- 15:30 CEREMONIA RELIGIOASĂ -->
-          <div class="timeline-item-row reveal reveal-delay-1">
-            <div class="timeline-glow-bead"></div>
-            <div class="timeline-box-card">
-              <span class="timeline-hour">15:30</span>
-              <h3 class="timeline-name">CEREMONIA RELIGIOASĂ</h3>
-            </div>
-          </div>
-
-          <!-- 18:00 PRIMIREA INVITAȚILOR -->
-          <div class="timeline-item-row reveal reveal-delay-2">
-            <div class="timeline-glow-bead"></div>
-            <div class="timeline-box-card">
-              <span class="timeline-hour">18:00</span>
-              <h3 class="timeline-name">PRIMIREA INVITAȚILOR &amp; COCKTAIL</h3>
-            </div>
-          </div>
-
-          <!-- 19:00 CINA -->
-          <div class="timeline-item-row reveal reveal-delay-3">
-            <div class="timeline-glow-bead"></div>
-            <div class="timeline-box-card">
-              <span class="timeline-hour">19:00</span>
-              <h3 class="timeline-name">CINA DE GALĂ</h3>
-            </div>
-          </div>
-
-          <!-- 21:00 PETRECEREA -->
-          <div class="timeline-item-row reveal reveal-delay-3">
-            <div class="timeline-glow-bead"></div>
-            <div class="timeline-box-card">
-              <span class="timeline-hour">21:00</span>
-              <h3 class="timeline-name">DANSUL MIRILOR &amp; MEGA PETRECEREA</h3>
+            <div class="palette-swatch-item">
+              <div class="palette-swatch-disc disc-emerald"></div>
+              <span class="palette-swatch-name">Emerald</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. LOCATIONS ("LOCAȚII") -->
-    <section class="section locations-section" id="locatii">
+    <!-- 5. ROYAL TIMELINE -->
+    <section class="scene-section" id="program">
       <div class="container">
-        <div class="section-header reveal">
-          <span class="section-tag">COORDONATE</span>
-          <h2 class="section-title">LOCAȚII</h2>
-          <div class="gold-glow-line"></div>
+        <div class="scene-header reveal-item">
+          <span class="scene-category">DESFĂȘURĂTORUL SERII</span>
+          <h2 class="scene-main-title">PROGRAMUL ZILEI</h2>
+          <div class="scene-divider-diamond">
+            <span></span>
+            <svg viewBox="0 0 24 24"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+            <span></span>
+          </div>
         </div>
 
-        <div class="locations-scene-grid">
+        <div class="timeline-radiant-track">
+          <!-- 14:00 -->
+          <div class="timeline-event-card-wrap reveal-item">
+            <div class="timeline-radiant-bead"></div>
+            <div class="timeline-event-box">
+              <span class="timeline-event-time">14:00</span>
+              <h3 class="timeline-event-title">CUNUNIA CIVILĂ</h3>
+            </div>
+          </div>
+
+          <!-- 15:30 -->
+          <div class="timeline-event-card-wrap reveal-item reveal-delay-1">
+            <div class="timeline-radiant-bead"></div>
+            <div class="timeline-event-box">
+              <span class="timeline-event-time">15:30</span>
+              <h3 class="timeline-event-title">CEREMONIA RELIGIOASĂ</h3>
+            </div>
+          </div>
+
+          <!-- 18:00 -->
+          <div class="timeline-event-card-wrap reveal-item reveal-delay-2">
+            <div class="timeline-radiant-bead"></div>
+            <div class="timeline-event-box">
+              <span class="timeline-event-time">18:00</span>
+              <h3 class="timeline-event-title">PRIMIREA INVITAȚILOR &amp; COCKTAIL</h3>
+            </div>
+          </div>
+
+          <!-- 19:00 -->
+          <div class="timeline-event-card-wrap reveal-item reveal-delay-3">
+            <div class="timeline-radiant-bead"></div>
+            <div class="timeline-event-box">
+              <span class="timeline-event-time">19:00</span>
+              <h3 class="timeline-event-title">CINA DE GALĂ</h3>
+            </div>
+          </div>
+
+          <!-- 21:00 -->
+          <div class="timeline-event-card-wrap reveal-item reveal-delay-3">
+            <div class="timeline-radiant-bead"></div>
+            <div class="timeline-event-box">
+              <span class="timeline-event-time">21:00</span>
+              <h3 class="timeline-event-title">DANSUL MIRILOR &amp; MEGA PETRECEREA</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SACRED VOWS & GALA RECEPTION (Venues) -->
+    <section class="scene-section" id="locatii">
+      <div class="container">
+        <div class="scene-header reveal-item">
+          <span class="scene-category">COORDONATE</span>
+          <h2 class="scene-main-title">LOCAȚII</h2>
+          <div class="scene-divider-diamond">
+            <span></span>
+            <svg viewBox="0 0 24 24"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="venues-immersive-grid">
           <!-- Scene 1: CEREMONIA -->
-          <div class="location-full-scene reveal">
-            <img class="location-bg-photo" 
+          <div class="venue-scene-card reveal-item">
+            <img class="venue-bg-media" 
                  src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1200&auto=format&fit=crop" 
                  alt="Catedrala Sfântul Iosif" 
                  loading="lazy">
-            <div class="location-overlay-gradient"></div>
-            <div class="location-info-panel">
-              <span class="location-pill-badge">CEREMONIA</span>
-              <h3 class="location-venue-name">CATEDRALA SFÂNTUL IOSIF</h3>
-              <p class="location-venue-address">Strada General H. M. Berthelot 19, București</p>
-              <a href="https://maps.google.com/?q=Catedrala+Sfantul+Iosif+Bucuresti" target="_blank" rel="noopener" class="btn-luxury-primary">
-                VEZI LOCAȚIA (GOOGLE MAPS)
+            <div class="venue-gradient-shade"></div>
+            <div class="venue-meta-panel">
+              <span class="venue-type-tag">CEREMONIA</span>
+              <h3 class="venue-name-header">CATEDRALA SFÂNTUL IOSIF</h3>
+              <p class="venue-address-text">Strada General H. M. Berthelot 19, București</p>
+              <a href="https://maps.google.com/?q=Catedrala+Sfantul+Iosif+Bucuresti" target="_blank" rel="noopener" class="btn-gold-couture">
+                GOOGLE MAPS GPS
               </a>
             </div>
           </div>
 
           <!-- Scene 2: RECEPȚIA -->
-          <div class="location-full-scene reveal reveal-delay-1">
-            <img class="location-bg-photo" 
+          <div class="venue-scene-card reveal-item reveal-delay-1">
+            <img class="venue-bg-media" 
                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop" 
                  alt="Palatul Snagov" 
                  loading="lazy">
-            <div class="location-overlay-gradient"></div>
-            <div class="location-info-panel">
-              <span class="location-pill-badge">RECEPȚIA &amp; PETRECEREA</span>
-              <h3 class="location-venue-name">PALATUL SNAGOV &amp; DOMAINE</h3>
-              <p class="location-venue-address">Aleea Snagov Park, Lacul Snagov, Ilfov</p>
-              <a href="https://maps.google.com/?q=Palatul+Snagov" target="_blank" rel="noopener" class="btn-luxury-primary">
-                VEZI LOCAȚIA (GOOGLE MAPS)
+            <div class="venue-gradient-shade"></div>
+            <div class="venue-meta-panel">
+              <span class="venue-type-tag">RECEPȚIA &amp; PETRECEREA</span>
+              <h3 class="venue-name-header">PALATUL SNAGOV &amp; DOMAINE</h3>
+              <p class="venue-address-text">Aleea Snagov Park, Lacul Snagov, Ilfov</p>
+              <a href="https://maps.google.com/?q=Palatul+Snagov" target="_blank" rel="noopener" class="btn-gold-couture">
+                GOOGLE MAPS GPS
               </a>
             </div>
           </div>
@@ -375,123 +398,45 @@
       </div>
     </section>
 
-    <!-- 6. GALLERY -->
-    <section class="section gallery-section" id="galerie">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-tag">MOMENTE</span>
-          <h2 class="section-title">GALERIE</h2>
-          <div class="gold-glow-line"></div>
-        </div>
-
-        <div class="gallery-strip-container" id="gallery-viewport-track">
-          <div class="gallery-track-slider" id="gallery-strip">
-            <div class="gallery-card-item">
-              <img class="gallery-item-img" 
-                   src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop" 
-                   alt="Alex & Bianca" 
-                   loading="lazy">
-              <div class="gallery-caption-overlay">
-                <p class="gallery-caption-text">PRIVIREA</p>
-              </div>
-            </div>
-
-            <div class="gallery-card-item">
-              <img class="gallery-item-img" 
-                   src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=900&auto=format&fit=crop" 
-                   alt="Elegance" 
-                   loading="lazy">
-              <div class="gallery-caption-overlay">
-                <p class="gallery-caption-text">ELEGANȚA</p>
-              </div>
-            </div>
-
-            <div class="gallery-card-item">
-              <img class="gallery-item-img" 
-                   src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=900&auto=format&fit=crop" 
-                   alt="Celebration" 
-                   loading="lazy">
-              <div class="gallery-caption-overlay">
-                <p class="gallery-caption-text">SĂRBĂTOAREA</p>
-              </div>
-            </div>
-
-            <div class="gallery-card-item">
-              <img class="gallery-item-img" 
-                   src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=900&auto=format&fit=crop" 
-                   alt="Portrait" 
-                   loading="lazy">
-              <div class="gallery-caption-overlay">
-                <p class="gallery-caption-text">DESTINUL</p>
-              </div>
-            </div>
-
-            <div class="gallery-card-item">
-              <img class="gallery-item-img" 
-                   src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=900&auto=format&fit=crop" 
-                   alt="The Promise" 
-                   loading="lazy">
-              <div class="gallery-caption-overlay">
-                <p class="gallery-caption-text">PROMISIUNEA</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-controls-row reveal">
-          <button class="gallery-nav-button" id="gallery-prev-btn" aria-label="Anterior">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <button class="gallery-nav-button" id="gallery-next-btn" aria-label="Următor">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <div class="lightbox-modal-view" id="gallery-lightbox">
-      <div class="lightbox-box-wrap">
-        <button class="lightbox-close-button" id="lightbox-close-btn">&times;</button>
-        <img src="" alt="Fullscreen" class="lightbox-image-element" id="lightbox-img-full">
-      </div>
-    </div>
-
-    <!-- 7. RSVP -->
-    <section class="section rsvp-section" id="rsvp">
+    <!-- 7. VIP GOLD TICKET RSVP -->
+    <section class="scene-section" id="rsvp">
       <div class="container container-narrow">
-        <div class="rsvp-glass-container reveal">
+        <div class="vip-rsvp-container reveal-item">
           
           <div id="rsvp-form-container">
-            <div class="section-header" style="margin-bottom: 2.5rem;">
-              <span class="section-tag">CONFIRMARE</span>
-              <h2 class="section-title">VEI FI ALĂTURI DE NOI?</h2>
-              <div class="gold-glow-line"></div>
+            <div class="scene-header" style="margin-bottom: 2.5rem;">
+              <span class="scene-category">CONFIRMARE</span>
+              <h2 class="scene-main-title">VEI FI ALĂTURI DE NOI?</h2>
+              <div class="scene-divider-diamond">
+                <span></span>
+                <svg viewBox="0 0 24 24"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+                <span></span>
+              </div>
             </div>
 
             <form id="rsvp-form">
-              <!-- Initial Choice: DA, CU DRAG / NU POT PARTICIPA -->
-              <div class="rsvp-selection-buttons-grid">
-                <button type="button" class="rsvp-toggle-btn" id="rsvp-choice-yes">
+              <!-- Initial Choice -->
+              <div class="rsvp-choice-buttons-grid">
+                <button type="button" class="rsvp-choice-btn" id="rsvp-choice-yes">
                   DA, CU DRAG
                 </button>
-                <button type="button" class="rsvp-toggle-btn" id="rsvp-choice-no">
+                <button type="button" class="rsvp-choice-btn" id="rsvp-choice-no">
                   NU POT PARTICIPA
                 </button>
               </div>
 
-              <!-- Unfolded fields after selection -->
-              <div class="rsvp-form-unfolded-section" id="rsvp-detailed-fields">
-                <div class="rsvp-inputs-grid">
-                  <div class="form-group-wrap rsvp-full-col">
-                    <label class="form-label-title" for="rsvp-name">NUME ȘI PRENUME *</label>
-                    <input type="text" id="rsvp-name" class="form-text-control" placeholder="ex. Alexandru Popescu" required>
+              <!-- Unfolded fields after choice -->
+              <div class="rsvp-unfolded-form" id="rsvp-detailed-fields">
+                <div class="rsvp-fields-grid">
+                  <div class="form-field-group rsvp-span-2">
+                    <label class="form-field-label" for="rsvp-name">NUME ȘI PRENUME *</label>
+                    <input type="text" id="rsvp-name" class="form-input-luxury" placeholder="ex. Alexandru Popescu" required>
                   </div>
 
                   <div id="rsvp-guest-details-group" style="display:contents;">
-                    <div class="form-group-wrap">
-                      <label class="form-label-title" for="rsvp-guests">NUMĂR PERSOANE</label>
-                      <select id="rsvp-guests" class="form-select-control">
+                    <div class="form-field-group">
+                      <label class="form-field-label" for="rsvp-guests">NUMĂR PERSOANE</label>
+                      <select id="rsvp-guests" class="form-select-luxury">
                         <option value="1">1 PERSOANĂ</option>
                         <option value="2" selected>2 PERSOANE</option>
                         <option value="3">3 PERSOANE</option>
@@ -499,9 +444,9 @@
                       </select>
                     </div>
 
-                    <div class="form-group-wrap">
-                      <label class="form-label-title" for="rsvp-children">COPII</label>
-                      <select id="rsvp-children" class="form-select-control">
+                    <div class="form-field-group">
+                      <label class="form-field-label" for="rsvp-children">COPII</label>
+                      <select id="rsvp-children" class="form-select-luxury">
                         <option value="0" selected>FĂRĂ COPII</option>
                         <option value="1">1 COPIL</option>
                         <option value="2">2 COPII</option>
@@ -509,25 +454,25 @@
                       </select>
                     </div>
 
-                    <div class="form-group-wrap rsvp-full-col">
-                      <label class="form-label-title" for="rsvp-menu">PREFERINȚĂ MENIU</label>
-                      <select id="rsvp-menu" class="form-select-control">
-                        <option value="standard" selected>STANDARD GOURMET</option>
-                        <option value="fish">PEȘTE &amp; FRUCTE DE MARE</option>
-                        <option value="vegetarian">VEGETARIAN / VEGAN</option>
-                        <option value="kids">MENIU COPII</option>
+                    <div class="form-field-group rsvp-span-2">
+                      <label class="form-field-label" for="rsvp-menu">PREFERINȚĂ MENIU GOURMET</label>
+                      <select id="rsvp-menu" class="form-select-luxury">
+                        <option value="standard" selected>STANDARD ROYAL GOURMET</option>
+                        <option value="fish">PEȘTE NOBIL &amp; FRUCTE DE MARE</option>
+                        <option value="vegetarian">VEGAN / VEGETARIAN</option>
+                        <option value="kids">MENIU SPECIAL COPII</option>
                       </select>
                     </div>
                   </div>
 
-                  <div class="form-group-wrap rsvp-full-col">
-                    <label class="form-label-title" for="rsvp-message">MESAJ PENTRU MIRI</label>
-                    <textarea id="rsvp-message" class="form-textarea-control" placeholder="Scrie-ne câteva rânduri sau o piesă pe care vrei să dansezi..."></textarea>
+                  <div class="form-field-group rsvp-span-2">
+                    <label class="form-field-label" for="rsvp-message">MESAJ PENTRU MIRI</label>
+                    <textarea id="rsvp-message" class="form-textarea-luxury" placeholder="Scrie-ne o urare sau o piesă pe care vrei să dansăm..."></textarea>
                   </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 1.5rem;">
-                  <button type="submit" class="btn-luxury-primary" style="width: 100%; max-width: 380px;">
+                <div style="text-align:center; margin-top:1.5rem;">
+                  <button type="submit" class="btn-gold-couture" style="width:100%; max-width:400px;">
                     CONFIRMĂ PREZENȚA
                   </button>
                 </div>
@@ -535,18 +480,36 @@
             </form>
           </div>
 
-          <!-- Success Screen -->
-          <div class="rsvp-success-view-card" id="rsvp-success-container">
-            <div class="rsvp-success-monogram-badge">AB</div>
-            <h3 class="rsvp-success-title-text" id="rsvp-success-message">
-              MULȚUMIM.<br>ABIA AȘTEPTĂM SĂ SĂRBĂTORIM ÎMPREUNĂ.
-            </h3>
-            <p class="rsvp-success-body-text">
-              Răspunsul dumneavoastră a fost înregistrat cu succes.
-            </p>
-            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-              <button class="btn-luxury-outline" id="rsvp-edit-response-btn">EDITEAZĂ RĂSPUNSUL</button>
-              <a href="#save-the-date" class="btn-luxury-primary">ADAUGĂ ÎN CALENDAR</a>
+          <!-- VIP Ticket Pass Result Screen -->
+          <div class="vip-ticket-success-view" id="rsvp-success-container">
+            <div class="vip-pass-card">
+              <div class="vip-pass-monogram gold-text-liquid">AB</div>
+              <h3 class="vip-pass-title">VIP GALA PASS</h3>
+              <div class="vip-pass-guest-name" id="ticket-guest-name">Alexandru Popescu</div>
+
+              <div class="vip-pass-meta-row">
+                <div class="vip-pass-meta-item">
+                  <span class="vip-pass-meta-label">DATA</span>
+                  <span class="vip-pass-meta-val">20 IUNIE 2027</span>
+                </div>
+                <div class="vip-pass-meta-item">
+                  <span class="vip-pass-meta-label">LOCAȚIE</span>
+                  <span class="vip-pass-meta-val">PALATUL SNAGOV</span>
+                </div>
+                <div class="vip-pass-meta-item">
+                  <span class="vip-pass-meta-label">STATUS</span>
+                  <span class="vip-pass-meta-val" style="color:var(--c-gold-300);">CONFIRMAT</span>
+                </div>
+              </div>
+
+              <p style="font-size:1.05rem; color:#c4c4d6; margin-bottom:1.5rem;">
+                Mulțumim! Răspunsul dumneavoastră a fost înregistrat cu succes.
+              </p>
+
+              <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                <button class="btn-dark-couture" id="rsvp-edit-response-btn">MODIFICĂ RĂSPUNSUL</button>
+                <a href="#save-the-date" class="btn-gold-couture">CALENDAR</a>
+              </div>
             </div>
           </div>
 
@@ -554,26 +517,26 @@
       </div>
     </section>
 
-    <!-- 8. FINAL SCENE -->
-    <section class="final-scene-wrap" id="final">
+    <!-- 8. FINALE SCENE & SHARING -->
+    <section class="finale-gala-scene" id="final">
       <div class="container container-narrow">
-        <svg class="final-crown-icon" viewBox="0 0 24 24">
+        <svg class="finale-crown-crest" viewBox="0 0 24 24">
           <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
         </svg>
 
-        <div class="final-monogram-huge gold-shimmer reveal">AB</div>
+        <div class="finale-huge-monogram gold-text-liquid reveal-item">AB</div>
 
-        <h3 class="final-names-tag reveal reveal-delay-1">ALEX &amp; BIANCA</h3>
+        <h3 class="finale-names-label reveal-item reveal-delay-1">ALEX &amp; BIANCA</h3>
 
-        <p class="final-closing-quote reveal reveal-delay-2">
-          „ABIA AȘTEPTĂM SĂ TRĂIM ACEASTĂ ZI ÎMPREUNĂ.”
+        <p class="finale-emotional-quote reveal-item reveal-delay-2">
+          „Abia așteptăm să trăim această zi magică împreună.”
         </p>
 
-        <div class="reveal reveal-delay-3" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-          <button class="btn-luxury-outline" id="btn-whatsapp-share">
+        <div class="reveal-item reveal-delay-3" style="display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap;">
+          <button class="btn-dark-couture" id="btn-whatsapp-share">
             TRIMITE PE WHATSAPP
           </button>
-          <a href="#hero" class="btn-luxury-primary" aria-label="Înapoi sus">
+          <a href="#hero" class="btn-gold-couture" aria-label="Înapoi sus">
             ↑ ÎNAPOI SUS
           </a>
         </div>
@@ -582,12 +545,11 @@
 
   </main>
 
-  <!-- Scripts -->
-  <script src="js/particles.js?v=200k_royal_v2"></script>
-  <script src="js/audio.js?v=200k_royal_v2"></script>
-  <script src="js/envelope.js?v=200k_royal_v2"></script>
-  <script src="js/gallery.js?v=200k_royal_v2"></script>
-  <script src="js/rsvp.js?v=200k_royal_v2"></script>
-  <script src="js/app.js?v=200k_royal_v2"></script>
+  <!-- Haute Scripts -->
+  <script src="js/particles.js?v=couture_2027"></script>
+  <script src="js/audio.js?v=couture_2027"></script>
+  <script src="js/envelope.js?v=couture_2027"></script>
+  <script src="js/rsvp.js?v=couture_2027"></script>
+  <script src="js/app.js?v=couture_2027"></script>
 </body>
 </html>

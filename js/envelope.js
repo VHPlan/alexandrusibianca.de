@@ -1,23 +1,22 @@
 /**
- * ALEX & BIANCA — THE WEDDING
- * 3D Royal Gate Opening Ceremony
+ * ALEX & BIANCA — TRUE 3D ENVELOPE & LETTER MECHANICS
  */
 
 class EnvelopeCeremony {
   constructor(audioEngine, particleEngine) {
     this.audio = audioEngine;
     this.particles = particleEngine;
-    this.screen = document.getElementById('envelope-screen');
-    this.box = document.getElementById('royal-box-3d');
-    this.seal = document.getElementById('royal-seal');
-    this.doorLeft = document.getElementById('door-left');
-    this.doorRight = document.getElementById('door-right');
-    this.ribbon = document.getElementById('royal-ribbon');
-    this.card = document.getElementById('royal-card');
-    this.ctaBtn = document.getElementById('royal-box-cta');
 
-    this.isOpened = false;
+    this.screen = document.getElementById('envelope-screen');
+    this.box = document.getElementById('envelope-3d-box');
+    this.seal = document.getElementById('envelope-seal');
+    this.ribbon = document.getElementById('envelope-ribbon');
+    this.letter = document.getElementById('envelope-letter');
+    this.flap = document.getElementById('envelope-flap');
+    this.openBtn = document.getElementById('envelope-open-btn');
+
     this.isOpening = false;
+    this.isOpened = false;
 
     this.init();
   }
@@ -28,25 +27,13 @@ class EnvelopeCeremony {
     // 3D Parallax Tilt
     document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
 
-    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
-      this.screen.addEventListener('click', () => {
-        DeviceOrientationEvent.requestPermission().then(res => {
-          if (res === 'granted') {
-            window.addEventListener('deviceorientation', (e) => this.handleOrientation(e));
-          }
-        }).catch(() => {});
-      }, { once: true });
-    } else if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', (e) => this.handleOrientation(e));
-    }
-
     const triggerOpen = (e) => {
       e.stopPropagation();
-      this.openBox();
+      this.openEnvelope();
     };
 
     if (this.seal) this.seal.addEventListener('click', triggerOpen);
-    if (this.ctaBtn) this.ctaBtn.addEventListener('click', triggerOpen);
+    if (this.openBtn) this.openBtn.addEventListener('click', triggerOpen);
     if (this.box) this.box.addEventListener('click', triggerOpen);
   }
 
@@ -62,66 +49,39 @@ class EnvelopeCeremony {
     this.box.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
   }
 
-  handleOrientation(e) {
-    if (this.isOpened || this.isOpening || !this.box) return;
-    const gamma = e.gamma || 0;
-    const beta = e.beta || 0;
-
-    const rotY = Math.min(14, Math.max(-14, gamma * 0.4));
-    const rotX = Math.min(14, Math.max(-14, (beta - 45) * 0.3));
-
-    this.box.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
-  }
-
-  openBox() {
+  openEnvelope() {
     if (this.isOpening || this.isOpened) return;
     this.isOpening = true;
 
+    // Reset 3D transform for clean unfolding
     this.box.style.transform = 'rotateX(0deg) rotateY(0deg)';
 
-    // 1. Play Florin Salam Love Manea instantly!
+    // 1. Play Lele & Andra Voloș love song instantly
     if (this.audio) {
-      this.audio.playMusic();
+      this.audio.play();
     }
 
-    // 2. Dissolve ribbon & break seal with golden fireworks
-    if (this.ribbon) this.ribbon.classList.add('hide');
-
-    const sealRect = this.seal ? this.seal.getBoundingClientRect() : { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
-    if (this.particles) {
-      this.particles.createBurst(sealRect.left + sealRect.width / 2, sealRect.top + sealRect.height / 2, 80);
+    // 2. Gold Particle Fireworks at Seal Position
+    if (this.seal && this.particles) {
+      const rect = this.seal.getBoundingClientRect();
+      this.particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 85);
+      this.seal.classList.add('shattered');
     }
 
-    if (this.seal) {
-      this.seal.classList.add('broken');
+    // 3. Dissolve Ribbon
+    if (this.ribbon) {
+      this.ribbon.classList.add('dissolve');
     }
 
-    // 3. Swing French Doors open in 3D
+    // 4. Open Flap & Rise Letter
     setTimeout(() => {
-      if (this.doorLeft) this.doorLeft.classList.add('open');
-      if (this.doorRight) this.doorRight.classList.add('open');
+      this.box.classList.add('open');
     }, 250);
 
-    // 4. Slide out luxury invitation card
+    // 5. Fade out envelope stage & reveal main site
     setTimeout(() => {
-      if (this.card) this.card.classList.add('rise-up');
-      if (this.particles) {
-        this.particles.createBurst(window.innerWidth / 2, window.innerHeight * 0.45, 50);
-      }
-    }, 600);
-
-    // 5. Smooth camera push into hero section
-    setTimeout(() => {
-      if (this.screen) this.screen.classList.add('opened');
-      document.body.style.overflowY = 'auto';
+      this.screen.classList.add('opened');
       this.isOpened = true;
-      this.isOpening = false;
-
-      document.querySelectorAll('.hero-section .reveal').forEach(el => {
-        el.classList.add('revealed');
-      });
     }, 1800);
   }
 }
-
-window.EnvelopeCeremony = EnvelopeCeremony;

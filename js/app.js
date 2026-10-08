@@ -1,13 +1,11 @@
 /**
- * ALEX & BIANCA — THE WEDDING
- * Main App Controller (Personalization, Countdown, Calendar & Sharing)
+ * ALEX & BIANCA — HAUTE COUTURE MAIN APP CONTROLLER
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const particles = new ParticleEngine('particles-canvas');
   const audio = new AudioEngine();
   const envelope = new EnvelopeCeremony(audio, particles);
-  const gallery = new LuxuryGallery(audio);
   const rsvp = new LuxuryRSVP(audio, particles);
 
   initGuestPersonalization();
@@ -15,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalendarActions();
   initWhatsAppShare();
   initScrollAnimations();
-  initSmoothScroll();
 });
 
 /**
@@ -41,7 +38,7 @@ function initGuestPersonalization() {
 }
 
 /**
- * 2. REAL COUNTDOWN TIMER (20 IUNIE 2027, 14:00:00)
+ * 2. LIVE ROLEX-STYLE COUNTDOWN TIMER (20 IUNIE 2027)
  */
 function initCountdown() {
   const targetDate = new Date('2027-06-20T14:00:00+03:00').getTime();
@@ -81,14 +78,14 @@ function initCountdown() {
 }
 
 /**
- * 3. ADD TO CALENDAR (GOOGLE CALENDAR & .ICS DOWNLOAD)
+ * 3. CALENDAR ACTIONS (GOOGLE CALENDAR & .ICS)
  */
 function initCalendarActions() {
   const googleBtn = document.getElementById('btn-add-google-cal');
   const icsBtn = document.getElementById('btn-add-apple-cal');
 
   const eventData = {
-    title: 'Nunta Alex & Bianca (The Wedding)',
+    title: 'Nunta Alex & Bianca (The Wedding Gala)',
     description: 'Vă invităm cu drag să sărbătoriți alături de noi nunta noastră!',
     location: 'Palatul Snagov, România',
     startTime: '20270620T110000Z',
@@ -113,7 +110,7 @@ function downloadIcs(data) {
   const icsContent = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Alex & Bianca//The Wedding//RO',
+    'PRODID:-//Alex & Bianca//The Wedding Gala//RO',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -151,44 +148,30 @@ function initWhatsAppShare() {
   const shareBtn = document.getElementById('btn-whatsapp-share');
   if (!shareBtn) return;
 
-  shareBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const shareText = `Te invităm cu drag la nunta noastră! Deschide invitația digitală Alex & Bianca: ${window.location.href}`;
-    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-    window.open(waUrl, '_blank');
+  shareBtn.addEventListener('click', () => {
+    const text = `Te invităm la nunta noastră! ✨\nALEX & BIANCA — THE WEDDING GALA\n20 Iunie 2027 • Palatul Snagov\n\nDeschide invitația digitală aici:\n${window.location.href}`;
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
   });
 }
 
 /**
- * 5. SCROLL OBSERVER & REVEALS
+ * 5. SCROLL REVEAL (INTERSECTION OBSERVER)
  */
 function initScrollAnimations() {
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries, obs) => {
+  const reveals = document.querySelectorAll('.reveal-item');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        obs.unobserve(entry.target);
+        entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.12 });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
 
   reveals.forEach(el => observer.observe(el));
-}
-
-/**
- * 6. SMOOTH SCROLL
- */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#' || !targetId) return;
-      const el = document.querySelector(targetId);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
 }
