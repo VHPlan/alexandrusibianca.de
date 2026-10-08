@@ -32,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     if (document.getElementById('cd-days')) document.getElementById('cd-days').innerText = pad(days);
     if (document.getElementById('cd-hours')) document.getElementById('cd-hours').innerText = pad(hours);
     if (document.getElementById('cd-minutes')) document.getElementById('cd-minutes').innerText = pad(minutes);
+    if (document.getElementById('cd-seconds')) document.getElementById('cd-seconds').innerText = pad(seconds);
   }
 
   setInterval(updateCountdown, 1000);

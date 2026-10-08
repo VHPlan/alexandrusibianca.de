@@ -1,6 +1,6 @@
 /* ==========================================================================
-   ALEX & BIANCA — IMMACULATE PURE WHITE & METALLIC GOLD 3D PHYSICAL ENVELOPE
-   Crisp Cotton Paper, Radiant Gold Foil, Multi-Layered Aura & Levitating Physics
+   ALEX & BIANCA — 3D PHYSICAL PURE WHITE LUXURY ENVELOPE CEREMONY
+   Layered Cotton Paper, Radiant Halo Aura, 3D Wax Seal & Card Extraction Physics
    ========================================================================== */
 
 /* 1. Fullscreen Ambient Stage */
@@ -9,8 +9,7 @@
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: 
-    radial-gradient(ellipse at 50% 38%, #ffffff 0%, #ffffff 45%, #fbf9f4 75%, #f4eee2 100%);
+  background: radial-gradient(ellipse at 50% 38%, #ffffff 0%, #ffffff 45%, #faf8f3 75%, #f4eee2 100%);
   z-index: 99999;
   display: flex;
   flex-direction: column;
@@ -19,43 +18,43 @@
   padding: 1.5rem 1rem;
   perspective: 2000px;
   overflow: hidden;
-  transition: opacity 1.3s cubic-bezier(0.7, 0, 0.2, 1), transform 1.3s cubic-bezier(0.7, 0, 0.2, 1), visibility 1.3s;
+  transition: opacity 1.4s cubic-bezier(0.7, 0, 0.2, 1), transform 1.4s cubic-bezier(0.7, 0, 0.2, 1), visibility 1.4s;
 }
 
 .envelope-ceremony-screen.opened {
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.15) translateY(-40px);
+  transform: scale(1.16) translateY(-40px);
   pointer-events: none;
 }
 
-/* Radiant Luxury Aura Ring & Glow Behind Envelope */
+/* Radiant Luxury Glow Emitter Behind Envelope */
 .royal-glow-emitter {
   position: absolute;
   width: min(92vw, 680px);
   height: min(92vw, 680px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.28) 0%, rgba(254, 247, 219, 0.18) 40%, rgba(255, 255, 255, 0) 70%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.28) 0%, rgba(254, 248, 227, 0.18) 40%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(45px);
   pointer-events: none;
   animation: auraPulse 6s ease-in-out infinite alternate;
 }
 
 @keyframes auraPulse {
   0% { transform: scale(0.92); opacity: 0.7; }
-  100% { transform: scale(1.15); opacity: 1; filter: blur(55px); }
+  100% { transform: scale(1.16); opacity: 1; filter: blur(60px); }
 }
 
-/* Ornamental Golden Orbit Halo Ring */
+/* Ornamental Orbit Halo Ring with Rotating Starlight */
 .envelope-halo-ring {
   position: absolute;
   width: min(88vw, 560px);
   height: min(88vw, 560px);
   border-radius: 50%;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), inset 0 0 30px rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.18), inset 0 0 35px rgba(212, 175, 55, 0.12);
   pointer-events: none;
-  animation: haloRotate 40s linear infinite;
+  animation: haloRotate 45s linear infinite;
 }
 
 .envelope-halo-ring::before {
@@ -85,7 +84,7 @@
   to { transform: rotate(360deg); }
 }
 
-/* Floating Golden Sparkle Orbs */
+/* Floating Ambient Golden Bokeh Orbs */
 .ambient-gold-orb {
   position: absolute;
   border-radius: 50%;
@@ -93,8 +92,8 @@
   filter: blur(45px);
   animation: orbDrift 12s ease-in-out infinite alternate;
 }
-.orb-1 { width: 320px; height: 320px; background: rgba(254, 247, 219, 0.3); top: 10%; left: 10%; }
-.orb-2 { width: 280px; height: 280px; background: rgba(212, 175, 55, 0.2); bottom: 10%; right: 10%; animation-delay: -5s; }
+.orb-1 { width: 320px; height: 320px; background: rgba(254, 248, 227, 0.35); top: 8%; left: 8%; }
+.orb-2 { width: 280px; height: 280px; background: rgba(212, 175, 55, 0.18); bottom: 10%; right: 8%; animation-delay: -5s; }
 
 @keyframes orbDrift {
   0% { transform: translate(0, 0) scale(1); }
@@ -109,7 +108,7 @@
   position: relative;
   z-index: 10;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
   animation: introFadeUp 1.2s var(--ease-couture) forwards;
 }
 
@@ -167,13 +166,13 @@
 }
 
 .intro-royal-sub {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-style: italic;
+  color: var(--ink-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.4;
 }
 
 .intro-gold-ornament {
@@ -307,7 +306,7 @@
   border: 1.5px solid rgba(212, 175, 55, 0.6);
   box-shadow: 
     0 8px 30px rgba(140, 109, 35, 0.18),
-    inset 0 0 25px rgba(254, 247, 219, 0.4);
+    inset 0 0 25px rgba(254, 248, 227, 0.4);
   z-index: 2;
   display: flex;
   flex-direction: column;

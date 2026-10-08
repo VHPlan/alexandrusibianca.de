@@ -1,58 +1,51 @@
 /* ==========================================================================
-   ALEX & BIANCA — IMMACULATE PURE WHITE & METALLIC GOLD LUXURY SYSTEM
-   Haute Horlogerie & High Jewelry Wedding Invitation Architecture
+   ALEX & BIANCA — IMMACULATE PURE WHITE & METALLIC GOLD DESIGN SYSTEM
+   Cinematic Love Story & Haute Horlogerie Luxury Foundation
    ========================================================================== */
 
 :root {
-  /* Immaculate Pure White & Metallic Gold Palette */
+  /* Immaculate Pure White Canvas */
   --bg-pure: #ffffff;
-  --bg-canvas: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.96);
-  --bg-elevated: #ffffff;
-  --bg-subtle-glow: rgba(212, 175, 55, 0.05);
+  --bg-translucent: rgba(255, 255, 255, 0.96);
+  --bg-subtle-glow: rgba(212, 175, 55, 0.06);
 
   /* Metallic & Champagne Gold Spectrum */
   --gold-primary: #d4af37;
-  --gold-light: #fef7db;
+  --gold-light: #fef8e3;
   --gold-champagne: #e8d799;
   --gold-dark: #8c6d23;
   --gold-deep: #59420f;
-  --gold-foil-stop1: #ffffff;
-  --gold-foil-stop2: #f6e29f;
-  --gold-foil-stop3: #d4af37;
-  --gold-foil-stop4: #aa7c11;
-
-  /* Typography Colors — High Crisp Charcoal Ink for Pristine Contrast */
+  
+  /* High Crisp Contrast Typography Ink */
   --ink-primary: #181512;
   --ink-secondary: #3d3831;
   --ink-muted: #6e675d;
   --ink-light: #9e978c;
 
-  /* Metallic Gradients */
+  /* Luxury Gold Foil Gradients */
   --grad-gold-foil: linear-gradient(135deg, #ffffff 0%, #f7e6a4 22%, #d4af37 50%, #fbf3cd 75%, #a67c1e 100%);
   --grad-gold-text: linear-gradient(135deg, #6e5012 0%, #b88e2c 30%, #d4af37 55%, #8f6a1d 85%, #fbf3cd 100%);
   --grad-gold-sheen: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.95) 45%, rgba(247, 230, 164, 0.8) 52%, transparent 75%);
-  --grad-pure-white-card: linear-gradient(180deg, #ffffff 0%, #fdfdfd 100%);
 
   /* Borders & Atmospheric Luminous Glows */
-  --border-gold-subtle: rgba(212, 175, 55, 0.3);
-  --border-gold-strong: rgba(212, 175, 55, 0.7);
-  --border-gold-shimmer: rgba(247, 230, 164, 0.9);
-  --glow-gold-soft: 0 0 35px rgba(212, 175, 55, 0.22);
-  --glow-gold-strong: 0 0 60px rgba(212, 175, 55, 0.4);
+  --border-gold-subtle: rgba(212, 175, 55, 0.28);
+  --border-gold-strong: rgba(212, 175, 55, 0.65);
+  --border-gold-glow: rgba(247, 230, 164, 0.85);
+  --glow-gold-soft: 0 0 35px rgba(212, 175, 55, 0.2);
+  --glow-gold-strong: 0 0 60px rgba(212, 175, 55, 0.38);
 
   /* Shadows */
   --shadow-pure-sm: 0 4px 20px rgba(140, 109, 35, 0.08);
   --shadow-pure-md: 0 14px 45px rgba(140, 109, 35, 0.12), 0 2px 8px rgba(0, 0, 0, 0.03);
   --shadow-pure-lg: 0 28px 75px rgba(140, 109, 35, 0.16), 0 8px 24px rgba(0, 0, 0, 0.04);
 
-  /* Typography Fonts */
-  --font-serif: 'Italiana', 'Cinzel', serif;
+  /* Fonts */
+  --font-serif: 'Italiana', 'Cinzel', Georgia, serif;
   --font-editorial: 'Cormorant Garamond', 'Playfair Display', serif;
-  --font-sans: 'Montserrat', sans-serif;
+  --font-sans: 'Montserrat', -apple-system, sans-serif;
   --font-script: 'Alex Brush', cursive;
 
-  /* Smooth Easing */
+  /* Smooth Cinematic Easing */
   --ease-couture: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -82,15 +75,15 @@ body {
   min-height: 100vh;
 }
 
-/* Atmospheric Pure White Canvas with Subtle Golden Luminous Centers */
+/* Atmospheric Pure White Canvas with Radiant Golden Aura */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 50% 10%, rgba(254, 247, 219, 0.45) 0%, transparent 60%),
-    radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.12) 0%, transparent 55%),
-    radial-gradient(circle at 15% 65%, rgba(254, 247, 219, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 50% 8%, rgba(254, 248, 227, 0.55) 0%, transparent 60%),
+    radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 15% 65%, rgba(254, 248, 227, 0.4) 0%, transparent 45%),
     #ffffff;
   z-index: -2;
   pointer-events: none;
@@ -120,45 +113,30 @@ h1, h2, h3, h4, .font-serif {
   -webkit-text-fill-color: transparent;
   display: inline-block;
   background-size: 200% auto;
-  animation: goldTextGleam 6s ease-in-out infinite alternate;
+  animation: goldGleam 6s ease-in-out infinite alternate;
 }
 
-@keyframes goldTextGleam {
+@keyframes goldGleam {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 
-.gold-foil-badge {
-  background: var(--grad-gold-foil);
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(90, 65, 15, 0.4);
-}
-
 /* Layout Containers */
-.container-editorial {
+.container-cinematic {
   width: min(88%, 1080px);
   margin-inline: auto;
 }
 
-.container-editorial-narrow {
-  width: min(84%, 760px);
+.container-cinematic-narrow {
+  width: min(84%, 740px);
   margin-inline: auto;
-}
-
-.editorial-screen {
-  min-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(5rem, 12vw, 9rem) 1.5rem;
-  position: relative;
 }
 
 /* Scroll Reveal Animations */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 1.2s var(--ease-couture), transform 1.2s var(--ease-couture);
+  transform: translateY(35px);
+  transition: opacity 1.3s var(--ease-couture), transform 1.3s var(--ease-couture);
 }
 
 .reveal.active {
@@ -170,8 +148,8 @@ h1, h2, h3, h4, .font-serif {
 .reveal-delay-2 { transition-delay: 0.3s; }
 .reveal-delay-3 { transition-delay: 0.45s; }
 
-/* Luxury Button System */
-.btn-gold-primary, .btn-editorial-pill {
+/* Luxury Buttons */
+.btn-gold-luxury {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -187,7 +165,7 @@ h1, h2, h3, h4, .font-serif {
   border-radius: 40px;
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4), 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.38), 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: transform 0.35s var(--ease-couture), box-shadow 0.35s var(--ease-couture);
   cursor: pointer;
   text-shadow: 0 1px 3px rgba(89, 66, 15, 0.4);
@@ -195,7 +173,7 @@ h1, h2, h3, h4, .font-serif {
   overflow: hidden;
 }
 
-.btn-gold-primary::before, .btn-editorial-pill::before {
+.btn-gold-luxury::before {
   content: '';
   position: absolute;
   top: 0;
@@ -212,12 +190,12 @@ h1, h2, h3, h4, .font-serif {
   35%, 100% { left: 200%; }
 }
 
-.btn-gold-primary:hover, .btn-editorial-pill:hover {
+.btn-gold-luxury:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 18px 50px rgba(212, 175, 55, 0.55), 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.link-editorial-gold {
+.link-gold-action {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
@@ -236,7 +214,7 @@ h1, h2, h3, h4, .font-serif {
   border: none;
 }
 
-.link-editorial-gold::after {
+.link-gold-action::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -248,35 +226,33 @@ h1, h2, h3, h4, .font-serif {
   transform-origin: left center;
 }
 
-.link-editorial-gold:hover {
+.link-gold-action:hover {
   color: var(--ink-primary);
   transform: translateX(4px);
 }
 
-.link-editorial-gold:hover::after {
+.link-gold-action:hover::after {
   height: 2px;
 }
 
-/* Elegant Gold Divider with Center Diamond */
-.luxury-gold-divider {
+/* Elegant Gold Divider */
+.gold-story-divider {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
-  margin: 2rem auto;
-  max-width: 280px;
+  margin: 2.5rem auto;
+  max-width: 260px;
 }
 
-.luxury-gold-divider .div-line {
+.gold-story-divider .div-line {
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
 }
 
-.luxury-gold-divider .div-diamond {
-  width: 7px;
-  height: 7px;
-  background: var(--grad-gold-foil);
-  transform: rotate(45deg);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+.gold-story-divider .div-star {
+  color: var(--gold-primary);
+  font-size: 0.8rem;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
 }
