@@ -921,21 +921,26 @@
 
     await wait(900);
     submitBtn.classList.remove('is-loading');
-    submitBtn.disabled = false;
-    $('#thanksName').textContent = ', ' + name.split(' ')[0];
-    $('.thanks__txt').textContent = state.attend === 'yes'
+    showThanks(entry, true);
+  });
+
+  // once sent, the answer is final — no edit, and it stays locked after reload
+  function showThanks(entry, animate) {
+    $$('button, input, textarea', form).forEach((el) => { el.disabled = true; });
+    $('#thanksName').textContent = ', ' + String(entry.name || '').split(' ')[0];
+    $('.thanks__txt').textContent = entry.attend === 'yes'
       ? 'Abia așteptăm să sărbătorim împreună.'
       : 'Ne va fi dor de tine. Îți mulțumim că ne-ai anunțat.';
     form.classList.add('is-hidden');
     thanks.classList.add('is-on');
+    if (!animate) return;
     const c = center(thanks);
     setTimeout(() => Dust.burst(c.x, c.r.top + 60, MOBILE ? 50 : 80, 1), 350);
-  });
-
-  $('#editRsvp').addEventListener('click', () => {
-    thanks.classList.remove('is-on');
-    form.classList.remove('is-hidden');
-  });
+  }
+  try {
+    const sent = JSON.parse(localStorage.getItem('ab-rsvp') || '[]');
+    if (sent.length) showThanks(sent[sent.length - 1], false);
+  } catch (_) { /* storage unavailable */ }
 
   /* ---------------------------------------------------------
      9b. BACK TO TOP — appears when you reach the bottom

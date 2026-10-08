@@ -568,3 +568,5 @@ body { color: var(--text); }
 .wa-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .wa-pair .btn-confirm{margin-top:0;width:100%}
 .wa-pair .btn-confirm__txt{font-family:'Great Vibes',cursive;font-size:1.65rem;letter-spacing:0;text-transform:none;padding-left:0;line-height:1}
+
+.thanks__note{margin-top:1.4rem;font:500 10px/1.4 'Montserrat',sans-serif;letter-spacing:.32em;text-transform:uppercase;color:rgba(60,50,30,.45)}
