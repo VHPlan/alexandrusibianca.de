@@ -155,8 +155,53 @@
       }
     }
 
+    /* ---- falling gold glitter (foil flakes that flip & catch light) ---- */
+    const rain = [];
+    const RN = RM ? 0 : MOBILE ? 70 : 130;
+    let rainK = 1, rainTarget = 1;
+    function makeFlake(init) {
+      return {
+        x: Math.random() * W,
+        y: init ? Math.random() * H : -10 - Math.random() * 40,
+        w: Math.random() * 2.6 + 1.4,
+        h: Math.random() * 3.2 + 1.8,
+        vy: Math.random() * 0.55 + 0.35,
+        sway: Math.random() * 0.6 + 0.2,
+        ph: Math.random() * Math.PI * 2,
+        spin: Math.random() * Math.PI * 2,
+        vs: Math.random() * 0.08 + 0.03,
+        rot: Math.random() * Math.PI,
+        hue: Math.random()
+      };
+    }
+    function drawRain() {
+      rainK += (rainTarget - rainK) * 0.02;
+      if (rainK < 0.01) return;
+      for (const f of rain) {
+        f.ph += 0.015; f.spin += f.vs;
+        f.y += f.vy;
+        f.x += Math.sin(f.ph) * f.sway * 0.5;
+        if (f.y > H + 10) Object.assign(f, makeFlake(false));
+        const face = Math.cos(f.spin);           // -1..1 flip
+        const sx = Math.abs(face) * f.w + 0.3;
+        const flash = Math.pow(Math.max(0, face), 12); // catches light when facing
+        ctx.save();
+        ctx.translate(f.x, f.y);
+        ctx.rotate(f.rot + f.ph * 0.3);
+        ctx.globalAlpha = (0.55 + flash * 0.45) * rainK;
+        ctx.fillStyle = f.hue < 0.5 ? '#c9a24f' : f.hue < 0.85 ? '#dcb867' : '#b08a3c';
+        ctx.fillRect(-sx / 2, -f.h / 2, sx, f.h);
+        if (flash > 0.25) {
+          ctx.globalAlpha = flash * rainK;
+          ctx.drawImage(SPR.star, -f.h * 1.6, -f.h * 1.6, f.h * 3.2, f.h * 3.2);
+        }
+        ctx.restore();
+      }
+    }
+
     function loop() {
       ctx.clearRect(0, 0, W, H);
+      drawRain();
       for (const p of ambient) {
         p.x += p.vx; p.y += p.vy; p.ph += p.tw;
         if (p.y < -p.size * 2) Object.assign(p, makeAmbient(false));
@@ -177,6 +222,7 @@
 
     resize();
     for (let i = 0; i < N; i++) ambient.push(makeAmbient(true));
+    for (let i = 0; i < RN; i++) rain.push(makeFlake(true));
     window.addEventListener('resize', resize, { passive: true });
     window.addEventListener('pointermove', (e) => trail(e.clientX, e.clientY), { passive: true });
     window.addEventListener('touchmove', (e) => { const t = e.touches[0]; if (t) trail(t.clientX, t.clientY); }, { passive: true });
@@ -186,7 +232,7 @@
     }, { passive: true });
     requestAnimationFrame(loop);
 
-    return { burst, rise };
+    return { burst, rise, setRain: (k) => { rainTarget = k; } };
   })();
 
   /* twinkling star glints scattered around the envelope */
@@ -500,6 +546,7 @@
     site.classList.add('is-on');
     site.setAttribute('aria-hidden', 'false');
     intro.classList.add('is-gone');
+    Dust.setRain(0.3);
 
     await wait(400);
     body.classList.remove('is-bloom');
