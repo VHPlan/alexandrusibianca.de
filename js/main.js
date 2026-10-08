@@ -427,8 +427,12 @@
     }
 
     btn.addEventListener('click', () => (playing ? stop() : play()));
+    // keep playing when the tab is hidden; if the OS/browser paused it, resume on return
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden && playing) stop();
+      if (document.hidden || !playing) return;
+      if (mode === 'file' && audio.paused) audio.play().catch(() => {});
+      else if (mode === 'yt' && yt && yt.getPlayerState && yt.getPlayerState() !== 1) yt.playVideo();
+      else if (mode === 'pad' && ctx && ctx.state === 'suspended') ctx.resume();
     });
 
     return { play, stop, show: () => btn.classList.add('is-visible') };
