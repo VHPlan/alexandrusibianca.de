@@ -1,53 +1,44 @@
 /* ==========================================================================
-   ALEX & BIANCA — IMMACULATE PURE WHITE & METALLIC GOLD DESIGN SYSTEM
-   Cinematic Love Story & Haute Horlogerie Luxury Foundation
+   ALEX & BIANCA — HIGH-FASHION EDITORIAL WEDDING EXPERIENCE
+   Creative Direction: Vogue Weddings, Haute Horlogerie & Architectural Luxury
    ========================================================================== */
 
 :root {
-  /* Immaculate Pure White Canvas */
-  --bg-pure: #ffffff;
-  --bg-translucent: rgba(255, 255, 255, 0.96);
-  --bg-subtle-glow: rgba(212, 175, 55, 0.06);
+  /* Immaculate Pure White & High-End Minimalist Monochrome */
+  --bg-white: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-subtle: #fcfcfc;
+  --bg-contrast: #0f0f0f;
 
-  /* Metallic & Champagne Gold Spectrum */
-  --gold-primary: #d4af37;
-  --gold-light: #fef8e3;
-  --gold-champagne: #e8d799;
-  --gold-dark: #8c6d23;
-  --gold-deep: #59420f;
-  
-  /* High Crisp Contrast Typography Ink */
-  --ink-primary: #181512;
-  --ink-secondary: #3d3831;
-  --ink-muted: #6e675d;
-  --ink-light: #9e978c;
+  /* Metallic Gold Foil & Champagne Light */
+  --gold-primary: #c9a55c;
+  --gold-metallic: #dfc283;
+  --gold-bright: #f5e4b8;
+  --gold-deep: #8a6c2f;
+  --gold-dark: #634d1f;
 
-  /* Luxury Gold Foil Gradients */
-  --grad-gold-foil: linear-gradient(135deg, #ffffff 0%, #f7e6a4 22%, #d4af37 50%, #fbf3cd 75%, #a67c1e 100%);
-  --grad-gold-text: linear-gradient(135deg, #6e5012 0%, #b88e2c 30%, #d4af37 55%, #8f6a1d 85%, #fbf3cd 100%);
-  --grad-gold-sheen: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.95) 45%, rgba(247, 230, 164, 0.8) 52%, transparent 75%);
+  /* Typography Charcoal Inks */
+  --text-primary: #121212;
+  --text-secondary: #383838;
+  --text-muted: #757575;
+  --text-light: #a8a8a8;
 
-  /* Borders & Atmospheric Luminous Glows */
-  --border-gold-subtle: rgba(212, 175, 55, 0.28);
-  --border-gold-strong: rgba(212, 175, 55, 0.65);
-  --border-gold-glow: rgba(247, 230, 164, 0.85);
-  --glow-gold-soft: 0 0 35px rgba(212, 175, 55, 0.2);
-  --glow-gold-strong: 0 0 60px rgba(212, 175, 55, 0.38);
+  /* Architectural Hairlines & Foils */
+  --hairline-gold: 1px solid rgba(201, 165, 92, 0.4);
+  --hairline-gold-strong: 1px solid rgba(201, 165, 92, 0.85);
+  --hairline-black: 1px solid rgba(18, 18, 18, 0.15);
+  --grad-gold-foil: linear-gradient(135deg, #ffffff 0%, #f7e7be 20%, #c9a55c 50%, #fcf4db 75%, #8a6c2f 100%);
+  --grad-gold-text: linear-gradient(135deg, #7a5d24 0%, #c9a55c 40%, #8a6c2f 70%, #f5e4b8 100%);
 
-  /* Shadows */
-  --shadow-pure-sm: 0 4px 20px rgba(140, 109, 35, 0.08);
-  --shadow-pure-md: 0 14px 45px rgba(140, 109, 35, 0.12), 0 2px 8px rgba(0, 0, 0, 0.03);
-  --shadow-pure-lg: 0 28px 75px rgba(140, 109, 35, 0.16), 0 8px 24px rgba(0, 0, 0, 0.04);
-
-  /* Fonts */
-  --font-serif: 'Italiana', 'Cinzel', Georgia, serif;
-  --font-editorial: 'Cormorant Garamond', 'Playfair Display', serif;
+  /* Fashion Editorial Typography */
+  --font-editorial: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+  --font-serif: 'Italiana', 'Cinzel', serif;
   --font-sans: 'Montserrat', -apple-system, sans-serif;
-  --font-script: 'Alex Brush', cursive;
+  --font-accent: 'Alex Brush', cursive;
 
-  /* Smooth Cinematic Easing */
-  --ease-couture: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Luxury Easing */
+  --ease-fashion: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-couture: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 *, *::before, *::after {
@@ -61,35 +52,35 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  background-color: var(--bg-pure);
-  color: var(--ink-primary);
+  background-color: var(--bg-white);
+  color: var(--text-primary);
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-pure);
-  color: var(--ink-primary);
+  background-color: var(--bg-white);
+  color: var(--text-primary);
   overflow-x: hidden;
   line-height: 1.6;
   position: relative;
   min-height: 100vh;
 }
 
-/* Atmospheric Pure White Canvas with Radiant Golden Aura */
+/* Atmospheric Pure White Canvas with Subtle Golden Caustic Refractions */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 50% 8%, rgba(254, 248, 227, 0.55) 0%, transparent 60%),
-    radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 15% 65%, rgba(254, 248, 227, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 15% 15%, rgba(245, 228, 184, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(201, 165, 92, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 60%),
     #ffffff;
   z-index: -2;
   pointer-events: none;
 }
 
-/* Golden Starlight & Particles Canvas Overlay */
+/* Background Particle Canvas */
 #particles-canvas {
   position: fixed;
   inset: 0;
@@ -99,44 +90,46 @@ body::before {
   pointer-events: none;
 }
 
-/* Typography Base Styles */
-h1, h2, h3, h4, .font-serif {
-  font-family: var(--font-serif);
-  color: var(--ink-primary);
+/* Base Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-editorial);
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.gold-shimmer {
+.gold-text-shimmer {
   background: var(--grad-gold-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   background-size: 200% auto;
-  animation: goldGleam 6s ease-in-out infinite alternate;
+  animation: goldTextGlide 7s ease-in-out infinite alternate;
 }
 
-@keyframes goldGleam {
+@keyframes goldTextGlide {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 
-/* Layout Containers */
-.container-cinematic {
-  width: min(88%, 1080px);
+/* Architectural Grid & Containers */
+.editorial-container {
+  width: min(92%, 1240px);
   margin-inline: auto;
+  position: relative;
 }
 
-.container-cinematic-narrow {
-  width: min(84%, 740px);
+.editorial-container-fluid {
+  width: min(96%, 1440px);
   margin-inline: auto;
+  position: relative;
 }
 
-/* Scroll Reveal Animations */
+/* Scroll Trigger Animations */
 .reveal {
   opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 1.3s var(--ease-couture), transform 1.3s var(--ease-couture);
+  transform: translateY(40px);
+  transition: opacity 1.4s var(--ease-fashion), transform 1.4s var(--ease-fashion);
 }
 
 .reveal.active {
@@ -148,111 +141,76 @@ h1, h2, h3, h4, .font-serif {
 .reveal-delay-2 { transition-delay: 0.3s; }
 .reveal-delay-3 { transition-delay: 0.45s; }
 
-/* Luxury Buttons */
-.btn-gold-luxury {
+/* Fashion Action Buttons */
+.btn-editorial-gold {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
-  background: var(--grad-gold-foil);
-  color: #ffffff;
+  gap: 1.2rem;
+  background: #ffffff;
+  color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  padding: 1.25rem 3.2rem;
-  border-radius: 40px;
+  padding: 1.35rem 3.4rem;
+  border: 1px solid var(--gold-primary);
+  box-shadow: 0 8px 30px rgba(201, 165, 92, 0.18);
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.38), 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: transform 0.35s var(--ease-couture), box-shadow 0.35s var(--ease-couture);
   cursor: pointer;
-  text-shadow: 0 1px 3px rgba(89, 66, 15, 0.4);
   position: relative;
   overflow: hidden;
+  transition: all 0.4s var(--ease-fashion);
 }
 
-.btn-gold-luxury::before {
+.btn-editorial-gold::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
-  width: 60%;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-  transform: skewX(-25deg);
-  animation: btnSweep 3.8s infinite;
+  background: var(--grad-gold-foil);
+  transition: transform 0.6s var(--ease-fashion);
+  z-index: -1;
 }
 
-@keyframes btnSweep {
-  0% { left: -100%; }
-  35%, 100% { left: 200%; }
+.btn-editorial-gold:hover {
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 45px rgba(201, 165, 92, 0.35);
 }
 
-.btn-gold-luxury:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 18px 50px rgba(212, 175, 55, 0.55), 0 4px 12px rgba(0, 0, 0, 0.08);
+.btn-editorial-gold:hover::before {
+  transform: translateX(100%);
 }
 
-.link-gold-action {
+.link-editorial-arrow {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold-dark);
   text-decoration: none;
   position: relative;
-  padding-bottom: 6px;
-  transition: all 0.35s ease;
-  cursor: pointer;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(201, 165, 92, 0.4);
+  transition: all 0.3s ease;
   background: none;
-  border: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
 }
 
-.link-gold-action::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--grad-gold-foil);
-  transition: transform 0.35s var(--ease-couture), height 0.35s ease;
-  transform-origin: left center;
-}
-
-.link-gold-action:hover {
-  color: var(--ink-primary);
+.link-editorial-arrow:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--gold-primary);
   transform: translateX(4px);
-}
-
-.link-gold-action:hover::after {
-  height: 2px;
-}
-
-/* Elegant Gold Divider */
-.gold-story-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  margin: 2.5rem auto;
-  max-width: 260px;
-}
-
-.gold-story-divider .div-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-}
-
-.gold-story-divider .div-star {
-  color: var(--gold-primary);
-  font-size: 0.8rem;
-  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
 }

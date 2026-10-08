@@ -10,8 +10,8 @@ class AudioEngine {
     this.audio.loop = true;
     this.audio.volume = 0; // Starts at 0 for smooth luxury fade-in
 
-    this.playerWrap = document.getElementById('floating-music-player');
-    this.playBtn = document.getElementById('player-play-btn');
+    this.playerWrap = document.getElementById('fashion-audio-pill') || document.querySelector('.fashion-audio-pill');
+    this.playBtn = document.getElementById('audio-btn-symbol') || document.querySelector('.audio-btn-symbol');
     this.isPlaying = false;
     this.hasUserInteracted = false;
 
