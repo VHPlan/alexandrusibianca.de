@@ -107,17 +107,39 @@
   const Music = (() => {
     const btn = $('#music');
     const LOCAL = '/assets/audio/secret.mp3';
-    const YT_ID = 'q9wpOvgKCIg';
+    const YES_LOCAL = '/assets/audio/nasi.mp3';   // dacă există, are prioritate
+    const YT_ID = 'q9wpOvgKCIg';          // muzica de suspans
+    // melodia de după „DA” — primul video are embed dezactivat de proprietar,
+    // deci la eroare (101/150) trecem automat la următorul
+    const YES_LIST = [
+      { id: 'iE_1QyGmuGQ', start: 25 },
+      { id: 'SNcuxVwzcxI', start: 0 }
+    ];
+    const YES_START = 25;                 // pornește de la 0:25
     const VOL = .55;
-    let mode = null, yt = null, ytReady = false, on = false, fadeT = 0;
+    let mode = null, yt = null, ytReady = false, on = false, fadeT = 0, track = YT_ID, pendingYes = false;
+    let yesIdx = -1, yesLocal = false;
+    const isYes = () => yesIdx >= 0;
     const audio = new Audio(); audio.loop = true; audio.preload = 'auto'; audio.playsInline = true;
+    const yesAudio = new Audio(); yesAudio.preload = 'auto'; yesAudio.playsInline = true;
 
+    loadYT();   // the YouTube player is always needed for the celebration song
     fetch(LOCAL, { method: 'HEAD' }).then((r) => {
-      if (r.ok && /audio|octet/.test(r.headers.get('content-type') || '')) { audio.src = LOCAL; mode = 'file'; } else loadYT();
-    }).catch(loadYT);
+      if (r.ok && /audio|octet/.test(r.headers.get('content-type') || '')) { audio.src = LOCAL; mode = 'file'; } else mode = 'yt';
+    }).catch(() => { mode = 'yt'; });
+    fetch(YES_LOCAL, { method: 'HEAD' }).then((r) => {
+      if (r.ok && /audio|octet/.test(r.headers.get('content-type') || '')) { yesAudio.src = YES_LOCAL; yesLocal = true; }
+    }).catch(() => {});
+    yesAudio.addEventListener('ended', () => { yesAudio.currentTime = YES_START; yesAudio.play().catch(() => {}); });
+    function playYes(i) {
+      if (i >= YES_LIST.length) return;
+      yesIdx = i; track = YES_LIST[i].id;
+      yt.unMute();
+      yt.setVolume(Math.round(VOL * 100 * 1.25));
+      yt.loadVideoById({ videoId: YES_LIST[i].id, startSeconds: YES_LIST[i].start });
+    }
 
     function loadYT() {
-      mode = 'yt';
       const host = document.createElement('div');
       host.style.cssText = 'position:fixed;left:-9999px;top:0;width:200px;height:200px;opacity:0;pointer-events:none';
       host.innerHTML = '<div id="ytP"></div>';
@@ -125,14 +147,23 @@
       window.onYouTubeIframeAPIReady = () => {
         yt = new YT.Player('ytP', {
           width: 200, height: 200, videoId: YT_ID,
-          playerVars: { autoplay: 0, controls: 0, loop: 1, playlist: YT_ID, playsinline: 1, disablekb: 1, rel: 0 },
-          events: { onReady: () => { ytReady = true; } }
+          playerVars: { autoplay: 0, controls: 0, playsinline: 1, disablekb: 1, rel: 0 },
+          events: {
+            onReady: () => { ytReady = true; if (pendingYes) celebrate(); },
+            onStateChange: (e) => {
+              if (e.data !== YT.PlayerState.ENDED) return;
+              yt.seekTo(isYes() ? YES_LIST[yesIdx].start : 0, true);
+              yt.playVideo();
+            },
+            onError: () => { if (isYes()) playYes(yesIdx + 1); }
+          }
         });
       };
       const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s);
     }
-    const getV = () => (mode === 'file' ? audio.volume : (ytReady ? yt.getVolume() / 100 : 0));
-    const setV = (v) => { v = clamp(v, 0, 1); if (mode === 'file') audio.volume = v; else if (ytReady) yt.setVolume(Math.round(v * 100)); };
+    const media = () => (mode === 'file' ? audio : mode === 'yesfile' ? yesAudio : null);
+    const getV = () => (media() ? media().volume : (ytReady ? yt.getVolume() / 100 : 0));
+    const setV = (v) => { v = clamp(v, 0, 1); if (media()) media().volume = v; else if (ytReady) yt.setVolume(Math.round(v * 100)); };
     function fade(to, ms, done) {
       clearInterval(fadeT);
       let v = getV(); const step = (to - v) / Math.max(1, ms / 50);
@@ -143,22 +174,44 @@
       }, 50);
     }
     function arm() {                       // call synchronously inside a click
-      if (mode === 'file') { audio.volume = 0; audio.play().catch(() => {}); }
+      if (media()) { media().volume = 0; media().play().catch(() => {}); }
       else if (ytReady) { yt.setVolume(0); yt.unMute(); yt.playVideo(); }
     }
     function disarm() {
       if (on) return;
-      if (mode === 'file') audio.pause(); else if (ytReady) yt.pauseVideo();
+      if (media()) media().pause(); else if (ytReady) yt.pauseVideo();
     }
     function set(next) {
       on = next;
       btn.classList.toggle('is-on', on);
       btn.setAttribute('aria-pressed', String(on));
-      if (on) { arm(); fade(VOL, 2600); }
-      else fade(0, 900, () => { if (mode === 'file') audio.pause(); else if (ytReady) yt.pauseVideo(); });
+      if (on) { arm(); fade(isYes() ? Math.min(1, VOL * 1.25) : VOL, 2600); }
+      else fade(0, 900, () => { if (media()) media().pause(); else if (ytReady) yt.pauseVideo(); });
     }
+    // „DA” → switch to the celebration song, from 0:25 (call inside the click)
+    function celebrate() {
+      clearInterval(fadeT);
+      if (yesLocal) {                      // fișier local → cel mai sigur
+        audio.pause(); if (ytReady) yt.pauseVideo();
+        mode = 'yesfile'; yesIdx = 0; track = 'local';
+        yesAudio.volume = Math.min(1, VOL * 1.25);
+        try { yesAudio.currentTime = YES_START; } catch (_) {}
+        yesAudio.play().catch(() => {});
+        if (yesAudio.readyState < 1) yesAudio.addEventListener('loadedmetadata', () => { yesAudio.currentTime = YES_START; }, { once: true });
+      } else {
+        if (!ytReady) { pendingYes = true; return; }
+        pendingYes = false;
+        if (mode === 'file') audio.pause();
+        mode = 'yt';
+        playYes(0);
+      }
+      on = true;
+      btn.classList.add('is-on');
+      btn.setAttribute('aria-pressed', 'true');
+    }
+    window.__music = () => (ytReady ? { track, t: yt.getCurrentTime(), state: yt.getPlayerState(), vol: yt.getVolume(), muted: yt.isMuted() } : null);
     btn.addEventListener('click', () => set(!on));
-    return { arm, disarm, start: () => set(true) };
+    return { arm, disarm, celebrate, start: () => set(true) };
   })();
 
   /* ---------------------------------------------------------
@@ -408,7 +461,7 @@
   function jump(name) {
     const sc = $('#sc-' + name, film);
     if (!sc) return;
-    if (name === 'yes') Fx.burst(innerWidth / 2, innerHeight * .7, MOBILE ? 30 : 50);
+    if (name === 'yes') { Music.celebrate(); Fx.burst(innerWidth / 2, innerHeight * .7, MOBILE ? 30 : 50); }
     play(scenes.indexOf(sc));
   }
 
