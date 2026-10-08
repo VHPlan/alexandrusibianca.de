@@ -1,43 +1,51 @@
 /* ==========================================================================
-   ALEX & BIANCA — THE WEDDING | PURE WHITE & 24K GOLD HAUTE LUXURY
-   Master Styling (White Silk, Gold Leaf Emboss & Luminous Elegance)
+   ALEX & BIANCA — MODERN HAUTE COUTURE LUXURY (WHITE & 24K METALLIC GOLD)
+   Architectural Minimalism, Editorial Typography & Glassmorphism
    ========================================================================== */
 
 :root {
-  /* White & Pearl Tones */
-  --bg-primary: #ffffff;
-  --bg-pearl: #faf8f5;
-  --bg-card: rgba(255, 255, 255, 0.96);
-  --bg-card-subtle: #fcfbf9;
-  --bg-glass: rgba(255, 255, 255, 0.85);
+  /* Ultra-Modern Alabaster, Pearl & Carrara */
+  --bg-main: #faf9f6;
+  --bg-pure: #ffffff;
+  --bg-pearl: #f5f3ee;
+  --bg-card: rgba(255, 255, 255, 0.88);
+  --bg-glass: rgba(255, 255, 255, 0.72);
+  --bg-glass-heavy: rgba(255, 255, 255, 0.95);
 
-  /* Text Hierarchy */
-  --color-heading: #14120e;
-  --color-body: #4a4436;
-  --color-muted: #857c67;
+  /* Deep Contrast Editorial Inks */
+  --ink-primary: #0f0e0c;
+  --ink-secondary: #3d3930;
+  --ink-muted: #787162;
+  --ink-light: #a39c8c;
 
-  /* 24K Royal Gold Tones */
-  --gold-pure: #ffd700;
-  --gold-light: #ffeaa7;
-  --gold-main: #d4af37;
-  --gold-dark: #aa7c11;
-  --gold-deep: #6e4e04;
-  --gold-border: rgba(212, 175, 55, 0.45);
-  --gold-border-bright: rgba(212, 175, 55, 0.85);
+  /* True 24K Champagne & Metallic Gold */
+  --gold-primary: #cba135;
+  --gold-light: #f3e5ab;
+  --gold-bright: #ffd700;
+  --gold-dark: #99731e;
+  --gold-deep: #5c430e;
 
-  /* Gold Gradients */
-  --grad-gold: linear-gradient(135deg, #aa7c11 0%, #ffd700 25%, #c59b3f 50%, #fff2a3 75%, #aa7c11 100%);
-  --grad-gold-text: linear-gradient(90deg, #8a6409 0%, #d4af37 25%, #5e4304 50%, #d4af37 75%, #8a6409 100%);
-  --grad-gold-soft: linear-gradient(180deg, rgba(212,175,55,0.12) 0%, transparent 100%);
+  /* Refined Metallic Gold Gradients */
+  --grad-gold-metallic: linear-gradient(135deg, #99731e 0%, #e6ca65 25%, #cba135 50%, #fff4c2 75%, #99731e 100%);
+  --grad-gold-text: linear-gradient(90deg, #7a5808 0%, #cba135 25%, #573e04 50%, #d4af37 75%, #7a5808 100%);
+  --grad-gold-soft: linear-gradient(180deg, rgba(203, 161, 53, 0.12) 0%, transparent 100%);
+  --grad-ambient: radial-gradient(circle at 50% 0%, rgba(203, 161, 53, 0.14) 0%, transparent 70%);
+
+  /* Borders & Shadows */
+  --border-gold-subtle: rgba(203, 161, 53, 0.35);
+  --border-gold-strong: rgba(203, 161, 53, 0.75);
+  --shadow-luxe-sm: 0 4px 20px rgba(153, 115, 30, 0.08);
+  --shadow-luxe-md: 0 12px 35px rgba(153, 115, 30, 0.14), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-luxe-lg: 0 25px 65px rgba(153, 115, 30, 0.18), 0 4px 15px rgba(0, 0, 0, 0.04);
 
   /* Typography */
-  --font-serif: 'Cinzel', Georgia, serif;
-  --font-editorial: 'Cormorant Garamond', Garamond, serif;
-  --font-sans: 'Montserrat', -apple-system, sans-serif;
+  --font-serif: 'Cinzel', serif;
+  --font-editorial: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
   --font-script: 'Pinyon Script', cursive;
 
-  /* Transitions */
-  --ease-royale: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Smooth Easing */
+  --ease-couture: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after {
@@ -48,8 +56,8 @@
 
 html {
   font-size: 16px;
-  background-color: var(--bg-primary);
-  color: var(--color-body);
+  background-color: var(--bg-main);
+  color: var(--ink-secondary);
   font-family: var(--font-editorial);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -57,14 +65,14 @@ html {
 }
 
 body {
-  background: var(--bg-primary);
+  background: var(--bg-main);
   background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 85% 40%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 15% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, #faf8f5 50%, #f4f0e6 100%);
+    radial-gradient(circle at 50% 0%, rgba(203, 161, 53, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 10% 30%, rgba(243, 229, 171, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(203, 161, 53, 0.1) 0%, transparent 45%),
+    linear-gradient(180deg, #ffffff 0%, #faf9f6 40%, #f4f1ea 100%);
   background-attachment: fixed;
-  color: var(--color-body);
+  color: var(--ink-secondary);
   line-height: 1.7;
   overflow-x: hidden;
   position: relative;
@@ -72,14 +80,14 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: var(--bg-pure);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--grad-gold);
-  border-radius: 4px;
+  background: var(--grad-gold-metallic);
+  border-radius: 10px;
 }
 
 #particles-canvas {
@@ -101,13 +109,13 @@ body {
   max-width: 820px;
 }
 
-/* Gold Foil Liquid Text */
+/* 24K Liquid Gold Text */
 .gold-shimmer {
   background: var(--grad-gold-text);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: goldFlow 7s linear infinite;
+  animation: goldFlow 8s linear infinite;
   display: inline-block;
   font-weight: 700;
 }
@@ -120,7 +128,7 @@ body {
 /* Section Shell */
 .section {
   position: relative;
-  padding: 7.5rem 0;
+  padding: 8rem 0;
   z-index: 5;
 }
 
@@ -133,33 +141,33 @@ body {
 .section-tag {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--gold-dark);
   display: inline-block;
-  padding: 0.4rem 1.4rem;
-  border: 1px solid var(--gold-border);
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0.8rem;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+  padding: 0.45rem 1.6rem;
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-luxe-sm);
 }
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-heading);
+  color: var(--ink-primary);
   margin-bottom: 1.2rem;
 }
 
 .gold-glow-line {
-  width: 70px;
-  height: 2px;
-  background: var(--grad-gold);
+  width: 65px;
+  height: 1.5px;
+  background: var(--grad-gold-metallic);
   margin: 0 auto;
   position: relative;
 }
@@ -170,41 +178,57 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--gold-dark);
-  font-size: 0.75rem;
+  color: var(--gold-primary);
+  font-size: 0.7rem;
   background: #ffffff;
   padding: 0 0.4rem;
 }
 
-/* White & Gold Buttons */
+/* Modern Minimal Buttons */
 .btn-luxury-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  background: var(--grad-gold);
+  background: var(--grad-gold-metallic);
   background-size: 200% auto;
   color: #ffffff;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 800;
+  font-size: 0.8rem;
+  font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.25rem 2.8rem;
-  border-radius: 4px;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(170, 124, 17, 0.35), 0 0 20px rgba(255, 215, 0, 0.2);
-  transition: all 0.4s var(--ease-royale);
+  box-shadow: 0 10px 30px rgba(153, 115, 30, 0.28);
+  transition: all 0.4s var(--ease-couture);
   position: relative;
   overflow: hidden;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.btn-luxury-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  transition: 0.75s;
+}
+
+.btn-luxury-primary:hover::before {
+  left: 150%;
 }
 
 .btn-luxury-primary:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 45px rgba(170, 124, 17, 0.5), 0 0 30px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 16px 45px rgba(153, 115, 30, 0.4);
   background-position: right center;
 }
 
@@ -213,35 +237,35 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
   color: var(--gold-deep);
   font-family: var(--font-sans);
   font-size: 0.8rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.2rem 2.5rem;
-  border-radius: 4px;
-  border: 1.5px solid var(--gold-main);
+  padding: 1.2rem 2.6rem;
+  border-radius: 40px;
+  border: 1.5px solid var(--border-gold-strong);
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
-  transition: all 0.4s var(--ease-royale);
+  box-shadow: var(--shadow-luxe-sm);
+  transition: all 0.4s var(--ease-couture);
 }
 
 .btn-luxury-outline:hover {
-  background: var(--bg-pearl);
+  background: #ffffff;
   border-color: var(--gold-dark);
-  color: var(--gold-deep);
+  color: var(--ink-primary);
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+  box-shadow: var(--shadow-luxe-md);
 }
 
 /* Reveal Transitions */
 .reveal {
   opacity: 0;
   transform: translateY(35px);
-  transition: opacity 1.2s var(--ease-royale), transform 1.2s var(--ease-royale);
+  transition: opacity 1.2s var(--ease-couture), transform 1.2s var(--ease-couture);
   will-change: opacity, transform;
 }
 
