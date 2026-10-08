@@ -2,543 +2,469 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
-  <title>ALEX &amp; BIANCA — 20.06.2027</title>
-  
-  <meta name="description" content="Invitație digitală de nuntă exclusivistă • Alex &amp; Bianca • 20 Iunie 2027">
-  <meta property="og:title" content="ALEX &amp; BIANCA — NUNTA NOASTRĂ">
-  <meta property="og:description" content="Cu dragoste și bucurie, vă invităm să sărbătorim împreună • 20 Iunie 2027">
+  <title>The AB Wedding — Alexandru &amp; Bianca</title>
+  <meta name="description" content="Alexandru &amp; Bianca — Ne căsătorim. 20 Iunie 2027.">
+  <meta property="og:title" content="The AB Wedding — Alexandru &amp; Bianca">
+  <meta property="og:description" content="Ne căsătorim · 20 • 06 • 2027">
+  <meta property="og:image" content="assets/img/hero-desktop.jpg">
 
-  <!-- Luxury & Joyful Wedding Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=joyful_wedding_v7">
-  <link rel="stylesheet" href="css/envelope.css?v=joyful_wedding_v7">
-  <link rel="stylesheet" href="css/story.css?v=joyful_wedding_v7">
-
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23ffffff%22 stroke=%22%23d4af37%22 stroke-width=%223%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Italiana%22 font-size=%2232%22 fill=%22%23d4af37%22>AB</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=ab3">
+  <link rel="stylesheet" href="css/light.css?v=ab3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23ffffff%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2240%22 fill=%22%23b8913f%22>AB</text></svg>">
 </head>
-<body>
+<body class="is-locked">
 
-  <!-- Floating Golden Particles & Rose Petals Layer -->
-  <canvas id="particles-canvas"></canvas>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="letterbox" aria-hidden="true"><span></span><span></span></div>
+  <div class="bloom" aria-hidden="true"></div>
 
-  <!-- Discreet Floating Music Player -->
-  <aside class="floating-music-player" id="floating-music-player" title="Apasă pentru Play / Pause">
-    <div class="vinyl-disc" id="vinyl-disc"></div>
-    <div class="player-text-wrap">
-      <span class="player-track-tag">🌸 Melodia Mirilor</span>
-      <span class="player-track-title">LeLe — Dacă lumea se termină</span>
-    </div>
-    <button class="player-action-btn" id="player-play-btn" title="Play / Pause">▶</button>
-  </aside>
+  <!-- ============================================================
+       INTRO — THE ENVELOPE
+       ============================================================ -->
+  <section class="intro" id="intro" aria-label="Invitație">
+    <div class="intro__halo" aria-hidden="true"></div>
+    <div class="intro__rays" aria-hidden="true"></div>
+    <div class="intro__beam" aria-hidden="true"></div>
+    <div class="intro__beam intro__beam--2" aria-hidden="true"></div>
 
-  <!-- =========================================================================
-       SCREEN 1 — BRIGHT JOYFUL PEARL-WHITE ENVELOPE CEREMONY
-       ========================================================================= -->
-  <div class="envelope-ceremony-screen" id="envelope-screen">
-    
-    <!-- Subtle Botanical Watercolor Framing -->
-    <svg class="botanical-corner-frame frame-top-left" viewBox="0 0 200 200" fill="none">
-      <path d="M10,80 C30,40 70,20 120,10" stroke="#8ba389" stroke-width="1.2" stroke-dasharray="4 2"/>
-      <ellipse cx="60" cy="40" rx="14" ry="22" transform="rotate(-30 60 40)" fill="rgba(186, 203, 186, 0.45)"/>
-      <ellipse cx="95" cy="25" rx="12" ry="18" transform="rotate(20 95 25)" fill="rgba(240, 196, 196, 0.5)"/>
-      <circle cx="120" cy="50" r="16" fill="rgba(255, 238, 238, 0.75)" stroke="#d4af37" stroke-width="0.8"/>
-      <circle cx="45" cy="80" r="18" fill="rgba(254, 246, 224, 0.75)" stroke="#d4af37" stroke-width="0.8"/>
-    </svg>
-
-    <svg class="botanical-corner-frame frame-bottom-right" viewBox="0 0 200 200" fill="none">
-      <path d="M10,80 C30,40 70,20 120,10" stroke="#8ba389" stroke-width="1.2" stroke-dasharray="4 2"/>
-      <ellipse cx="60" cy="40" rx="14" ry="22" transform="rotate(-30 60 40)" fill="rgba(186, 203, 186, 0.45)"/>
-      <ellipse cx="95" cy="25" rx="12" ry="18" transform="rotate(20 95 25)" fill="rgba(240, 196, 196, 0.5)"/>
-      <circle cx="120" cy="50" r="16" fill="rgba(255, 238, 238, 0.75)" stroke="#d4af37" stroke-width="0.8"/>
-      <circle cx="45" cy="80" r="18" fill="rgba(254, 246, 224, 0.75)" stroke="#d4af37" stroke-width="0.8"/>
-    </svg>
-
-    <!-- Warm Sunlight & Halo Bokeh Aura -->
-    <div class="wedding-sunlight-emitter"></div>
-    <div class="wedding-halo-orbit"></div>
-    <div class="ambient-blush-orb orb-blush-1"></div>
-    <div class="ambient-blush-orb orb-blush-2"></div>
-
-    <!-- Centered Joyful Wedding Intro Header -->
-    <div class="intro-wedding-header">
-      <div class="intro-celebration-tag">
-        <span class="tag-sparkle">🌸</span>
-        <span>INVITAȚIE DE NUNTĂ</span>
-        <span class="tag-sparkle">✨</span>
-      </div>
-      
-      <h1 class="intro-wedding-names">
-        ALEX <span class="amp">&amp;</span> BIANCA
-      </h1>
-      
-      <p class="intro-wedding-sub">
-        „Cu dragoste și bucurie, vă invităm să sărbătorim împreună cea mai frumoasă zi din viața noastră.”
-      </p>
-
-      <div class="intro-botanical-ornament">
-        <span class="line"></span>
-        <span class="flower-dot">🌸</span>
-        <span class="line"></span>
-      </div>
-    </div>
-
-    <!-- 3D Physical Realistic Pearl-White Wedding Envelope -->
-    <div class="envelope-3d-stage">
-      <div class="envelope-physical-box" id="royal-box-3d">
-        <!-- 0. Realistic Soft Floor Drop Shadow -->
-        <div class="env-floor-shadow"></div>
-
-        <!-- 1. Dynamic Specular Light Glint -->
-        <div class="env-sheen-sweep"></div>
-
-        <!-- 2. Envelope Back Wall & Gold Damask Silk Interior Lining -->
-        <div class="env-back-sheet"></div>
-
-        <!-- 2b. Warm Luminous Light Burst Inside Pocket -->
-        <div class="env-interior-glow"></div>
-
-        <!-- 3. Heavy Double-Weight Cotton Invitation Card (Inside Pocket) -->
-        <div class="env-invitation-card" id="royal-card">
-          <div class="env-card-inner-frame"></div>
-          <div class="env-card-subtag">INVITAȚIE DE NUNTĂ</div>
-          <div class="env-card-monogram gold-shimmer">AB</div>
-          <div class="env-card-names">ALEX &amp; BIANCA</div>
-          <div class="env-card-date">20 • 06 • 2027 • PALATUL SNAGOV</div>
-        </div>
-
-        <!-- 4. Realistic Front Pocket -->
-        <div class="env-pocket-front">
-          <svg class="env-pocket-svg" viewBox="0 0 480 300" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="pocketPearlBase" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="60%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#faf5f2"/>
-              </linearGradient>
-              <linearGradient id="wingPearlLeft" x1="0%" y1="0%" x2="100%" y2="50%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#fdf9f7"/>
-              </linearGradient>
-              <linearGradient id="wingPearlRight" x1="100%" y1="0%" x2="0%" y2="50%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#fdf9f7"/>
-              </linearGradient>
-              <linearGradient id="goldPearlTrim" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#d4af37"/>
-                <stop offset="50%" stop-color="#f7e6a4"/>
-                <stop offset="100%" stop-color="#a67c1e"/>
-              </linearGradient>
-              <filter id="pocketPearlShadow" x="-10%" y="-10%" width="120%" height="120%">
-                <feDropShadow dx="0" dy="-3" stdDeviation="3.5" flood-color="#8c6d23" flood-opacity="0.16"/>
-              </filter>
-            </defs>
-
-            <!-- Left wing fold -->
-            <path d="M0,0 L0,300 L240,150 Z" fill="url(#wingPearlLeft)" stroke="url(#goldPearlTrim)" stroke-width="0.9" opacity="0.98"/>
-            <!-- Right wing fold -->
-            <path d="M480,0 L480,300 L240,150 Z" fill="url(#wingPearlRight)" stroke="url(#goldPearlTrim)" stroke-width="0.9" opacity="0.98"/>
-            <!-- Bottom pocket fold overlapping wings -->
-            <path d="M0,300 L240,140 L480,300 Z" fill="url(#pocketPearlBase)" stroke="url(#goldPearlTrim)" stroke-width="1.3" filter="url(#pocketPearlShadow)"/>
-          </svg>
-        </div>
-
-        <!-- 5. Top Pointed Baronial V-Flap (3D Rotating Flap) -->
-        <div class="env-top-flap-3d" id="door-right">
-          <svg class="env-flap-svg" viewBox="0 0 480 185" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="flapPearlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="60%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#faf2ed"/>
-              </linearGradient>
-              <linearGradient id="flapGoldTrim" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#d4af37"/>
-                <stop offset="50%" stop-color="#f7e6a4"/>
-                <stop offset="100%" stop-color="#8c6d23"/>
-              </linearGradient>
-              <filter id="flapPearlGlow" x="-10%" y="-10%" width="120%" height="130%">
-                <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#8c6d23" flood-opacity="0.22"/>
-              </filter>
-            </defs>
-            <!-- Deep Triangular Pointed Flap -->
-            <path d="M0,0 L480,0 L240,180 Z" fill="url(#flapPearlGrad)" stroke="url(#flapGoldTrim)" stroke-width="1.6" filter="url(#flapPearlGlow)"/>
-          </svg>
-
-          <!-- 6. Pearl-White & Champagne Gold Wax Seal with Embossed 'AB' Monogram -->
-          <div class="env-organic-wax-seal" id="royal-seal" title="Apasă pentru a deschide invitația">
-            <div class="seal-orbit-sparkles">
-              <span class="sparkle-dot"></span>
-              <span class="sparkle-dot"></span>
-              <span class="sparkle-dot"></span>
-            </div>
-
-            <svg class="wax-svg-shape" viewBox="0 0 100 100">
-              <defs>
-                <radialGradient id="waxPearlGrad" cx="35%" cy="30%" r="70%">
-                  <stop offset="0%" stop-color="#ffffff"/>
-                  <stop offset="25%" stop-color="#fff4f4"/>
-                  <stop offset="55%" stop-color="#f5e0cf"/>
-                  <stop offset="85%" stop-color="#d4af37"/>
-                  <stop offset="100%" stop-color="#8a6c2f"/>
-                </radialGradient>
-                <radialGradient id="waxInnerGold" cx="42%" cy="38%" r="60%">
-                  <stop offset="0%" stop-color="#fef8e2"/>
-                  <stop offset="42%" stop-color="#d4af37"/>
-                  <stop offset="85%" stop-color="#9a7522"/>
-                  <stop offset="100%" stop-color="#503a0d"/>
-                </radialGradient>
-                <linearGradient id="waxGleam" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                  <stop offset="35%" stop-color="#f7e6a4" stop-opacity="0.45"/>
-                  <stop offset="100%" stop-color="#000000" stop-opacity="0.4"/>
-                </linearGradient>
-                <filter id="waxDrop3d" x="-25%" y="-25%" width="150%" height="150%">
-                  <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#4a350d" flood-opacity="0.45"/>
-                </filter>
-              </defs>
-
-              <!-- Natural Melted Poured Wax Contour -->
-              <path d="M50,4 C68,2 85,11 91,25 C99,39 100,60 92,75 C85,90 69,99 51,98 C30,97 12,87 6,71 C0,53 2,33 12,20 C22,7 35,5 50,4 Z" fill="url(#waxPearlGrad)" filter="url(#waxDrop3d)"/>
-              <path d="M50,7 C66,5 81,14 86,27 C94,39 95,57 88,71 C81,84 66,93 51,92 C32,91 16,83 11,67 C5,52 7,34 16,22 C25,10 39,7 50,7 Z" fill="none" stroke="url(#waxGleam)" stroke-width="2.2" opacity="0.95"/>
-
-              <!-- Stamped Recessed Bed -->
-              <circle cx="50" cy="50" r="32" fill="url(#waxInnerGold)" stroke="#59420f" stroke-width="1.4"/>
-              <circle cx="50" cy="50" r="29.5" fill="none" stroke="#f7e6a4" stroke-width="0.9" opacity="0.85" stroke-dasharray="2.5 1.5"/>
-
-              <!-- Royal Crown Crest -->
-              <g transform="translate(50, 34) scale(0.68)" text-anchor="middle">
-                <path d="M-12,6 L-16,-5 L-6,0 L0,-7 L6,0 L16,-5 L12,6 Z" fill="#ffffff" />
-                <circle cx="-16" cy="-6" r="1.6" fill="#f7e6a4" />
-                <circle cx="0" cy="-8" r="2" fill="#f7e6a4" />
-                <circle cx="16" cy="-6" r="1.6" fill="#f7e6a4" />
-              </g>
-
-              <!-- Embossed Intertwined Monogram 'AB' -->
-              <text x="50" y="66" text-anchor="middle" font-family="'Italiana', serif" font-size="22" font-weight="700" letter-spacing="2" fill="#ffffff" style="text-shadow: 0 2px 4px rgba(45,30,8,0.95), 0 -1.5px 1px rgba(255,255,255,0.9);">AB</text>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Discrete Touch Prompt -->
-      <div class="envelope-touch-prompt" id="royal-box-cta">
-        <span class="prompt-sparkle">🌸</span>
-        <span>Deschide invitația</span>
-        <span class="prompt-sparkle">✨</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       SCREEN 2 — BRIGHT JOYFUL WEDDING STORY EXPERIENCE
-       ========================================================================= -->
-  <main class="wedding-story-main" id="wedding-story-main">
-
-    <!-- SECTION 1: HERO WEDDING SCENE -->
-    <header class="hero-wedding-screen" id="intro-scene">
-      <!-- Top Meta Coordinates -->
-      <div class="hero-meta-bar reveal">
-        <span>PALATUL SNAGOV</span>
-        <span>🌸</span>
-        <span>20 • 06 • 2027</span>
-      </div>
-
-      <!-- Centerpiece Names -->
-      <div class="hero-centerpiece">
-        <div class="hero-monogram-emblem gold-shimmer reveal">AB</div>
-
-        <h1 class="hero-couple-display reveal reveal-delay-1">
-          ALEX
-          <span class="hero-amp">&amp;</span>
-          BIANCA
-        </h1>
-
-        <p class="hero-whisper-text reveal reveal-delay-2">
-          „Cea mai frumoasă zi din viața noastră începe alături de voi.”
-        </p>
-      </div>
-
-      <!-- Scroll Indicator -->
-      <div class="hero-scroll-indicator reveal reveal-delay-3">
-        <div class="hero-scroll-line"></div>
-      </div>
+    <header class="intro__brand">
+      <span class="brand-mark">AB</span>
+      <span class="brand-line"></span>
+      <span class="brand-text">The Wedding</span>
     </header>
 
-    <!-- SECTION 2: OUR STORY (POVESTEA NOASTRĂ) -->
-    <section class="our-story-screen" id="our-story-scene">
-      <div class="container-wedding">
-        
-        <div class="story-header-wrap reveal">
-          <div class="story-tag-top">POVESTEA NOASTRĂ</div>
-          <h2 class="story-title-large">CUM A ÎNCEPUT TOTUL</h2>
-          <div class="wedding-botanical-divider">
-            <span class="div-line"></span>
-            <span class="div-icon">🌸</span>
-            <span class="div-line"></span>
-          </div>
+    <div class="stage" id="stage">
+      <div class="env" id="env" role="button" tabindex="0" aria-label="Deschide invitația">
+        <div class="env__shadow"></div>
+
+        <!-- back wall + gold lining -->
+        <div class="env__back">
+          <div class="env__lining"></div>
+        </div>
+        <div class="env__glow"></div>
+
+        <!-- the card -->
+        <div class="card" id="card">
+          <div class="card__frame"></div>
+          <span class="card__eyebrow">Invitație</span>
+          <span class="card__mono">AB</span>
+          <span class="card__names">Alexandru <i>&amp;</i> Bianca</span>
+          <span class="card__date">20 · 06 · 2027</span>
         </div>
 
-        <div class="story-chapters-flow">
-          
-          <div class="story-chapter-card reveal">
-            <div class="story-chapter-badge">CAPITOLUL I</div>
-            <p class="story-chapter-quote">
-              „Totul a început cu o privire sinceră și o promisiune nerostită în bătaia soarelui de vară...”
-            </p>
-          </div>
-
-          <div class="story-chapter-card reveal reveal-delay-1">
-            <div class="story-chapter-badge">CAPITOLUL II</div>
-            <p class="story-chapter-quote">
-              „Dintr-un simplu moment s-a născut cea mai frumoasă călătorie a vieții noastre.”
-            </p>
-          </div>
-
-          <div class="story-chapter-card reveal reveal-delay-2">
-            <div class="story-chapter-badge">CAPITOLUL III</div>
-            <p class="story-chapter-quote">
-              „Iar acum, cu inimile pline de recunoștință și iubire, ne pregătim să spunem DA pentru totdeauna.”
-            </p>
-          </div>
-
+        <!-- front pocket -->
+        <div class="env__pocket">
+          <div class="env__fold env__fold--l"></div>
+          <div class="env__fold env__fold--r"></div>
+          <div class="env__fold env__fold--b"></div>
         </div>
 
+        <!-- flap -->
+        <div class="env__flap" id="flap">
+          <div class="env__flap-face env__flap-face--out"></div>
+          <div class="env__flap-face env__flap-face--in"></div>
+        </div>
+
+        <!-- wax seal -->
+        <div class="seal" id="seal">
+          <svg class="seal__half seal__half--l" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-art"/></svg>
+          <svg class="seal__half seal__half--r" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-art"/></svg>
+          <span class="seal__shine"></span>
+        </div>
+
+        <div class="env__sheen"></div>
+      </div>
+    </div>
+
+    <div class="intro__copy">
+      <h1 class="intro__names">Alexandru <span>&amp;</span> Bianca</h1>
+      <button class="intro__cta" id="openBtn" type="button">
+        <span class="cta-line"></span>
+        <span class="cta-text">Deschide invitația</span>
+        <span class="cta-line"></span>
+      </button>
+      <p class="intro__hint">Atinge plicul</p>
+    </div>
+  </section>
+
+  <!-- shared SVG: wax seal artwork -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <radialGradient id="wax" cx="38%" cy="32%" r="75%">
+        <stop offset="0%" stop-color="#fff3cf"/>
+        <stop offset="18%" stop-color="#e9cd8a"/>
+        <stop offset="48%" stop-color="#c49a4a"/>
+        <stop offset="78%" stop-color="#7d5a1f"/>
+        <stop offset="100%" stop-color="#3a2708"/>
+      </radialGradient>
+      <radialGradient id="waxBed" cx="45%" cy="40%" r="65%">
+        <stop offset="0%" stop-color="#d9b56a"/>
+        <stop offset="55%" stop-color="#a77d33"/>
+        <stop offset="100%" stop-color="#5c3f10"/>
+      </radialGradient>
+      <linearGradient id="waxRim" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#fff6dc" stop-opacity=".9"/>
+        <stop offset="45%" stop-color="#e2c27c" stop-opacity=".25"/>
+        <stop offset="100%" stop-color="#1c1203" stop-opacity=".6"/>
+      </linearGradient>
+      <filter id="waxDrop" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000" flood-opacity=".75"/>
+      </filter>
+      <filter id="emboss">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.1" result="b"/>
+        <feSpecularLighting in="b" surfaceScale="3" specularConstant=".9" specularExponent="22" lighting-color="#fff2cc" result="s">
+          <fePointLight x="20" y="10" z="60"/>
+        </feSpecularLighting>
+        <feComposite in="s" in2="SourceAlpha" operator="in" result="sl"/>
+        <feComposite in="SourceGraphic" in2="sl" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+      </filter>
+      <g id="seal-art">
+        <path filter="url(#waxDrop)" fill="url(#wax)" d="M60 5c9 1 13-3 21 2s8 10 15 15 11 9 12 18-4 13-1 21 3 14-3 20-12 6-17 12-9 11-18 12-13-4-21-2-15 4-22-2-6-12-13-17S2 75 2 66s5-13 3-21-3-15 3-21 13-5 18-11S36 4 45 4s8 2 15 1z"/>
+        <path fill="none" stroke="url(#waxRim)" stroke-width="2.5" d="M60 11c8 1 12-2 18 2s7 9 13 13 9 8 10 15-3 12-1 19 2 12-3 17-10 6-15 11-8 9-15 10-12-3-19-2-13 3-19-2-5-10-11-15S9 73 9 65s4-12 3-19-2-13 3-18 11-5 16-10 7-8 15-8 7 2 14 1z"/>
+        <circle cx="60" cy="60" r="35" fill="url(#waxBed)"/>
+        <circle cx="60" cy="60" r="35" fill="none" stroke="#3b2808" stroke-opacity=".7" stroke-width="1.6"/>
+        <circle cx="60" cy="60" r="31.5" fill="none" stroke="#f6e2a8" stroke-opacity=".55" stroke-width=".7" stroke-dasharray="1.2 2.2"/>
+        <!-- debossed monogram: dark lower-right, light upper-left -->
+        <text x="61.2" y="72.2" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="34" font-weight="500" letter-spacing="-1" fill="#3a2706" fill-opacity=".85">AB</text>
+        <text x="59.2" y="70.2" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="34" font-weight="500" letter-spacing="-1" fill="#fff4d2" fill-opacity=".55">AB</text>
+        <text x="60" y="71" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="34" font-weight="500" letter-spacing="-1" fill="#a47a30" filter="url(#emboss)">AB</text>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- ============================================================
+       MAIN EXPERIENCE
+       ============================================================ -->
+  <main class="site" id="site" aria-hidden="true">
+
+    <!-- HERO -->
+    <section class="hero scene" id="hero">
+      <div class="hero__media" data-parallax="0.35">
+        <picture>
+          <source media="(min-width: 900px)" srcset="assets/img/hero-desktop.jpg">
+          <img src="assets/img/hero-mobile.jpg" alt="Alexandru și Bianca" class="hero__img">
+        </picture>
+      </div>
+      <div class="hero__veil"></div>
+
+      <div class="hero__content">
+        <p class="eyebrow hero__eyebrow"><span>AB</span> · The Wedding</p>
+        <h2 class="hero__names">
+          <span class="split" data-split>Alexandru</span>
+          <span class="hero__amp">&amp;</span>
+          <span class="split" data-split>Bianca</span>
+        </h2>
+        <p class="hero__sub">Ne căsătorim</p>
+        <div class="hero__rule"></div>
+        <p class="hero__date">20 Iunie 2027</p>
+      </div>
+
+      <a class="scroll-cue" href="#date" aria-label="Derulează">
+        <span class="scroll-cue__line"></span>
+        <span class="scroll-cue__txt">Scroll</span>
+      </a>
+    </section>
+
+    <!-- SAVE THE DATE -->
+    <section class="std scene" id="date">
+      <div class="std__glow" aria-hidden="true"></div>
+      <div class="std__inner">
+        <p class="eyebrow r">Capitolul I</p>
+        <h2 class="std__title">
+          <span class="std__word r">Save</span>
+          <span class="std__word std__word--mid r"><em>the</em></span>
+          <span class="std__word r">Date</span>
+        </h2>
+        <p class="std__date r">20 <i>•</i> 06 <i>•</i> 2027</p>
+
+        <div class="count r" aria-label="Numărătoare inversă">
+          <div class="count__cell"><span class="count__num" id="cdD">000</span><span class="count__lbl">Zile</span></div>
+          <div class="count__cell"><span class="count__num" id="cdH">00</span><span class="count__lbl">Ore</span></div>
+          <div class="count__cell"><span class="count__num" id="cdM">00</span><span class="count__lbl">Minute</span></div>
+          <div class="count__cell"><span class="count__num" id="cdS">00</span><span class="count__lbl">Secunde</span></div>
+        </div>
+
+        <button class="link-gold r" id="icsBtn" type="button">Adaugă în calendar</button>
       </div>
     </section>
 
-    <!-- SECTION 3: SAVE THE DATE & MONOLITHIC LIVE COUNTDOWN -->
-    <section class="save-the-date-screen" id="wedding-day-scene">
-      <div class="container-wedding">
-        
-        <div class="story-tag-top reveal">SALVEAZĂ DATA</div>
+    <!-- OUR STORY -->
+    <section class="story scene" id="story">
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul II</p>
+        <h2 class="sec-title r">Povestea <em>noastră</em></h2>
+      </header>
 
-        <div class="date-monolithic-display gold-shimmer reveal reveal-delay-1">
-          20 . 06 . 2027
+      <article class="chapter chapter--a">
+        <figure class="chapter__img mask" data-parallax="-0.08">
+          <img src="assets/img/story-2.jpg" alt="Prima plimbare" loading="lazy">
+        </figure>
+        <div class="chapter__text">
+          <span class="chapter__num r">01</span>
+          <h3 class="chapter__title r">Unele povești încep întâmplător.</h3>
+          <p class="chapter__body r">O seară de toamnă, o stradă veche și un drum pe care niciunul dintre noi nu plănuise să-l facă împreună.</p>
         </div>
+      </article>
 
-        <div class="date-sub-display reveal reveal-delay-1">
-          DUMINICĂ • ORA 17:30 • PALATUL SNAGOV
+      <article class="chapter chapter--b">
+        <figure class="chapter__img mask" data-parallax="-0.08">
+          <img src="assets/img/story-1.jpg" alt="Cina" loading="lazy">
+        </figure>
+        <figure class="chapter__float mask" data-parallax="0.12">
+          <img src="assets/img/story-3.jpg" alt="" loading="lazy">
+        </figure>
+        <div class="chapter__text">
+          <span class="chapter__num r">02</span>
+          <h3 class="chapter__title r">Altele par să fi fost scrise dinainte.</h3>
+          <p class="chapter__body r">Conversații până la miezul nopții. Călătorii. Mii de lucruri mici care au devenit acasă.</p>
         </div>
+      </article>
 
-        <p class="date-romantic-line reveal reveal-delay-2">
-          „Ziua în care timpul se oprește doar pentru noi.”
-        </p>
-
-        <!-- Horizontal Countdown Strip -->
-        <div class="countdown-strip reveal reveal-delay-3">
-          <div class="countdown-unit">
-            <span class="countdown-unit-num" id="cd-days">00</span>
-            <span class="countdown-unit-label">Zile</span>
-          </div>
-          <span class="countdown-unit-divider">/</span>
-          <div class="countdown-unit">
-            <span class="countdown-unit-num" id="cd-hours">00</span>
-            <span class="countdown-unit-label">Ore</span>
-          </div>
-          <span class="countdown-unit-divider">/</span>
-          <div class="countdown-unit">
-            <span class="countdown-unit-num" id="cd-minutes">00</span>
-            <span class="countdown-unit-label">Minute</span>
-          </div>
-          <span class="countdown-unit-divider">/</span>
-          <div class="countdown-unit">
-            <span class="countdown-unit-num" id="cd-seconds">00</span>
-            <span class="countdown-unit-label">Secunde</span>
-          </div>
+      <article class="chapter chapter--a">
+        <figure class="chapter__img mask" data-parallax="-0.08">
+          <img src="assets/img/hero-desktop.jpg" alt="Da" loading="lazy" style="object-position: 80% 50%">
+        </figure>
+        <div class="chapter__text">
+          <span class="chapter__num r">03</span>
+          <h3 class="chapter__title r">Noi am ales să o continuăm împreună.</h3>
+          <p class="chapter__body r">Un singur cuvânt, spus fără ezitare: <em>da</em>.</p>
         </div>
-
-        <div class="reveal reveal-delay-3">
-          <button class="btn-wedding-pearl btn-action-calendar">
-            SALVEAZĂ ÎN CALENDAR (.ICS) →
-          </button>
-        </div>
-
-      </div>
+      </article>
     </section>
 
-    <!-- SECTION 4: WEDDING TIMELINE (PROGRAMUL ZILEI) -->
-    <section class="timeline-wedding-screen" id="timeline-scene">
-      <div class="container-wedding">
-        
-        <div class="story-header-wrap reveal">
-          <div class="story-tag-top">PROGRAMUL ZILEI</div>
-          <h2 class="story-title-large">MOMENTELE SPECIALE</h2>
-          <div class="wedding-botanical-divider">
-            <span class="div-line"></span>
-            <span class="div-icon">🌿</span>
-            <span class="div-line"></span>
+    <!-- TIMELINE -->
+    <section class="timeline scene" id="timeline">
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul III</p>
+        <h2 class="sec-title r">Ziua <em>cea mare</em></h2>
+      </header>
+
+      <ol class="tl" id="tl">
+        <li class="tl__rail" aria-hidden="true"><span class="tl__fill" id="tlFill"></span></li>
+
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">14:00</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><circle cx="12" cy="18" r="7"/><circle cx="20" cy="18" r="7"/><path d="M14 8l2-3 2 3"/></svg>
+            <h3>Cununia civilă</h3>
+            <p>Starea Civilă Sector 1</p>
           </div>
-        </div>
-
-        <div class="staggered-timeline-wrap">
-          
-          <div class="staggered-moment-row reveal">
-            <div class="moment-time-col">16:30</div>
-            <div class="moment-info-col">
-              <div class="moment-title-text">Sosirea Invitaților &amp; Welcome Prosecco</div>
-              <div class="moment-desc-text">Primirea călduroasă a celor dragi pe terasa cu vedere la lac.</div>
-            </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">15:30</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><path d="M16 3v6M13 6h6M8 29V15l8-6 8 6v14M13 29v-7h6v7"/></svg>
+            <h3>Ceremonia religioasă</h3>
+            <p>Catedrala Sf. Iosif</p>
           </div>
-
-          <div class="staggered-moment-row reveal reveal-delay-1">
-            <div class="moment-time-col">17:30</div>
-            <div class="moment-info-col">
-              <div class="moment-title-text">Cununia Religioasă în Grădină</div>
-              <div class="moment-desc-text">Schimbul de jurăminte solemne și binecuvântarea verighetelor.</div>
-            </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">18:00</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><path d="M10 4h6l-1 9a2 2 0 01-4 0zM13 15v12M10 27h6M22 4l-2 8a2 2 0 004 0z"/></svg>
+            <h3>Primirea invitaților</h3>
+            <p>Cocktail &amp; șampanie pe terasă</p>
           </div>
-
-          <div class="staggered-moment-row reveal reveal-delay-2">
-            <div class="moment-time-col">18:30</div>
-            <div class="moment-info-col">
-              <div class="moment-title-text">Cocktail &amp; Fotografii de Familie</div>
-              <div class="moment-desc-text">Imortalizarea momentelor de neprețuit în lumina apusului.</div>
-            </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">19:00</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><circle cx="16" cy="17" r="8"/><path d="M5 5v8M3 5v4a2 2 0 004 0V5M5 13v14M27 5c-2 2-2 6 0 8v14"/></svg>
+            <h3>Cina</h3>
+            <p>Meniu semnat de chef</p>
           </div>
-
-          <div class="staggered-moment-row reveal reveal-delay-2">
-            <div class="moment-time-col">19:30</div>
-            <div class="moment-info-col">
-              <div class="moment-title-text">Cina Festivă &amp; Primul Dans</div>
-              <div class="moment-desc-text">Meniu haute cuisine, dansul mirilor și muzică live.</div>
-            </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">21:00</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><path d="M12 24V7l14-3v17"/><circle cx="9" cy="24" r="3"/><circle cx="23" cy="21" r="3"/></svg>
+            <h3>Petrecerea</h3>
+            <p>Primul dans și până dimineața</p>
           </div>
-
-          <div class="staggered-moment-row reveal reveal-delay-3">
-            <div class="moment-time-col">00:30</div>
-            <div class="moment-info-col">
-              <div class="moment-title-text">Tortul Festiv &amp; Foc de Artificii</div>
-              <div class="moment-desc-text">Momentul dulce acompaniat de lumini feerice pe oglinda apei.</div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
+        </li>
+      </ol>
     </section>
 
-    <!-- SECTION 5: LOCATION / SANCTUARY (PALATUL SNAGOV) -->
-    <section class="location-wedding-screen" id="location-scene">
-      <div class="container-wedding">
-        
-        <div class="story-tag-top reveal">LOCAȚIA EVENIMENTULUI</div>
+    <!-- LOCATIONS -->
+    <section class="places scene" id="places">
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul IV</p>
+        <h2 class="sec-title r">Locațiile</h2>
+      </header>
 
-        <div class="location-architectural-frame reveal reveal-delay-1">
-          <h2 class="location-palace-title">PALATUL SNAGOV</h2>
-          <p class="location-palace-sub">Aleea Palatului 1, Snagov, Județul Ilfov</p>
-
-          <div class="location-links-row">
-            <a href="https://maps.google.com/?q=Palatul+Snagov" target="_blank" rel="noopener" class="link-wedding-arrow">
-              DESCHIDE ÎN GOOGLE MAPS →
-            </a>
-            <a href="https://waze.com/ul?q=Palatul+Snagov" target="_blank" rel="noopener" class="link-wedding-arrow">
-              NAVIGHEAZĂ CU WAZE →
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 6: RSVP (CONFIRMARE PREZENȚĂ) -->
-    <section class="rsvp-wedding-screen" id="rsvp-scene">
-      <div class="container-wedding-narrow">
-        
-        <div class="story-tag-top reveal">CONFIRMARE</div>
-
-        <div class="rsvp-dialogue-wrap reveal reveal-delay-1">
-          
-          <form id="rsvp-dialogue-form">
-            <h3 class="rsvp-conversational-heading">
-              „Vei fi alături de noi în această zi specială?”
-            </h3>
-
-            <!-- Decision Toggles -->
-            <div class="rsvp-decision-toggles">
-              <label class="rsvp-toggle-btn active">
-                <input type="radio" name="attending" value="yes" checked>
-                <span>CU MARE BUCURIE!</span>
-              </label>
-              <label class="rsvp-toggle-btn">
-                <input type="radio" name="attending" value="no">
-                <span>CU REGRET, NU POT</span>
-              </label>
-            </div>
-
-            <!-- Underline Inputs -->
-            <div class="rsvp-minimal-field">
-              <input type="text" id="guest-name-input" class="rsvp-minimal-input" placeholder="Numele și prenumele dumneavoastră..." required>
-            </div>
-
-            <div class="rsvp-minimal-field">
-              <input type="text" id="guest-count-input" class="rsvp-minimal-input" placeholder="Număr persoane (ex: 2)...">
-            </div>
-
-            <div class="rsvp-minimal-field">
-              <input type="text" id="guest-note-input" class="rsvp-minimal-input" placeholder="Mesaj pentru miri sau preferințe culinare...">
-            </div>
-
-            <div style="margin-top: 3rem;">
-              <button type="submit" class="btn-wedding-gold">
-                CONFIRMĂ PREZENȚA
-              </button>
-            </div>
-          </form>
-
-          <!-- Success Dialogue -->
-          <div class="rsvp-success-view" id="rsvp-success-view">
-            <div class="hero-monogram-emblem gold-shimmer">AB</div>
-            <h3 class="rsvp-conversational-heading" style="margin-bottom: 1rem;">
-              Mulțumim, <span id="rsvp-guest-confirmed-name"></span>!
-            </h3>
-            <p class="date-romantic-line">
-              Răspunsul dumneavoastră a fost înregistrat cu mare bucurie.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 7: FINAL EPILOGUE & CLOSING -->
-    <footer class="closing-wedding-screen" id="closing-scene">
-      <div class="closing-monogram-watermark">AB</div>
-
-      <div class="closing-content-layer">
-        <div class="hero-monogram-emblem gold-shimmer reveal">AB</div>
-
-        <h3 class="closing-whisper-title reveal reveal-delay-1">
-          „Abia așteptăm să sărbătorim împreună!”
-        </h3>
-
-        <div class="closing-names-serif reveal reveal-delay-2">
-          ALEX &amp; BIANCA
-        </div>
-
-        <div class="closing-actions-row reveal reveal-delay-3">
-          <button class="link-wedding-arrow btn-action-whatsapp">
-            TRIMITE PE WHATSAPP →
-          </button>
-          <a href="#intro-scene" class="link-wedding-arrow">
-            ↑ ÎNAPOI LA ÎNCEPUT
+      <article class="place">
+        <figure class="place__img mask" data-parallax="-0.1">
+          <img src="assets/img/hero-mobile.jpg" alt="Catedrala Sf. Iosif" loading="lazy" style="object-position: 50% 15%">
+        </figure>
+        <div class="place__panel r">
+          <span class="corner corner--tl"></span><span class="corner corner--br"></span>
+          <p class="place__kind">Ceremonie</p>
+          <h3 class="place__name">Catedrala Sf. Iosif</h3>
+          <p class="place__addr">Str. General Berthelot 19<br>București</p>
+          <p class="place__time">15:30</p>
+          <a class="btn-map" href="https://maps.google.com/?q=Catedrala+Sfantul+Iosif+Bucuresti" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span>Vezi pe hartă</span>
           </a>
         </div>
-      </div>
-    </footer>
+      </article>
 
+      <article class="place place--rev">
+        <figure class="place__img mask" data-parallax="-0.1">
+          <img src="assets/img/hero-desktop.jpg" alt="Palatul Snagov" loading="lazy" style="object-position: 25% 50%">
+        </figure>
+        <div class="place__panel r">
+          <span class="corner corner--tl"></span><span class="corner corner--br"></span>
+          <p class="place__kind">Recepție</p>
+          <h3 class="place__name">Palatul Snagov</h3>
+          <p class="place__addr">Aleea Palatului 1<br>Snagov, Ilfov</p>
+          <p class="place__time">18:00</p>
+          <a class="btn-map" href="https://maps.google.com/?q=Palatul+Snagov" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span>Vezi pe hartă</span>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery scene" id="gallery">
+      <header class="sec-head sec-head--row">
+        <div>
+          <p class="eyebrow r">Capitolul V</p>
+          <h2 class="sec-title r">Momente</h2>
+        </div>
+        <p class="gallery__count r"><span id="gIdx">01</span> / <span id="gTot">06</span></p>
+      </header>
+
+      <div class="reel" id="reel">
+        <figure class="reel__slide" data-i="0"><img src="assets/img/hero-mobile.jpg" alt="" loading="lazy"><figcaption>I · Promisiunea</figcaption></figure>
+        <figure class="reel__slide" data-i="1"><img src="assets/img/story-2.jpg" alt="" loading="lazy"><figcaption>II · Orașul nostru</figcaption></figure>
+        <figure class="reel__slide" data-i="2"><img src="assets/img/story-1.jpg" alt="" loading="lazy"><figcaption>III · Seri lungi</figcaption></figure>
+        <figure class="reel__slide" data-i="3"><img src="assets/img/story-3.jpg" alt="" loading="lazy"><figcaption>IV · Da</figcaption></figure>
+        <figure class="reel__slide" data-i="4"><img src="assets/img/hero-desktop.jpg" alt="" loading="lazy" style="object-position: 80% 50%"><figcaption>V · Sărbătoarea</figcaption></figure>
+        <figure class="reel__slide" data-i="5"><img src="assets/img/hero-desktop.jpg" alt="" loading="lazy" style="object-position: 30% 50%"><figcaption>VI · Lumina</figcaption></figure>
+      </div>
+      <div class="reel__bar"><span id="reelBar"></span></div>
+      <p class="reel__hint">Glisează · Atinge pentru ecran complet</p>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp scene" id="rsvp">
+      <div class="rsvp__glow" aria-hidden="true"></div>
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul VI</p>
+        <h2 class="sec-title r">Vei fi <em>alături</em> de noi?</h2>
+        <p class="rsvp__lead r">Te rugăm să confirmi până la 1 mai 2027.</p>
+      </header>
+
+      <div class="rsvp__panel r" id="rsvpPanel">
+        <form class="form" id="rsvpForm" novalidate>
+          <div class="field">
+            <input id="fName" name="name" type="text" placeholder=" " autocomplete="name" required>
+            <label for="fName">Nume și prenume</label>
+            <span class="field__line"></span>
+            <span class="field__err">Te rugăm să îți scrii numele.</span>
+          </div>
+
+          <div class="choice" role="radiogroup" aria-label="Participare">
+            <button type="button" class="choice__opt is-on" data-attend="yes" role="radio" aria-checked="true">Particip</button>
+            <button type="button" class="choice__opt" data-attend="no" role="radio" aria-checked="false">Nu pot participa</button>
+            <span class="choice__pill" aria-hidden="true"></span>
+          </div>
+
+          <div class="collapse" id="attendFields">
+            <div class="collapse__inner">
+              <div class="steppers">
+                <div class="stepper">
+                  <span class="stepper__lbl">Număr persoane</span>
+                  <div class="stepper__ctl">
+                    <button type="button" data-step="guests" data-d="-1" aria-label="Mai puțin">−</button>
+                    <output id="guests">2</output>
+                    <button type="button" data-step="guests" data-d="1" aria-label="Mai mult">+</button>
+                  </div>
+                </div>
+                <div class="stepper">
+                  <span class="stepper__lbl">Copii</span>
+                  <div class="stepper__ctl">
+                    <button type="button" data-step="kids" data-d="-1" aria-label="Mai puțin">−</button>
+                    <output id="kids">0</output>
+                    <button type="button" data-step="kids" data-d="1" aria-label="Mai mult">+</button>
+                  </div>
+                </div>
+              </div>
+
+              <p class="form__lbl">Preferință meniu</p>
+              <div class="chips" id="menu">
+                <button type="button" class="chip is-on" data-v="Clasic">Clasic</button>
+                <button type="button" class="chip" data-v="Vegetarian">Vegetarian</button>
+                <button type="button" class="chip" data-v="Pește">Pește</button>
+                <button type="button" class="chip" data-v="Fără gluten">Fără gluten</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field field--area">
+            <textarea id="fMsg" name="message" rows="2" placeholder=" "></textarea>
+            <label for="fMsg">Mesaj pentru miri</label>
+            <span class="field__line"></span>
+          </div>
+
+          <button class="btn-confirm" type="submit" id="submitBtn">
+            <span class="btn-confirm__txt">Confirmă prezența</span>
+            <span class="btn-confirm__spin" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <div class="thanks" id="thanks" aria-live="polite">
+          <svg class="thanks__mark" viewBox="0 0 80 80" aria-hidden="true">
+            <circle cx="40" cy="40" r="36"/>
+            <path d="M25 41l10 10 20-22"/>
+          </svg>
+          <h3 class="thanks__title">Mulțumim<span id="thanksName"></span>.</h3>
+          <p class="thanks__txt">Abia așteptăm să sărbătorim împreună.</p>
+          <button class="link-gold" id="editRsvp" type="button">Modifică răspunsul</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="finale scene" id="finale">
+      <div class="finale__glow" aria-hidden="true"></div>
+      <div class="finale__mono r">AB</div>
+      <p class="finale__quote r">„Abia așteptăm să trăim această zi împreună.”</p>
+      <div class="finale__rule r"></div>
+      <p class="finale__sign r"><span>Cu drag,</span>Alexandru &amp; Bianca</p>
+      <p class="finale__foot">The AB Wedding · 20.06.2027</p>
+    </section>
   </main>
 
-  <!-- Scripts -->
-  <script src="js/particles.js?v=joyful_wedding_v7"></script>
-  <script src="js/audio.js?v=joyful_wedding_v7"></script>
-  <script src="js/envelope.js?v=joyful_wedding_v7"></script>
-  <script src="js/app.js?v=joyful_wedding_v7"></script>
+  <!-- music -->
+  <button class="music" id="music" type="button" aria-label="Pornește muzica" aria-pressed="false">
+    <span class="music__note">♪</span>
+    <span class="music__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+
+  <!-- lightbox -->
+  <div class="lb" id="lb" aria-hidden="true">
+    <button class="lb__close" id="lbClose" type="button" aria-label="Închide">×</button>
+    <div class="lb__stage"><img id="lbImg" alt=""></div>
+    <p class="lb__cap" id="lbCap"></p>
+    <button class="lb__nav lb__nav--p" id="lbPrev" type="button" aria-label="Anterior">‹</button>
+    <button class="lb__nav lb__nav--n" id="lbNext" type="button" aria-label="Următor">›</button>
+  </div>
+
+  <script src="js/main.js?v=ab3"></script>
 </body>
 </html>
