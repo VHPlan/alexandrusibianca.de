@@ -1,37 +1,43 @@
 /* ==========================================================================
-   ALEX & BIANCA — BESPOKE EDITORIAL HAUTE COUTURE SYSTEM
-   Asymmetrical Art Direction, Monolithic Typography & Pure Whitespace
+   ALEX & BIANCA — BESPOKE COUTURE LUXURY WEDDING INVITATION
+   Rich Ivory Paper, Antique Champagne Gold Foil & Architectural Elegance
    ========================================================================== */
 
 :root {
-  /* Warm Alabaster, Pearl & Soft Chalk */
-  --bg-main: #fbf9f6;
+  /* Warm Ivory, Pearl White & Soft Cream Palette */
+  --bg-main: #fbf9f5;
   --bg-pure: #ffffff;
-  --bg-chalk: #f6f2ec;
-  --bg-sand: #ede6dc;
+  --bg-ivory: #f6f0e6;
+  --bg-cream: #efe5d6;
+  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-glass: rgba(255, 255, 255, 0.88);
 
-  /* Deep Charcoal & Editorial Bronze Inks */
-  --ink-primary: #181614;
-  --ink-secondary: #3d3731;
-  --ink-muted: #7d7469;
-  --ink-light: #b0a89d;
+  /* Deep Contrast Editorial Inks */
+  --ink-primary: #1c1917;
+  --ink-secondary: #443e37;
+  --ink-muted: #787063;
+  --ink-light: #a89f91;
 
   /* Antique Champagne & 24K Liquid Gold Foil */
   --gold-primary: #c5a059;
   --gold-metallic: #d9be84;
-  --gold-light: #f5eccf;
+  --gold-light: #f6edd2;
   --gold-dark: #96722d;
   --gold-deep: #664d1c;
-  --gold-glow: rgba(197, 160, 89, 0.25);
+  --gold-glow: rgba(197, 160, 89, 0.28);
 
-  /* Metallic Text & Foil Gradients */
-  --grad-gold-foil: linear-gradient(135deg, #96722d 0%, #f5eccf 25%, #c5a059 55%, #fff9e6 80%, #7d5c20 100%);
-  --grad-gold-text: linear-gradient(135deg, #664d1c 0%, #c5a059 40%, #8c6a26 70%, #d9be84 100%);
-  --grad-gold-hairline: linear-gradient(90deg, transparent 0%, #c5a059 50%, transparent 100%);
+  /* Gradients */
+  --grad-gold-foil: linear-gradient(135deg, #96722d 0%, #f6edd2 28%, #c5a059 55%, #fff9e6 80%, #7d5c20 100%);
+  --grad-gold-text: linear-gradient(135deg, #664d1c 0%, #c5a059 38%, #8c6a26 70%, #d9be84 100%);
+  --grad-ivory-sheen: linear-gradient(180deg, #ffffff 0%, #fbf8f2 50%, #f4eee2 100%);
+  --grad-ambient: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.14) 0%, transparent 65%);
 
-  /* Borders & Atmospheric Soft Light */
-  --border-gold-fine: rgba(197, 160, 89, 0.35);
-  --border-gold-bold: rgba(197, 160, 89, 0.75);
+  /* Borders & Shadows */
+  --border-gold-subtle: rgba(197, 160, 89, 0.32);
+  --border-gold-strong: rgba(197, 160, 89, 0.75);
+  --shadow-sm: 0 4px 20px rgba(120, 90, 33, 0.06);
+  --shadow-md: 0 14px 40px rgba(120, 90, 33, 0.1), 0 2px 6px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 28px 70px rgba(120, 90, 33, 0.15), 0 6px 20px rgba(0, 0, 0, 0.03);
 
   /* Typography */
   --font-serif: 'Italiana', 'Cinzel', serif;
@@ -41,6 +47,7 @@
 
   /* Smooth Easing */
   --ease-couture: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 *, *::before, *::after {
@@ -67,20 +74,21 @@ body {
   position: relative;
 }
 
-/* Background Ambient Texture & Starlight */
+/* Atmospheric Ambient Warm Lights & Linen Grain */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 50% 15%, rgba(245, 236, 207, 0.35) 0%, transparent 60%),
-    radial-gradient(circle at 80% 80%, rgba(197, 160, 89, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 10% 60%, rgba(245, 236, 207, 0.25) 0%, transparent 45%),
-    #fbf9f6;
+    radial-gradient(circle at 50% 12%, rgba(246, 237, 210, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(197, 160, 89, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 15% 70%, rgba(246, 237, 210, 0.25) 0%, transparent 45%),
+    #fbf9f5;
   z-index: -2;
   pointer-events: none;
 }
 
+/* Golden Starlight Canvas Overlay */
 #particles-canvas {
   position: fixed;
   inset: 0;
@@ -105,7 +113,115 @@ h1, h2, h3, h4, .font-serif {
   display: inline-block;
 }
 
-/* Fluid Layout & Container */
+.container {
+  width: min(90%, 1120px);
+  margin-inline: auto;
+}
+
+.container-narrow {
+  width: min(88%, 760px);
+  margin-inline: auto;
+}
+
+/* Section Spacing */
+section {
+  padding: clamp(5rem, 10vw, 8.5rem) 0;
+  position: relative;
+}
+
+/* Reveal Animations on Scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.2s var(--ease-couture), transform 1.2s var(--ease-couture);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* Luxury Button System */
+.btn-gold-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  background: var(--grad-gold-foil);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 1.2rem 3rem;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 35px rgba(197, 160, 89, 0.38);
+  transition: transform 0.35s var(--ease-couture), box-shadow 0.35s var(--ease-couture);
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(100, 70, 10, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  animation: btnSheen 3.6s infinite;
+}
+
+@keyframes btnSheen {
+  0% { left: -100%; }
+  35%, 100% { left: 200%; }
+}
+
+.btn-gold-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 18px 50px rgba(197, 160, 89, 0.52);
+}
+
+.btn-gold-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background: var(--bg-card);
+  color: var(--gold-dark);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 1.2rem 3rem;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 1.5px solid var(--border-gold-strong);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s var(--ease-couture);
+  cursor: pointer;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(197, 160, 89, 0.14);
+  border-color: var(--gold-primary);
+  color: var(--ink-primary);
+  transform: translateY(-2px);
+}
+
+/* Luxury Editorial Action Links & Containers */
 .container-editorial {
   width: min(88%, 1080px);
   margin-inline: auto;
@@ -116,41 +232,23 @@ h1, h2, h3, h4, .font-serif {
   margin-inline: auto;
 }
 
-/* Fullscreen Immersive Sections with Generous Whitespace */
 .editorial-screen {
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(6rem, 14vw, 10rem) 1.5rem;
+  padding: clamp(5rem, 12vw, 9rem) 1.5rem;
   position: relative;
 }
 
-/* Progressive Scroll Reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 1.3s var(--ease-couture), transform 1.3s var(--ease-couture);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.2s; }
-.reveal-delay-2 { transition-delay: 0.4s; }
-.reveal-delay-3 { transition-delay: 0.6s; }
-
-/* Luxury Architectural Action Links */
 .link-editorial-gold {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold-dark);
   text-decoration: none;
@@ -187,7 +285,7 @@ h1, h2, h3, h4, .font-serif {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 0.85rem;
   background: var(--grad-gold-foil);
   color: #ffffff;
   font-family: var(--font-sans);
@@ -198,8 +296,8 @@ h1, h2, h3, h4, .font-serif {
   padding: 1.25rem 3.2rem;
   border-radius: 40px;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 12px 35px rgba(197, 160, 89, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 35px rgba(197, 160, 89, 0.38);
   transition: transform 0.35s var(--ease-couture), box-shadow 0.35s var(--ease-couture);
   cursor: pointer;
   position: relative;
@@ -208,5 +306,5 @@ h1, h2, h3, h4, .font-serif {
 
 .btn-editorial-pill:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 18px 50px rgba(197, 160, 89, 0.5);
+  box-shadow: 0 18px 50px rgba(197, 160, 89, 0.52);
 }
