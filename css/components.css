@@ -1,0 +1,646 @@
+/* ==========================================================================
+   ALEX & BIANCA — LUXURY WHITE & CHAMPAGNE GOLD COMPONENTS
+   Mobile-First Editorial Wedding Stationery Design System
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. INTRO / FIRST IMPRESSION SCREEN (SCREEN 1)
+   -------------------------------------------------------------------------- */
+.intro-ceremony-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(ellipse at 50% 30%, #ffffff 0%, #faf6ee 45%, #eee7d8 80%, #dfd5be 100%);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  overflow: hidden;
+  transition: opacity 1.3s var(--ease-couture), transform 1.3s var(--ease-couture), visibility 1.3s;
+}
+
+.intro-ceremony-screen.opened {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.08) translateY(-30px);
+  pointer-events: none;
+}
+
+/* Ambient Radial Warm Gold Glow */
+.intro-ambient-glow {
+  position: absolute;
+  width: 750px;
+  height: 750px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(244, 228, 166, 0.08) 50%, transparent 70%);
+  filter: blur(75px);
+  pointer-events: none;
+  animation: glowFloat 7s ease-in-out infinite alternate;
+}
+
+@keyframes glowFloat {
+  0% { transform: scale(0.9) translate(-10px, -10px); opacity: 0.6; }
+  100% { transform: scale(1.15) translate(10px, 10px); opacity: 0.95; }
+}
+
+/* Luxury Editorial Intro Card */
+.luxury-intro-card {
+  width: min(92vw, 440px);
+  background: 
+    radial-gradient(circle at 50% 20%, rgba(255, 248, 220, 0.45) 0%, transparent 60%),
+    linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #f7f2e6 100%);
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 12px;
+  padding: clamp(2.4rem, 6vw, 3.4rem) clamp(1.5rem, 5vw, 2.4rem);
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(140, 107, 36, 0.12), inset 0 0 35px rgba(212, 175, 55, 0.06);
+  position: relative;
+  z-index: 10;
+  animation: cardFadeUp 1.2s var(--ease-couture) forwards;
+}
+
+@keyframes cardFadeUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.intro-card-inner-border {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* Jewelry Monogram Crest */
+.intro-crest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-gold-strong);
+  background: linear-gradient(135deg, #ffffff 0%, #fbf8f0 100%);
+  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.2);
+  margin-bottom: 1.6rem;
+  position: relative;
+}
+
+.intro-crest-svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--gold-dark);
+}
+
+.intro-crest-monogram {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  letter-spacing: 0.1em;
+}
+
+.intro-tagline-top {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.2rem;
+}
+
+/* Couple Hero Names */
+.intro-names {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 8vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.16em;
+  color: var(--ink-primary);
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+.intro-names span.amp {
+  font-family: var(--font-script);
+  font-size: 1.15em;
+  font-weight: 400;
+  color: var(--gold-primary);
+  background: var(--grad-gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  margin: 0.2rem 0;
+}
+
+.intro-subtext {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.intro-divider-line {
+  width: 45px;
+  height: 1.5px;
+  background: var(--grad-gold-metallic);
+  margin: 0 auto 2.2rem;
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   2. MAIN INVITATION HEADER & HERO SECTION (SCREEN 2)
+   -------------------------------------------------------------------------- */
+.main-invitation-wrap {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+
+.main-invitation-wrap.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(5rem, 12vw, 8rem) 1.5rem 4rem;
+  position: relative;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.5rem;
+}
+
+.hero-main-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  color: var(--ink-primary);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-main-title .amp {
+  font-family: var(--font-script);
+  font-size: 1.15em;
+  color: var(--gold-primary);
+  background: var(--grad-gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 0.35rem;
+}
+
+.hero-quote {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+  font-style: italic;
+  color: var(--ink-secondary);
+  max-width: 580px;
+  margin: 0 auto 2.4rem;
+  line-height: 1.6;
+}
+
+.hero-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold-strong);
+  border-radius: 30px;
+  padding: 0.85rem 2.2rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3rem;
+}
+
+.hero-date-text {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+}
+
+/* Live Luxury Countdown */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.countdown-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 10px;
+  padding: 1.2rem 0.8rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
+}
+
+.countdown-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-primary);
+}
+
+.countdown-num {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  font-weight: 500;
+  color: var(--gold-dark);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.countdown-label {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   3. INVITATION DETAILS SECTION (EDITORIAL CARDS)
+   -------------------------------------------------------------------------- */
+.details-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(245, 241, 235, 0.6) 50%, transparent 100%);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-tag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--ink-primary);
+  text-transform: uppercase;
+}
+
+.details-card-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 12px;
+  padding: clamp(2.2rem, 5vw, 3.8rem) clamp(1.5rem, 4vw, 3rem);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  text-align: center;
+}
+
+.details-card-inner {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.details-message {
+  font-family: var(--font-editorial);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--ink-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.detail-item-title {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.detail-item-desc {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--ink-primary);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   4. TIMELINE / EVENT SCHEDULE
+   -------------------------------------------------------------------------- */
+.timeline-section {
+  position: relative;
+}
+
+.timeline-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1.5px;
+  background: linear-gradient(180deg, transparent, var(--border-gold-strong), transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3.2rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.timeline-content {
+  width: 44%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 10px;
+  padding: 1.4rem 1.6rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.timeline-time {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  margin-bottom: 0.3rem;
+}
+
+.timeline-title {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-primary);
+  margin-bottom: 0.35rem;
+}
+
+.timeline-desc {
+  font-family: var(--font-editorial);
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+}
+
+.timeline-node {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-pure);
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--gold-dark);
+  z-index: 2;
+}
+
+@media (max-width: 640px) {
+  .timeline-wrap::before {
+    left: 20px;
+  }
+  .timeline-item {
+    flex-direction: row !important;
+    text-align: left !important;
+    padding-left: 52px;
+  }
+  .timeline-content {
+    width: 100%;
+  }
+  .timeline-node {
+    left: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. LOCATION & VENUE SECTION
+   -------------------------------------------------------------------------- */
+.location-card {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 12px;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.location-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  color: var(--ink-primary);
+  margin-bottom: 0.5rem;
+}
+
+.location-address {
+  font-family: var(--font-editorial);
+  font-size: 1.2rem;
+  color: var(--ink-muted);
+  margin-bottom: 2.2rem;
+}
+
+.location-actions-grid {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   6. PROGRESSIVE RSVP FORM
+   -------------------------------------------------------------------------- */
+.rsvp-card-wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 12px;
+  padding: clamp(2rem, 5vw, 3.2rem) clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.rsvp-form-group {
+  margin-bottom: 1.6rem;
+  text-align: left;
+}
+
+.rsvp-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.5rem;
+}
+
+.rsvp-input, .rsvp-select {
+  width: 100%;
+  background: var(--bg-pure);
+  border: 1.5px solid var(--border-gold-subtle);
+  border-radius: 8px;
+  padding: 0.95rem 1.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--ink-primary);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rsvp-input:focus, .rsvp-select:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.25);
+}
+
+.rsvp-radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.rsvp-radio-card {
+  flex: 1;
+  border: 1.5px solid var(--border-gold-subtle);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: var(--bg-pure);
+  transition: all 0.3s ease;
+}
+
+.rsvp-radio-card.active {
+  border-color: var(--gold-primary);
+  background: rgba(197, 160, 89, 0.1);
+}
+
+.rsvp-radio-card input {
+  display: none;
+}
+
+.rsvp-radio-title {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-primary);
+}
+
+.rsvp-success-message {
+  display: none;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.rsvp-success-message.active {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   7. CLOSING ROMANTIC SECTION & FOOTER
+   -------------------------------------------------------------------------- */
+.closing-section {
+  text-align: center;
+  padding: 6rem 1.5rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(245, 241, 235, 0.8) 100%);
+}
+
+.closing-monogram-huge {
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 12vw, 6.5rem);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+
+.closing-names-tag {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ink-primary);
+  margin-bottom: 1.4rem;
+}
+
+.closing-quote {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--ink-secondary);
+  max-width: 540px;
+  margin: 0 auto 2.8rem;
+}
