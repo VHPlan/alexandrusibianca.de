@@ -108,7 +108,8 @@
     const btn = $('#music');
     const LOCAL = '/assets/audio/secret.mp3';
     const YES_LOCAL = '/assets/audio/nasi.mp3';   // dacă există, are prioritate
-    const YT_ID = 'q9wpOvgKCIg';          // muzica de suspans
+    const YT_ID = 'noEcRnoTu1M';          // muzica până la „DA” (Nicolae Guță)
+    const YT_START = 76;                  // pornește de la 1:16
     // melodia de după „DA” — primul video are embed dezactivat de proprietar,
     // deci la eroare (101/150) trecem automat la următorul
     const YES_LIST = [
@@ -147,12 +148,12 @@
       window.onYouTubeIframeAPIReady = () => {
         yt = new YT.Player('ytP', {
           width: 200, height: 200, videoId: YT_ID,
-          playerVars: { autoplay: 0, controls: 0, playsinline: 1, disablekb: 1, rel: 0 },
+          playerVars: { autoplay: 0, controls: 0, playsinline: 1, disablekb: 1, rel: 0, start: YT_START },
           events: {
             onReady: () => { ytReady = true; if (pendingYes) celebrate(); },
             onStateChange: (e) => {
               if (e.data !== YT.PlayerState.ENDED) return;
-              yt.seekTo(isYes() ? YES_LIST[yesIdx].start : 0, true);
+              yt.seekTo(isYes() ? YES_LIST[yesIdx].start : YT_START, true);
               yt.playVideo();
             },
             onError: () => { if (isYes()) playYes(yesIdx + 1); }
