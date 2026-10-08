@@ -16,7 +16,7 @@
 
   /* RSVP → WhatsApp. Numărul în format internațional, fără + sau spații
      (ex: 40712345678). Invitatul trimite confirmarea direct pe acest număr. */
-  const WHATSAPP_NUMBER = '40700000000';
+  const WHATSAPP_NUMBER = '4917655700551';
 
   /* ---------------------------------------------------------
      1. LIGHT CANVAS — gold dust, twinkling stars, soft bokeh
