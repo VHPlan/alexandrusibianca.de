@@ -16,10 +16,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
 
-  <!-- Stylesheets (Modern Haute Couture Edition) -->
-  <link rel="stylesheet" href="css/main.css?v=modern_couture_v5">
-  <link rel="stylesheet" href="css/envelope.css?v=modern_couture_v5">
-  <link rel="stylesheet" href="css/components.css?v=modern_couture_v5">
+  <!-- Stylesheets (Modern 3D Envelope Edition) -->
+  <link rel="stylesheet" href="css/main.css?v=real_3d_envelope_v6">
+  <link rel="stylesheet" href="css/envelope.css?v=real_3d_envelope_v6">
+  <link rel="stylesheet" href="css/components.css?v=real_3d_envelope_v6">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23ffffff%22 stroke=%22%23ffd700%22 stroke-width=%223%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Cinzel%22 font-size=%2232%22 fill=%22%23aa7c11%22>AB</text></svg>">
 </head>
@@ -40,12 +40,12 @@
   </aside>
 
   <!-- =========================================================================
-       INTRO EXPERIENCE (EXACT DUPĂ BRIEF)
+       INTRO EXPERIENCE (REALISTIC 3D PHYSICAL ENVELOPE & EMBOSSED AB STAMP)
        ========================================================================= -->
   <div class="envelope-ceremony-screen" id="envelope-screen">
     <div class="royal-glow-emitter"></div>
 
-    <!-- Centered Names & Subtitle -->
+    <!-- Centered Editorial Names -->
     <div class="intro-royal-header">
       <h1 class="intro-royal-names">
         ALEX<br>
@@ -56,39 +56,40 @@
       <div class="intro-gold-line"></div>
     </div>
 
-    <!-- 3D White & Gold Envelope -->
-    <div class="royal-box-stage">
-      <div class="royal-box-3d" id="royal-box-3d">
-        <!-- Envelope Interior -->
-        <div class="royal-box-interior"></div>
+    <!-- 3D Physical Baronial Envelope -->
+    <div class="envelope-3d-stage">
+      <div class="envelope-physical-box" id="royal-box-3d">
+        <!-- 1. Base Back Wall -->
+        <div class="env-back-sheet"></div>
 
-        <!-- Rising Invitation Card -->
-        <div class="royal-invitation-card" id="royal-card">
-          <div class="royal-card-badge">INVITAȚIE DE NUNTĂ</div>
-          <div class="royal-card-monogram gold-shimmer">AB</div>
-          <div class="royal-card-names">ALEX &amp; BIANCA</div>
-          <div class="royal-card-date">20 • 06 • 2027 • PALATUL SNAGOV</div>
+        <!-- 2. Rising Heavy Invitation Card with Embossed Monogram -->
+        <div class="env-invitation-card" id="royal-card">
+          <div class="env-card-subtag">INVITAȚIE DE NUNTĂ</div>
+          <div class="env-card-monogram gold-shimmer">AB</div>
+          <div class="env-card-names">ALEX &amp; BIANCA</div>
+          <div class="env-card-date">20 • 06 • 2027 • PALATUL SNAGOV</div>
         </div>
 
-        <!-- Pocket Front Layer -->
-        <div class="royal-door-left" id="door-left"></div>
+        <!-- 3. Left & Right Side Folds -->
+        <div class="env-left-fold"></div>
+        <div class="env-right-fold"></div>
 
-        <!-- 3D Folding Top Flap -->
-        <div class="royal-door-right" id="door-right"></div>
+        <!-- 4. Bottom Pocket Fold -->
+        <div class="env-bottom-fold"></div>
 
-        <!-- Silk Ribbon -->
-        <div class="royal-ribbon-line" id="royal-ribbon"></div>
-
-        <!-- 3D Gold Wax Seal -->
-        <div class="royal-central-seal" id="royal-seal" title="Apasă pentru a deschide invitația">
-          <svg class="seal-crown-mini" viewBox="0 0 24 24">
-            <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
-          </svg>
-          <span class="seal-monogram-text">AB</span>
+        <!-- 5. 3D Folding Top Pointed V-Flap -->
+        <div class="env-top-flap-3d" id="door-right">
+          <!-- 6. Embossed 3D AB Monogram Wax Stamp Seal -->
+          <div class="env-embossed-seal-stamp" id="royal-seal" title="Apasă pentru a deschide invitația">
+            <svg class="stamp-crown-icon" viewBox="0 0 24 24">
+              <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
+            </svg>
+            <span class="stamp-monogram-text">AB</span>
+          </div>
         </div>
       </div>
 
-      <button class="royal-box-cta-btn" id="royal-box-cta">
+      <button class="envelope-open-trigger-btn" id="royal-box-cta">
         <svg style="width:18px; height:18px; fill:currentColor;" viewBox="0 0 24 24">
           <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
         </svg>
@@ -545,11 +546,11 @@
   </main>
 
   <!-- Scripts -->
-  <script src="js/particles.js?v=modern_couture_v5"></script>
-  <script src="js/audio.js?v=modern_couture_v5"></script>
-  <script src="js/envelope.js?v=modern_couture_v5"></script>
-  <script src="js/gallery.js?v=modern_couture_v5"></script>
-  <script src="js/rsvp.js?v=modern_couture_v5"></script>
-  <script src="js/app.js?v=modern_couture_v5"></script>
+  <script src="js/particles.js?v=real_3d_envelope_v6"></script>
+  <script src="js/audio.js?v=real_3d_envelope_v6"></script>
+  <script src="js/envelope.js?v=real_3d_envelope_v6"></script>
+  <script src="js/gallery.js?v=real_3d_envelope_v6"></script>
+  <script src="js/rsvp.js?v=real_3d_envelope_v6"></script>
+  <script src="js/app.js?v=real_3d_envelope_v6"></script>
 </body>
 </html>
