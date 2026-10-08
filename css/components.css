@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ALEX & BIANCA — MODERN HAUTE COUTURE COMPONENTS (WHITE & 24K METALLIC GOLD)
+   ALEX & BIANCA — CINEMATIC NOIR & 24K GOLD COMPONENTS
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -13,13 +13,13 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(15, 15, 15, 0.92);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid var(--border-gold-strong);
   border-radius: 40px;
   padding: 8px 18px 8px 10px;
-  box-shadow: var(--shadow-luxe-md);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
   cursor: pointer;
   transition: all 0.35s var(--ease-couture);
   max-width: 390px;
@@ -27,8 +27,8 @@
 
 .floating-music-player:hover {
   transform: translateY(-3px) scale(1.02);
-  border-color: var(--gold-dark);
-  box-shadow: var(--shadow-luxe-lg);
+  border-color: var(--gold-light);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.3);
 }
 
 .vinyl-disc {
@@ -36,10 +36,10 @@
   height: 44px;
   border-radius: 50%;
   background: 
-    radial-gradient(circle at 50% 50%, #ffffff 0%, #f7f5ed 25%, #cba135 26%, #cba135 35%, #ffffff 36%, #ffffff 65%, #ffd700 66%, #ffffff 70%),
-    conic-gradient(from 0deg, #fbf9f4 0deg, #cba135 90deg, #fbf9f4 180deg, #cba135 270deg, #fbf9f4 360deg);
+    radial-gradient(circle at 50% 50%, #151515 0%, #0a0a0a 25%, #c9a227 26%, #d4af37 35%, #151515 36%, #050505 65%, #ffd700 66%, #111111 70%),
+    conic-gradient(from 0deg, #181818 0deg, #d4af37 90deg, #181818 180deg, #d4af37 270deg, #181818 360deg);
   border: 1.5px solid var(--gold-primary);
-  box-shadow: 0 0 15px rgba(203, 161, 53, 0.35);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
   position: relative;
   flex-shrink: 0;
 }
@@ -50,7 +50,7 @@
   inset: 10px;
   border-radius: 50%;
   background: var(--grad-gold-metallic);
-  color: #ffffff;
+  color: #050505;
   font-family: var(--font-serif);
   font-size: 0.55rem;
   font-weight: 800;
