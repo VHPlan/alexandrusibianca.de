@@ -276,13 +276,15 @@
 
     const audio = new Audio();
     audio.loop = true;
-    audio.preload = 'auto';
+    audio.preload = 'metadata';
     audio.playsInline = true;
 
-    // 1) local file?
-    fetch(LOCAL, { method: 'HEAD' })
-      .then((r) => { if (r.ok) { hasFile = true; audio.src = LOCAL; } else loadYT(); })
-      .catch(loadYT);
+    // 1) local file (works on every phone); YouTube only if it fails to load
+    audio.src = LOCAL; hasFile = true;
+    audio.addEventListener('error', () => {
+      hasFile = false; loadYT();
+      if (playing && mode === 'file') { playing = false; play(); }
+    }, { once: true });
 
     // 2) YouTube IFrame player (kept out of the layout)
     function loadYT() {

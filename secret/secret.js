@@ -176,16 +176,21 @@
     let mode = null, yt = null, ytReady = false, on = false, fadeT = 0, track = YT_ID, pendingYes = false;
     let yesIdx = -1, yesLocal = false;
     const isYes = () => yesIdx >= 0;
-    const audio = new Audio(); audio.loop = true; audio.preload = 'auto'; audio.playsInline = true;
-    const yesAudio = new Audio(); yesAudio.preload = 'auto'; yesAudio.playsInline = true;
+    const audio = new Audio(); audio.preload = 'metadata'; audio.playsInline = true;
+    const yesAudio = new Audio(); yesAudio.preload = 'metadata'; yesAudio.playsInline = true;
 
-    loadYT();   // the YouTube player is always needed for the celebration song
-    fetch(LOCAL, { method: 'HEAD' }).then((r) => {
-      if (r.ok && /audio|octet/.test(r.headers.get('content-type') || '')) { audio.src = LOCAL; mode = 'file'; } else mode = 'yt';
-    }).catch(() => { mode = 'yt'; });
-    fetch(YES_LOCAL, { method: 'HEAD' }).then((r) => {
-      if (r.ok && /audio|octet/.test(r.headers.get('content-type') || '')) { yesAudio.src = YES_LOCAL; yesLocal = true; }
-    }).catch(() => {});
+    // fișierele locale sunt sursa principală (merg pe orice telefon); YouTube doar dacă lipsesc
+    audio.src = LOCAL; mode = 'file';
+    yesAudio.src = YES_LOCAL; yesLocal = true;
+    audio.addEventListener('error', () => { if (mode === 'file') mode = 'yt'; loadYT(); }, { once: true });
+    yesAudio.addEventListener('error', () => { yesLocal = false; loadYT(); }, { once: true });
+    // pornește de la secunda dorită (și după ce browserul a aflat durata, pe iOS)
+    function seekStart(el, t) {
+      const go = () => { if (el.currentTime < t - 1) { try { el.currentTime = t; } catch (_) {} } };
+      if (el.readyState >= 1) go(); else el.addEventListener('loadedmetadata', go, { once: true });
+    }
+    seekStart(audio, YT_START);
+    audio.addEventListener('ended', () => { audio.currentTime = YT_START; audio.play().catch(() => {}); });
     yesAudio.addEventListener('ended', () => { yesAudio.currentTime = YES_START; yesAudio.play().catch(() => {}); });
     function playYes(i) {
       if (i >= YES_LIST.length) return;
@@ -195,7 +200,9 @@
       yt.loadVideoById({ videoId: YES_LIST[i].id, startSeconds: YES_LIST[i].start });
     }
 
+    let ytLoaded = false;
     function loadYT() {
+      if (ytLoaded) return; ytLoaded = true;
       const host = document.createElement('div');
       host.style.cssText = 'position:fixed;left:0;bottom:0;width:200px;height:200px;opacity:.01;z-index:-1;pointer-events:none;overflow:hidden';
       host.innerHTML = '<div id="ytP"></div>';
