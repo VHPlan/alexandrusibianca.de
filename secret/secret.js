@@ -18,6 +18,7 @@
   /* ---------------------------------------------------------
      SPOTLIGHT — follows the finger / cursor, drifts when idle
      --------------------------------------------------------- */
+  const spotEl = document.querySelector('.spot');
   let sx = 50, sy = 42, tx = 50, ty = 42, idle = 0;
   const point = (x, y) => { tx = x / innerWidth * 100; ty = y / innerHeight * 100; idle = 0; };
   addEventListener('pointermove', (e) => point(e.clientX, e.clientY), { passive: true });
@@ -26,8 +27,8 @@
     idle++;
     if (idle > 180) { tx = 50 + Math.sin(t / 5200) * 16; ty = 44 + Math.cos(t / 6100) * 10; }
     sx += (tx - sx) * .04; sy += (ty - sy) * .04;
-    root.style.setProperty('--sx', sx.toFixed(2) + '%');
-    root.style.setProperty('--sy', sy.toFixed(2) + '%');
+    spotEl.style.setProperty('--sx', sx.toFixed(2) + '%');
+    spotEl.style.setProperty('--sy', sy.toFixed(2) + '%');
     requestAnimationFrame(spot);
   })(0);
 
@@ -42,15 +43,15 @@
     const sprite = (() => {
       const s = document.createElement('canvas'); s.width = s.height = 64;
       const g = s.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gr.addColorStop(0, 'rgba(255,244,214,1)'); gr.addColorStop(.2, 'rgba(236,206,148,.8)');
-      gr.addColorStop(.5, 'rgba(205,160,90,.18)'); gr.addColorStop(1, 'rgba(205,160,90,0)');
+      gr.addColorStop(0, 'rgba(232,200,130,1)'); gr.addColorStop(.22, 'rgba(200,160,80,.75)');
+      gr.addColorStop(.5, 'rgba(184,145,63,.18)'); gr.addColorStop(1, 'rgba(184,145,63,0)');
       g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return s;
     })();
     const size = () => { W = innerWidth; H = innerHeight; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); };
     size(); addEventListener('resize', size);
     const mk = (init) => ({ x: Math.random() * W, y: init ? Math.random() * H : H + 20, r: 5 + Math.random() * 11, vy: .06 + Math.random() * .18, ph: Math.random() * 6.3, sp: .004 + Math.random() * .009, a: .2 + Math.random() * .4 });
     for (let i = 0; i < (RM ? 0 : MOBILE ? 12 : 22); i++) motes.push(mk(true));
-    const GOLD = ['#efe1bd', '#cdb07a', '#b8955a', '#e3cc98', '#9c7b45', '#f7efd9'];
+    const GOLD = ['#d9bd80', '#b8913f', '#a07a34', '#e3cc98', '#8a6a2c', '#c9a24f'];
 
     function confetti(n) {
       if (RM) return;
@@ -70,7 +71,7 @@
       ctx.clearRect(0, 0, W, H);
       const warm = parseFloat(root.style.getPropertyValue('--warm')) || 0;
       const vd = parseFloat(root.style.getPropertyValue('--void')) || 0;
-      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalCompositeOperation = 'source-over';
       for (const m of motes) {
         m.y -= m.vy; m.ph += m.sp; m.x += Math.sin(m.ph) * .22;
         if (m.y < -30) Object.assign(m, mk(false));
@@ -189,7 +190,10 @@
       .then((r) => r.json().catch(() => ({})).then((j) => ({ s: r.status, j })))
       .then(({ s, j }) => {
         busy = false; gBtn.classList.remove('is-busy');
-        if (s === 200 && j && j.ok && j.html) return unlock(j.html);
+        if (s === 200 && j && j.ok && j.html) {
+          try { sessionStorage.setItem('ab-secret-k', code); } catch (_) {}
+          return unlock(j.html);
+        }
         Music.disarm();
         fail(s === 429 ? 'Prea multe încercări. Reveniți puțin mai târziu.' : 'Aceasta nu este cheia potrivită.');
       })
@@ -199,17 +203,35 @@
       });
   });
 
-  function unlock(html) {
+  function unlock(html, resumeAt) {
     input.blur();
-    Music.start();
     film.innerHTML = html;
     prepare();
+    if (resumeAt !== undefined) {           // came back after a reload: continue where they were
+      gate.classList.add('is-gone');
+      body.classList.add('is-film');
+      play(clamp(resumeAt, 0, scenes.length - 1));
+      return;
+    }
+    Music.start();
     gate.classList.add('is-accepted');
     root.style.setProperty('--warm', '.35');
     setTimeout(() => Fx.burst(innerWidth / 2, innerHeight / 2, MOBILE ? 30 : 50), T(1.6));
     setTimeout(() => { gate.classList.add('is-gone'); body.classList.add('is-film'); }, T(4.3));
     setTimeout(() => play(0), T(5.4));
   }
+
+  // if the phone reloaded the page mid-film, resume silently (same tab only)
+  (() => {
+    let k = null, at = 0;
+    try { k = sessionStorage.getItem('ab-secret-k'); at = parseInt(sessionStorage.getItem('ab-secret-at') || '0', 10) || 0; } catch (_) {}
+    if (!k) return;
+    gIn.style.visibility = 'hidden';
+    fetch('/api/secret', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code: k }), cache: 'no-store' })
+      .then((r) => r.json())
+      .then((j) => { if (j && j.ok && j.html) unlock(j.html, at); else throw 0; })
+      .catch(() => { try { sessionStorage.removeItem('ab-secret-k'); } catch (_) {} gIn.style.visibility = ''; });
+  })();
 
   /* ---------------------------------------------------------
      4–9 · FILM ENGINE
@@ -237,9 +259,73 @@
       if (go) return jump(go.dataset.go);
       const w = e.target.closest('[data-wa]');
       if (w) return openWa(w.dataset.wa, decodeURIComponent(w.dataset.msg || ''));
+      const opt = e.target.closest('.pick__opt');
+      if (opt) return choose(opt);
       if (e.target.closest('button, a')) return;
       tap();
     });
+    $$('.seal', film).forEach(bindSeal);
+  }
+
+  /* decoy question: any answer is the right one */
+  function choose(opt) {
+    const box = opt.closest('.pick');
+    if (box.classList.contains('is-done')) return;
+    box.classList.add('is-done');
+    opt.classList.add('is-chosen');
+    const r = opt.r = opt.getBoundingClientRect();
+    Fx.burst(r.left + r.width / 2, r.top + r.height / 2, MOBILE ? 10 : 16);
+    const reply = $('.reply', opt.closest('.sc'));
+    reply.textContent = opt.dataset.reply || '';
+    later(() => reply.classList.add('on'), 500);
+    later(() => play(cur + 1), T(3.6));
+  }
+
+  /* seal: press & hold ~1.8s to break it */
+  function bindSeal(seal) {
+    const NEED = RM ? 300 : 1800;
+    let t0 = 0, raf = 0, done = false;
+    const set = (v) => seal.style.setProperty('--hp', v.toFixed(3));
+    const step = () => {
+      const p = clamp((performance.now() - t0) / NEED, 0, 1);
+      set(p);
+      if (navigator.vibrate && p > .2 && Math.random() < .08) navigator.vibrate(8);
+      if (p >= 1) return breakSeal();
+      raf = requestAnimationFrame(step);
+    };
+    const down = (e) => {
+      if (done) return;
+      e.preventDefault();
+      seal.setPointerCapture && e.pointerId !== undefined && seal.setPointerCapture(e.pointerId);
+      seal.classList.add('is-holding');
+      t0 = performance.now();
+      cancelAnimationFrame(raf); raf = requestAnimationFrame(step);
+    };
+    const up = () => {
+      if (done) return;
+      cancelAnimationFrame(raf);
+      seal.classList.remove('is-holding');
+      const from = parseFloat(seal.style.getPropertyValue('--hp')) || 0, s = performance.now();
+      const back = () => { const k = clamp(1 - (performance.now() - s) / 400, 0, 1); set(from * k); if (k > 0 && !done) requestAnimationFrame(back); };
+      requestAnimationFrame(back);
+    };
+    function breakSeal() {
+      done = true;
+      cancelAnimationFrame(raf);
+      seal.classList.add('is-broken');
+      if (navigator.vibrate) navigator.vibrate([30, 40, 60]);
+      const r = seal.getBoundingClientRect();
+      Fx.burst(r.left + r.width / 2, r.top + r.height / 2, MOBILE ? 46 : 70);
+      const sc = seal.closest('.sc');
+      setTimeout(() => sc.classList.add('is-flash'), 350);
+      setTimeout(() => { play(cur + 1); }, T(2.2));
+      setTimeout(() => sc.classList.remove('is-flash'), 4500);
+    }
+    seal.addEventListener('pointerdown', down);
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach((ev) => seal.addEventListener(ev, up));
+    seal.addEventListener('contextmenu', (e) => e.preventDefault());
+    seal.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && !e.repeat) down(e); });
+    seal.addEventListener('keyup', (e) => { if (e.key === 'Enter' || e.key === ' ') up(); });
   }
 
   const later = (fn, ms) => timers.push(setTimeout(fn, ms));
@@ -260,6 +346,7 @@
       }, 2000);
     }
     cur = i;
+    try { sessionStorage.setItem('ab-secret-at', String(i)); } catch (_) {}
     const hold = parseFloat(sc.dataset.hold) || 0;
     root.style.setProperty('--warm', sc.dataset.warm || '0');
     root.style.setProperty('--void', sc.dataset.void || '0');
