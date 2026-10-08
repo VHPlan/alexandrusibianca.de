@@ -321,11 +321,20 @@
         yt.setVolume(Math.round(v));
       }, 50);
     }
+    let ytCheck = 0;
     function startYT() {
       mode = 'yt';
       yt.unMute();
       yt.playVideo();
       ytVolume(VOL, 2000);
+      // mobile may silently refuse to start: reset the button so one tap on it
+      // (a real user gesture) starts the music
+      clearTimeout(ytCheck);
+      ytCheck = setTimeout(() => {
+        if (playing && mode === 'yt' && yt.getPlayerState && yt.getPlayerState() !== YT.PlayerState.PLAYING) {
+          playing = false; setUI(false); btn.classList.add('is-visible');
+        }
+      }, 3000);
     }
 
     // 3) generative pad fallback

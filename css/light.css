@@ -283,7 +283,8 @@ body { color: var(--text); }
 }
 
 /* hidden YouTube audio host */
-.yt-host { position: fixed; left: -9999px; top: 0; width: 200px; height: 200px; pointer-events: none; }
+/* on-screen but invisible: mobile browsers pause/block off-screen YouTube iframes */
+.yt-host { position: fixed; left: 0; bottom: 0; width: 200px; height: 200px; opacity: 0.01; z-index: -1; pointer-events: none; overflow: hidden; }
 
 
 /* =====================================================================

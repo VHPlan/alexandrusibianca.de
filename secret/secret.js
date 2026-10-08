@@ -166,13 +166,12 @@
     const YES_LOCAL = '/assets/audio/nasi.mp3';   // dacă există, are prioritate
     const YT_ID = 'noEcRnoTu1M';          // muzica până la „DA” (Nicolae Guță)
     const YT_START = 76;                  // pornește de la 1:16
-    // melodia de după „DA” — primul video are embed dezactivat de proprietar,
-    // deci la eroare (101/150) trecem automat la următorul
+    // melodia de după „DA” — iE_1QyGmuGQ are embed dezactivat de proprietar (oEmbed 401);
+    // eroarea lui comuta melodia în afara atingerii → pe telefon nu mai pornea nimic. L-am scos.
     const YES_LIST = [
-      { id: 'iE_1QyGmuGQ', start: 25 },
       { id: 'SNcuxVwzcxI', start: 17 }
     ];
-    const YES_START = 25;                 // pornește de la 0:25
+    const YES_START = 25;                 // pentru nasi.mp3 local: pornește de la 0:25
     const VOL = .55;
     let mode = null, yt = null, ytReady = false, on = false, fadeT = 0, track = YT_ID, pendingYes = false;
     let yesIdx = -1, yesLocal = false;
@@ -198,7 +197,7 @@
 
     function loadYT() {
       const host = document.createElement('div');
-      host.style.cssText = 'position:fixed;left:-9999px;top:0;width:200px;height:200px;opacity:0;pointer-events:none';
+      host.style.cssText = 'position:fixed;left:0;bottom:0;width:200px;height:200px;opacity:.01;z-index:-1;pointer-events:none;overflow:hidden';
       host.innerHTML = '<div id="ytP"></div>';
       body.appendChild(host);
       window.onYouTubeIframeAPIReady = () => {
@@ -238,11 +237,21 @@
       if (on) return;
       if (media()) media().pause(); else if (ytReady) yt.pauseVideo();
     }
+    let chk = 0;
+    function verify() {                    // phone blocked it? → reset button, one tap starts it
+      clearTimeout(chk);
+      chk = setTimeout(() => {
+        if (!on) return;
+        const m = media();
+        const ok = m ? !m.paused : (ytReady && yt.getPlayerState && yt.getPlayerState() === YT.PlayerState.PLAYING);
+        if (!ok) { on = false; btn.classList.remove('is-on'); btn.setAttribute('aria-pressed', 'false'); }
+      }, 3500);
+    }
     function set(next) {
       on = next;
       btn.classList.toggle('is-on', on);
       btn.setAttribute('aria-pressed', String(on));
-      if (on) { arm(); fade(isYes() ? Math.min(1, VOL * 1.25) : VOL, 2600); }
+      if (on) { arm(); fade(isYes() ? Math.min(1, VOL * 1.25) : VOL, 2600); verify(); }
       else fade(0, 900, () => { if (media()) media().pause(); else if (ytReady) yt.pauseVideo(); });
     }
     // „DA” → switch to the celebration song, from 0:25 (call inside the click)
