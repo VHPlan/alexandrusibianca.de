@@ -913,6 +913,22 @@
   });
 
   /* ---------------------------------------------------------
+     9b. BACK TO TOP — appears when you reach the bottom
+     --------------------------------------------------------- */
+  const toTop = $('#toTop');
+  function checkTop() {
+    const nearEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - window.innerHeight * 0.6;
+    toTop.classList.toggle('is-visible', site.classList.contains('is-on') && nearEnd);
+  }
+  window.addEventListener('scroll', checkTop, { passive: true });
+  window.addEventListener('resize', checkTop, { passive: true });
+  toTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' });
+    const r = toTop.getBoundingClientRect();
+    Dust.burst(r.left + r.width / 2, r.top + r.height / 2, MOBILE ? 18 : 26, 0.7);
+  });
+
+  /* ---------------------------------------------------------
      10. DEBUG — ?skip opens directly (for previews)
      --------------------------------------------------------- */
   if (/[?&]skip\b/.test(location.search)) {

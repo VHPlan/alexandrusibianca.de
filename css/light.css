@@ -526,3 +526,25 @@ body { color: var(--text); }
 @media (min-width: 900px) {
   .hero__amp { vertical-align: .32em; }
 }
+
+/* =====================================================================
+   BACK TO TOP
+   ===================================================================== */
+.totop {
+  position: fixed; z-index: 60; left: 50%; bottom: calc(1rem + var(--safe-b));
+  display: flex; flex-direction: column; align-items: center; gap: .25rem;
+  width: 58px; height: 58px; justify-content: center; border-radius: 50%;
+  background: rgba(255, 255, 255, .85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line-2); color: var(--gold);
+  box-shadow: 0 12px 30px -12px rgba(120, 90, 40, .4), inset 0 0 0 3px #fff, inset 0 0 0 4px var(--line);
+  opacity: 0; pointer-events: none; transform: translate(-50%, 20px) scale(.8);
+  transition: opacity .7s var(--ease), transform .7s var(--ease), box-shadow .4s;
+}
+.totop.is-visible { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.totop svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; animation: totopNudge 2.4s ease-in-out infinite; }
+.totop span { font-size: .45rem; letter-spacing: .3em; padding-left: .3em; text-transform: uppercase; }
+.totop:hover { box-shadow: 0 14px 34px -10px rgba(184, 145, 63, .55), inset 0 0 0 3px #fff, inset 0 0 0 4px var(--line-2); }
+.totop:active { transform: translate(-50%, 0) scale(.94); }
+@keyframes totopNudge { 0%, 100% { transform: translateY(1px); } 50% { transform: translateY(-2px); } }
+/* keep the footer line clear of the button */
+.finale__foot { bottom: calc(5.2rem + var(--safe-b)); }
