@@ -1,5 +1,6 @@
 /**
- * ALEX & BIANCA — TRUE 3D ENVELOPE OPENING CEREMONY (WHITE & GOLD)
+ * ALEX & BIANCA — ULTRA-LUXURY 3D ENVELOPE CEREMONY (WHITE & 24K GOLD)
+ * Interactive Mouse Sheen Reflection, 3D Physics Tilt, Wax Fracture, and Particle Fireworks
  */
 
 class EnvelopeCeremony {
@@ -8,11 +9,12 @@ class EnvelopeCeremony {
     this.particles = particleEngine;
 
     this.screen = document.getElementById('envelope-screen');
-    this.box = document.getElementById('royal-box-3d') || document.getElementById('envelope-3d-box');
-    this.seal = document.getElementById('royal-seal') || document.getElementById('envelope-seal');
-    this.ribbon = document.getElementById('royal-ribbon') || document.getElementById('envelope-ribbon');
-    this.card = document.getElementById('royal-card') || document.getElementById('envelope-letter');
-    this.openBtn = document.getElementById('royal-box-cta') || document.getElementById('envelope-open-btn');
+    this.box = document.getElementById('royal-box-3d');
+    this.seal = document.getElementById('royal-seal');
+    this.ribbon = document.getElementById('royal-ribbon');
+    this.card = document.getElementById('royal-card');
+    this.openBtn = document.getElementById('royal-box-cta');
+    this.sheen = document.querySelector('.env-sheen-sweep');
 
     this.isOpening = false;
     this.isOpened = false;
@@ -23,10 +25,11 @@ class EnvelopeCeremony {
   init() {
     if (!this.screen || !this.box) return;
 
-    // 3D Parallax Tilt with Mouse
-    document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+    // 3D Parallax Tilt with Mouse & Dynamic Sheen
+    window.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+    window.addEventListener('mouseleave', () => this.handleMouseLeave());
 
-    // 3D Tilt with Device Orientation (Mobile)
+    // 3D Tilt with Device Orientation on Mobile
     if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
       this.screen.addEventListener('click', () => {
         DeviceOrientationEvent.requestPermission().then(res => {
@@ -59,6 +62,18 @@ class EnvelopeCeremony {
     const rotY = ((clientX - centerX) / centerX) * 14;
 
     this.box.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
+
+    // Update dynamic specular reflection sheen
+    if (this.sheen) {
+      const xPercent = (clientX / window.innerWidth) * 100;
+      const yPercent = (clientY / window.innerHeight) * 100;
+      this.sheen.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+    }
+  }
+
+  handleMouseLeave() {
+    if (this.isOpened || this.isOpening || !this.box) return;
+    this.box.style.transform = 'rotateX(0deg) rotateY(0deg)';
   }
 
   handleOrientation(e) {
@@ -76,7 +91,7 @@ class EnvelopeCeremony {
     if (this.isOpening || this.isOpened) return;
     this.isOpening = true;
 
-    // Reset 3D transform for clean unfolding
+    // Smooth reset transform for pristine unfold
     this.box.style.transform = 'rotateX(0deg) rotateY(0deg)';
 
     // 1. Play Lele & Andra Voloș song instantly
@@ -84,24 +99,32 @@ class EnvelopeCeremony {
       this.audio.play();
     }
 
-    // 2. Gold Particle Fireworks at Seal Position
+    // 2. Gold Starlight & Diamond Dust Fireworks Explosion from Seal
     if (this.seal && this.particles) {
       const rect = this.seal.getBoundingClientRect();
-      this.particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 85);
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      
+      this.particles.createBurst(originX, originY, 110);
+      setTimeout(() => {
+        this.particles.createBurst(originX - 40, originY - 20, 50);
+        this.particles.createBurst(originX + 40, originY + 20, 50);
+      }, 150);
+
       this.seal.classList.add('broken');
     }
 
-    // 3. Dissolve Ribbon
+    // 3. Unfurl Ribbon
     if (this.ribbon) {
       this.ribbon.classList.add('hide');
     }
 
-    // 4. Open Flap & Rise Letter
+    // 4. Open Flap & Slide Letter Card Up
     setTimeout(() => {
       this.box.classList.add('open');
     }, 250);
 
-    // 5. Fade out envelope stage & reveal main site
+    // 5. Fade out envelope stage & reveal main luxury site
     setTimeout(() => {
       this.screen.classList.add('opened');
       this.isOpened = true;
