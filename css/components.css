@@ -1,5 +1,6 @@
 /* ==========================================================================
-   ALEX & BIANCA — BESPOKE EDITORIAL SECTIONS & ASYMMETRICAL ART DIRECTION
+   ALEX & BIANCA — IMMACULATE PURE WHITE & METALLIC GOLD INVITATION COMPONENTS
+   Post-Opening WOW Experience: Shimmer, Glow Accents & Refined Editorial Flow
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -13,13 +14,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border: 1px solid var(--border-gold-fine);
+  border: 1.5px solid var(--border-gold-strong);
   border-radius: 40px;
   padding: 8px 18px 8px 10px;
-  box-shadow: 0 10px 30px rgba(150, 114, 45, 0.12);
+  box-shadow: 0 10px 35px rgba(212, 175, 55, 0.22), 0 2px 8px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   transition: all 0.35s var(--ease-couture);
   max-width: 360px;
@@ -28,7 +29,7 @@
 .floating-music-player:hover {
   transform: translateY(-2px);
   border-color: var(--gold-primary);
-  box-shadow: 0 15px 40px rgba(150, 114, 45, 0.18);
+  box-shadow: 0 15px 45px rgba(212, 175, 55, 0.35);
 }
 
 .vinyl-disc {
@@ -36,10 +37,10 @@
   height: 38px;
   border-radius: 50%;
   background: 
-    radial-gradient(circle at 50% 50%, #ffffff 0%, #faf6f0 25%, #c5a059 26%, #d9be84 35%, #ffffff 36%, #ffffff 65%, #ffd700 66%, #ffffff 70%),
-    conic-gradient(from 0deg, #fdfbf7 0deg, #c5a059 90deg, #fdfbf7 180deg, #c5a059 270deg, #fdfbf7 360deg);
+    radial-gradient(circle at 50% 50%, #ffffff 0%, #ffffff 25%, #d4af37 26%, #f7e6a4 35%, #ffffff 36%, #ffffff 65%, #ffd700 66%, #ffffff 70%),
+    conic-gradient(from 0deg, #ffffff 0deg, #d4af37 90deg, #ffffff 180deg, #d4af37 270deg, #ffffff 360deg);
   border: 1.5px solid var(--gold-primary);
-  box-shadow: 0 0 12px rgba(197, 160, 89, 0.35);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.45);
   position: relative;
   flex-shrink: 0;
 }
@@ -57,6 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
 .floating-music-player.playing .vinyl-disc {
@@ -104,21 +106,40 @@
 }
 
 /* --------------------------------------------------------------------------
-   1. MAIN INVITATION ROOT WRAPPER
+   1. MAIN INVITATION ROOT WRAPPER & ENTRANCE WOW EFFECT
    -------------------------------------------------------------------------- */
 .main-invitation-wrap {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1.2s var(--ease-couture);
+  transform: translateY(30px);
+  transition: opacity 1.3s var(--ease-couture), transform 1.3s var(--ease-couture), visibility 1.3s;
+  position: relative;
 }
 
 .main-invitation-wrap.active {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
+}
+
+/* Radiant Background Glows for Second Page */
+.main-invitation-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 247, 219, 0.4) 0%, rgba(212, 175, 55, 0.08) 50%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* --------------------------------------------------------------------------
-   2. SCENE 1: COUPLE INTRODUCTION (EDITORIAL ASYMMETRICAL HERO)
+   2. SCENE 1: COUPLE INTRODUCTION (EDITORIAL PURE WHITE HERO)
    -------------------------------------------------------------------------- */
 .hero-editorial-screen {
   min-height: 100vh;
@@ -134,13 +155,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1000px;
+  max-width: 960px;
   width: 100%;
   margin: 0 auto;
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--gold-dark);
 }
@@ -151,37 +172,55 @@
 
 .hero-monogram-emblem {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
-  letter-spacing: 0.2em;
+  font-size: 2rem;
+  letter-spacing: 0.22em;
   margin-bottom: 2rem;
   display: inline-block;
+  position: relative;
+}
+
+.hero-monogram-emblem::after {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+  z-index: -1;
+  animation: emblemGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes emblemGlow {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; filter: blur(10px); }
 }
 
 .hero-couple-display {
   font-family: var(--font-serif);
-  font-size: clamp(3.2rem, 11vw, 7.2rem);
+  font-size: clamp(3.2rem, 11vw, 7.5rem);
   font-weight: 400;
   line-height: 0.98;
   letter-spacing: 0.16em;
   color: var(--ink-primary);
   text-transform: uppercase;
-  margin-bottom: 2.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 4px 30px rgba(212, 175, 55, 0.12);
 }
 
 .hero-couple-display .hero-amp {
   font-family: var(--font-script);
-  font-size: 0.9em;
+  font-size: 0.92em;
   color: var(--gold-primary);
   background: var(--grad-gold-foil);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: block;
   margin: 0.2rem 0;
+  filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.3));
 }
 
 .hero-whisper-text {
   font-family: var(--font-editorial);
-  font-size: clamp(1.3rem, 3.8vw, 1.8rem);
+  font-size: clamp(1.35rem, 4vw, 1.85rem);
   font-style: italic;
   color: var(--ink-secondary);
   max-width: 520px;
@@ -216,7 +255,7 @@
    -------------------------------------------------------------------------- */
 .date-editorial-screen {
   text-align: center;
-  background: linear-gradient(180deg, transparent 0%, rgba(246, 242, 236, 0.6) 50%, transparent 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(254, 247, 219, 0.25) 50%, transparent 100%);
 }
 
 .date-monolithic-display {
@@ -226,6 +265,7 @@
   letter-spacing: 0.14em;
   line-height: 1;
   margin-bottom: 0.8rem;
+  text-shadow: 0 4px 25px rgba(212, 175, 55, 0.2);
 }
 
 .date-sub-display {
@@ -243,22 +283,32 @@
   font-size: 1.4rem;
   font-style: italic;
   color: var(--ink-secondary);
-  max-width: 480px;
+  max-width: 500px;
   margin: 0 auto 3.5rem;
 }
 
-/* Minimalist Horizontal Countdown Strip */
+/* Horizontal Countdown Strip */
 .countdown-strip {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(1.2rem, 4vw, 3rem);
+  gap: clamp(1.2rem, 4vw, 3.2rem);
   max-width: 600px;
   margin: 0 auto 3rem;
   padding: 1.8rem 0;
-  border-top: 1px solid var(--border-gold-fine);
-  border-bottom: 1px solid var(--border-gold-fine);
+  border-top: 1px solid var(--border-gold-strong);
+  border-bottom: 1px solid var(--border-gold-strong);
+  position: relative;
 }
+
+.countdown-strip::before, .countdown-strip::after {
+  content: '✦';
+  position: absolute;
+  color: var(--gold-primary);
+  font-size: 0.75rem;
+}
+.countdown-strip::before { top: -6px; left: 50%; transform: translateX(-50%); }
+.countdown-strip::after { bottom: -6px; left: 50%; transform: translateX(-50%); }
 
 .countdown-unit {
   display: flex;
@@ -268,7 +318,7 @@
 
 .countdown-unit-num {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5.2vw, 3.2rem);
   font-weight: 400;
   line-height: 1;
   color: var(--ink-primary);
@@ -322,7 +372,6 @@
   text-transform: uppercase;
 }
 
-/* Staggered Minimal Timeline Rows */
 .staggered-timeline-wrap {
   max-width: 820px;
   margin: 0 auto;
@@ -334,7 +383,7 @@
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: baseline;
   padding: 2.2rem 0;
-  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.28);
   transition: transform 0.35s ease;
 }
 
@@ -384,25 +433,26 @@
    -------------------------------------------------------------------------- */
 .location-editorial-screen {
   text-align: center;
-  background: linear-gradient(180deg, transparent 0%, rgba(246, 242, 236, 0.7) 50%, transparent 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(254, 247, 219, 0.35) 50%, transparent 100%);
 }
 
 .location-architectural-frame {
-  max-width: 720px;
+  max-width: 740px;
   margin: 0 auto;
   padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3.5rem);
-  border: 1px solid var(--border-gold-fine);
-  border-radius: 4px;
-  background: var(--bg-pure);
-  box-shadow: 0 15px 45px rgba(150, 114, 45, 0.08);
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(212, 175, 55, 0.15), 0 2px 8px rgba(0, 0, 0, 0.04);
   position: relative;
+  overflow: hidden;
 }
 
 .location-architectural-frame::before {
   content: '';
   position: absolute;
   inset: 6px;
-  border: 1px solid rgba(197, 160, 89, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.25);
   pointer-events: none;
 }
 
@@ -439,8 +489,22 @@
 }
 
 .rsvp-dialogue-wrap {
-  max-width: 620px;
+  max-width: 640px;
   margin: 0 auto;
+  background: #ffffff;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 6px;
+  box-shadow: 0 20px 55px rgba(212, 175, 55, 0.16), 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+.rsvp-dialogue-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  pointer-events: none;
 }
 
 .rsvp-conversational-heading {
@@ -462,8 +526,8 @@
 .rsvp-toggle-btn {
   flex: 1;
   padding: 1.15rem 1.4rem;
-  border: 1.5px solid var(--border-gold-fine);
-  background: var(--bg-pure);
+  border: 1.5px solid var(--border-gold-subtle);
+  background: #ffffff;
   font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 700;
@@ -477,8 +541,9 @@
 
 .rsvp-toggle-btn.active {
   border-color: var(--gold-primary);
-  background: rgba(197, 160, 89, 0.12);
+  background: rgba(254, 247, 219, 0.5);
   color: var(--ink-primary);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
 }
 
 .rsvp-toggle-btn input {
@@ -494,7 +559,7 @@
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid var(--border-gold-fine);
+  border-bottom: 1.5px solid var(--border-gold-strong);
   padding: 0.8rem 0;
   font-family: var(--font-editorial);
   font-size: 1.35rem;
@@ -533,7 +598,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(180deg, transparent 0%, rgba(246, 242, 236, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(254, 247, 219, 0.45) 100%);
 }
 
 .closing-monogram-watermark {
@@ -544,7 +609,7 @@
   font-family: var(--font-serif);
   font-size: clamp(10rem, 30vw, 20rem);
   font-weight: 400;
-  color: rgba(197, 160, 89, 0.06);
+  color: rgba(212, 175, 55, 0.08);
   pointer-events: none;
   z-index: 1;
 }

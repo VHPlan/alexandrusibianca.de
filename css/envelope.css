@@ -1,6 +1,6 @@
 /* ==========================================================================
-   ALEX & BIANCA — TRUE 3D PHYSICAL REALISTIC IVORY WEDDING ENVELOPE
-   Layered Cotton Paper, Florentine Gold Lining, 3D Wax Seal & Physical Card Slide
+   ALEX & BIANCA — IMMACULATE PURE WHITE & METALLIC GOLD 3D PHYSICAL ENVELOPE
+   Crisp Cotton Paper, Radiant Gold Foil, Multi-Layered Aura & Levitating Physics
    ========================================================================== */
 
 /* 1. Fullscreen Ambient Stage */
@@ -10,72 +10,111 @@
   width: 100vw;
   height: 100vh;
   background: 
-    radial-gradient(ellipse at 50% 35%, #ffffff 0%, #faf6f0 40%, #eee6db 75%, #dfd5be 100%);
+    radial-gradient(ellipse at 50% 38%, #ffffff 0%, #ffffff 45%, #fbf9f4 75%, #f4eee2 100%);
   z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1rem;
-  perspective: 1800px;
+  perspective: 2000px;
   overflow: hidden;
-  transition: opacity 1.4s cubic-bezier(0.7, 0, 0.2, 1), transform 1.4s cubic-bezier(0.7, 0, 0.2, 1), visibility 1.4s;
+  transition: opacity 1.3s cubic-bezier(0.7, 0, 0.2, 1), transform 1.3s cubic-bezier(0.7, 0, 0.2, 1), visibility 1.3s;
 }
 
 .envelope-ceremony-screen.opened {
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.14) translateY(-45px);
+  transform: scale(1.15) translateY(-40px);
   pointer-events: none;
 }
 
-/* Ambient Radial Warm Gold Glow Emitter */
+/* Radiant Luxury Aura Ring & Glow Behind Envelope */
 .royal-glow-emitter {
   position: absolute;
-  width: 900px;
-  height: 900px;
+  width: min(92vw, 680px);
+  height: min(92vw, 680px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(197, 160, 89, 0.24) 0%, rgba(246, 237, 210, 0.1) 45%, transparent 70%);
-  filter: blur(85px);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.28) 0%, rgba(254, 247, 219, 0.18) 40%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(40px);
   pointer-events: none;
-  animation: auraBreath 8s ease-in-out infinite alternate;
+  animation: auraPulse 6s ease-in-out infinite alternate;
 }
 
-@keyframes auraBreath {
-  0% { transform: scale(0.9) translate(-10px, -10px); opacity: 0.6; }
-  100% { transform: scale(1.18) translate(10px, 10px); opacity: 0.95; }
+@keyframes auraPulse {
+  0% { transform: scale(0.92); opacity: 0.7; }
+  100% { transform: scale(1.15); opacity: 1; filter: blur(55px); }
 }
 
-/* Floating Ambient Golden Bokeh Orbs */
+/* Ornamental Golden Orbit Halo Ring */
+.envelope-halo-ring {
+  position: absolute;
+  width: min(88vw, 560px);
+  height: min(88vw, 560px);
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), inset 0 0 30px rgba(212, 175, 55, 0.15);
+  pointer-events: none;
+  animation: haloRotate 40s linear infinite;
+}
+
+.envelope-halo-ring::before {
+  content: '✦';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-primary);
+  font-size: 1rem;
+  filter: drop-shadow(0 0 8px #f7e6a4);
+}
+
+.envelope-halo-ring::after {
+  content: '✦';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-primary);
+  font-size: 1rem;
+  filter: drop-shadow(0 0 8px #f7e6a4);
+}
+
+@keyframes haloRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Floating Golden Sparkle Orbs */
 .ambient-gold-orb {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(48px);
-  animation: orbDrift 14s ease-in-out infinite alternate;
+  filter: blur(45px);
+  animation: orbDrift 12s ease-in-out infinite alternate;
 }
-.orb-1 { width: 340px; height: 340px; background: rgba(217, 190, 132, 0.16); top: 8%; left: 12%; }
-.orb-2 { width: 300px; height: 300px; background: rgba(197, 160, 89, 0.14); bottom: 12%; right: 12%; animation-delay: -6s; }
+.orb-1 { width: 320px; height: 320px; background: rgba(254, 247, 219, 0.3); top: 10%; left: 10%; }
+.orb-2 { width: 280px; height: 280px; background: rgba(212, 175, 55, 0.2); bottom: 10%; right: 10%; animation-delay: -5s; }
 
 @keyframes orbDrift {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(32px, -22px) scale(1.15); }
-  100% { transform: translate(-22px, 32px) scale(0.9); }
+  50% { transform: translate(25px, -20px) scale(1.12); }
+  100% { transform: translate(-20px, 25px) scale(0.95); }
 }
 
 /* ==========================================================================
-   2. REFINED EDITORIAL HEADER
+   2. REFINED EDITORIAL INTRO HEADER
    ========================================================================== */
 .intro-royal-header {
   position: relative;
   z-index: 10;
   text-align: center;
-  margin-bottom: 2.4rem;
+  margin-bottom: 2rem;
   animation: introFadeUp 1.2s var(--ease-couture) forwards;
 }
 
 @keyframes introFadeUp {
-  from { opacity: 0; transform: translateY(-25px); }
+  from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -89,47 +128,47 @@
   letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--gold-dark);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .intro-badge-top .badge-sparkle {
   color: var(--gold-primary);
-  font-size: 0.9rem;
-  animation: sparkleRotate 3s ease-in-out infinite alternate;
+  font-size: 0.85rem;
+  animation: sparkleTwinkle 2.8s ease-in-out infinite alternate;
 }
 
-@keyframes sparkleRotate {
+@keyframes sparkleTwinkle {
   0% { transform: scale(0.8) rotate(0deg); opacity: 0.6; }
-  100% { transform: scale(1.25) rotate(90deg); opacity: 1; filter: drop-shadow(0 0 8px #d9be84); }
+  100% { transform: scale(1.3) rotate(90deg); opacity: 1; filter: drop-shadow(0 0 10px #f6e29f); }
 }
 
 .intro-royal-names {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6.2vw, 4.4rem);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
   font-weight: 400;
-  line-height: 1.12;
+  line-height: 1.1;
   letter-spacing: 0.18em;
   color: var(--ink-primary);
   text-transform: uppercase;
-  margin: 0 0 0.4rem;
-  text-shadow: 0 3px 25px rgba(120, 90, 33, 0.12);
+  margin: 0 0 0.35rem;
+  text-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
 }
 
 .intro-royal-names .amp {
   font-family: var(--font-script);
-  font-size: 1.25em;
+  font-size: 1.2em;
   font-weight: 400;
   background: var(--grad-gold-foil);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding: 0 0.45rem;
+  padding: 0 0.4rem;
   vertical-align: baseline;
   text-transform: none;
 }
 
 .intro-royal-sub {
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.4em;
   text-transform: uppercase;
@@ -142,14 +181,14 @@
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
-  margin: 0.85rem auto 0;
+  margin: 0.8rem auto 0;
 }
 
 .intro-gold-ornament .line {
-  width: 48px;
+  width: 45px;
   height: 1.5px;
   background: var(--grad-gold-foil);
-  box-shadow: 0 0 8px rgba(197, 160, 89, 0.4);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
 .intro-gold-ornament .diamond {
@@ -157,11 +196,11 @@
   height: 6px;
   background: var(--gold-primary);
   transform: rotate(45deg);
-  box-shadow: 0 0 8px #d9be84;
+  box-shadow: 0 0 8px #f7e6a4;
 }
 
 /* ==========================================================================
-   3. 3D PHYSICAL IVORY WEDDING ENVELOPE (HERO ELEMENT ON MOBILE)
+   3. 3D PHYSICAL PURE WHITE ENVELOPE (LEVITATING HERO)
    ========================================================================== */
 .envelope-3d-stage {
   position: relative;
@@ -170,164 +209,178 @@
   flex-direction: column;
   align-items: center;
   transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: envelopeFloat 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes envelopeFloat {
+  0% { transform: translateY(0px) rotateX(0deg); }
+  100% { transform: translateY(-12px) rotateX(1.5deg); }
 }
 
 .envelope-3d-stage.zooming {
-  transform: scale(1.1) translateZ(50px);
+  animation: none;
+  transform: scale(1.1) translateZ(60px);
 }
 
 .envelope-physical-box {
   width: min(82vw, 480px);
-  height: min(52vh, 300px);
+  aspect-ratio: 480 / 300;
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;
-  border-radius: 8px;
-  transition: transform 0.25s cubic-bezier(0.2, 0, 0.1, 1);
-  animation: envelopeHoverBreath 5s ease-in-out infinite alternate;
+  transition: transform 0.35s ease-out;
 }
 
-@keyframes envelopeHoverBreath {
-  0% { transform: translateY(0px) rotateX(0deg); }
-  100% { transform: translateY(-7px) rotateX(1deg); }
-}
-
-/* Realistic Multi-Layer Floor Contact Shadow */
+/* Multi-layer Soft Drop Shadow */
 .env-floor-shadow {
   position: absolute;
-  bottom: -30px;
-  left: 5%;
-  right: 5%;
-  height: 40px;
-  background: radial-gradient(ellipse at 50% 50%, rgba(120, 90, 33, 0.28) 0%, rgba(120, 90, 33, 0.1) 50%, transparent 75%);
+  bottom: -32px;
+  left: 6%;
+  right: 6%;
+  height: 42px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(140, 109, 35, 0.22) 0%, rgba(140, 109, 35, 0.08) 50%, transparent 75%);
   filter: blur(14px);
-  border-radius: 50%;
-  transform: translateZ(-30px);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform: translateZ(-50px) rotateX(80deg);
+  transition: all 0.5s ease;
+  pointer-events: none;
 }
 
 .envelope-physical-box:hover .env-floor-shadow {
-  transform: translateZ(-30px) scale(1.08);
-  opacity: 0.95;
+  bottom: -40px;
+  opacity: 0.85;
+  filter: blur(18px);
 }
 
-/* Dynamic Specular Light Glint */
+/* Specular Light Gleam Sweep */
 .env-sheen-sweep {
   position: absolute;
   inset: 0;
-  border-radius: 8px;
-  background: linear-gradient(115deg, 
-    transparent 0%, 
-    rgba(255, 255, 255, 0) 38%, 
-    rgba(255, 255, 255, 0.7) 50%, 
-    rgba(246, 237, 210, 0.4) 55%, 
-    transparent 68%
-  );
-  z-index: 15;
+  border-radius: 6px;
+  background: linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, 0.95) 48%, rgba(247, 230, 164, 0.6) 52%, transparent 75%);
+  background-size: 250% 250%;
+  mix-blend-mode: overlay;
   pointer-events: none;
-  opacity: 0.75;
-  background-size: 200% 200%;
+  z-index: 15;
+  opacity: 0.8;
   animation: sheenGlide 6s ease-in-out infinite;
 }
 
 @keyframes sheenGlide {
-  0% { background-position: -150% -150%; }
-  35%, 100% { background-position: 250% 250%; }
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
-/* 1. Envelope Back Wall (Textured Ivory with Gold Damask Silk Interior) */
+/* Back Sheet & Metallic Gold Florentine Damask Silk Lining */
 .env-back-sheet {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 50% 40%, rgba(246, 237, 210, 0.5) 0%, transparent 70%),
-    repeating-linear-gradient(45deg, rgba(197, 160, 89, 0.06) 0px, rgba(197, 160, 89, 0.06) 2px, transparent 2px, transparent 12px),
-    repeating-linear-gradient(-45deg, rgba(197, 160, 89, 0.06) 0px, rgba(197, 160, 89, 0.06) 2px, transparent 2px, transparent 12px),
-    linear-gradient(180deg, #fdfbf7 0%, #f6f0e4 100%);
-  border: 1.5px solid rgba(197, 160, 89, 0.45);
-  border-radius: 8px;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 
+    inset 0 0 50px rgba(212, 175, 55, 0.12),
+    0 18px 45px rgba(140, 109, 35, 0.15);
   z-index: 1;
-  box-shadow: inset 0 0 45px rgba(120, 90, 33, 0.12);
+  overflow: hidden;
 }
 
-/* 2. Heavy Double-Weight Cotton Invitation Card (Inside Pocket) */
+.env-back-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#d4af37 0.95px, transparent 0.95px), radial-gradient(#f7e6a4 0.95px, #ffffff 0.95px);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  opacity: 0.18;
+}
+
+/* Heavy Double-Weight Cotton Invitation Card Inside Pocket */
 .env-invitation-card {
   position: absolute;
-  inset: 12px 16px;
-  background: 
-    radial-gradient(circle at 50% 15%, rgba(255, 245, 215, 0.7) 0%, transparent 60%),
-    linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #f8f4e6 100%);
-  border: 2px solid var(--border-gold-strong);
-  border-radius: 6px;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  background: #ffffff;
+  border-radius: 4px;
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  box-shadow: 
+    0 8px 30px rgba(140, 109, 35, 0.18),
+    inset 0 0 25px rgba(254, 247, 219, 0.4);
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.8rem 1.4rem;
+  padding: 1.2rem;
   text-align: center;
-  z-index: 2;
-  box-shadow: 0 12px 35px rgba(120, 90, 33, 0.16), inset 0 0 30px rgba(197, 160, 89, 0.08);
-  transform: translateZ(2px);
-  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1.4s ease;
+  transform: translateY(0) translateZ(2px);
+  transition: transform 1.2s cubic-bezier(0.2, 0.9, 0.2, 1);
+  overflow: hidden;
 }
 
 .env-card-inner-frame {
   position: absolute;
   inset: 6px;
-  border: 1px solid rgba(197, 160, 89, 0.45);
-  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
   pointer-events: none;
 }
 
-/* When envelope opens, card physically slides up out of the pocket */
-.envelope-physical-box.open .env-invitation-card {
-  transform: translateY(-170px) translateZ(120px) scale(1.08);
-  box-shadow: 0 45px 95px rgba(120, 90, 33, 0.4), 0 0 60px rgba(217, 190, 132, 0.4);
+.env-card-inner-frame::after {
+  content: '✦';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.65rem;
+  color: var(--gold-primary);
 }
 
 .env-card-subtag {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.42em;
-  color: var(--gold-dark);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  color: var(--gold-dark);
+  margin-bottom: 0.3rem;
 }
 
 .env-card-monogram {
   font-family: var(--font-serif);
-  font-size: 3.6rem;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  margin-bottom: 0.35rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.2rem;
 }
 
 .env-card-names {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.15rem;
   font-weight: 400;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   color: var(--ink-primary);
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .env-card-date {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
   color: var(--gold-dark);
 }
 
-/* 3. Front Pocket Construction (Left Wing, Right Wing, Bottom Pocket Fold) */
+/* Card Extraction Animation */
+.envelope-physical-box.open .env-invitation-card {
+  transform: translateY(-165px) translateZ(120px) scale(1.04);
+  box-shadow: 0 35px 80px rgba(140, 109, 35, 0.35), 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Front Pocket */
 .env-pocket-front {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   z-index: 5;
   pointer-events: none;
 }
@@ -336,21 +389,21 @@
   width: 100%;
   height: 100%;
   display: block;
-  filter: drop-shadow(0 -3px 8px rgba(120, 90, 33, 0.12));
+  filter: drop-shadow(0 4px 18px rgba(140, 109, 35, 0.12));
 }
 
-/* 4. Top Pointed Baronial V-Flap (3D Rotating Flap) */
+/* 3D Top Pointed Baronial Flap */
 .env-top-flap-3d {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 62%;
   transform-origin: top center;
+  transform: rotateX(0deg);
   transform-style: preserve-3d;
-  transition: transform 1.35s cubic-bezier(0.2, 0.85, 0.2, 1), z-index 0.4s ease;
+  transition: transform 1.25s cubic-bezier(0.3, 0.8, 0.2, 1);
   z-index: 10;
-  filter: drop-shadow(0 14px 25px rgba(120, 90, 33, 0.22));
 }
 
 .envelope-physical-box.open .env-top-flap-3d {
@@ -365,35 +418,24 @@
 }
 
 /* ==========================================================================
-   4. PHOTOREALISTIC ANTIQUE CHAMPAGNE GOLD WAX SEAL WITH EMBOSSED 'AB'
+   4. METALLIC CHAMPAGNE GOLD WAX SEAL WITH EMBOSSED 'AB' MONOGRAM
    ========================================================================== */
 .env-organic-wax-seal {
   position: absolute;
-  bottom: -32px;
+  bottom: -28px;
   left: 50%;
-  transform: translateX(-50%) translateZ(28px);
-  width: 100px;
-  height: 100px;
-  z-index: 25;
+  transform: translateX(-50%) translateZ(15px);
+  width: 78px;
+  height: 78px;
   cursor: pointer;
-  filter: drop-shadow(0 12px 28px rgba(100, 75, 25, 0.45)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-  transition: transform 0.35s cubic-bezier(0.2, 0, 0.1, 1), filter 0.35s ease, opacity 0.5s ease;
-  animation: waxGlow 3.5s ease-in-out infinite alternate;
-}
-
-@keyframes waxGlow {
-  0% { filter: drop-shadow(0 10px 24px rgba(100, 75, 25, 0.38)); }
-  100% { filter: drop-shadow(0 16px 36px rgba(197, 160, 89, 0.8)) drop-shadow(0 0 25px rgba(217, 190, 132, 0.55)); }
+  z-index: 20;
+  transition: transform 0.4s var(--ease-spring), opacity 0.5s ease;
+  filter: drop-shadow(0 8px 24px rgba(100, 75, 18, 0.45));
 }
 
 .env-organic-wax-seal:hover {
-  transform: translateX(-50%) translateZ(42px) scale(1.08);
-}
-
-.env-organic-wax-seal.broken {
-  transform: translateX(-50%) translateZ(140px) scale(1.45);
-  opacity: 0;
-  pointer-events: none;
+  transform: translateX(-50%) translateZ(25px) scale(1.08);
+  filter: drop-shadow(0 12px 30px rgba(212, 175, 55, 0.65));
 }
 
 .wax-svg-shape {
@@ -402,102 +444,87 @@
   display: block;
 }
 
-/* Orbiting Sparkle Dots around Seal */
+/* Orbiting Sparkles around Wax Seal */
 .seal-orbit-sparkles {
   position: absolute;
-  inset: -14px;
-  pointer-events: none;
+  inset: -12px;
   border-radius: 50%;
-  animation: orbitRotate 10s linear infinite;
-}
-
-@keyframes orbitRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  pointer-events: none;
+  animation: sealOrbit 8s linear infinite;
 }
 
 .seal-orbit-sparkles .sparkle-dot {
   position: absolute;
-  width: 6.5px;
-  height: 6.5px;
-  background: #ffffff;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  box-shadow: 0 0 10px #d9be84, 0 0 16px #fff;
+  background: var(--gold-primary);
+  box-shadow: 0 0 10px #f7e6a4;
 }
 
 .seal-orbit-sparkles .sparkle-dot:nth-child(1) { top: 0; left: 50%; }
-.seal-orbit-sparkles .sparkle-dot:nth-child(2) { bottom: 5px; right: 15%; }
-.seal-orbit-sparkles .sparkle-dot:nth-child(3) { top: 60%; left: -5px; }
+.seal-orbit-sparkles .sparkle-dot:nth-child(2) { bottom: 10%; right: 10%; width: 4px; height: 4px; }
+.seal-orbit-sparkles .sparkle-dot:nth-child(3) { bottom: 20%; left: 10%; width: 3px; height: 3px; }
+
+@keyframes sealOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Seal Fracture Animation upon Click */
+.env-organic-wax-seal.broken {
+  animation: waxShatter 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes waxShatter {
+  0% { transform: translateX(-50%) scale(1); opacity: 1; }
+  40% { transform: translateX(-50%) scale(1.22); filter: drop-shadow(0 0 35px #f7e6a4); opacity: 0.95; }
+  100% { transform: translateX(-50%) scale(1.35) rotate(15deg); opacity: 0; pointer-events: none; }
+}
 
 /* ==========================================================================
-   5. ELEGANT TOUCH PROMPT: „Deschide invitația”
+   5. INTERACTIVE TOUCH PROMPT
    ========================================================================== */
 .envelope-touch-prompt {
-  margin-top: 2.6rem;
+  margin-top: 2.8rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.85rem;
+  background: #ffffff;
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 35px;
+  padding: 0.9rem 2.2rem;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.22), 0 2px 6px rgba(0, 0, 0, 0.04);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold-dark);
   cursor: pointer;
-  padding: 0.95rem 2.4rem;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1.5px solid var(--border-gold-strong);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 30px rgba(120, 90, 33, 0.15), 0 0 18px rgba(197, 160, 89, 0.2);
   transition: all 0.35s var(--ease-couture);
-  animation: promptGlowPulse 2.8s ease-in-out infinite;
+  animation: promptPulse 3.2s ease-in-out infinite;
 }
 
-@keyframes promptGlowPulse {
-  0%, 100% { 
-    transform: scale(1); 
-    box-shadow: 0 8px 30px rgba(120, 90, 33, 0.12), 0 0 15px rgba(197, 160, 89, 0.15); 
-  }
-  50% { 
-    transform: scale(1.04); 
-    box-shadow: 0 12px 35px rgba(120, 90, 33, 0.22), 0 0 25px rgba(217, 190, 132, 0.45); 
-    border-color: var(--gold-primary);
-  }
+@keyframes promptPulse {
+  0% { transform: scale(1); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.22); }
+  50% { transform: scale(1.04); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.42); }
+  100% { transform: scale(1); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.22); }
 }
 
 .envelope-touch-prompt:hover {
-  transform: scale(1.06);
-  background: #ffffff;
-  color: var(--gold-deep);
+  background: var(--grad-gold-foil);
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
 }
 
 .envelope-touch-prompt .prompt-sparkle {
   color: var(--gold-primary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
 }
 
-@media (max-width: 600px) {
-  .intro-royal-names {
-    font-size: 2.1rem;
-    letter-spacing: 0.14em;
-  }
-  .intro-badge-top {
-    font-size: 0.62rem;
-    letter-spacing: 0.28em;
-  }
-  .envelope-physical-box {
-    width: 82vw;
-    height: 255px;
-  }
-  .env-organic-wax-seal {
-    width: 88px;
-    height: 88px;
-    bottom: -28px;
-  }
-  .envelope-touch-prompt {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    padding: 0.8rem 2rem;
-  }
+.envelope-touch-prompt:hover .prompt-sparkle {
+  color: #ffffff;
 }

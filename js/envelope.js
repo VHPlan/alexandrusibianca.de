@@ -150,6 +150,11 @@ class EnvelopeCeremony {
       if (this.mainInvitation) this.mainInvitation.classList.add('active');
       this.isOpened = true;
 
+      // Soft cascade of celebratory sparkles
+      if (this.particles) {
+        this.particles.createBurst(window.innerWidth / 2, window.innerHeight * 0.3, 50);
+      }
+
       // Scroll to top of main content
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 2000);
