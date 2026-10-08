@@ -222,6 +222,16 @@
   let busy = false;
   setTimeout(() => gIn.classList.add('ready'), T(5.4));
 
+  // vault dial — turns like a combination lock with every keystroke
+  const dial = $('#gDial');
+  let rot = 0, lastLen = 0, tickT = 0;
+  input.addEventListener('input', () => {
+    const d = input.value.length - lastLen; lastLen = input.value.length;
+    rot += (d >= 0 ? 1 : -1) * (24 + Math.random() * 30) * Math.max(1, Math.abs(d));
+    dial.style.setProperty('--rot', rot + 'deg');
+    dial.classList.add('tick'); clearTimeout(tickT); tickT = setTimeout(() => dial.classList.remove('tick'), 180);
+  });
+
   const fail = (msg) => {
     gIn.classList.add('ready');
     err.textContent = msg;
