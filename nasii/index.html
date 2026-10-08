@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&family=Pinyon+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/nasii/nasii.css?v=n3">
+  <link rel="stylesheet" href="/nasii/nasii.css?v=n5">
 </head>
 <body class="is-locked">
 
@@ -113,7 +113,13 @@
         <span class="r-mono">AB</span>
         <span class="r-names">Alex <em>&amp;</em> Bianca</span>
       </div>
-      <button class="r-l r-link" style="--d:8.8s" id="waYes" type="button">Trimiteți-ne răspunsul</button>
+      <div class="r-l r-pair" style="--d:8.8s">
+        <span class="r-pair__lbl">Trimiteți-ne răspunsul</span>
+        <div class="r-pair__btns">
+          <button class="r-link" type="button" data-wa="yes" data-to="alex">Lui Alex</button>
+          <button class="r-link" type="button" data-wa="yes" data-to="bianca">Biancăi</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -123,11 +129,17 @@
       <p class="r-l r-txt r-txt--lg" style="--d:.5s">Înțelegem perfect.</p>
       <p class="r-l r-txt" style="--d:2.1s">Este o întrebare importantă.</p>
       <p class="r-l r-txt r-txt--it" style="--d:3.7s">Luați-vă timpul de care aveți nevoie.</p>
-      <button class="r-l btn btn--ghost r-btn" style="--d:5.4s" id="waTalk" type="button"><span>Vorbim cu drag</span></button>
+      <div class="r-l r-pair r-pair--big" style="--d:5.4s">
+        <span class="r-pair__lbl">Vorbim cu drag</span>
+        <div class="r-pair__btns">
+          <button class="btn btn--ghost" type="button" data-wa="talk" data-to="alex"><span><b class="capA">A</b>lex</span></button>
+          <button class="btn btn--ghost" type="button" data-wa="talk" data-to="bianca"><span>Bianca</span></button>
+        </div>
+      </div>
       <button class="r-l r-back" style="--d:6.2s" data-close type="button">Înapoi</button>
     </div>
   </div>
 
-  <script src="/nasii/nasii.js?v=n3"></script>
+  <script src="/nasii/nasii.js?v=n5"></script>
 </body>
 </html>

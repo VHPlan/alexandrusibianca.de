@@ -16,7 +16,7 @@
 
   /* RSVP → WhatsApp. Numărul în format internațional, fără + sau spații
      (ex: 40712345678). Invitatul trimite confirmarea direct pe acest număr. */
-  const WHATSAPP_NUMBER = '4917655700551';
+  const WHATSAPP = { alex: '4917655700551', bianca: '4915563441309' };
 
   /* ---------------------------------------------------------
      1. LIGHT CANVAS — gold dust, twinkling stars, soft bokeh
@@ -838,7 +838,6 @@
   const choice = $('.choice');
   const attendFields = $('#attendFields');
   const fName = $('#fName');
-  const submitBtn = $('#submitBtn');
   const thanks = $('#thanks');
   const state = { attend: 'yes', guests: 2, kids: 0, menu: 'Clasic' };
 
@@ -851,7 +850,6 @@
     });
     choice.classList.toggle('is-no', state.attend === 'no');
     attendFields.classList.toggle('is-closed', state.attend === 'no');
-    $('.btn-confirm__txt').textContent = state.attend === 'no' ? 'Trimite răspunsul' : 'Confirmă prezența';
   }));
 
   const LIM = { guests: [1, 10], kids: [0, 10] };
@@ -880,6 +878,8 @@
       fName.focus();
       return;
     }
+    const submitBtn = (e.submitter && e.submitter.dataset.to) ? e.submitter : $('.wa-pair .btn-confirm');
+    const to = submitBtn.dataset.to || 'alex';
     submitBtn.classList.add('is-loading');
     submitBtn.disabled = true;
 
@@ -890,6 +890,7 @@
       kids: state.attend === 'yes' ? state.kids : 0,
       menu: state.attend === 'yes' ? state.menu : '',
       message: $('#fMsg').value.trim(),
+      to,
       at: new Date().toISOString()
     };
     try {
@@ -912,7 +913,7 @@
       lines.push('Meniu: ' + entry.menu);
     }
     if (entry.message) lines.push('', 'Mesaj: ' + entry.message);
-    const waUrl = 'https://wa.me/' + WHATSAPP_NUMBER.replace(/\D/g, '') +
+    const waUrl = 'https://wa.me/' + WHATSAPP[to] +
       '?text=' + encodeURIComponent(lines.join('\n'));
     window.__lastWa = waUrl;
     if (MOBILE) window.location.href = waUrl;

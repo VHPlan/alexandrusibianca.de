@@ -13,7 +13,7 @@
   const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   /* Numărul de WhatsApp al mirilor (format internațional, fără +) */
-  const WHATSAPP_NUMBER = '4917655700551';
+  const WHATSAPP = { alex: '4917655700551', bianca: '4915563441309' };
 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
@@ -349,8 +349,8 @@
   const resYes = $('#resYes');
   const resTime = $('#resTime');
   const sign = couple ? '\n\n— ' + couple : '';
-  const wa = (text) => {
-    const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
+  const wa = (to, text) => {
+    const url = 'https://wa.me/' + (WHATSAPP[to] || WHATSAPP.alex) + '?text=' + encodeURIComponent(text);
     window.__lastWa = url;
     if (MOBILE) window.location.href = url;
     else window.open(url, '_blank', 'noopener');
@@ -375,10 +375,11 @@
   $('#time').addEventListener('click', () => show(resTime));
   $$('[data-close]').forEach((b) => b.addEventListener('click', () => hide(b.closest('.result'))));
 
-  $('#waYes').addEventListener('click', () =>
-    wa('Dragi Alex & Bianca,\n\nDA, CU DRAG! ✨\nVom fi nașii voștri și ne bucurăm enorm.' + sign));
-  $('#waTalk').addEventListener('click', () =>
-    wa('Dragi Alex & Bianca,\n\nne-a emoționat mult întrebarea voastră. Hai să vorbim, cu drag.' + sign));
+  const MSG = {
+    yes: 'Dragi Alex & Bianca,\n\nDA, CU DRAG! ✨\nVom fi nașii voștri și ne bucurăm enorm.',
+    talk: 'Dragi Alex & Bianca,\n\nne-a emoționat mult întrebarea voastră. Hai să vorbim, cu drag.'
+  };
+  $$('[data-wa]').forEach((b) => b.addEventListener('click', () => wa(b.dataset.to, MSG[b.dataset.wa] + sign)));
 
   /* debug: ?skip opens straight away */
   if (/[?&]skip/.test(location.search)) {

@@ -562,3 +562,9 @@ body { color: var(--text); }
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 .form.is-hidden + .wa-note{display:none}
+
+/* ===== WhatsApp: two recipients ===== */
+.wa-note{margin:1.6rem 0 .9rem}
+.wa-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wa-pair .btn-confirm{margin-top:0;width:100%}
+.wa-pair .btn-confirm__txt{font-family:'Great Vibes',cursive;font-size:1.65rem;letter-spacing:0;text-transform:none;padding-left:0;line-height:1}
