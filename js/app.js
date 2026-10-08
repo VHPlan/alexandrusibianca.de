@@ -1,35 +1,19 @@
 /**
- * ALEX & BIANCA — LUXURY WEDDING INVITATION CONTROLLER
- * Main app logic: Intro transition, countdown, RSVP, calendar, WhatsApp share & scroll reveal.
+ * ALEX & BIANCA — MAIN WEDDING APPLICATION CONTROLLER
+ * Initializes particle engine, audio, envelope ceremony, live countdown, RSVP, and calendar export.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Particles
+  // 1. Initialize Particles Engine
   const particles = new ParticleEngine('particles-canvas');
 
-  // 2. Intro Screen Opening Transition
-  const introScreen = document.getElementById('intro-screen');
-  const openBtn = document.getElementById('btn-open-invitation');
-  const mainInvitation = document.getElementById('main-invitation');
+  // 2. Initialize Audio Engine
+  const audio = new AudioEngine();
 
-  if (openBtn && introScreen && mainInvitation) {
-    openBtn.addEventListener('click', () => {
-      // Golden Particle Burst at Button Position
-      const rect = openBtn.getBoundingClientRect();
-      particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 85);
+  // 3. Initialize 3D Envelope Ceremony
+  const envelope = new EnvelopeCeremony(audio, particles);
 
-      // Fade out intro & reveal main invitation
-      introScreen.classList.add('opened');
-      mainInvitation.classList.add('active');
-
-      // Scroll smoothly to Hero
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 300);
-    });
-  }
-
-  // 3. Live Countdown Timer (20 June 2027, 17:30)
+  // 4. Live Countdown Timer (20 June 2027, 17:30)
   const targetDate = new Date('June 20, 2027 17:30:00').getTime();
 
   function updateCountdown() {
@@ -60,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // 4. Scroll Reveal Observer
+  // 5. Scroll Reveal Observer
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -72,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // 5. RSVP Radio Group Selection
+  // 6. RSVP Radio Group Selection
   const radioCards = document.querySelectorAll('.rsvp-radio-card');
   radioCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -83,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. RSVP Form Submission
+  // 7. RSVP Form Submission
   const rsvpForm = document.getElementById('rsvp-form');
   const rsvpSuccess = document.getElementById('rsvp-success');
 
@@ -93,19 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const guestName = document.getElementById('guest-name').value;
       const attending = document.querySelector('input[name="attending"]:checked')?.value || 'yes';
       const guestsCount = document.getElementById('guest-count')?.value || '1';
+      const guestMessage = document.getElementById('guest-message')?.value || '';
 
       // Save to localStorage
-      localStorage.setItem('alex_bianca_rsvp', JSON.stringify({
+      localStorage.setItem('alex_bianca_wedding_rsvp', JSON.stringify({
         name: guestName,
         attending,
         guests: guestsCount,
+        message: guestMessage,
         timestamp: new Date().toISOString()
       }));
 
       // Particle celebration burst
       const btn = rsvpForm.querySelector('button[type="submit"]');
       const rect = btn.getBoundingClientRect();
-      particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 70);
+      particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 75);
 
       // Show success view
       rsvpForm.style.display = 'none';
@@ -117,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Add to Calendar (.ics Generator)
+  // 8. Add to Calendar (.ics Generator)
   const calendarBtn = document.getElementById('btn-add-calendar');
   if (calendarBtn) {
     calendarBtn.addEventListener('click', (e) => {
@@ -147,7 +133,7 @@ END:VCALENDAR`;
     });
   }
 
-  // 8. WhatsApp Sharing
+  // 9. WhatsApp Sharing
   const whatsappBtn = document.getElementById('btn-whatsapp-share');
   if (whatsappBtn) {
     whatsappBtn.addEventListener('click', () => {

@@ -1,43 +1,43 @@
 /* ==========================================================================
-   ALEX & BIANCA — LUXURY WHITE & CHAMPAGNE GOLD WEDDING INVITATION
-   Editorial Haute Couture, Warm Alabaster & 24K Metallic Gold Foil
+   ALEX & BIANCA — BESPOKE ULTRA-LUXURY WEDDING INVITATION
+   Warm Ivory, Pearl White & Antique Champagne Gold Foil System
    ========================================================================== */
 
 :root {
-  /* Alabaster & Warm Ivory Palette */
-  --bg-main: #faf8f5;
+  /* Warm Ivory, Pearl & Soft Cream Palette */
+  --bg-main: #faf7f2;
   --bg-pure: #ffffff;
-  --bg-ivory: #f5f1eb;
-  --bg-pearl: #ede7de;
+  --bg-ivory: #f5efeb;
+  --bg-cream: #eee6db;
   --bg-card: rgba(255, 255, 255, 0.94);
-  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-glass: rgba(255, 255, 255, 0.86);
 
-  /* Deep Contrast Ink Colors */
-  --ink-primary: #1c1917;
-  --ink-secondary: #44403c;
-  --ink-muted: #78716c;
-  --ink-light: #a8a29e;
+  /* Deep Contrast Charcoal Ink Typography */
+  --ink-primary: #1e1b18;
+  --ink-secondary: #4a443b;
+  --ink-muted: #7c7365;
+  --ink-light: #a89f91;
 
-  /* Champagne & 24K Metallic Gold Accents */
-  --gold-primary: #c5a059;
-  --gold-metallic: #d4af37;
-  --gold-light: #f3e6c4;
-  --gold-bright: #ffd700;
-  --gold-dark: #8c6b24;
-  --gold-subtle: rgba(197, 160, 89, 0.18);
+  /* Antique Champagne & 24K Metallic Gold Accents */
+  --gold-primary: #c8a86b;
+  --gold-metallic: #d9be84;
+  --gold-light: #f5eccf;
+  --gold-dark: #a8833e;
+  --gold-deep: #785a21;
+  --gold-subtle: rgba(200, 168, 107, 0.2);
 
   /* Gradients */
-  --grad-gold-metallic: linear-gradient(135deg, #a67c1e 0%, #f4e4a6 30%, #c5a059 60%, #fff8dc 85%, #8c6b24 100%);
-  --grad-gold-text: linear-gradient(135deg, #7a5808 0%, #c5a059 35%, #8c6b24 70%, #d4af37 100%);
-  --grad-ivory-sheen: linear-gradient(180deg, #ffffff 0%, #faf6ef 50%, #f4eee2 100%);
-  --grad-ambient: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.12) 0%, transparent 65%);
+  --grad-gold-foil: linear-gradient(135deg, #a8833e 0%, #f5eccf 28%, #c8a86b 55%, #fff9e6 80%, #916c29 100%);
+  --grad-gold-text: linear-gradient(135deg, #785a21 0%, #c8a86b 35%, #916c29 70%, #d9be84 100%);
+  --grad-ivory-sheen: linear-gradient(180deg, #ffffff 0%, #faf6f0 50%, #f2ebe0 100%);
+  --grad-ambient: radial-gradient(circle at 50% 0%, rgba(200, 168, 107, 0.12) 0%, transparent 65%);
 
-  /* Borders & Shadows */
-  --border-gold-subtle: rgba(197, 160, 89, 0.28);
-  --border-gold-strong: rgba(197, 160, 89, 0.65);
-  --shadow-sm: 0 4px 18px rgba(140, 107, 36, 0.06);
-  --shadow-md: 0 12px 35px rgba(140, 107, 36, 0.1), 0 2px 6px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 24px 60px rgba(140, 107, 36, 0.14), 0 6px 18px rgba(0, 0, 0, 0.03);
+  /* Borders & Soft Diffused Shadows */
+  --border-gold-subtle: rgba(200, 168, 107, 0.3);
+  --border-gold-strong: rgba(200, 168, 107, 0.7);
+  --shadow-sm: 0 4px 18px rgba(120, 90, 33, 0.05);
+  --shadow-md: 0 12px 35px rgba(120, 90, 33, 0.09), 0 2px 6px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 25px 65px rgba(120, 90, 33, 0.13), 0 6px 18px rgba(0, 0, 0, 0.03);
 
   /* Typography */
   --font-serif: 'Italiana', 'Cinzel', serif;
@@ -80,15 +80,15 @@ body::before {
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 50% 10%, rgba(244, 228, 166, 0.22) 0%, transparent 60%),
-    radial-gradient(circle at 85% 85%, rgba(197, 160, 89, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 15% 70%, rgba(244, 228, 166, 0.15) 0%, transparent 45%),
-    #faf8f5;
+    radial-gradient(circle at 50% 10%, rgba(245, 236, 207, 0.3) 0%, transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(200, 168, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 15% 70%, rgba(245, 236, 207, 0.2) 0%, transparent 45%),
+    #faf7f2;
   z-index: -2;
   pointer-events: none;
 }
 
-/* Luxury Canvas Particle Overlay */
+/* Canvas Particle Layer */
 #particles-canvas {
   position: fixed;
   inset: 0;
@@ -151,7 +151,7 @@ section {
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  background: var(--grad-gold-metallic);
+  background: var(--grad-gold-foil);
   color: #ffffff;
   font-family: var(--font-sans);
   font-size: 0.78rem;
@@ -162,7 +162,7 @@ section {
   border-radius: 40px;
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.32);
+  box-shadow: 0 10px 30px rgba(200, 168, 107, 0.35);
   transition: transform 0.35s var(--ease-couture), box-shadow 0.35s var(--ease-couture);
   cursor: pointer;
   text-shadow: 0 1px 2px rgba(100, 70, 10, 0.35);
@@ -177,7 +177,7 @@ section {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
   transform: skewX(-25deg);
   animation: btnSheen 3.6s infinite;
 }
@@ -189,7 +189,7 @@ section {
 
 .btn-gold-primary:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 16px 45px rgba(197, 160, 89, 0.5);
+  box-shadow: 0 16px 45px rgba(200, 168, 107, 0.5);
 }
 
 .btn-gold-outline {
@@ -215,7 +215,7 @@ section {
 }
 
 .btn-gold-outline:hover {
-  background: rgba(197, 160, 89, 0.12);
+  background: rgba(200, 168, 107, 0.12);
   border-color: var(--gold-primary);
   color: var(--ink-primary);
   transform: translateY(-2px);

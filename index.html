@@ -3,217 +3,338 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <meta name="theme-color" content="#faf8f5">
+  <meta name="theme-color" content="#faf7f2">
   <title>ALEX &amp; BIANCA — THE WEDDING | 20.06.2027</title>
   
   <meta name="description" content="Invitație digitală de nuntă exclusivistă • Alex &amp; Bianca • 20 Iunie 2027">
   <meta property="og:title" content="ALEX &amp; BIANCA — THE WEDDING">
-  <meta property="og:description" content="Suntem bucuroși să vă invităm la nunta noastră • 20 Iunie 2027">
+  <meta property="og:description" content="Două suflete, o singură poveste • 20 Iunie 2027">
 
   <!-- Luxury Haute Couture Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=fresh_white_gold_v1">
-  <link rel="stylesheet" href="css/components.css?v=fresh_white_gold_v1">
+  <link rel="stylesheet" href="css/main.css?v=bespoke_ivory_v1">
+  <link rel="stylesheet" href="css/envelope.css?v=bespoke_ivory_v1">
+  <link rel="stylesheet" href="css/components.css?v=bespoke_ivory_v1">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23ffffff%22 stroke=%22%23c5a059%22 stroke-width=%223%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Italiana%22 font-size=%2232%22 fill=%22%238c6b24%22>AB</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23ffffff%22 stroke=%22%23c8a86b%22 stroke-width=%223%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Italiana%22 font-size=%2232%22 fill=%22%23a8833e%22>AB</text></svg>">
 </head>
 <body>
 
   <!-- Golden Particle Canvas Layer -->
   <canvas id="particles-canvas"></canvas>
 
+  <!-- Floating Discreet Luxury Music Player -->
+  <aside class="floating-music-player" id="floating-music-player" title="Apasă pentru Play / Pause">
+    <div class="vinyl-disc" id="vinyl-disc"></div>
+    <div class="player-text-wrap">
+      <span class="player-track-tag">👑 Melodia Mirilor</span>
+      <span class="player-track-title">LeLe — Dacă lumea se termină</span>
+    </div>
+    <button class="player-action-btn" id="player-play-btn" title="Play / Pause">▶</button>
+  </aside>
+
   <!-- =========================================================================
-       SCREEN 1 — LUXURY INTRO / FIRST IMPRESSION
+       SCREEN 1 — BESPOKE 3D PHYSICAL IVORY WEDDING ENVELOPE CEREMONY
        ========================================================================= -->
-  <div class="intro-ceremony-screen" id="intro-screen">
-    <div class="intro-ambient-glow"></div>
+  <div class="envelope-ceremony-screen" id="envelope-screen">
+    <div class="royal-glow-emitter"></div>
+    <div class="ambient-gold-orb orb-1"></div>
+    <div class="ambient-gold-orb orb-2"></div>
 
-    <div class="luxury-intro-card">
-      <div class="intro-card-inner-border"></div>
+    <!-- Centered Haute Couture Wedding Header -->
+    <div class="intro-royal-header">
+      <div class="intro-badge-top">
+        <span class="badge-sparkle">✦</span>
+        <span>INVITAȚIE DE NUNTĂ</span>
+        <span class="badge-sparkle">✦</span>
+      </div>
+      
+      <h1 class="intro-royal-names">
+        ALEXANDRU <span class="amp">&amp;</span> BIANCA
+      </h1>
+      
+      <p class="intro-royal-sub">20 IUNIE 2027 • PALATUL SNAGOV</p>
 
-      <!-- Jewelry Monogram Crest -->
-      <div class="intro-crest">
-        <span class="intro-crest-monogram gold-shimmer">AB</span>
+      <div class="intro-gold-ornament">
+        <span class="line"></span>
+        <span class="diamond"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+
+    <!-- 3D Physical Realistic Ivory Wedding Envelope -->
+    <div class="envelope-3d-stage">
+      <div class="envelope-physical-box" id="royal-box-3d">
+        <!-- 0. Realistic Soft Floor Drop Shadow -->
+        <div class="env-floor-shadow"></div>
+
+        <!-- 1. Dynamic Specular Light Glint -->
+        <div class="env-sheen-sweep"></div>
+
+        <!-- 2. Envelope Back Wall & Gold Damask Silk Interior Lining -->
+        <div class="env-back-sheet"></div>
+
+        <!-- 3. Heavy Double-Weight Cotton Invitation Card (Inside Pocket) -->
+        <div class="env-invitation-card" id="royal-card">
+          <div class="env-card-inner-frame"></div>
+          <div class="env-card-subtag">INVITAȚIE DE NUNTĂ</div>
+          <div class="env-card-monogram gold-shimmer">AB</div>
+          <div class="env-card-names">ALEXANDRU &amp; BIANCA</div>
+          <div class="env-card-date">20 • 06 • 2027 • PALATUL SNAGOV</div>
+        </div>
+
+        <!-- 4. Realistic Front Pocket (Left Wing, Right Wing, Bottom Pocket Fold) -->
+        <div class="env-pocket-front">
+          <svg class="env-pocket-svg" viewBox="0 0 480 300" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="pocketBase" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="50%" stop-color="#faf6f0"/>
+                <stop offset="100%" stop-color="#eee5d8"/>
+              </linearGradient>
+              <linearGradient id="wingLeft" x1="0%" y1="0%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f4eee2"/>
+              </linearGradient>
+              <linearGradient id="wingRight" x1="100%" y1="0%" x2="0%" y2="50%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f4eee2"/>
+              </linearGradient>
+              <linearGradient id="goldEdgeTrim" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#c8a86b"/>
+                <stop offset="50%" stop-color="#f5eccf"/>
+                <stop offset="100%" stop-color="#a8833e"/>
+              </linearGradient>
+              <filter id="pocketSeamShadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="-3" stdDeviation="3.5" flood-color="#785a21" flood-opacity="0.14"/>
+              </filter>
+            </defs>
+
+            <!-- Left wing fold -->
+            <path d="M0,0 L0,300 L240,150 Z" fill="url(#wingLeft)" stroke="url(#goldEdgeTrim)" stroke-width="0.8" opacity="0.95"/>
+            <!-- Right wing fold -->
+            <path d="M480,0 L480,300 L240,150 Z" fill="url(#wingRight)" stroke="url(#goldEdgeTrim)" stroke-width="0.8" opacity="0.95"/>
+            <!-- Bottom pocket fold overlapping wings -->
+            <path d="M0,300 L240,140 L480,300 Z" fill="url(#pocketBase)" stroke="url(#goldEdgeTrim)" stroke-width="1.2" filter="url(#pocketSeamShadow)"/>
+          </svg>
+        </div>
+
+        <!-- 5. Top Pointed Baronial V-Flap (3D Rotating Flap) -->
+        <div class="env-top-flap-3d" id="door-right">
+          <svg class="env-flap-svg" viewBox="0 0 480 185" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="flapPaperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="45%" stop-color="#faf7f1"/>
+                <stop offset="100%" stop-color="#eee2ce"/>
+              </linearGradient>
+              <linearGradient id="flapGoldBevel" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#c8a86b"/>
+                <stop offset="50%" stop-color="#f5eccf"/>
+                <stop offset="100%" stop-color="#916c29"/>
+              </linearGradient>
+              <filter id="flapEdgeGlow" x="-10%" y="-10%" width="120%" height="130%">
+                <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#785a21" flood-opacity="0.25"/>
+              </filter>
+            </defs>
+            <!-- Deep Triangular Pointed Flap -->
+            <path d="M0,0 L480,0 L240,180 Z" fill="url(#flapPaperGrad)" stroke="url(#flapGoldBevel)" stroke-width="1.6" filter="url(#flapEdgeGlow)"/>
+          </svg>
+
+          <!-- 6. Photorealistic Organic Antique Champagne Gold Wax Seal with Embossed 'AB' Monogram -->
+          <div class="env-organic-wax-seal" id="royal-seal" title="Apasă pentru a deschide invitația">
+            <div class="seal-orbit-sparkles">
+              <span class="sparkle-dot"></span>
+              <span class="sparkle-dot"></span>
+              <span class="sparkle-dot"></span>
+            </div>
+
+            <svg class="wax-svg-shape" viewBox="0 0 100 100">
+              <defs>
+                <radialGradient id="waxGoldGrad" cx="35%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="20%" stop-color="#f5eccf"/>
+                  <stop offset="52%" stop-color="#c8a86b"/>
+                  <stop offset="82%" stop-color="#8a6b29"/>
+                  <stop offset="100%" stop-color="#4d370e"/>
+                </radialGradient>
+                <radialGradient id="waxInnerGrad" cx="42%" cy="38%" r="60%">
+                  <stop offset="0%" stop-color="#fdf4d7"/>
+                  <stop offset="42%" stop-color="#c8a86b"/>
+                  <stop offset="85%" stop-color="#8a6b29"/>
+                  <stop offset="100%" stop-color="#4a350d"/>
+                </radialGradient>
+                <linearGradient id="waxSpecular" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                  <stop offset="35%" stop-color="#f5eccf" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
+                </linearGradient>
+                <filter id="waxDrop3d" x="-25%" y="-25%" width="150%" height="150%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="4.5" flood-color="#2d1f05" flood-opacity="0.65"/>
+                </filter>
+              </defs>
+
+              <!-- Natural Melted Poured Wax Contour -->
+              <path d="M50,4 C68,2 85,11 91,25 C99,39 100,60 92,75 C85,90 69,99 51,98 C30,97 12,87 6,71 C0,53 2,33 12,20 C22,7 35,5 50,4 Z" fill="url(#waxGoldGrad)" filter="url(#waxDrop3d)"/>
+              <path d="M50,7 C66,5 81,14 86,27 C94,39 95,57 88,71 C81,84 66,93 51,92 C32,91 16,83 11,67 C5,52 7,34 16,22 C25,10 39,7 50,7 Z" fill="none" stroke="url(#waxSpecular)" stroke-width="2.2" opacity="0.95"/>
+
+              <!-- Stamped Recessed Bed -->
+              <circle cx="50" cy="50" r="32" fill="url(#waxInnerGrad)" stroke="#523d14" stroke-width="1.4"/>
+              <circle cx="50" cy="50" r="29.5" fill="none" stroke="#f5eccf" stroke-width="0.9" opacity="0.85" stroke-dasharray="2.5 1.5"/>
+
+              <!-- Royal Crown Crest -->
+              <g transform="translate(50, 34) scale(0.68)" text-anchor="middle">
+                <path d="M-12,6 L-16,-5 L-6,0 L0,-7 L6,0 L16,-5 L12,6 Z" fill="#ffffff" />
+                <circle cx="-16" cy="-6" r="1.6" fill="#f5eccf" />
+                <circle cx="0" cy="-8" r="2" fill="#f5eccf" />
+                <circle cx="16" cy="-6" r="1.6" fill="#f5eccf" />
+              </g>
+
+              <!-- Embossed Intertwined Monogram 'AB' -->
+              <text x="50" y="66" text-anchor="middle" font-family="'Italiana', serif" font-size="22" font-weight="700" letter-spacing="2" fill="#ffffff" style="text-shadow: 0 2px 4px rgba(35,22,4,0.95), 0 -1.5px 1px rgba(255,255,255,0.9);">AB</text>
+            </svg>
+          </div>
+        </div>
       </div>
 
-      <div class="intro-tagline-top">INVITAȚIE DE NUNTĂ</div>
-
-      <!-- Centered Couple Names -->
-      <h1 class="intro-names">
-        ALEX
-        <span class="amp">&amp;</span>
-        BIANCA
-      </h1>
-
-      <div class="intro-divider-line"></div>
-
-      <p class="intro-subtext">
-        „Împreună cu dragoste, vă invităm să fiți alături de noi în ziua în care ne unim destinele.”
-      </p>
-
-      <!-- Elegant CTA Button -->
-      <button class="btn-gold-primary" id="btn-open-invitation">
-        DESCHIDE INVITAȚIA
-      </button>
+      <!-- Discrete Touch Prompt -->
+      <div class="envelope-touch-prompt" id="royal-box-cta">
+        <span class="prompt-sparkle">✦</span>
+        <span>Deschide invitația</span>
+        <span class="prompt-sparkle">✦</span>
+      </div>
     </div>
   </div>
 
   <!-- =========================================================================
-       SCREEN 2 — MAIN INVITATION EXPERIENCE
+       SCREEN 2 — MAIN VERTICAL WEDDING INVITATION EXPERIENCE
        ========================================================================= -->
   <main class="main-invitation-wrap" id="main-invitation">
 
-    <!-- 1. HERO SECTION -->
+    <!-- 1. SECTION 1: COUPLE INTRODUCTION -->
     <header class="hero-section" id="hero">
       <div class="container">
         
-        <div class="hero-eyebrow reveal">
+        <div class="hero-monogram-top gold-shimmer reveal">AB</div>
+
+        <div class="hero-eyebrow reveal reveal-delay-1">
           <span>✦</span>
           <span>THE WEDDING CELEBRATION</span>
           <span>✦</span>
         </div>
 
-        <h1 class="hero-main-title reveal reveal-delay-1">
+        <h1 class="hero-main-title reveal reveal-delay-2">
           ALEX <span class="amp">&amp;</span> BIANCA
         </h1>
 
-        <p class="hero-quote reveal reveal-delay-2">
-          „Două suflete, două inimi, o singură călătorie. Începutul unei vieți pline de iubire și armonie.”
+        <p class="hero-quote reveal reveal-delay-3">
+          „Două suflete, o singură poveste.”
         </p>
 
-        <div class="hero-date-badge reveal reveal-delay-3">
-          <span class="hero-date-text">20 IUNIE 2027 • PALATUL SNAGOV</span>
-        </div>
-
-        <!-- Live Countdown Grid -->
-        <div class="countdown-grid reveal reveal-delay-3">
-          <div class="countdown-box">
-            <div class="countdown-num" id="days">00</div>
-            <div class="countdown-label">Zile</div>
-          </div>
-          <div class="countdown-box">
-            <div class="countdown-num" id="hours">00</div>
-            <div class="countdown-label">Ore</div>
-          </div>
-          <div class="countdown-box">
-            <div class="countdown-num" id="minutes">00</div>
-            <div class="countdown-label">Minute</div>
-          </div>
-          <div class="countdown-box">
-            <div class="countdown-num" id="seconds">00</div>
-            <div class="countdown-label">Secunde</div>
-          </div>
-        </div>
+        <a href="#save-the-date" class="btn-gold-primary reveal reveal-delay-3">
+          DETALII EVENIMENT ↓
+        </a>
 
       </div>
     </header>
 
-    <!-- 2. INVITATION DETAILS SECTION -->
-    <section class="details-section" id="details">
+    <!-- 2. SECTION 2: SAVE THE DATE & LIVE COUNTDOWN -->
+    <section class="save-date-section" id="save-the-date">
       <div class="container">
         
         <div class="section-header reveal">
-          <div class="section-tag">PROGRAM &amp; DETALII</div>
-          <h2 class="section-title">EVENIMENTUL</h2>
+          <div class="section-tag">SALVEAZĂ DATA</div>
+          <h2 class="section-title">SAVE THE DATE</h2>
         </div>
 
-        <div class="details-card-wrap reveal reveal-delay-1">
-          <div class="details-card-inner"></div>
+        <div class="save-date-card reveal reveal-delay-1">
+          <div class="save-date-card-inner"></div>
 
-          <p class="details-message">
-            Avem deosebita plăcere de a vă avea alături la celebrarea căsătoriei noastre. Prezența dumneavoastră va transforma această zi într-o amintire de neprețuit.
-          </p>
+          <div class="save-date-big-num gold-shimmer">20 IUNIE 2027</div>
+          <div class="save-date-day">DUMINICĂ • PALATUL SNAGOV</div>
 
-          <div class="details-grid">
-            <div class="detail-item">
-              <div class="detail-item-title">DATA</div>
-              <div class="detail-item-desc">Duminică, 20 Iunie 2027</div>
+          <!-- Live Countdown Grid -->
+          <div class="countdown-grid">
+            <div class="countdown-box">
+              <div class="countdown-num" id="days">00</div>
+              <div class="countdown-label">Zile</div>
             </div>
-            <div class="detail-item">
-              <div class="detail-item-title">CEREMONIA</div>
-              <div class="detail-item-desc">Ora 17:30</div>
+            <div class="countdown-box">
+              <div class="countdown-num" id="hours">00</div>
+              <div class="countdown-label">Ore</div>
             </div>
-            <div class="detail-item">
-              <div class="detail-item-title">RECEPȚIA &amp; CINA</div>
-              <div class="detail-item-desc">Ora 19:30</div>
+            <div class="countdown-box">
+              <div class="countdown-num" id="minutes">00</div>
+              <div class="countdown-label">Minute</div>
             </div>
-            <div class="detail-item">
-              <div class="detail-item-title">DRESS CODE</div>
-              <div class="detail-item-desc">Black Tie / Formal Elegance</div>
+            <div class="countdown-box">
+              <div class="countdown-num" id="seconds">00</div>
+              <div class="countdown-label">Secunde</div>
             </div>
           </div>
 
-          <div style="display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap;">
-            <a href="#rsvp" class="btn-gold-primary">CONFIRMĂ PREZENȚA</a>
-            <button class="btn-gold-outline" id="btn-add-calendar">SALVEAZĂ ÎN CALENDAR</button>
+          <div style="margin-top: 2.2rem;">
+            <button class="btn-gold-outline" id="btn-add-calendar">
+              📅 SALVEAZĂ ÎN CALENDAR
+            </button>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- 3. TIMELINE / SCHEDULE SECTION -->
+    <!-- 3. SECTION 3: EVENT TIMELINE (DESFĂȘURAREA ZILEI) -->
     <section class="timeline-section" id="timeline">
       <div class="container">
         
         <div class="section-header reveal">
-          <div class="section-tag">MOMENTE SPECIALE</div>
-          <h2 class="section-title">DESFĂȘURAREA ZILEI</h2>
+          <div class="section-tag">PROGRAMUL ZILEI</div>
+          <h2 class="section-title">DESFĂȘURAREA EVENIMENTULUI</h2>
         </div>
 
         <div class="timeline-wrap">
           
-          <!-- Item 1 -->
+          <!-- Item 1: Primirea -->
           <div class="timeline-item reveal">
             <div class="timeline-node">✦</div>
             <div class="timeline-content">
               <div class="timeline-time">16:30</div>
               <div class="timeline-title">PRIMIREA INVITAȚILOR</div>
-              <div class="timeline-desc">Welcome drinks, prosecco &amp; atmosferă ambientală pe malul lacului.</div>
+              <div class="timeline-desc">Welcome drinks, prosecco &amp; ambianță muzicală pe malul lacului Snagov.</div>
             </div>
           </div>
 
-          <!-- Item 2 -->
+          <!-- Item 2: Ceremonia -->
           <div class="timeline-item reveal reveal-delay-1">
             <div class="timeline-node">✦</div>
             <div class="timeline-content">
               <div class="timeline-time">17:30</div>
-              <div class="timeline-title">CUNUNIA RELIGIOASĂ</div>
-              <div class="timeline-desc">Schimbul de jurăminte și binecuvântarea în grădina palatului.</div>
+              <div class="timeline-title">CEREMONIA RELIGIOASĂ</div>
+              <div class="timeline-desc">Schimbul de jurăminte și binecuvântarea solemnă în grădina palatului.</div>
             </div>
           </div>
 
-          <!-- Item 3 -->
+          <!-- Item 3: Recepția -->
           <div class="timeline-item reveal reveal-delay-2">
             <div class="timeline-node">✦</div>
             <div class="timeline-content">
-              <div class="timeline-time">19:00</div>
-              <div class="timeline-title">COCKTAIL &amp; FOTOGRAFII</div>
-              <div class="timeline-desc">Șampanie, canapés rafinate și fotografii alături de miri.</div>
-            </div>
-          </div>
-
-          <!-- Item 4 -->
-          <div class="timeline-item reveal reveal-delay-3">
-            <div class="timeline-node">✦</div>
-            <div class="timeline-content">
-              <div class="timeline-time">20:30</div>
-              <div class="timeline-title">CINA FESTIVĂ &amp; PETRECEREA</div>
+              <div class="timeline-time">19:30</div>
+              <div class="timeline-title">RECEPȚIA &amp; CINA FESTIVĂ</div>
               <div class="timeline-desc">Meniu gourmet de gală, primul dans al mirilor și muzică live.</div>
             </div>
           </div>
 
-          <!-- Item 5 -->
-          <div class="timeline-item reveal">
+          <!-- Item 4: Petrecerea -->
+          <div class="timeline-item reveal reveal-delay-3">
             <div class="timeline-node">✦</div>
             <div class="timeline-content">
               <div class="timeline-time">00:30</div>
-              <div class="timeline-title">TORTUL &amp; FOCUL DE ARTIFICII</div>
-              <div class="timeline-desc">Momentul dulce al serii acompaniat de un spectacol pirotehnic pe lac.</div>
+              <div class="timeline-title">TORTUL &amp; SPECTACOLUL DE ARTIFICII</div>
+              <div class="timeline-desc">Momentul dulce al serii însoțit de un spectacol pirotehnic feeric pe lac.</div>
             </div>
           </div>
 
@@ -222,7 +343,7 @@
       </div>
     </section>
 
-    <!-- 4. LOCATION SECTION -->
+    <!-- 4. SECTION 4: LOCATION (LOCAȚIE) -->
     <section class="location-section" id="location">
       <div class="container">
         
@@ -232,12 +353,14 @@
         </div>
 
         <div class="location-card reveal reveal-delay-1">
+          <div class="location-card-inner"></div>
+
           <h3 class="location-name">Palatul Snagov • Sala de Gală</h3>
-          <p class="location-address">Aleea Palatului 1, Snagov, Ilfov</p>
+          <p class="location-address">Aleea Palatului 1, Snagov, Județul Ilfov</p>
 
           <div class="location-actions-grid">
             <a href="https://maps.google.com/?q=Palatul+Snagov" target="_blank" rel="noopener" class="btn-gold-primary">
-              DESCHIDE ÎN GOOGLE MAPS
+              VEZI LOCAȚIA PE HARTĂ
             </a>
             <a href="https://waze.com/ul?q=Palatul+Snagov" target="_blank" rel="noopener" class="btn-gold-outline">
               NAVIGARE WAZE
@@ -248,13 +371,13 @@
       </div>
     </section>
 
-    <!-- 5. RSVP SECTION -->
+    <!-- 5. SECTION 5: RSVP (CONFIRMARE) -->
     <section class="rsvp-section" id="rsvp">
       <div class="container">
         
         <div class="section-header reveal">
           <div class="section-tag">RĂSPUNSUL DUMNEAVOASTRĂ</div>
-          <h2 class="section-title">CONFIRMARE RSVP</h2>
+          <h2 class="section-title">CONFIRMARE PREZENȚĂ</h2>
         </div>
 
         <div class="rsvp-card-wrap reveal reveal-delay-1">
@@ -270,11 +393,11 @@
               <div class="rsvp-radio-group">
                 <label class="rsvp-radio-card active">
                   <input type="radio" name="attending" value="yes" checked>
-                  <span class="rsvp-radio-title">DA, CU DRAG</span>
+                  <span class="rsvp-radio-title">DA, PARTICIP</span>
                 </label>
                 <label class="rsvp-radio-card">
                   <input type="radio" name="attending" value="no">
-                  <span class="rsvp-radio-title">DIN PĂCATE, NU</span>
+                  <span class="rsvp-radio-title">NU POT PARTICIPA</span>
                 </label>
               </div>
             </div>
@@ -285,31 +408,29 @@
                 <option value="1">1 Persoană</option>
                 <option value="2" selected>2 Persoane</option>
                 <option value="3">3 Persoane</option>
-                <option value="4">4+ Persoane (Familie)</option>
+                <option value="4">4+ Persoane</option>
               </select>
             </div>
 
             <div class="rsvp-form-group">
-              <label class="rsvp-label" for="guest-notes">Preferințe culinare / Melodie preferată</label>
-              <input type="text" id="guest-notes" class="rsvp-input" placeholder="ex: Meniu vegetarian / Piesa noastră preferată">
+              <label class="rsvp-label" for="guest-message">Mesaj pentru miri / Preferințe culinare</label>
+              <textarea id="guest-message" class="rsvp-textarea" rows="3" placeholder="Scrieți un gând frumos sau mențiuni speciale..."></textarea>
             </div>
 
-            <button type="submit" class="btn-gold-primary" style="width: 100%; margin-top: 1rem;">
-              TRIMITE CONFIRMAREA
+            <button type="submit" class="btn-gold-primary" style="width: 100%; margin-top: 0.5rem;">
+              CONFIRMĂ PREZENȚA
             </button>
           </form>
 
           <div class="rsvp-success-message" id="rsvp-success">
-            <div class="intro-crest" style="margin: 0 auto 1.5rem;">
-              <span class="intro-crest-monogram gold-shimmer">✓</span>
-            </div>
-            <h3 class="hero-main-title" style="font-size: 1.8rem; margin-bottom: 0.8rem;">
+            <div class="hero-monogram-top gold-shimmer" style="margin: 0 auto 1.5rem;">✓</div>
+            <h3 class="section-title" style="font-size: 1.8rem; margin-bottom: 0.8rem;">
               MULȚUMIM, <span id="rsvp-success-name"></span>!
             </h3>
-            <p class="details-message" style="margin-bottom: 2rem;">
-              Răspunsul dumneavoastră a fost înregistrat cu succes. Abia așteptăm să sărbătorim această zi de neuitat împreună!
+            <p class="hero-quote" style="margin-bottom: 2rem;">
+              Răspunsul dumneavoastră a fost înregistrat cu succes. Suntem recunoscători și abia așteptăm să sărbătorim împreună!
             </p>
-            <a href="#hero" class="btn-gold-outline">ÎNAPOI SUS ↑</a>
+            <a href="#hero" class="btn-gold-outline">↑ ÎNAPOI LA ÎNCEPUT</a>
           </div>
 
         </div>
@@ -317,16 +438,17 @@
       </div>
     </section>
 
-    <!-- 6. CLOSING ROMANTIC SECTION -->
+    <!-- 6. SECTION 6: FINAL ROMANTIC MESSAGE & CLOSING -->
     <footer class="closing-section" id="closing">
-      <div class="container">
-        
-        <div class="closing-monogram-huge gold-shimmer reveal">AB</div>
+      <div class="closing-monogram-watermark">AB</div>
+      
+      <div class="container closing-content">
+        <div class="closing-monogram-badge gold-shimmer reveal">AB</div>
 
         <h3 class="closing-names-tag reveal reveal-delay-1">ALEX &amp; BIANCA</h3>
 
         <p class="closing-quote reveal reveal-delay-2">
-          „Vă mulțumim din suflet că faceți parte din povestea noastră!”
+          „Abia așteptăm să sărbătorim împreună.”
         </p>
 
         <div class="reveal reveal-delay-3" style="display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap;">
@@ -337,14 +459,15 @@
             ↑ SUS
           </a>
         </div>
-
       </div>
     </footer>
 
   </main>
 
   <!-- Scripts -->
-  <script src="js/particles.js?v=fresh_white_gold_v1"></script>
-  <script src="js/app.js?v=fresh_white_gold_v1"></script>
+  <script src="js/particles.js?v=bespoke_ivory_v1"></script>
+  <script src="js/audio.js?v=bespoke_ivory_v1"></script>
+  <script src="js/envelope.js?v=bespoke_ivory_v1"></script>
+  <script src="js/app.js?v=bespoke_ivory_v1"></script>
 </body>
 </html>
