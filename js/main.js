@@ -14,6 +14,10 @@
   const lerp = (a, b, t) => a + (b - a) * t;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
+  /* RSVP → Google Sheet. Paste here the Web App URL from Apps Script
+     (instructions: tools/rsvp-google-sheet.gs). Empty = only saved locally. */
+  const RSVP_ENDPOINT = '';
+
   /* ---------------------------------------------------------
      1. LIGHT CANVAS — gold dust, twinkling stars, soft bokeh
      --------------------------------------------------------- */
@@ -894,7 +898,17 @@
       localStorage.setItem('ab-rsvp', JSON.stringify(all));
     } catch (_) { /* storage unavailable */ }
 
-    await wait(1300);
+    // send to the couple's Google Sheet (see tools/rsvp-google-sheet.gs)
+    const send = RSVP_ENDPOINT
+      ? fetch(RSVP_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(entry)
+        }).catch(() => {})
+      : Promise.resolve();
+
+    await Promise.all([send, wait(1300)]);
     submitBtn.classList.remove('is-loading');
     submitBtn.disabled = false;
     $('#thanksName').textContent = ', ' + name.split(' ')[0];
