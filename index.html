@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=ab8">
-  <link rel="stylesheet" href="css/light.css?v=ab8">
+  <link rel="stylesheet" href="css/style.css?v=ab9">
+  <link rel="stylesheet" href="css/light.css?v=ab9">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23ffffff%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2240%22 fill=%22%23b8913f%22>AB</text></svg>">
 </head>
 <body class="is-locked">
@@ -153,16 +153,42 @@
       </div>
       <div class="hero__veil"></div>
 
+      <!-- couture frame -->
+      <div class="hero__frame" aria-hidden="true">
+        <i class="hf hf--t"></i><i class="hf hf--b"></i><i class="hf hf--l"></i><i class="hf hf--r"></i>
+        <svg class="hf-corner hf-corner--tl" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+        <svg class="hf-corner hf-corner--tr" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+        <svg class="hf-corner hf-corner--bl" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+        <svg class="hf-corner hf-corner--br" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+      </div>
+
       <div class="hero__content">
-        <p class="eyebrow hero__eyebrow"><span>AB</span> · The Wedding</p>
+        <div class="hero__crest" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="56"/>
+            <circle cx="60" cy="60" r="50" stroke-dasharray="1.5 3.5"/>
+            <path d="M24 78c6 14 20 24 36 24s30-10 36-24M30 84l-4 4M36 90l-3 5M84 90l3 5M90 84l4 4"/>
+          </svg>
+          <span>AB</span>
+        </div>
+        <p class="hero__kick">Ne căsătorim</p>
         <h2 class="hero__names">
           <span class="split" data-split>Alex</span>
           <span class="hero__amp">&amp;</span>
           <span class="split" data-split>Bianca</span>
         </h2>
-        <p class="hero__sub">Ne căsătorim</p>
-        <div class="hero__rule"></div>
-        <p class="hero__date">20 Iunie 2027</p>
+        <p class="hero__sub">și vă invităm să ne fiți alături</p>
+        <svg class="hero__orn" viewBox="0 0 240 20" aria-hidden="true">
+          <path d="M0 10h96M144 10h96"/>
+          <path d="M104 10l8-6 8 6-8 6z"/>
+          <circle cx="120" cy="10" r="2.2"/>
+          <path d="M120 10l8-6 8 6-8 6z"/>
+        </svg>
+        <div class="hero__date">
+          <span>Duminică</span>
+          <strong>20 Iunie</strong>
+          <span>2027</span>
+        </div>
       </div>
 
       <a class="scroll-cue" href="#date" aria-label="Derulează">
@@ -465,6 +491,6 @@
     <button class="lb__nav lb__nav--n" id="lbNext" type="button" aria-label="Următor">›</button>
   </div>
 
-  <script src="js/main.js?v=ab8"></script>
+  <script src="js/main.js?v=ab9"></script>
 </body>
 </html>
