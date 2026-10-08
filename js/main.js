@@ -62,10 +62,10 @@
       }),
       bokeh: sprite(128, (g, s) => {
         const r = g.createRadialGradient(s / 2, s / 2, s * 0.1, s / 2, s / 2, s / 2);
-        r.addColorStop(0, 'rgba(244,214,140,.22)');
-        r.addColorStop(0.75, 'rgba(236,200,120,.16)');
-        r.addColorStop(0.92, 'rgba(226,186,100,.22)');
-        r.addColorStop(1, 'rgba(226,186,100,0)');
+        r.addColorStop(0, 'rgba(225,225,230,.10)');
+        r.addColorStop(0.75, 'rgba(215,215,222,.08)');
+        r.addColorStop(0.92, 'rgba(200,200,210,.14)');
+        r.addColorStop(1, 'rgba(200,200,210,0)');
         g.fillStyle = r; g.fillRect(0, 0, s, s);
       })
     };

@@ -285,3 +285,58 @@ body { color: var(--text); }
 /* hidden YouTube audio host */
 .yt-host { position: fixed; left: -9999px; top: 0; width: 200px; height: 200px; pointer-events: none; }
 
+
+/* =====================================================================
+   PURE WHITE — no yellow wash (overrides above)
+   ===================================================================== */
+:root { --pearl: #fafafa; --ink: #fafafa; --ink-2: #f4f4f4; --shadow: rgba(60, 50, 40, .14); }
+.intro { background: radial-gradient(ellipse 90% 60% at 50% 45%, #ffffff 0%, #ffffff 55%, #f6f6f7 100%); }
+.intro__halo { background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%); }
+.intro__rays {
+  background: repeating-conic-gradient(from 0deg, rgba(150, 150, 160, .045) 0deg 1.5deg, rgba(255, 255, 255, 0) 1.5deg 12deg);
+  -webkit-mask: radial-gradient(circle, #000 0%, rgba(0, 0, 0, .4) 14%, transparent 34%);
+  mask: radial-gradient(circle, #000 0%, rgba(0, 0, 0, .4) 14%, transparent 34%);
+}
+.intro__beam { display: none; }
+.bloom { background: radial-gradient(circle at 50% 46%, #fff 0%, rgba(255, 255, 255, .98) 40%, rgba(255, 255, 255, 0) 75%); }
+.env__shadow { background: radial-gradient(ellipse at center, rgba(40, 35, 30, .28), transparent 70%); }
+.env__back { background: linear-gradient(160deg, #ffffff 0%, #f8f8f8 55%, #f0f0f0 100%); box-shadow: 0 40px 70px -30px rgba(40, 35, 30, .35), 0 12px 24px -12px rgba(40, 35, 30, .14), 0 0 0 1px rgba(184, 145, 63, .45) inset, 0 0 0 4px #fff inset, 0 0 0 5px rgba(184, 145, 63, .2) inset; }
+.env__fold--l { background: linear-gradient(100deg, #ffffff 0%, #f3f3f3 100%); }
+.env__fold--r { background: linear-gradient(260deg, #ffffff 0%, #f3f3f3 100%); }
+.env__fold--b { background: linear-gradient(0deg, #efefef 0%, #ffffff 100%); }
+.env__pocket { filter: drop-shadow(0 -1px 0 rgba(184, 145, 63, .8)) drop-shadow(0 -8px 12px rgba(40, 35, 30, .08)); }
+.env__sheen { background: linear-gradient(115deg, transparent calc(var(--mx) - 20%), rgba(255, 255, 255, .5) var(--mx), transparent calc(var(--mx) + 20%)); }
+.card { background: #fff; }
+.seal::before { background: radial-gradient(circle, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 62%); }
+.std, .story, .timeline, .gallery, .rsvp, .finale { background: #fff; }
+.std__glow, .rsvp__glow, .finale__glow { background: radial-gradient(circle, rgba(200, 200, 205, .12), transparent 60%); }
+.finale::after { background: linear-gradient(transparent, #fafafa); }
+.rsvp__panel, .thanks { background: #fff; }
+.chip.is-on { background: #fff; }
+
+/* =====================================================================
+   NAMES — elegant handwritten calligraphy (Great Vibes)
+   ===================================================================== */
+:root { --names: 'Great Vibes', 'Pinyon Script', cursive; }
+
+.intro__names {
+  font-family: var(--names); font-weight: 400; letter-spacing: 0;
+  font-size: clamp(2.8rem, 13vw, 4.4rem); line-height: 1.15;
+}
+.intro__names span { font-family: var(--names); font-size: .8em; padding: 0 .18em; }
+
+.card__names { font-family: var(--names); font-size: clamp(1.5rem, 6.4vw, 1.9rem); letter-spacing: 0; line-height: 1.1; }
+.card__names i { font-family: var(--names); }
+
+.hero__names {
+  font-family: var(--names); font-weight: 400; letter-spacing: 0;
+  font-size: clamp(4.6rem, 24vw, 10rem); line-height: .95;
+}
+.hero__names .split { padding: .12em .25em .22em; margin: -.12em -.25em -.18em; }
+.hero__amp { font-family: var(--names); font-size: .5em; margin: -.1em 0 -.12em; }
+
+.finale__sign { font-family: var(--names); font-size: clamp(2.6rem, 12vw, 3.8rem); }
+
+@media (min-width: 900px) {
+  .hero__names { font-size: clamp(6rem, 11vw, 11rem); }
+}
