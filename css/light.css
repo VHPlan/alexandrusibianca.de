@@ -281,3 +281,7 @@ body { color: var(--text); }
   .intro__cta { margin-top: .6rem; }
   .hero__content { padding-bottom: calc(13svh + var(--safe-b)); }
 }
+
+/* hidden YouTube audio host */
+.yt-host { position: fixed; left: -9999px; top: 0; width: 200px; height: 200px; pointer-events: none; }
+

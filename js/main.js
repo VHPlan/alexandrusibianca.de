@@ -210,33 +210,81 @@
   })();
 
   /* ---------------------------------------------------------
-     2. MUSIC — "Lele" from assets/audio, soft pad as fallback
+     2. MUSIC — local MP3 if present, otherwise the YouTube track
+        (official embed), soft generative pad as last resort
      --------------------------------------------------------- */
   const Music = (() => {
     const btn = $('#music');
-    const TRACKS = ['assets/audio/lele.mp3', 'assets/audio/music.mp3'];
+    const YT_ID = 'q9wpOvgKCIg';
+    const LOCAL = 'assets/audio/lele.mp3';
     const VOL = 0.6;
     let playing = false;
-    let mode = null;            // 'file' | 'pad'
+    let mode = null;             // 'file' | 'yt' | 'pad'
+    let hasFile = false;
+    let yt = null, ytReady = false;
     let ctx = null, master = null, voices = [], chordTimer = null;
 
     const audio = new Audio();
     audio.loop = true;
     audio.preload = 'auto';
     audio.playsInline = true;
-    let ti = 0;
-    audio.src = TRACKS[ti];
-    audio.addEventListener('error', () => {
-      if (++ti < TRACKS.length) { audio.src = TRACKS[ti]; audio.load(); }
-    });
 
+    // 1) local file?
+    fetch(LOCAL, { method: 'HEAD' })
+      .then((r) => { if (r.ok) { hasFile = true; audio.src = LOCAL; } else loadYT(); })
+      .catch(loadYT);
+
+    // 2) YouTube IFrame player (kept out of the layout)
+    function loadYT() {
+      if (window.YT && window.YT.Player) return makePlayer();
+      const host = document.createElement('div');
+      host.className = 'yt-host';
+      host.innerHTML = '<div id="ytPlayer"></div>';
+      document.body.appendChild(host);
+      window.onYouTubeIframeAPIReady = makePlayer;
+      const s = document.createElement('script');
+      s.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(s);
+    }
+    function makePlayer() {
+      yt = new YT.Player('ytPlayer', {
+        width: 200, height: 200, videoId: YT_ID,
+        playerVars: { autoplay: 0, controls: 0, loop: 1, playlist: YT_ID, playsinline: 1, disablekb: 1, modestbranding: 1, rel: 0 },
+        events: {
+          onReady: () => { ytReady = true; yt.setVolume(0); if (playing && mode !== 'pad') startYT(); },
+          onStateChange: (e) => { if (e.data === YT.PlayerState.ENDED) { yt.seekTo(0); yt.playVideo(); } },
+          onError: () => { ytReady = false; if (playing) padOn(); }
+        }
+      });
+    }
+    let ytFade = 0;
+    function ytVolume(to, ms) {
+      clearInterval(ytFade);
+      let v = yt.getVolume ? yt.getVolume() : 0;
+      const target = to * 100, step = (target - v) / (ms / 50);
+      ytFade = setInterval(() => {
+        v += step;
+        if ((step >= 0 && v >= target) || (step < 0 && v <= target)) {
+          v = target; clearInterval(ytFade);
+          if (to === 0) yt.pauseVideo();
+        }
+        yt.setVolume(Math.round(v));
+      }, 50);
+    }
+    function startYT() {
+      mode = 'yt';
+      yt.unMute();
+      yt.playVideo();
+      ytVolume(VOL, 2000);
+    }
+
+    // 3) generative pad fallback
     const CHORDS = [
       [220.0, 277.18, 329.63, 415.30],
       [184.99, 233.08, 277.18, 369.99],
       [146.83, 220.0, 277.18, 369.99],
       [164.81, 207.65, 246.94, 329.63]
     ];
-
     function initPad() {
       if (ctx) return;
       const AC = window.AudioContext || window.webkitAudioContext;
@@ -261,7 +309,6 @@
         voices.push({ g, o1, o2 });
       }
     }
-
     let ci = 0;
     function nextChord() {
       const t = ctx.currentTime;
@@ -274,6 +321,7 @@
       });
     }
     function padOn() {
+      initPad();
       if (!ctx) return;
       mode = 'pad';
       ctx.resume();
@@ -306,16 +354,17 @@
       if (playing) return;
       playing = true;
       setUI(true);
-      // unlock WebAudio inside the gesture so the fallback can start later
-      initPad();
-      if (ctx && ctx.state === 'suspended') ctx.resume();
-      if (mode === 'pad') { padOn(); return; }
-      audio.volume = 0;
-      const p = audio.play();
-      if (p && p.then) {
-        p.then(() => { mode = 'file'; fadeAudio(VOL); })
-          .catch(() => { if (playing) padOn(); });
-      } else { mode = 'file'; audio.volume = VOL; }
+      if (mode === 'pad') return padOn();
+      if (hasFile) {
+        audio.volume = 0;
+        const p = audio.play();
+        mode = 'file';
+        if (p && p.then) p.then(() => fadeAudio(VOL)).catch(() => { if (playing) padOn(); });
+        else audio.volume = VOL;
+        return;
+      }
+      if (ytReady) return startYT();
+      // player still loading: it will start itself in onReady
     }
 
     function stop() {
@@ -323,6 +372,7 @@
       playing = false;
       setUI(false);
       if (mode === 'file') fadeAudio(0, 900);
+      else if (mode === 'yt' && yt) ytVolume(0, 900);
       else if (ctx && master) {
         clearInterval(chordTimer);
         master.gain.cancelScheduledValues(ctx.currentTime);
