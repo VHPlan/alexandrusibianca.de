@@ -1,10 +1,10 @@
 /**
- * ALEX & BIANCA — MAIN WEDDING APPLICATION CONTROLLER
- * Initializes particle engine, audio, envelope ceremony, live countdown, RSVP, and calendar export.
+ * ALEX & BIANCA — EDITORIAL WEDDING CONTROLLER
+ * Initializes Particles, Audio Engine, 3D Envelope Ceremony, Minimalist Countdown, Conversational RSVP, Calendar & WhatsApp
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Particles Engine
+  // 1. Initialize Starlight Particles Engine
   const particles = new ParticleEngine('particles-canvas');
 
   // 2. Initialize Audio Engine
@@ -20,25 +20,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
+    const pad = (num) => String(num).padStart(2, '0');
+
     if (distance < 0) {
-      document.getElementById('days').innerText = '00';
-      document.getElementById('hours').innerText = '00';
-      document.getElementById('minutes').innerText = '00';
-      document.getElementById('seconds').innerText = '00';
+      if (document.getElementById('cd-days')) document.getElementById('cd-days').innerText = '00';
+      if (document.getElementById('cd-hours')) document.getElementById('cd-hours').innerText = '00';
+      if (document.getElementById('cd-minutes')) document.getElementById('cd-minutes').innerText = '00';
       return;
     }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    const pad = (num) => String(num).padStart(2, '0');
-
-    if (document.getElementById('days')) document.getElementById('days').innerText = pad(days);
-    if (document.getElementById('hours')) document.getElementById('hours').innerText = pad(hours);
-    if (document.getElementById('minutes')) document.getElementById('minutes').innerText = pad(minutes);
-    if (document.getElementById('seconds')) document.getElementById('seconds').innerText = pad(seconds);
+    if (document.getElementById('cd-days')) document.getElementById('cd-days').innerText = pad(days);
+    if (document.getElementById('cd-hours')) document.getElementById('cd-hours').innerText = pad(hours);
+    if (document.getElementById('cd-minutes')) document.getElementById('cd-minutes').innerText = pad(minutes);
   }
 
   setInterval(updateCountdown, 1000);
@@ -52,61 +49,61 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // 6. RSVP Radio Group Selection
-  const radioCards = document.querySelectorAll('.rsvp-radio-card');
-  radioCards.forEach(card => {
-    card.addEventListener('click', () => {
-      radioCards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      const input = card.querySelector('input[type="radio"]');
+  // 6. Conversational RSVP Toggle Selection
+  const toggleButtons = document.querySelectorAll('.rsvp-toggle-btn');
+  toggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const input = btn.querySelector('input[type="radio"]');
       if (input) input.checked = true;
     });
   });
 
   // 7. RSVP Form Submission
-  const rsvpForm = document.getElementById('rsvp-form');
-  const rsvpSuccess = document.getElementById('rsvp-success');
+  const rsvpForm = document.getElementById('rsvp-dialogue-form');
+  const rsvpSuccess = document.getElementById('rsvp-success-view');
 
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const guestName = document.getElementById('guest-name').value;
+      const guestName = document.getElementById('guest-name-input').value;
       const attending = document.querySelector('input[name="attending"]:checked')?.value || 'yes';
-      const guestsCount = document.getElementById('guest-count')?.value || '1';
-      const guestMessage = document.getElementById('guest-message')?.value || '';
+      const guestCount = document.getElementById('guest-count-input')?.value || '2';
+      const guestNote = document.getElementById('guest-note-input')?.value || '';
 
       // Save to localStorage
-      localStorage.setItem('alex_bianca_wedding_rsvp', JSON.stringify({
+      localStorage.setItem('alex_bianca_editorial_rsvp', JSON.stringify({
         name: guestName,
         attending,
-        guests: guestsCount,
-        message: guestMessage,
+        guests: guestCount,
+        note: guestNote,
         timestamp: new Date().toISOString()
       }));
 
       // Particle celebration burst
-      const btn = rsvpForm.querySelector('button[type="submit"]');
-      const rect = btn.getBoundingClientRect();
-      particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 75);
+      const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+      const rect = submitBtn.getBoundingClientRect();
+      particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 80);
 
-      // Show success view
+      // Show success dialogue
       rsvpForm.style.display = 'none';
       if (rsvpSuccess) {
         rsvpSuccess.classList.add('active');
-        const nameDisplay = document.getElementById('rsvp-success-name');
+        const nameDisplay = document.getElementById('rsvp-guest-confirmed-name');
         if (nameDisplay) nameDisplay.innerText = guestName;
       }
     });
   }
 
   // 8. Add to Calendar (.ics Generator)
-  const calendarBtn = document.getElementById('btn-add-calendar');
-  if (calendarBtn) {
-    calendarBtn.addEventListener('click', (e) => {
+  const calendarBtns = document.querySelectorAll('.btn-action-calendar');
+  calendarBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
       const icsContent = 
 `BEGIN:VCALENDAR
@@ -115,7 +112,7 @@ PRODID:-//Alex & Bianca//Wedding Invitation//EN
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
 SUMMARY:Nunta Alex & Bianca
-DESCRIPTION:Suntem bucuroși să sărbătorim nunta noastră alături de voi la Palatul Snagov!
+DESCRIPTION:Suntem încântați să sărbătorim nunta noastră la Palatul Snagov!
 LOCATION:Palatul Snagov, Aleea Palatului 1, Snagov
 DTSTART:20270620T143000Z
 DTEND:20270621T030000Z
@@ -131,15 +128,15 @@ END:VCALENDAR`;
       link.click();
       document.body.removeChild(link);
     });
-  }
+  });
 
   // 9. WhatsApp Sharing
-  const whatsappBtn = document.getElementById('btn-whatsapp-share');
-  if (whatsappBtn) {
-    whatsappBtn.addEventListener('click', () => {
+  const whatsappBtns = document.querySelectorAll('.btn-action-whatsapp');
+  whatsappBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
       const shareUrl = window.location.href;
-      const message = `✨ Ne căsătorim! Alex & Bianca vă invită să sărbătoriți alături de ei pe 20 Iunie 2027 la Palatul Snagov. Vezi invitația oficială aici: ${shareUrl}`;
+      const message = `✨ Alex & Bianca — 20 Iunie 2027 la Palatul Snagov. Vezi invitația oficială aici: ${shareUrl}`;
       window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
     });
-  }
+  });
 });

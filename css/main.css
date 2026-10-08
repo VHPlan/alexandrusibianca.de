@@ -1,43 +1,37 @@
 /* ==========================================================================
-   ALEX & BIANCA — BESPOKE ULTRA-LUXURY WEDDING INVITATION
-   Warm Ivory, Pearl White & Antique Champagne Gold Foil System
+   ALEX & BIANCA — BESPOKE EDITORIAL HAUTE COUTURE SYSTEM
+   Asymmetrical Art Direction, Monolithic Typography & Pure Whitespace
    ========================================================================== */
 
 :root {
-  /* Warm Ivory, Pearl & Soft Cream Palette */
-  --bg-main: #faf7f2;
+  /* Warm Alabaster, Pearl & Soft Chalk */
+  --bg-main: #fbf9f6;
   --bg-pure: #ffffff;
-  --bg-ivory: #f5efeb;
-  --bg-cream: #eee6db;
-  --bg-card: rgba(255, 255, 255, 0.94);
-  --bg-glass: rgba(255, 255, 255, 0.86);
+  --bg-chalk: #f6f2ec;
+  --bg-sand: #ede6dc;
 
-  /* Deep Contrast Charcoal Ink Typography */
-  --ink-primary: #1e1b18;
-  --ink-secondary: #4a443b;
-  --ink-muted: #7c7365;
-  --ink-light: #a89f91;
+  /* Deep Charcoal & Editorial Bronze Inks */
+  --ink-primary: #181614;
+  --ink-secondary: #3d3731;
+  --ink-muted: #7d7469;
+  --ink-light: #b0a89d;
 
-  /* Antique Champagne & 24K Metallic Gold Accents */
-  --gold-primary: #c8a86b;
+  /* Antique Champagne & 24K Liquid Gold Foil */
+  --gold-primary: #c5a059;
   --gold-metallic: #d9be84;
   --gold-light: #f5eccf;
-  --gold-dark: #a8833e;
-  --gold-deep: #785a21;
-  --gold-subtle: rgba(200, 168, 107, 0.2);
+  --gold-dark: #96722d;
+  --gold-deep: #664d1c;
+  --gold-glow: rgba(197, 160, 89, 0.25);
 
-  /* Gradients */
-  --grad-gold-foil: linear-gradient(135deg, #a8833e 0%, #f5eccf 28%, #c8a86b 55%, #fff9e6 80%, #916c29 100%);
-  --grad-gold-text: linear-gradient(135deg, #785a21 0%, #c8a86b 35%, #916c29 70%, #d9be84 100%);
-  --grad-ivory-sheen: linear-gradient(180deg, #ffffff 0%, #faf6f0 50%, #f2ebe0 100%);
-  --grad-ambient: radial-gradient(circle at 50% 0%, rgba(200, 168, 107, 0.12) 0%, transparent 65%);
+  /* Metallic Text & Foil Gradients */
+  --grad-gold-foil: linear-gradient(135deg, #96722d 0%, #f5eccf 25%, #c5a059 55%, #fff9e6 80%, #7d5c20 100%);
+  --grad-gold-text: linear-gradient(135deg, #664d1c 0%, #c5a059 40%, #8c6a26 70%, #d9be84 100%);
+  --grad-gold-hairline: linear-gradient(90deg, transparent 0%, #c5a059 50%, transparent 100%);
 
-  /* Borders & Soft Diffused Shadows */
-  --border-gold-subtle: rgba(200, 168, 107, 0.3);
-  --border-gold-strong: rgba(200, 168, 107, 0.7);
-  --shadow-sm: 0 4px 18px rgba(120, 90, 33, 0.05);
-  --shadow-md: 0 12px 35px rgba(120, 90, 33, 0.09), 0 2px 6px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 25px 65px rgba(120, 90, 33, 0.13), 0 6px 18px rgba(0, 0, 0, 0.03);
+  /* Borders & Atmospheric Soft Light */
+  --border-gold-fine: rgba(197, 160, 89, 0.35);
+  --border-gold-bold: rgba(197, 160, 89, 0.75);
 
   /* Typography */
   --font-serif: 'Italiana', 'Cinzel', serif;
@@ -47,7 +41,6 @@
 
   /* Smooth Easing */
   --ease-couture: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 *, *::before, *::after {
@@ -69,26 +62,25 @@ body {
   font-family: var(--font-sans);
   background-color: var(--bg-main);
   color: var(--ink-secondary);
-  line-height: 1.7;
+  line-height: 1.8;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Subtle Warm Ambient Background Texture & Lights */
+/* Background Ambient Texture & Starlight */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 50% 10%, rgba(245, 236, 207, 0.3) 0%, transparent 60%),
-    radial-gradient(circle at 85% 85%, rgba(200, 168, 107, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 15% 70%, rgba(245, 236, 207, 0.2) 0%, transparent 45%),
-    #faf7f2;
+    radial-gradient(circle at 50% 15%, rgba(245, 236, 207, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(197, 160, 89, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 10% 60%, rgba(245, 236, 207, 0.25) 0%, transparent 45%),
+    #fbf9f6;
   z-index: -2;
   pointer-events: none;
 }
 
-/* Canvas Particle Layer */
 #particles-canvas {
   position: fixed;
   inset: 0;
@@ -113,27 +105,32 @@ h1, h2, h3, h4, .font-serif {
   display: inline-block;
 }
 
-.container {
-  width: min(90%, 1120px);
+/* Fluid Layout & Container */
+.container-editorial {
+  width: min(88%, 1080px);
   margin-inline: auto;
 }
 
-.container-narrow {
-  width: min(88%, 720px);
+.container-editorial-narrow {
+  width: min(84%, 780px);
   margin-inline: auto;
 }
 
-/* Section Spacing */
-section {
-  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+/* Fullscreen Immersive Sections with Generous Whitespace */
+.editorial-screen {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(6rem, 14vw, 10rem) 1.5rem;
   position: relative;
 }
 
-/* Reveal Animations on Scroll */
+/* Progressive Scroll Reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 1.1s var(--ease-couture), transform 1.1s var(--ease-couture);
+  transform: translateY(35px);
+  transition: opacity 1.3s var(--ease-couture), transform 1.3s var(--ease-couture);
 }
 
 .reveal.active {
@@ -141,12 +138,52 @@ section {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.15s; }
-.reveal-delay-2 { transition-delay: 0.3s; }
-.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-1 { transition-delay: 0.2s; }
+.reveal-delay-2 { transition-delay: 0.4s; }
+.reveal-delay-3 { transition-delay: 0.6s; }
 
-/* Luxury Button System */
-.btn-gold-primary {
+/* Luxury Architectural Action Links */
+.link-editorial-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 6px;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.link-editorial-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--grad-gold-foil);
+  transition: transform 0.35s var(--ease-couture), height 0.35s ease;
+  transform-origin: left center;
+}
+
+.link-editorial-gold:hover {
+  color: var(--ink-primary);
+  transform: translateX(4px);
+}
+
+.link-editorial-gold:hover::after {
+  height: 2px;
+}
+
+.btn-editorial-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -154,69 +191,22 @@ section {
   background: var(--grad-gold-foil);
   color: #ffffff;
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  padding: 1.15rem 2.8rem;
+  padding: 1.25rem 3.2rem;
   border-radius: 40px;
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 30px rgba(200, 168, 107, 0.35);
+  box-shadow: 0 12px 35px rgba(197, 160, 89, 0.35);
   transition: transform 0.35s var(--ease-couture), box-shadow 0.35s var(--ease-couture);
   cursor: pointer;
-  text-shadow: 0 1px 2px rgba(100, 70, 10, 0.35);
   position: relative;
   overflow: hidden;
 }
 
-.btn-gold-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
-  transform: skewX(-25deg);
-  animation: btnSheen 3.6s infinite;
-}
-
-@keyframes btnSheen {
-  0% { left: -100%; }
-  35%, 100% { left: 200%; }
-}
-
-.btn-gold-primary:hover {
+.btn-editorial-pill:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 16px 45px rgba(200, 168, 107, 0.5);
-}
-
-.btn-gold-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background: var(--bg-card);
-  color: var(--gold-dark);
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  padding: 1.15rem 2.8rem;
-  border-radius: 40px;
-  text-decoration: none;
-  border: 1.5px solid var(--border-gold-strong);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.35s var(--ease-couture);
-  cursor: pointer;
-}
-
-.btn-gold-outline:hover {
-  background: rgba(200, 168, 107, 0.12);
-  border-color: var(--gold-primary);
-  color: var(--ink-primary);
-  transform: translateY(-2px);
+  box-shadow: 0 18px 50px rgba(197, 160, 89, 0.5);
 }
