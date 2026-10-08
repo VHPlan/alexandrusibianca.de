@@ -524,7 +524,7 @@
     el.innerHTML = '';
     [...txt].forEach((c, i) => {
       const s = document.createElement('span');
-      s.className = 'ch';
+      s.className = (i === 0 && c === 'A') ? 'ch capA' : 'ch';
       s.setAttribute('aria-hidden', 'true');
       s.style.setProperty('--i', i);
       if (idx > 0) s.style.setProperty('--base', '520ms');
