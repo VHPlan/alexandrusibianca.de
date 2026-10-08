@@ -7,24 +7,24 @@ class AudioEngine {
   constructor() {
     this.playlist = [
       {
+        title: 'LeLe — Dacă lumea se termină (feat. Andra Voloș)',
+        tag: '👑 Melodia Oficială a Mirilor',
+        src: 'assets/audio/lele_daca_lumea_se_termina.mp3'
+      },
+      {
         title: 'Florin Salam — Te-Am Găsit Frumoasă Stea',
-        tag: '👑 Piesa Specială de Dragoste',
+        tag: '💎 Hit Romantic de Nuntă',
         src: 'assets/audio/florin_salam_stea.mp3'
       },
       {
         title: 'Florin Salam — Dacă Tu N-Ai Fi',
-        tag: '💎 Hit Romantic de Nuntă',
+        tag: '🌹 Dragoste Eternă',
         src: 'assets/audio/florin_salam_daca_tu_n-ai_fi.mp3'
       },
       {
         title: 'Florin Salam — Nevasta Mea',
-        tag: '🌹 Iubirea Vieții Mele',
+        tag: '✨ Iubirea Vieții Mele',
         src: 'assets/audio/florin_salam_nevasta_mea.mp3'
-      },
-      {
-        title: 'Florin Salam — Oriunde Ai Fi Te Voi Iubi',
-        tag: '✨ Dragoste Eternă',
-        src: 'assets/audio/florin_salam_oriunde_ai_fi.mp3'
       }
     ];
 
