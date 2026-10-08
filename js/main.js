@@ -1,5 +1,5 @@
 /* ==========================================================
-   THE AB WEDDING — Alexandru & Bianca
+   THE AB WEDDING — Alex & Bianca
    Interaction layer
    ========================================================== */
 (() => {
@@ -570,14 +570,14 @@
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
       'DTSTART:20270620T140000',
       'DTEND:20270621T040000',
-      'SUMMARY:Nunta Alexandru & Bianca',
+      'SUMMARY:Nunta Alex & Bianca',
       'LOCATION:Catedrala Sf. Iosif\\, București',
       'DESCRIPTION:The AB Wedding — Abia așteptăm să sărbătorim împreună.',
       'END:VEVENT', 'END:VCALENDAR'
     ].join('\r\n');
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
-    a.download = 'Nunta-Alexandru-Bianca.ics';
+    a.download = 'Nunta-Alex-Bianca.ics';
     document.body.appendChild(a); a.click(); a.remove();
   });
 
