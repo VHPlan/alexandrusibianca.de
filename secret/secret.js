@@ -170,7 +170,7 @@
     // deci la eroare (101/150) trecem automat la următorul
     const YES_LIST = [
       { id: 'iE_1QyGmuGQ', start: 25 },
-      { id: 'SNcuxVwzcxI', start: 0 }
+      { id: 'SNcuxVwzcxI', start: 17 }
     ];
     const YES_START = 25;                 // pornește de la 0:25
     const VOL = .55;
@@ -401,11 +401,12 @@
     later(() => play(cur + 1), T(3.6));
   }
 
-  /* seal: press & hold ~1.8s to break it */
+  /* seal: press & hold ~1.8s → envelope opens */
   function bindSeal(seal) {
     const NEED = RM ? 300 : 1800;
+    const sc = seal.closest('.sc');
     let t0 = 0, raf = 0, done = false;
-    const set = (v) => seal.style.setProperty('--hp', v.toFixed(3));
+    const set = (v) => sc.style.setProperty('--hp', v.toFixed(3));
     const step = () => {
       const p = clamp((performance.now() - t0) / NEED, 0, 1);
       set(p);
@@ -417,29 +418,32 @@
       if (done) return;
       e.preventDefault();
       seal.setPointerCapture && e.pointerId !== undefined && seal.setPointerCapture(e.pointerId);
-      seal.classList.add('is-holding');
+      seal.classList.add('is-holding'); sc.classList.add('is-holding');
       t0 = performance.now();
       cancelAnimationFrame(raf); raf = requestAnimationFrame(step);
     };
     const up = () => {
       if (done) return;
       cancelAnimationFrame(raf);
-      seal.classList.remove('is-holding');
-      const from = parseFloat(seal.style.getPropertyValue('--hp')) || 0, s = performance.now();
+      seal.classList.remove('is-holding'); sc.classList.remove('is-holding');
+      const from = parseFloat(sc.style.getPropertyValue('--hp')) || 0, s = performance.now();
       const back = () => { const k = clamp(1 - (performance.now() - s) / 400, 0, 1); set(from * k); if (k > 0 && !done) requestAnimationFrame(back); };
       requestAnimationFrame(back);
     };
     function breakSeal() {
       done = true;
       cancelAnimationFrame(raf);
+      sc.classList.remove('is-holding');
       seal.classList.add('is-broken');
+      sc.classList.add('is-open');
       if (navigator.vibrate) navigator.vibrate([30, 40, 60]);
       const r = seal.getBoundingClientRect();
       Fx.burst(r.left + r.width / 2, r.top + r.height / 2, MOBILE ? 46 : 70);
-      const sc = seal.closest('.sc');
-      setTimeout(() => sc.classList.add('is-flash'), 350);
-      setTimeout(() => { play(cur + 1); }, T(2.2));
-      setTimeout(() => sc.classList.remove('is-flash'), 4500);
+      const env = sc.querySelector('.env__body').getBoundingClientRect();
+      setTimeout(() => Fx.burst(env.left + env.width / 2, env.top, MOBILE ? 40 : 60), 1500);
+      setTimeout(() => sc.classList.add('is-flash'), T(4.8));
+      setTimeout(() => { play(cur + 1); }, T(6.4));
+      setTimeout(() => sc.classList.remove('is-flash'), 9000);
     }
     seal.addEventListener('pointerdown', down);
     ['pointerup', 'pointercancel', 'pointerleave'].forEach((ev) => seal.addEventListener(ev, up));

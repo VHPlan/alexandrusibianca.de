@@ -52,10 +52,27 @@ ${pick(3, 'Ați spune că ne cunoașteți bine?', ['Foarte bine', 'Atunci sunte�
 <section class="sc sc--seal" data-seg="6" data-hold="0" data-warm=".5">
   <div class="sc__in">
     <p class="kick ln" data-d=".3">Sigilat pentru voi</p>
-    <button type="button" class="seal ln" data-d="1" aria-label="Țineți apăsat pe sigiliu">
-      <svg class="seal__ring" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94"/><circle class="seal__prog" cx="100" cy="100" r="94"/></svg>
-      <span class="seal__wax"><span class="seal__mono">AB</span></span>
-    </button>
+    <div class="env ln" data-d="1">
+      <span class="env__glow" aria-hidden="true"></span>
+      <div class="env__body">
+        <span class="env__back" aria-hidden="true"></span>
+        <div class="env__card" aria-hidden="true">
+          <span class="env__mono">AB</span>
+          <span class="env__rule"></span>
+          <span class="env__txt">O întrebare</span>
+          <span class="env__sub">doar pentru voi</span>
+        </div>
+        <span class="env__front" aria-hidden="true"></span>
+        <span class="env__flap" aria-hidden="true"><i class="env__flap-out"></i><i class="env__flap-in"></i></span>
+        <button type="button" class="seal" aria-label="Țineți apăsat pe sigiliu">
+          <svg class="seal__ring" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94"/><circle class="seal__prog" cx="100" cy="100" r="94"/></svg>
+          <span class="seal__wax">
+            <span class="seal__h seal__h--l"><span class="seal__mono">AB</span></span>
+            <span class="seal__h seal__h--r"><span class="seal__mono">AB</span></span>
+          </span>
+        </button>
+      </div>
+    </div>
     <p class="seal__hint ln" data-d="2.2">Țineți apăsat pe sigiliu</p>
   </div>
 </section>
@@ -76,19 +93,30 @@ ${pick(3, 'Ați spune că ne cunoașteți bine?', ['Foarte bine', 'Atunci sunte�
 </section>
 
 <section class="sc sc--yes" id="sc-yes" data-hold="0" data-warm="1" data-branch="1" data-fx="confetti">
-  <div class="sc__in">
-    <p class="t-off ln" data-d=".6">Oficial.<span class="heart" aria-hidden="true">&#10084;&#65038;</span></p>
-    <p class="t-lg ln split" data-d="3">De azi, povestea asta este și a voastră.</p>
-    <p class="t-md t-it ln split" data-d="5.4">Ne bucurăm enorm că veți fi alături de noi.</p>
-    <div class="end ln" data-d="8">
-      <span class="end__mono">AB</span>
-      <span class="end__names">Alex <em>&amp;</em> Bianca</span>
+  <div class="sc__in yes">
+    <svg class="rings ln" data-d=".2" viewBox="0 0 120 70" aria-hidden="true">
+      <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1dfb0"/><stop offset=".45" stop-color="#b8913f"/><stop offset=".7" stop-color="#e3c88e"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient></defs>
+      <circle class="ring ring--a" cx="46" cy="40" r="22"/>
+      <circle class="ring ring--b" cx="74" cy="40" r="22"/>
+      <path class="gem" d="M46 8 l4 5 -4 5 -4 -5z"/>
+    </svg>
+    <h2 class="ofi ln" data-d=".9" aria-label="Oficial."><span style="--i:0">O</span><span style="--i:1">F</span><span style="--i:2">I</span><span style="--i:3">C</span><span style="--i:4">I</span><span style="--i:5">A</span><span style="--i:6">L</span><span style="--i:7">.</span></h2>
+    <p class="ofi-sub ln" data-d="2.4"><i></i>Sunteți nașii noștri<i></i></p>
+    <div class="cert ln" data-d="3.4">
+      <b class="cert__c cert__c--tl"></b><b class="cert__c cert__c--tr"></b><b class="cert__c cert__c--bl"></b><b class="cert__c cert__c--br"></b>
+      <p class="cert__lead">De azi, povestea asta este și a voastră.</p>
+      <p class="cert__note">Ne bucurăm enorm că veți fi alături de noi.</p>
+      <div class="cert__foot">
+        <span class="cert__mono">AB</span>
+        <span class="cert__names"><b class="capA">A</b>lex <em>&amp;</em> Bianca</span>
+        <span class="cert__date">20 · 06 · 2027</span>
+      </div>
     </div>
-    <div class="send ln" data-d="10">
-      <span class="send__lbl">Trimiteți-ne răspunsul</span>
+    <div class="send send--yes ln" data-d="6.6">
+      <span class="send__lbl">Spuneți-ne și nouă</span>
       <div class="send__row">
-        <button type="button" class="send__btn" data-wa="${WA.alex}" data-msg="${MSG_YES}">Lui Alex</button>
-        <button type="button" class="send__btn" data-wa="${WA.bianca}" data-msg="${MSG_YES}">Biancăi</button>
+        <button type="button" class="pill" data-wa="${WA.alex}" data-msg="${MSG_YES}"><span>Lui Alex</span></button>
+        <button type="button" class="pill" data-wa="${WA.bianca}" data-msg="${MSG_YES}"><span>Biancăi</span></button>
       </div>
     </div>
   </div>
