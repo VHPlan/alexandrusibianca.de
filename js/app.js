@@ -1,19 +1,19 @@
 /**
- * ALEX & BIANCA — VOGUE WEDDINGS / HAUTE COUTURE CONTROLLER
- * Coordinates Particle Engine, Audio Engine, Couture Reveal, Runway Countdown, RSVP & Social Actions.
+ * ALEX & BIANCA — BRIGHT JOYFUL WEDDING CONTROLLER
+ * Coordinates Stardust & Petal Engine, Audio Engine, 3D Envelope, Live Countdown, RSVP, Calendar & WhatsApp.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Particles
+  // 1. Initialize Particles & Rose Petals Engine
   const particles = new ParticleEngine('particles-canvas');
 
   // 2. Initialize Audio Engine
   const audio = new AudioEngine();
 
-  // 3. Initialize High-Fashion Couture Reveal
-  const coutureReveal = new CoutureRevealEngine(audio, particles);
+  // 3. Initialize 3D Envelope Ceremony
+  const envelope = new EnvelopeCeremony(audio, particles);
 
-  // 4. Runway Live Countdown Timer (20 June 2027, 17:30)
+  // 4. Live Countdown Timer (20 June 2027, 17:30)
   const targetDate = new Date('June 20, 2027 17:30:00').getTime();
 
   function updateCountdown() {
@@ -56,68 +56,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // 6. Interactive RSVP Selection Pills
-  const choicePills = document.querySelectorAll('.rsvp-choice-pill');
-  choicePills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      choicePills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      const input = pill.querySelector('input[type="radio"]');
+  // 6. Joyful Conversational RSVP Toggle Selection
+  const toggleButtons = document.querySelectorAll('.rsvp-toggle-btn');
+  toggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const input = btn.querySelector('input[type="radio"]');
       if (input) input.checked = true;
     });
   });
 
-  // 7. Full-Screen RSVP Submission
-  const rsvpForm = document.getElementById('rsvp-fashion-form');
-  const rsvpSuccess = document.getElementById('rsvp-success-modal');
+  // 7. RSVP Form Submission
+  const rsvpForm = document.getElementById('rsvp-dialogue-form');
+  const rsvpSuccess = document.getElementById('rsvp-success-view');
 
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const guestName = document.getElementById('guest-name-field')?.value || '';
+      const guestName = document.getElementById('guest-name-input')?.value || '';
       const attending = document.querySelector('input[name="attending"]:checked')?.value || 'yes';
-      const guestCount = document.getElementById('guest-count-field')?.value || '2';
-      const guestNote = document.getElementById('guest-note-field')?.value || '';
+      const guestCount = document.getElementById('guest-count-input')?.value || '2';
+      const guestNote = document.getElementById('guest-note-input')?.value || '';
 
       // Persist to localStorage
-      localStorage.setItem('alex_bianca_vogue_rsvp', JSON.stringify({
+      localStorage.setItem('alex_bianca_joyful_rsvp', JSON.stringify({
         name: guestName,
         attending,
         guests: guestCount,
         note: guestNote,
-        date: new Date().toISOString()
+        timestamp: new Date().toISOString()
       }));
 
-      // Particle flare
+      // Joyful petal & gold particle celebration burst
       const submitBtn = rsvpForm.querySelector('button[type="submit"]');
       if (submitBtn) {
         const rect = submitBtn.getBoundingClientRect();
-        particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 70);
+        particles.createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 85);
       }
 
       // Show confirmation
       rsvpForm.style.display = 'none';
       if (rsvpSuccess) {
         rsvpSuccess.classList.add('active');
-        const confirmedDisplay = document.getElementById('rsvp-guest-name-output');
-        if (confirmedDisplay) confirmedDisplay.innerText = guestName;
+        const nameDisplay = document.getElementById('rsvp-guest-confirmed-name');
+        if (nameDisplay) nameDisplay.innerText = guestName;
       }
     });
   }
 
-  // 8. Download Calendar Event (.ics Generator)
-  const calendarBtns = document.querySelectorAll('.btn-download-ics');
+  // 8. Add to Calendar (.ics Generator)
+  const calendarBtns = document.querySelectorAll('.btn-action-calendar');
   calendarBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const ics = 
+      const icsContent = 
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Alex & Bianca//Wedding Invitation//RO
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
 SUMMARY:Nunta Alex & Bianca — Palatul Snagov
-DESCRIPTION:Sărbătorim împreună cel mai frumos capitol la Palatul Snagov!
+DESCRIPTION:Sărbătorim împreună cea mai frumoasă zi la Palatul Snagov!
 LOCATION:Palatul Snagov, Aleea Palatului 1, Snagov, Ilfov
 DTSTART:20270620T143000Z
 DTEND:20270621T030000Z
@@ -125,10 +125,10 @@ STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
 
-      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'Alex_si_Bianca_20_Iunie_2027.ics');
+      link.setAttribute('download', 'Nunta_Alex_si_Bianca_2027.ics');
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -136,11 +136,11 @@ END:VCALENDAR`;
   });
 
   // 9. WhatsApp Direct Sharing
-  const whatsappBtns = document.querySelectorAll('.btn-share-whatsapp');
+  const whatsappBtns = document.querySelectorAll('.btn-action-whatsapp');
   whatsappBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const shareUrl = window.location.href;
-      const message = `✨ Alex & Bianca — 20 Iunie 2027 la Palatul Snagov. Descoperă invitația oficială aici: ${shareUrl}`;
+      const message = `🌸 Alex & Bianca — 20 Iunie 2027 la Palatul Snagov. Descoperă invitația noastră oficială aici: ${shareUrl}`;
       window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
     });
   });

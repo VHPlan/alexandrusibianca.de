@@ -1,6 +1,6 @@
 /**
- * ALEX & BIANCA — LUXURY CHAMPAGNE GOLD & STARLIGHT PARTICLE ENGINE
- * Elegant floating stardust, twinkling stars, and interactive gold bursts for White & Gold palette
+ * ALEX & BIANCA — BRIGHT JOYFUL WEDDING PARTICLES & ROSE PETALS ENGINE
+ * Renders floating champagne gold stardust, sparkling 4-point stars, and soft drifting rose petals.
  */
 
 class ParticleEngine {
@@ -11,15 +11,25 @@ class ParticleEngine {
     this.ctx = this.canvas.getContext('2d');
     this.particles = [];
     this.stars = [];
+    this.petals = [];
     this.bursts = [];
-    this.numDust = 38;
-    this.numStars = 20;
+
+    this.numDust = 35;
+    this.numStars = 18;
+    this.numPetals = 16;
 
     this.goldColors = [
-      'rgba(197, 160, 89, 0.75)',
       'rgba(212, 175, 55, 0.85)',
-      'rgba(244, 228, 166, 0.95)',
-      'rgba(166, 124, 30, 0.65)'
+      'rgba(247, 230, 164, 0.95)',
+      'rgba(232, 207, 141, 0.8)',
+      'rgba(180, 140, 50, 0.65)'
+    ];
+
+    this.petalColors = [
+      'rgba(255, 218, 218, 0.65)',
+      'rgba(245, 196, 196, 0.55)',
+      'rgba(255, 235, 235, 0.75)',
+      'rgba(235, 180, 180, 0.5)'
     ];
 
     this.init();
@@ -39,6 +49,11 @@ class ParticleEngine {
       this.stars.push(this.createStar());
     }
 
+    // Generate soft drifting rose petals
+    for (let i = 0; i < this.numPetals; i++) {
+      this.petals.push(this.createPetal());
+    }
+
     this.animate();
   }
 
@@ -51,10 +66,10 @@ class ParticleEngine {
     return {
       x: Math.random() * (this.width || window.innerWidth),
       y: Math.random() * (this.height || window.innerHeight),
-      radius: Math.random() * 2.5 + 0.8,
+      radius: Math.random() * 2.2 + 0.8,
       color: this.goldColors[Math.floor(Math.random() * this.goldColors.length)],
       vx: (Math.random() - 0.5) * 0.3,
-      vy: -Math.random() * 0.4 - 0.1, // gently float upward
+      vy: -Math.random() * 0.4 - 0.1, // float upward
       alpha: Math.random() * 0.6 + 0.2,
       maxAlpha: Math.random() * 0.5 + 0.35,
       alphaSpeed: Math.random() * 0.01 + 0.003,
@@ -76,20 +91,39 @@ class ParticleEngine {
     };
   }
 
+  createPetal() {
+    return {
+      x: Math.random() * (this.width || window.innerWidth),
+      y: Math.random() * (this.height || window.innerHeight),
+      width: Math.random() * 10 + 8,
+      height: Math.random() * 16 + 12,
+      color: this.petalColors[Math.floor(Math.random() * this.petalColors.length)],
+      rotation: Math.random() * Math.PI * 2,
+      rotSpeed: (Math.random() - 0.5) * 0.02,
+      vx: Math.random() * 0.6 + 0.2,
+      vy: Math.random() * 0.8 + 0.3, // gently fall like a blossom
+      oscillation: Math.random() * Math.PI * 2,
+      oscSpeed: Math.random() * 0.03 + 0.01
+    };
+  }
+
   createBurst(x, y, count = 75) {
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
       const speed = Math.random() * 7 + 2;
+      const isPetal = Math.random() > 0.6;
+
       this.bursts.push({
         x,
         y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
-        radius: Math.random() * 3.5 + 1.2,
-        color: this.goldColors[Math.floor(Math.random() * this.goldColors.length)],
+        radius: isPetal ? (Math.random() * 5 + 3) : (Math.random() * 3 + 1.2),
+        color: isPetal ? this.petalColors[Math.floor(Math.random() * this.petalColors.length)] : this.goldColors[Math.floor(Math.random() * this.goldColors.length)],
         alpha: 1,
         decay: Math.random() * 0.025 + 0.015,
-        gravity: 0.08
+        gravity: 0.08,
+        isPetal
       });
     }
   }
@@ -117,10 +151,39 @@ class ParticleEngine {
     ctx.closePath();
   }
 
+  drawPetal(ctx, x, y, width, height, rotation, color) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rotation);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(0, -height / 2);
+    ctx.bezierCurveTo(width / 2, -height / 3, width / 2, height / 3, 0, height / 2);
+    ctx.bezierCurveTo(-width / 2, height / 3, -width / 2, -height / 3, 0, -height / 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
   animate() {
     this.ctx.clearRect(0, 0, this.width, this.height);
 
-    // 1. Ambient Floating Stardust
+    // 1. Soft Rose Petals Floating
+    for (let pet of this.petals) {
+      pet.oscillation += pet.oscSpeed;
+      pet.x += pet.vx + Math.sin(pet.oscillation) * 0.5;
+      pet.y += pet.vy;
+      pet.rotation += pet.rotSpeed;
+
+      if (pet.y > this.height + 20) {
+        pet.y = -20;
+        pet.x = Math.random() * this.width;
+      }
+      if (pet.x > this.width + 20) pet.x = -20;
+
+      this.drawPetal(this.ctx, pet.x, pet.y, pet.width, pet.height, pet.rotation, pet.color);
+    }
+
+    // 2. Ambient Floating Golden Stardust
     for (let p of this.particles) {
       p.x += p.vx;
       p.y += p.vy;
@@ -143,12 +206,12 @@ class ParticleEngine {
       this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       this.ctx.fillStyle = p.color;
       this.ctx.shadowBlur = 8;
-      this.ctx.shadowColor = 'rgba(197, 160, 89, 0.6)';
+      this.ctx.shadowColor = 'rgba(212, 175, 55, 0.6)';
       this.ctx.fill();
       this.ctx.restore();
     }
 
-    // 2. Twinkling 4-Point Starlight
+    // 3. Twinkling 4-Point Starlight
     for (let s of this.stars) {
       s.rotation += s.rotSpeed;
       if (s.growing) {
@@ -169,7 +232,7 @@ class ParticleEngine {
       this.ctx.restore();
     }
 
-    // 3. Gold Confetti & Sparkler Bursts
+    // 4. Gold Confetti & Petal Bursts
     for (let i = this.bursts.length - 1; i >= 0; i--) {
       const b = this.bursts[i];
       b.x += b.vx;
@@ -185,8 +248,8 @@ class ParticleEngine {
       this.ctx.save();
       this.ctx.globalAlpha = b.alpha;
       this.ctx.fillStyle = b.color;
-      this.ctx.shadowBlur = 10;
-      this.ctx.shadowColor = '#ffd700';
+      this.ctx.shadowBlur = 8;
+      this.ctx.shadowColor = '#d4af37';
       this.ctx.beginPath();
       this.ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
       this.ctx.fill();
