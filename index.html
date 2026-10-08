@@ -16,10 +16,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
 
-  <!-- Stylesheets (Modern 3D Envelope Edition) -->
-  <link rel="stylesheet" href="css/main.css?v=real_3d_envelope_v6">
-  <link rel="stylesheet" href="css/envelope.css?v=real_3d_envelope_v6">
-  <link rel="stylesheet" href="css/components.css?v=real_3d_envelope_v6">
+  <!-- Stylesheets (Modern Linen & Organic Wax Seal Edition) -->
+  <link rel="stylesheet" href="css/main.css?v=linen_wax_v7">
+  <link rel="stylesheet" href="css/envelope.css?v=linen_wax_v7">
+  <link rel="stylesheet" href="css/components.css?v=linen_wax_v7">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23ffffff%22 stroke=%22%23ffd700%22 stroke-width=%223%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Cinzel%22 font-size=%2232%22 fill=%22%23aa7c11%22>AB</text></svg>">
 </head>
@@ -40,7 +40,7 @@
   </aside>
 
   <!-- =========================================================================
-       INTRO EXPERIENCE (REALISTIC 3D PHYSICAL ENVELOPE & EMBOSSED AB STAMP)
+       INTRO EXPERIENCE (REALISTIC 3D PHYSICAL ENVELOPE & ORGANIC WAX SEAL 'AB')
        ========================================================================= -->
   <div class="envelope-ceremony-screen" id="envelope-screen">
     <div class="royal-glow-emitter"></div>
@@ -56,7 +56,7 @@
       <div class="intro-gold-line"></div>
     </div>
 
-    <!-- 3D Physical Baronial Envelope -->
+    <!-- 3D Physical Baronial Linen Envelope -->
     <div class="envelope-3d-stage">
       <div class="envelope-physical-box" id="royal-box-3d">
         <!-- 1. Base Back Wall -->
@@ -77,14 +77,53 @@
         <!-- 4. Bottom Pocket Fold -->
         <div class="env-bottom-fold"></div>
 
-        <!-- 5. 3D Folding Top Pointed V-Flap -->
+        <!-- 5. Diagonal Gold Twine Cord (Under Seal) -->
+        <div class="env-twine-cord"></div>
+
+        <!-- 6. 3D Folding Top Pointed V-Flap -->
         <div class="env-top-flap-3d" id="door-right">
-          <!-- 6. Embossed 3D AB Monogram Wax Stamp Seal -->
-          <div class="env-embossed-seal-stamp" id="royal-seal" title="Apasă pentru a deschide invitația">
-            <svg class="stamp-crown-icon" viewBox="0 0 24 24">
-              <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z"/>
+          <!-- 7. Organic Melted 24K Gold Wax Seal with Embossed 'AB' Monogram -->
+          <div class="env-organic-wax-seal" id="royal-seal" title="Apasă pentru a deschide invitația">
+            <svg class="wax-svg-shape" viewBox="0 0 100 100">
+              <defs>
+                <radialGradient id="waxGoldGrad" cx="35%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#fff5cc" />
+                  <stop offset="25%" stop-color="#e6be44" />
+                  <stop offset="60%" stop-color="#bf8c18" />
+                  <stop offset="85%" stop-color="#8a5e0b" />
+                  <stop offset="100%" stop-color="#543803" />
+                </radialGradient>
+                <radialGradient id="waxInnerGrad" cx="40%" cy="35%" r="60%">
+                  <stop offset="0%" stop-color="#ffd966" />
+                  <stop offset="50%" stop-color="#c99723" />
+                  <stop offset="90%" stop-color="#8a5f08" />
+                  <stop offset="100%" stop-color="#4a3203" />
+                </radialGradient>
+                <linearGradient id="waxSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+                  <stop offset="35%" stop-color="#ffd966" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#000000" stop-opacity="0.4"/>
+                </linearGradient>
+                <filter id="wax3dShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="5" stdDeviation="3.5" flood-color="#3a2503" flood-opacity="0.6"/>
+                </filter>
+              </defs>
+              <!-- Organic melted wax puddle shape -->
+              <path d="M50 5 C66 3, 83 13, 89 26 C97 40, 98 59, 91 73 C84 87, 68 97, 50 96 C31 95, 14 86, 8 70 C2 54, 3 35, 13 22 C21 9, 36 6, 50 5 Z" fill="url(#waxGoldGrad)" filter="url(#wax3dShadow)" />
+              <path d="M50 8 C64 6, 79 15, 84 27 C92 39, 93 56, 87 69 C80 82, 65 91, 50 90 C33 89, 18 81, 13 66 C7 52, 8 35, 17 24 C24 12, 39 8, 50 8 Z" fill="none" stroke="url(#waxSheen)" stroke-width="1.8" opacity="0.9" />
+              <!-- Stamped core center -->
+              <circle cx="50" cy="50" r="31" fill="url(#waxInnerGrad)" stroke="#5c3e05" stroke-width="1.2" />
+              <circle cx="50" cy="50" r="29" fill="none" stroke="#ffe58f" stroke-width="0.8" opacity="0.8" stroke-dasharray="2 1.5" />
+              <!-- Crown crest -->
+              <g transform="translate(50, 36) scale(0.65)" text-anchor="middle">
+                <path d="M-12 6 L-16 -5 L-6 0 L0 -7 L6 0 L16 -5 L12 6 Z" fill="#fff4c2" />
+                <circle cx="-16" cy="-6" r="1.5" fill="#fff" />
+                <circle cx="0" cy="-8" r="1.8" fill="#fff" />
+                <circle cx="16" cy="-6" r="1.5" fill="#fff" />
+              </g>
+              <!-- Embossed 'AB' Monogram -->
+              <text x="50" y="65" text-anchor="middle" font-family="'Cinzel', serif" font-size="20" font-weight="700" letter-spacing="2" fill="#fff8d6" style="text-shadow: 0 -1px 1px rgba(255,255,255,0.8), 0 2px 3px rgba(40,25,2,0.9);">AB</text>
             </svg>
-            <span class="stamp-monogram-text">AB</span>
           </div>
         </div>
       </div>
@@ -546,11 +585,11 @@
   </main>
 
   <!-- Scripts -->
-  <script src="js/particles.js?v=real_3d_envelope_v6"></script>
-  <script src="js/audio.js?v=real_3d_envelope_v6"></script>
-  <script src="js/envelope.js?v=real_3d_envelope_v6"></script>
-  <script src="js/gallery.js?v=real_3d_envelope_v6"></script>
-  <script src="js/rsvp.js?v=real_3d_envelope_v6"></script>
-  <script src="js/app.js?v=real_3d_envelope_v6"></script>
+  <script src="js/particles.js?v=linen_wax_v7"></script>
+  <script src="js/audio.js?v=linen_wax_v7"></script>
+  <script src="js/envelope.js?v=linen_wax_v7"></script>
+  <script src="js/gallery.js?v=linen_wax_v7"></script>
+  <script src="js/rsvp.js?v=linen_wax_v7"></script>
+  <script src="js/app.js?v=linen_wax_v7"></script>
 </body>
 </html>
