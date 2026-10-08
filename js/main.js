@@ -14,9 +14,9 @@
   const lerp = (a, b, t) => a + (b - a) * t;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
-  /* RSVP → Google Sheet. Paste here the Web App URL from Apps Script
-     (instructions: tools/rsvp-google-sheet.gs). Empty = only saved locally. */
-  const RSVP_ENDPOINT = '';
+  /* RSVP → WhatsApp. Numărul în format internațional, fără + sau spații
+     (ex: 40712345678). Invitatul trimite confirmarea direct pe acest număr. */
+  const WHATSAPP_NUMBER = '40700000000';
 
   /* ---------------------------------------------------------
      1. LIGHT CANVAS — gold dust, twinkling stars, soft bokeh
@@ -898,17 +898,27 @@
       localStorage.setItem('ab-rsvp', JSON.stringify(all));
     } catch (_) { /* storage unavailable */ }
 
-    // send to the couple's Google Sheet (see tools/rsvp-google-sheet.gs)
-    const send = RSVP_ENDPOINT
-      ? fetch(RSVP_ENDPOINT, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(entry)
-        }).catch(() => {})
-      : Promise.resolve();
+    // build the WhatsApp message and open it right away (inside the click → no popup block)
+    const yes = state.attend === 'yes';
+    const lines = [
+      '💍 Confirmare nuntă Alex & Bianca',
+      '',
+      'Nume: ' + name,
+      'Participă: ' + (yes ? 'DA ✅' : 'NU ❌')
+    ];
+    if (yes) {
+      lines.push('Persoane: ' + entry.guests);
+      lines.push('Copii: ' + entry.kids);
+      lines.push('Meniu: ' + entry.menu);
+    }
+    if (entry.message) lines.push('', 'Mesaj: ' + entry.message);
+    const waUrl = 'https://wa.me/' + WHATSAPP_NUMBER.replace(/\D/g, '') +
+      '?text=' + encodeURIComponent(lines.join('\n'));
+    window.__lastWa = waUrl;
+    if (MOBILE) window.location.href = waUrl;
+    else window.open(waUrl, '_blank', 'noopener');
 
-    await Promise.all([send, wait(1300)]);
+    await wait(900);
     submitBtn.classList.remove('is-loading');
     submitBtn.disabled = false;
     $('#thanksName').textContent = ', ' + name.split(' ')[0];

@@ -548,3 +548,17 @@ body { color: var(--text); }
 @keyframes totopNudge { 0%, 100% { transform: translateY(1px); } 50% { transform: translateY(-2px); } }
 /* keep the footer line clear of the button */
 .finale__foot { bottom: calc(5.2rem + var(--safe-b)); }
+
+/* ===== WhatsApp RSVP note ===== */
+.wa-note{
+  margin:14px 0 0;text-align:center;
+  font:500 10px/1.4 'Montserrat',sans-serif;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(60,50,30,.5);
+}
+.wa-note::before{
+  content:"";display:inline-block;width:11px;height:11px;margin:-2px 8px 0 0;vertical-align:middle;
+  background:#b8954a;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.form.is-hidden + .wa-note{display:none}
