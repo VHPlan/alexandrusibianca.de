@@ -112,6 +112,7 @@ class EnvelopeCeremony {
       }, 150);
 
       this.seal.classList.add('broken');
+      this.seal.classList.add('unlocked');
     }
 
     // 3. Unfurl Ribbon

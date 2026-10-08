@@ -1,6 +1,6 @@
 /* ==========================================================================
-   ALEX & BIANCA — ULTRA-LUXURY 3D WHITE & 24K GOLD PHYSICAL ENVELOPE
-   Masterpiece Couture Wedding Stationery Experience with Organic Wax Seal & Starlight
+   ALEX & BIANCA — THE ROYAL ARCH GATEFOLD FOLIO & 24K GOLD CASE (3D EDITION)
+   Architectural French Gatefold Case with Interlocking Monogram Medallion
    ========================================================================== */
 
 /* 1. Fullscreen Ambient Stage */
@@ -10,14 +10,14 @@
   width: 100vw;
   height: 100vh;
   background: 
-    radial-gradient(ellipse at 50% 25%, #ffffff 0%, #faf6ec 45%, #ece4d0 85%, #dfd5be 100%);
+    radial-gradient(ellipse at 50% 30%, #ffffff 0%, #fbf9f4 40%, #f0ebd9 75%, #dfd5be 100%);
   z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1rem;
-  perspective: 1800px;
+  perspective: 2000px;
   overflow: hidden;
   transition: opacity 1.3s cubic-bezier(0.7, 0, 0.2, 1), transform 1.3s cubic-bezier(0.7, 0, 0.2, 1), visibility 1.3s;
 }
@@ -29,65 +29,52 @@
   pointer-events: none;
 }
 
-/* Ambient Radiant Gold Aurora & Sunbeams */
+/* Ambient Radial Golden Aurora & Shimmer */
 .royal-glow-emitter {
   position: absolute;
-  width: 900px;
-  height: 900px;
+  width: 950px;
+  height: 950px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(230, 190, 68, 0.28) 0%, rgba(245, 222, 150, 0.12) 45%, transparent 70%);
-  filter: blur(80px);
+  background: radial-gradient(circle, rgba(230, 190, 68, 0.25) 0%, rgba(245, 222, 150, 0.1) 45%, transparent 70%);
+  filter: blur(85px);
   pointer-events: none;
-  animation: auroraPulse 8s ease-in-out infinite alternate;
+  animation: auroraBreath 8s ease-in-out infinite alternate;
 }
 
-@keyframes auroraPulse {
-  0% { transform: scale(0.9) translate(-20px, -20px); opacity: 0.6; }
-  50% { transform: scale(1.18) translate(15px, 20px); opacity: 0.95; }
-  100% { transform: scale(1) translate(0, 0); opacity: 0.75; }
+@keyframes auroraBreath {
+  0% { transform: scale(0.9) translate(-15px, -15px); opacity: 0.6; }
+  100% { transform: scale(1.18) translate(15px, 15px); opacity: 0.95; }
 }
 
-/* Ambient Radial Golden Sunbeams */
-.envelope-ceremony-screen::before {
-  content: '';
+/* Floating Ambient Golden Light Orbs */
+.ambient-gold-orb {
   position: absolute;
-  inset: -50%;
-  background: conic-gradient(from 0deg at 50% 50%, 
-    rgba(212, 175, 55, 0.04) 0deg, 
-    transparent 30deg, 
-    rgba(212, 175, 55, 0.07) 60deg, 
-    transparent 90deg,
-    rgba(212, 175, 55, 0.04) 120deg,
-    transparent 150deg,
-    rgba(212, 175, 55, 0.08) 180deg,
-    transparent 210deg,
-    rgba(212, 175, 55, 0.05) 240deg,
-    transparent 270deg,
-    rgba(212, 175, 55, 0.08) 300deg,
-    transparent 330deg,
-    rgba(212, 175, 55, 0.04) 360deg
-  );
-  animation: sunbeamRotate 40s linear infinite;
+  border-radius: 50%;
   pointer-events: none;
+  filter: blur(40px);
+  animation: orbDrift 14s ease-in-out infinite alternate;
 }
+.orb-1 { width: 320px; height: 320px; background: rgba(255, 215, 0, 0.15); top: 10%; left: 15%; }
+.orb-2 { width: 280px; height: 280px; background: rgba(212, 175, 55, 0.14); bottom: 15%; right: 15%; animation-delay: -5s; }
 
-@keyframes sunbeamRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes orbDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.15); }
+  100% { transform: translate(-20px, 30px) scale(0.9); }
 }
 
 /* ==========================================================================
-   2. REFINED EDITORIAL TYPOGRAPHY & HEADER
+   2. HAUTE COUTURE EDITORIAL TYPOGRAPHY & HEADER
    ========================================================================== */
 .intro-royal-header {
   position: relative;
   z-index: 10;
   text-align: center;
-  margin-bottom: 2rem;
-  animation: introHeaderSlide 1.2s var(--ease-couture) forwards;
+  margin-bottom: 2.2rem;
+  animation: introFadeUp 1.2s var(--ease-couture) forwards;
 }
 
-@keyframes introHeaderSlide {
+@keyframes introFadeUp {
   from { opacity: 0; transform: translateY(-30px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -95,11 +82,11 @@
 .intro-badge-top {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.8rem;
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--gold-dark);
   margin-bottom: 0.6rem;
@@ -107,45 +94,44 @@
 
 .intro-badge-top .badge-sparkle {
   color: var(--gold-primary);
-  font-size: 0.85rem;
-  animation: sparkleTwinkle 2s ease-in-out infinite alternate;
+  font-size: 0.9rem;
+  animation: sparkleRotate 3s ease-in-out infinite alternate;
 }
 
-@keyframes sparkleTwinkle {
+@keyframes sparkleRotate {
   0% { transform: scale(0.8) rotate(0deg); opacity: 0.6; }
-  100% { transform: scale(1.25) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 6px #ffd700); }
+  100% { transform: scale(1.25) rotate(90deg); opacity: 1; filter: drop-shadow(0 0 8px #ffd700); }
 }
 
 .intro-royal-names {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: 0.16em;
+  font-family: var(--font-fashion), var(--font-serif);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.18em;
   color: var(--ink-primary);
   text-transform: uppercase;
   margin: 0 0 0.4rem;
-  text-shadow: 0 2px 20px rgba(180, 140, 40, 0.15);
+  text-shadow: 0 3px 25px rgba(180, 140, 40, 0.15);
 }
 
 .intro-royal-names .amp {
-  font-family: var(--font-script);
-  font-size: 1.35em;
+  font-family: var(--font-calligraphy), var(--font-script);
+  font-size: 1.25em;
   font-weight: 400;
-  color: var(--gold-primary);
   background: var(--grad-gold-metallic);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding: 0 0.4rem;
-  vertical-align: middle;
+  padding: 0 0.5rem;
+  vertical-align: baseline;
   text-transform: none;
 }
 
 .intro-royal-sub {
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--gold-dark);
   margin: 0;
@@ -155,27 +141,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin: 0.85rem auto 0;
+  gap: 1.2rem;
+  margin: 0.9rem auto 0;
 }
 
 .intro-gold-ornament .line {
-  width: 40px;
+  width: 50px;
   height: 1.5px;
   background: var(--grad-gold-metallic);
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .intro-gold-ornament .diamond {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   background: var(--gold-primary);
   transform: rotate(45deg);
-  box-shadow: 0 0 8px #ffd700;
+  box-shadow: 0 0 10px #ffd700;
 }
 
 /* ==========================================================================
-   3. 3D COUTURE PHYSICAL ENVELOPE STAGE
+   3. ROYAL ARCH GATEFOLD 3D FOLIO CASE
    ========================================================================== */
 .envelope-3d-stage {
   position: relative;
@@ -186,273 +172,264 @@
 }
 
 .envelope-physical-box {
-  width: min(90vw, 480px);
-  height: min(52vh, 300px);
+  width: min(92vw, 490px);
+  height: min(54vh, 310px);
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: transform 0.25s cubic-bezier(0.2, 0, 0.1, 1), box-shadow 0.4s ease;
-  filter: drop-shadow(0 30px 60px rgba(120, 90, 25, 0.25)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
+  filter: drop-shadow(0 35px 70px rgba(120, 90, 25, 0.28)) drop-shadow(0 10px 25px rgba(0, 0, 0, 0.08));
 }
 
 .envelope-physical-box:hover {
-  filter: drop-shadow(0 38px 75px rgba(140, 105, 30, 0.35)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 45px 85px rgba(140, 105, 30, 0.38)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.1));
 }
 
-/* Dynamic Glint Sheen passing across envelope */
+/* Dynamic Glint Sheen passing across Folio */
 .env-sheen-sweep {
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: 14px;
   background: linear-gradient(115deg, 
     transparent 0%, 
     rgba(255, 255, 255, 0) 35%, 
-    rgba(255, 255, 255, 0.6) 50%, 
-    rgba(255, 240, 180, 0.3) 55%, 
+    rgba(255, 255, 255, 0.7) 50%, 
+    rgba(255, 240, 180, 0.35) 55%, 
     transparent 70%
   );
-  z-index: 20;
+  z-index: 25;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.75;
   background-size: 200% 200%;
-  animation: sheenSlide 5s ease-in-out infinite;
+  animation: sheenGlide 5s ease-in-out infinite;
 }
 
-@keyframes sheenSlide {
+@keyframes sheenGlide {
   0% { background-position: -150% -150%; }
   40%, 100% { background-position: 250% 250%; }
 }
 
-/* 1. Base Back Paper Sheet (Textured Ivory & Gold Inset) */
+/* Base Back Chamber (Interior Wall) */
 .env-back-sheet {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 50% 50%, #ffffff 0%, #faf7f0 60%, #eee6d3 100%);
-  border: 1.5px solid rgba(212, 175, 55, 0.45);
-  border-radius: 12px;
+    radial-gradient(circle at 50% 50%, #ffffff 0%, #f9f6ef 60%, #eee5d2 100%);
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  border-radius: 14px;
   z-index: 1;
-  box-shadow: inset 0 0 45px rgba(180, 140, 40, 0.12);
+  box-shadow: inset 0 0 50px rgba(180, 140, 40, 0.15);
 }
 
-/* Flap Inner Damask Gold Satin Lining (Visible when opened) */
 .env-inner-lining {
   position: absolute;
-  inset: 4px;
-  border-radius: 8px;
+  inset: 6px;
+  border-radius: 10px;
   background: 
-    radial-gradient(circle at 50% 30%, rgba(255, 235, 170, 0.4) 0%, transparent 70%),
-    repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.06) 0px, rgba(212, 175, 55, 0.06) 2px, transparent 2px, transparent 10px),
-    repeating-linear-gradient(-45deg, rgba(212, 175, 55, 0.06) 0px, rgba(212, 175, 55, 0.06) 2px, transparent 2px, transparent 10px),
-    linear-gradient(180deg, #fdfbf7 0%, #f4eee1 100%);
-  border: 1px dashed rgba(212, 175, 55, 0.35);
+    radial-gradient(circle at 50% 30%, rgba(255, 235, 170, 0.45) 0%, transparent 70%),
+    repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.05) 0px, rgba(212, 175, 55, 0.05) 2px, transparent 2px, transparent 12px),
+    repeating-linear-gradient(-45deg, rgba(212, 175, 55, 0.05) 0px, rgba(212, 175, 55, 0.05) 2px, transparent 2px, transparent 12px),
+    linear-gradient(180deg, #fdfbf7 0%, #f5eee2 100%);
+  border: 1px dashed rgba(212, 175, 55, 0.4);
   z-index: 1;
 }
 
-/* 2. Heavy Couture Invitation Card (Rises up out of pocket) */
+/* 4. Inside Royal 24K Gold Wedding Card (Rises forward on open) */
 .env-invitation-card {
   position: absolute;
-  inset: 14px;
+  inset: 16px;
   background: 
-    radial-gradient(circle at 50% 15%, rgba(255, 245, 200, 0.5) 0%, transparent 60%),
-    linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #f7f2e4 100%);
+    radial-gradient(circle at 50% 15%, rgba(255, 245, 200, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #f8f4e6 100%);
   border: 2px solid var(--border-gold-strong);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.8rem;
+  padding: 2rem 1.5rem;
   text-align: center;
   z-index: 2;
-  box-shadow: 0 12px 35px rgba(140, 105, 30, 0.18), inset 0 0 30px rgba(212, 175, 55, 0.08);
+  box-shadow: 0 15px 40px rgba(140, 105, 30, 0.2), inset 0 0 35px rgba(212, 175, 55, 0.1);
   transform: translateZ(2px);
   transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1.4s ease;
 }
 
 .env-card-inner-frame {
   position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 4px;
+  inset: 8px;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  border-radius: 6px;
   pointer-events: none;
 }
 
-/* Card Rises smoothly when envelope opens */
 .envelope-physical-box.open .env-invitation-card {
-  transform: translateY(-130px) translateZ(120px) scale(1.06);
-  box-shadow: 0 40px 90px rgba(140, 105, 30, 0.4), 0 0 50px rgba(230, 190, 68, 0.35);
+  transform: translateZ(110px) scale(1.08);
+  box-shadow: 0 45px 100px rgba(140, 105, 30, 0.45), 0 0 60px rgba(230, 190, 68, 0.4);
 }
 
 .env-card-subtag {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.42em;
   color: var(--gold-dark);
   text-transform: uppercase;
   margin-bottom: 0.6rem;
 }
 
 .env-card-monogram {
-  font-family: var(--font-serif);
-  font-size: 3.6rem;
-  font-weight: 700;
+  font-family: var(--font-fashion), var(--font-serif);
+  font-size: 3.8rem;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: 0.12em;
   margin-bottom: 0.4rem;
 }
 
 .env-card-names {
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-family: var(--font-fashion), var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
   color: var(--ink-primary);
   text-transform: uppercase;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
 .env-card-date {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
   color: var(--gold-dark);
 }
 
-/* 3. Envelope Front Pocket (Clean layered SVG Vector to prevent raster gaps) */
-.env-front-pocket-svg {
+/* ==========================================================================
+   5. FRENCH GATEFOLD DOUBLE DOORS (LEFT & RIGHT)
+   ========================================================================== */
+.gatefold-doors-wrapper {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
+  transform-style: preserve-3d;
+  z-index: 10;
   pointer-events: none;
-  filter: drop-shadow(0 -3px 8px rgba(140, 105, 30, 0.1));
 }
 
-/* 4. Luxury 24K Gold Satin Belly-Band Ribbon */
-.env-satin-ribbon-band {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 28px;
-  transform: translateY(-50%) translateZ(12px);
-  background: 
-    linear-gradient(180deg, 
-      #d4af37 0%, 
-      #fff2a8 30%, 
-      #e5ba39 60%, 
-      #9a7210 100%
-    );
-  border-top: 1px solid #fff6cc;
-  border-bottom: 1px solid #735003;
-  box-shadow: 0 4px 15px rgba(120, 85, 15, 0.35), 0 0 12px rgba(255, 215, 0, 0.4);
-  z-index: 7;
-  pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.6s ease;
-}
-
-.envelope-physical-box.open .env-satin-ribbon-band {
-  opacity: 0;
-  transform: translateY(-50%) scaleX(1.3);
-}
-
-/* 5. 3D Folding Baronial Pointed V-Flap */
-.env-top-flap-3d {
+.gatefold-door {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 60%;
-  transform-origin: top center;
+  bottom: 0;
+  width: 50.5%;
+  background: 
+    radial-gradient(circle at 50% 50%, #ffffff 0%, #faf8f2 60%, #eee7d5 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
   transform-style: preserve-3d;
   transition: transform 1.35s cubic-bezier(0.2, 0.85, 0.2, 1);
-  z-index: 8;
-  filter: drop-shadow(0 14px 25px rgba(120, 90, 20, 0.2));
+  box-shadow: 0 10px 30px rgba(120, 90, 20, 0.2);
 }
 
-.envelope-physical-box.open .env-top-flap-3d {
-  transform: rotateX(180deg);
-  z-index: 1;
+/* Left Door Flap */
+.gatefold-door-left {
+  left: 0;
+  border-radius: 14px 0 0 14px;
+  transform-origin: left center;
+  border-right: 1.5px solid var(--border-gold-strong);
 }
 
-.env-top-flap-svg {
+/* Right Door Flap */
+.gatefold-door-right {
+  right: 0;
+  border-radius: 0 14px 14px 0;
+  transform-origin: right center;
+  border-left: 1.5px solid var(--border-gold-strong);
+}
+
+/* 3D Gatefold Opening Animation */
+.envelope-physical-box.open .gatefold-door-left {
+  transform: rotateY(-125deg);
+  box-shadow: -15px 15px 40px rgba(120, 90, 20, 0.3);
+}
+
+.envelope-physical-box.open .gatefold-door-right {
+  transform: rotateY(125deg);
+  box-shadow: 15px 15px 40px rgba(120, 90, 20, 0.3);
+}
+
+.door-svg-artwork {
   width: 100%;
   height: 100%;
   display: block;
 }
 
 /* ==========================================================================
-   4. PHOTOREALISTIC ORGANIC 24K MELTED WAX SEAL WITH EMBOSSED 'AB'
+   6. INTERLOCKING 24K GOLD & DIAMOND MONOGRAM MEDALLION (CENTRAL LOCK)
    ========================================================================== */
-.env-organic-wax-seal {
+.royal-center-medallion {
   position: absolute;
-  bottom: -32px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateZ(32px);
-  width: 104px;
-  height: 104px;
-  z-index: 15;
+  transform: translate(-50%, -50%) translateZ(35px);
+  width: 108px;
+  height: 108px;
+  z-index: 30;
   cursor: pointer;
-  filter: drop-shadow(0 12px 28px rgba(100, 70, 10, 0.55)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 15px 35px rgba(100, 70, 10, 0.6)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
   transition: transform 0.35s cubic-bezier(0.2, 0, 0.1, 1), filter 0.35s ease, opacity 0.5s ease;
-  animation: sealBreathingGlow 3.5s ease-in-out infinite alternate;
+  animation: medallionGlow 3.5s ease-in-out infinite alternate;
 }
 
-@keyframes sealBreathingGlow {
-  0% { filter: drop-shadow(0 10px 24px rgba(100, 70, 10, 0.45)); }
-  100% { filter: drop-shadow(0 16px 36px rgba(212, 175, 55, 0.85)) drop-shadow(0 0 25px rgba(255, 215, 0, 0.6)); }
+@keyframes medallionGlow {
+  0% { filter: drop-shadow(0 12px 28px rgba(100, 70, 10, 0.5)); }
+  100% { filter: drop-shadow(0 18px 45px rgba(212, 175, 55, 0.9)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.7)); }
 }
 
-.env-organic-wax-seal:hover {
-  transform: translateX(-50%) translateZ(45px) scale(1.08);
+.royal-center-medallion:hover {
+  transform: translate(-50%, -50%) translateZ(48px) scale(1.08);
 }
 
-.env-organic-wax-seal.broken {
-  transform: translateX(-50%) translateZ(140px) scale(1.45);
+.royal-center-medallion.unlocked {
+  transform: translate(-50%, -50%) translateZ(150px) scale(1.5);
   opacity: 0;
   pointer-events: none;
 }
 
-.wax-svg-shape {
+.medallion-svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* Orbiting Sparkle Dots around Seal */
-.seal-orbit-sparkles {
+/* Orbiting Diamond Particles */
+.medallion-orbit {
   position: absolute;
-  inset: -15px;
+  inset: -18px;
   pointer-events: none;
   border-radius: 50%;
-  animation: orbitRotate 10s linear infinite;
+  animation: orbitSpin 12s linear infinite;
 }
 
-@keyframes orbitRotate {
+@keyframes orbitSpin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-.seal-orbit-sparkles .sparkle-dot {
+.medallion-orbit .orbit-diamond {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #ffd700, 0 0 16px #fff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 12px #ffd700, 0 0 20px #fff;
 }
 
-.seal-orbit-sparkles .sparkle-dot:nth-child(1) { top: 0; left: 50%; }
-.seal-orbit-sparkles .sparkle-dot:nth-child(2) { bottom: 5px; right: 15%; }
-.seal-orbit-sparkles .sparkle-dot:nth-child(3) { top: 60%; left: -5px; }
+.medallion-orbit .orbit-diamond:nth-child(1) { top: 0; left: 50%; }
+.medallion-orbit .orbit-diamond:nth-child(2) { bottom: 5px; right: 15%; }
+.medallion-orbit .orbit-diamond:nth-child(3) { top: 60%; left: -5px; }
 
 /* ==========================================================================
-   5. CTA BUTTON (PULSING GOLD PILL WITH LIGHT REFLECTION)
+   7. CTA BUTTON (LIQUID GOLD PILL WITH LIGHT REFLECTION)
    ========================================================================== */
 .envelope-open-trigger-btn {
   margin-top: 2.8rem;
@@ -513,7 +490,7 @@
 
 @media (max-width: 600px) {
   .intro-royal-names {
-    font-size: 1.9rem;
+    font-size: 2.1rem;
     letter-spacing: 0.12em;
   }
   .intro-badge-top {
@@ -521,12 +498,11 @@
     letter-spacing: 0.28em;
   }
   .envelope-physical-box {
-    height: 250px;
+    height: 260px;
   }
-  .env-organic-wax-seal {
-    width: 88px;
-    height: 88px;
-    bottom: -26px;
+  .royal-center-medallion {
+    width: 90px;
+    height: 90px;
   }
   .envelope-open-trigger-btn {
     padding: 1.1rem 2.2rem;
