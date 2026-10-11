@@ -3,11 +3,19 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/nasii", "destination": "/secret", "permanent": true },
-    { "source": "/nasii/:path*", "destination": "/secret", "permanent": true }
+    { "source": "/nasii/:path*", "destination": "/secret", "permanent": true },
+    { "source": "/un-drum-special", "destination": "/pentru-nasul-nostru", "permanent": false }
   ],
   "headers": [
     {
       "source": "/secret(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Referrer-Policy", "value": "no-referrer" }
+      ]
+    },
+    {
+      "source": "/pentru-nasul-nostru(.*)",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
         { "key": "Referrer-Policy", "value": "no-referrer" }

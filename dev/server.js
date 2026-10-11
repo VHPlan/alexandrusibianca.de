@@ -22,6 +22,7 @@ http.createServer((req, res) => {
   if (p === '/api/secret') return secret(req, res);
   if (p.startsWith('/api/') || p.startsWith('/dev/') || p.startsWith('/.git')) { res.statusCode = 404; return res.end('Not found'); }
   if (/^\/nasii(\/.*)?$/.test(p)) { res.writeHead(308, { Location: '/secret' }); return res.end(); }
+  if (p === '/un-drum-special') { res.writeHead(307, { Location: '/pentru-nasul-nostru' }); return res.end(); }
   if (p.length > 1 && p.endsWith('/')) { res.writeHead(308, { Location: p.slice(0, -1) + url.search }); return res.end(); }
 
   let file = path.join(ROOT, p);
