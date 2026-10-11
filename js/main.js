@@ -602,7 +602,7 @@
   /* ---------------------------------------------------------
      5. COUNTDOWN
      --------------------------------------------------------- */
-  const TARGET = new Date(2027, 5, 20, 14, 0, 0); // 20 Iunie 2027, 14:00
+  const TARGET = new Date(2027, 9, 2, 14, 0, 0); // 2 Octombrie 2027, 14:00
   const cd = { d: $('#cdD'), h: $('#cdH'), m: $('#cdM'), s: $('#cdS') };
   const pad = (n, l = 2) => String(n).padStart(l, '0');
 
@@ -632,12 +632,12 @@
     const ics = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//The AB Wedding//RO', 'CALSCALE:GREGORIAN',
       'BEGIN:VEVENT',
-      'UID:ab-wedding-20270620@alexandrusibianca',
+      'UID:ab-wedding-20271002@alexandrusibianca',
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
-      'DTSTART:20270620T140000',
-      'DTEND:20270621T040000',
+      'DTSTART:20271002T140000',
+      'DTEND:20271003T040000',
       'SUMMARY:Nunta Alex & Bianca',
-      'LOCATION:Catedrala Sf. Iosif\\, București',
+      'LOCATION:Arslan Events\\, Karlsruhe',
       'DESCRIPTION:The AB Wedding — Abia așteptăm să sărbătorim împreună.',
       'END:VEVENT', 'END:VCALENDAR'
     ].join('\r\n');

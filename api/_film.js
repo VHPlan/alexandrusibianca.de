@@ -109,7 +109,7 @@ ${pick(3, 'Ați spune că ne cunoașteți bine?', ['Foarte bine', 'Atunci sunte�
       <div class="cert__foot">
         <span class="cert__mono">AB</span>
         <span class="cert__names"><b class="capA">A</b>lex <em>&amp;</em> Bianca</span>
-        <span class="cert__date">20 · 06 · 2027</span>
+        <span class="cert__date">02 · 10 · 2027</span>
       </div>
     </div>
     <div class="send send--yes ln" data-d="6.6">
