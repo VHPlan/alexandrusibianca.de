@@ -815,22 +815,46 @@
     showThanks(entry, true);
   });
 
-  // once sent, the answer is final — no edit, and it stays locked after reload
   function showThanks(entry, animate) {
-    $$('button, input, textarea', form).forEach((el) => { el.disabled = true; });
     $('#thanksName').textContent = ', ' + String(entry.name || '').split(' ')[0];
     $('.thanks__txt').textContent = entry.attend === 'yes'
       ? 'Abia așteptăm să sărbătorim împreună.'
       : 'Ne va fi dor de tine. Îți mulțumim că ne-ai anunțat.';
     form.classList.add('is-hidden');
     thanks.classList.add('is-on');
-    if (!animate) return;
-    const c = center(thanks);
-    setTimeout(() => Dust.burst(c.x, c.r.top + 60, MOBILE ? 50 : 80, 1), 350);
+    if (animate) {
+      const c = center(thanks);
+      setTimeout(() => Dust.burst(c.x, c.r.top + 60, MOBILE ? 50 : 80, 1), 350);
+      // După câteva secunde sau la click, formularul revine automat ca la început
+      setTimeout(resetRsvp, 6000);
+    }
   }
+
+  function resetRsvp() {
+    thanks.classList.remove('is-on');
+    form.classList.remove('is-hidden');
+    $$('button, input, textarea', form).forEach((el) => { el.disabled = false; });
+    form.reset();
+    state.attend = 'yes';
+    state.guests = 2;
+    state.kids = 0;
+    $('#guests').textContent = '2';
+    $('#kids').textContent = '0';
+    choice.classList.remove('is-no');
+    attendFields.classList.remove('is-closed');
+    $$('.choice__opt').forEach((o) => {
+      const on = o.dataset.attend === 'yes';
+      o.classList.toggle('is-on', on);
+      o.setAttribute('aria-checked', String(on));
+    });
+  }
+
+  const resetBtn = $('#resetRsvp');
+  if (resetBtn) resetBtn.addEventListener('click', resetRsvp);
+
+  // Curăță orice test anterior pentru ca formularul să apară mereu proaspăt la încărcarea paginii
   try {
-    const sent = JSON.parse(localStorage.getItem('ab-rsvp') || '[]');
-    if (sent.length) showThanks(sent[sent.length - 1], false);
+    localStorage.removeItem('ab-rsvp');
   } catch (_) { /* storage unavailable */ }
 
   /* ---------------------------------------------------------
