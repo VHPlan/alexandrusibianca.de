@@ -730,127 +730,14 @@
   });
 
   /* ---------------------------------------------------------
-     8. GALLERY REEL + LIGHTBOX
-     --------------------------------------------------------- */
-  const reel = $('#reel');
-  const slides = $$('.reel__slide', reel);
-  const gIdx = $('#gIdx');
-  const reelBar = $('#reelBar');
-  $('#gTot').textContent = pad(slides.length);
-  let active = -1;
-
-  function updateReel() {
-    const rc = reel.getBoundingClientRect();
-    const mid = rc.left + rc.width / 2;
-    let best = 0, bd = Infinity;
-    slides.forEach((s, i) => {
-      const r = s.getBoundingClientRect();
-      const d = Math.abs(r.left + r.width / 2 - mid);
-      if (d < bd) { bd = d; best = i; }
-    });
-    if (best !== active) {
-      active = best;
-      slides.forEach((s, i) => s.classList.toggle('is-active', i === best));
-      gIdx.textContent = pad(best + 1);
-    }
-    const max = reel.scrollWidth - reel.clientWidth;
-    const p = max > 0 ? reel.scrollLeft / max : 0;
-    reelBar.style.transform = `scaleX(${(1 / slides.length + p * (1 - 1 / slides.length)).toFixed(3)})`;
-  }
-  let reelRaf = 0;
-  reel.addEventListener('scroll', () => {
-    cancelAnimationFrame(reelRaf);
-    reelRaf = requestAnimationFrame(updateReel);
-  }, { passive: true });
-  window.addEventListener('resize', updateReel, { passive: true });
-  updateReel();
-
-  // desktop: drag to scroll
-  let drag = null;
-  reel.addEventListener('pointerdown', (e) => {
-    if (e.pointerType !== 'mouse') return;
-    drag = { x: e.clientX, sl: reel.scrollLeft, moved: false };
-    reel.style.scrollSnapType = 'none';
-  });
-  window.addEventListener('pointermove', (e) => {
-    if (!drag) return;
-    const dx = e.clientX - drag.x;
-    if (Math.abs(dx) > 4) drag.moved = true;
-    reel.scrollLeft = drag.sl - dx;
-  });
-  window.addEventListener('pointerup', () => {
-    if (!drag) return;
-    reel.style.scrollSnapType = '';
-    setTimeout(() => { drag = null; }, 0);
-  });
-
-  const lb = $('#lb');
-  const lbImg = $('#lbImg');
-  const lbCap = $('#lbCap');
-  let lbI = 0;
-
-  function lbShow(i, instant) {
-    lbI = (i + slides.length) % slides.length;
-    const img = $('img', slides[lbI]);
-    const cap = $('figcaption', slides[lbI]).textContent;
-    const apply = () => {
-      lbImg.src = img.currentSrc || img.src;
-      lbImg.alt = cap;
-      lbCap.textContent = cap;
-      lbImg.classList.remove('is-fading');
-    };
-    if (instant) return apply();
-    lbImg.classList.add('is-fading');
-    setTimeout(apply, RM ? 0 : 380);
-  }
-  function lbOpen(i) {
-    lbShow(i, true);
-    lb.classList.add('is-open');
-    lb.setAttribute('aria-hidden', 'false');
-    body.classList.add('is-locked');
-  }
-  function lbClose() {
-    lb.classList.remove('is-open');
-    lb.setAttribute('aria-hidden', 'true');
-    body.classList.remove('is-locked');
-  }
-
-  slides.forEach((s, i) => s.addEventListener('click', () => {
-    if (drag && drag.moved) return;
-    if (i !== active) {
-      s.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      return;
-    }
-    lbOpen(i);
-  }));
-  $('#lbClose').addEventListener('click', lbClose);
-  $('#lbPrev').addEventListener('click', () => lbShow(lbI - 1));
-  $('#lbNext').addEventListener('click', () => lbShow(lbI + 1));
-  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb__stage')) lbClose(); });
-  document.addEventListener('keydown', (e) => {
-    if (!lb.classList.contains('is-open')) return;
-    if (e.key === 'Escape') lbClose();
-    if (e.key === 'ArrowLeft') lbShow(lbI - 1);
-    if (e.key === 'ArrowRight') lbShow(lbI + 1);
-  });
-  let sx = 0, sy0 = 0;
-  lb.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; sy0 = e.touches[0].clientY; }, { passive: true });
-  lb.addEventListener('touchend', (e) => {
-    const dx = e.changedTouches[0].clientX - sx;
-    const dy = e.changedTouches[0].clientY - sy0;
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) lbShow(lbI + (dx < 0 ? 1 : -1));
-    else if (dy > 90) lbClose();
-  }, { passive: true });
-
-  /* ---------------------------------------------------------
-     9. RSVP
+     8. RSVP
      --------------------------------------------------------- */
   const form = $('#rsvpForm');
   const choice = $('.choice');
   const attendFields = $('#attendFields');
   const fName = $('#fName');
   const thanks = $('#thanks');
-  const state = { attend: 'yes', guests: 2, kids: 0, menu: 'Clasic' };
+  const state = { attend: 'yes', guests: 2, kids: 0 };
 
   $$('.choice__opt').forEach((b) => b.addEventListener('click', () => {
     state.attend = b.dataset.attend;
@@ -870,11 +757,6 @@
     const out = $('#' + k);
     out.textContent = state[k];
     out.animate([{ transform: 'scale(1.35)', color: '#f3dfa6' }, { transform: 'scale(1)' }], { duration: 380, easing: 'ease-out' });
-  }));
-
-  $$('#menu .chip').forEach((c) => c.addEventListener('click', () => {
-    state.menu = c.dataset.v;
-    $$('#menu .chip').forEach((o) => o.classList.toggle('is-on', o === c));
   }));
 
   fName.addEventListener('input', () => fName.closest('.field').classList.remove('is-err'));
@@ -899,7 +781,6 @@
       attend: state.attend,
       guests: state.attend === 'yes' ? state.guests : 0,
       kids: state.attend === 'yes' ? state.kids : 0,
-      menu: state.attend === 'yes' ? state.menu : '',
       message: $('#fMsg').value.trim(),
       to,
       at: new Date().toISOString()
@@ -921,7 +802,6 @@
     if (yes) {
       lines.push('Persoane: ' + entry.guests);
       lines.push('Copii: ' + entry.kids);
-      lines.push('Meniu: ' + entry.menu);
     }
     if (entry.message) lines.push('', 'Mesaj: ' + entry.message);
     const waUrl = 'https://wa.me/' + WHATSAPP[to] +
