@@ -440,6 +440,47 @@
     }
   });
 
+  // Proiectare pe TV (Cast / Presentation API sau ghid rapid + copiere link)
+  const castBtn = $('#castBtn');
+  const castModal = $('#castModal');
+  const castClose = $('#castClose');
+  const castCopy = $('#castCopy');
+  const openCastModal = () => {
+    castModal.classList.add('is-open');
+    castModal.setAttribute('aria-hidden', 'false');
+  };
+  const closeCastModal = () => {
+    castModal.classList.remove('is-open');
+    castModal.setAttribute('aria-hidden', 'true');
+  };
+  if (castBtn && castModal) {
+    castBtn.addEventListener('click', async () => {
+      if (typeof window.PresentationRequest === 'function') {
+        try {
+          const req = new window.PresentationRequest([location.href]);
+          await req.start();
+          return;
+        } catch (err) {
+          if (err && err.name === 'AbortError') return;
+        }
+      }
+      openCastModal();
+    });
+    castClose.addEventListener('click', closeCastModal);
+    castModal.addEventListener('click', (e) => { if (e.target === castModal) closeCastModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && castModal.classList.contains('is-open')) closeCastModal(); });
+    castCopy.addEventListener('click', async () => {
+      const span = $('span', castCopy);
+      try {
+        await navigator.clipboard.writeText(location.href);
+        span.textContent = 'Link copiat!';
+        setTimeout(() => { span.textContent = 'Copiază linkul pentru TV'; }, 2400);
+      } catch (_) {
+        span.textContent = location.href;
+      }
+    });
+  }
+
   /* ---------------------------------------------------------
      START
      --------------------------------------------------------- */

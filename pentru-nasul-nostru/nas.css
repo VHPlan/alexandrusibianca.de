@@ -325,8 +325,63 @@ em { font-style: italic; }
   .ln, .split .w, .sc { transition-duration: .4s !important; transition-delay: 0s !important; filter: none !important; }
 }
 
-.btn:focus-visible, .music:focus-visible {
+.btn:focus-visible, .music:focus-visible, .cast-btn:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 4px;
   box-shadow: 0 0 24px rgba(184, 145, 63, .35);
+}
+
+/* TV Cast button & modal */
+.cast-btn {
+  position: fixed; z-index: 85; right: 74px; top: calc(env(safe-area-inset-top) + 24px);
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--line); background: rgba(255, 255, 255, .66);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--gold); cursor: pointer;
+  opacity: 0; transition: opacity 1.6s var(--ease) 1.4s, border-color .4s, transform .3s;
+}
+.is-ready .cast-btn { opacity: .9; }
+.cast-btn:hover { border-color: var(--gold); transform: scale(1.05); }
+.cast-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+.cast-modal {
+  position: fixed; inset: 0; z-index: 120;
+  display: grid; place-items: center; padding: 1.5rem;
+  background: rgba(28, 22, 14, .42);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+.cast-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+.cast-modal__card {
+  position: relative; width: min(440px, 100%);
+  padding: 2.2rem 1.8rem 1.9rem;
+  background: #fcfaf5; border: 1px solid rgba(184, 145, 63, .45);
+  box-shadow: 0 24px 60px rgba(30, 22, 10, .24);
+  text-align: center; color: var(--ink);
+}
+.cast-modal__close {
+  position: absolute; top: 10px; right: 14px;
+  background: none; border: none; font-size: 1.6rem; line-height: 1;
+  color: var(--muted); cursor: pointer; padding: 4px 8px;
+}
+.cast-modal__eyebrow {
+  font-family: var(--sans); font-size: .58rem; font-weight: 500;
+  letter-spacing: .34em; text-transform: uppercase; color: var(--gold);
+}
+.cast-modal__title {
+  margin: .5rem 0 1.2rem; font-family: var(--serif); font-weight: 400;
+  font-size: 1.85rem; line-height: 1.15; color: var(--ink);
+}
+.cast-modal__steps {
+  list-style: none; padding: 0; margin: 0 0 1.5rem; text-align: left;
+  font-family: var(--sans); font-size: .8rem; line-height: 1.6; color: var(--ink-2);
+  display: flex; flex-direction: column; gap: .75rem;
+}
+.cast-modal__steps strong { color: var(--ink); font-weight: 500; }
+.cast-modal__steps em { color: var(--gold); font-style: normal; font-weight: 500; }
+.cast-modal__copy { width: 100%; pointer-events: auto; }
+
+@media (min-width: 900px) {
+  .cast-btn { right: 90px; top: 40px; }
 }

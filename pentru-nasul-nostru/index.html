@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&family=Pinyon+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/pentru-nasul-nostru/nas.css?v=n3">
+  <link rel="stylesheet" href="/pentru-nasul-nostru/nas.css?v=n4">
 </head>
 <body>
   <!-- atmosphere -->
@@ -113,14 +113,35 @@
 
   </main>
 
+  <button class="cast-btn" id="castBtn" type="button" aria-label="Proiectează pe televizor" title="Proiectează pe TV">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/>
+      <line x1="2" y1="20" x2="2.01" y2="20"/>
+    </svg>
+  </button>
+
   <button class="music" id="music" type="button" aria-label="Pornește / oprește muzica" aria-pressed="false">
     <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
   </button>
+
+  <div class="cast-modal" id="castModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="castTitle">
+    <div class="cast-modal__card">
+      <button class="cast-modal__close" id="castClose" type="button" aria-label="Închide">×</button>
+      <p class="cast-modal__eyebrow">Pe televizor</p>
+      <h2 class="cast-modal__title" id="castTitle">Proiectează pe ecran mare</h2>
+      <ul class="cast-modal__steps">
+        <li><strong>iPhone / iPad:</strong> Deschide <em>Centrul de control</em> și apasă <em>Oglindire ecran (Screen Mirroring)</em>.</li>
+        <li><strong>Android:</strong> Trage bara de sus și alege <em>Smart View</em>, <em>Cast</em> sau <em>Proiectare</em>.</li>
+        <li><strong>Direct pe TV:</strong> Deschide linkul în browserul televizorului (se poate controla cu telecomanda: <em>OK</em> / săgeți).</li>
+      </ul>
+      <button class="btn btn--gold cast-modal__copy" id="castCopy" type="button"><span>Copiază linkul pentru TV</span></button>
+    </div>
+  </div>
 
   <div class="frame" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <script src="/pentru-nasul-nostru/nas.js?v=n3"></script>
+  <script src="/pentru-nasul-nostru/nas.js?v=n4"></script>
 </body>
 </html>
