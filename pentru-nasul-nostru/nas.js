@@ -318,6 +318,10 @@
       if (l.dataset.out) later(() => l.classList.add('gone'), T(parseFloat(l.dataset.out)));
     });
     later(() => { busy = false; }, 600);
+    const auto = parseFloat(sc.dataset.auto);
+    if (auto > 0 && scenes[i + 1]) {
+      later(() => { busy = false; go(i + 1); }, T(auto));
+    }
   }
 
   function go(i) {
@@ -341,7 +345,10 @@
     later(() => show(i), T(2.2 + pre));
   }
 
-  // „Continuă” buttons
+  // „Continuă” buttons & unlocking audio on first screen tap (helpful when casting to TV)
+  document.addEventListener('pointerdown', () => {
+    if (!tapped) { tapped = true; Music.firstTap(); }
+  }, { once: true });
   $$('.next').forEach((b) => b.addEventListener('click', () => {
     if (!tapped) { tapped = true; Music.firstTap(); }
     go(cur + 1);
