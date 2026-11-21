@@ -637,7 +637,7 @@
       'DTSTART:20271015T140000',
       'DTEND:20271016T040000',
       'SUMMARY:Nunta Alex & Bianca',
-      'LOCATION:Arslan Events\\, Karlsruhe',
+      'LOCATION:Lavin Events\\, John-Deere-Straße 19\\, 76646 Bruchsal',
       'DESCRIPTION:The AB Wedding — Abia așteptăm să sărbătorim împreună.',
       'END:VEVENT', 'END:VCALENDAR'
     ].join('\r\n');

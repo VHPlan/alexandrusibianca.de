@@ -665,40 +665,75 @@ body { color: var(--text); }
   color: var(--muted);
 }
 
-/* Nașii */
+/* Nașii — editorial symmetrical diptych */
 .godparents {
-  max-width: 1080px;
+  max-width: 1020px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4rem, 10vw, 6.5rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 2.8rem;
   position: relative;
   z-index: 1;
 }
+@media (min-width: 820px) {
+  .godparents {
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(2rem, 4vw, 3.8rem);
+    align-items: stretch;
+  }
+}
 .godparent {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 2.2rem;
+  gap: 1.8rem;
   position: relative;
 }
+.godparents__sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: .2rem 0;
+}
+.godparents__sep i {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 145, 63, .55));
+}
+.godparents__sep i:last-child {
+  background: linear-gradient(90deg, rgba(184, 145, 63, .55), transparent);
+}
+.godparents__sep b {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  border: 1px solid var(--gold);
+  background: #fff;
+  flex-shrink: 0;
+}
 @media (min-width: 820px) {
-  .godparent {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 5rem;
+  .godparents__sep {
+    flex-direction: column;
+    padding: 2.5rem 0 4.5rem;
+    gap: 14px;
   }
-  .godparent--rev {
-    direction: rtl;
+  .godparents__sep i {
+    width: 1px;
+    height: auto;
+    flex: 1;
+    background: linear-gradient(180deg, transparent, rgba(184, 145, 63, .5));
   }
-  .godparent--rev .godparent__info {
-    direction: ltr;
+  .godparents__sep i:last-child {
+    background: linear-gradient(180deg, rgba(184, 145, 63, .5), transparent);
   }
 }
 
 .godparent__media {
   position: relative;
-  max-width: 380px;
+  max-width: 360px;
   margin: 0 auto;
   width: 100%;
 }
@@ -785,31 +820,19 @@ body { color: var(--text); }
   align-items: center;
   padding: 0 .75rem;
 }
-@media (min-width: 820px) {
-  .godparent__info {
-    text-align: left;
-    align-items: flex-start;
-  }
-}
-.godparent__num {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(3.2rem, 9.5vw, 4.8rem);
-  line-height: .88;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(184, 145, 63, .65);
-  display: block;
-}
 .godparent__orn {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: .8rem 0 .4rem;
+  margin: .2rem 0 .4rem;
 }
 .godparent__orn i {
-  width: 32px;
+  width: 34px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold));
+}
+.godparent__orn i:last-child {
+  background: linear-gradient(90deg, var(--gold), transparent);
 }
 .godparent__orn b {
   width: 5px;
