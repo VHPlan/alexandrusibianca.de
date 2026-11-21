@@ -377,6 +377,69 @@
     setTimeout(() => { again.classList.add('on'); $('button', again).removeAttribute('tabindex'); }, T(1) + T(2));
   });
 
+  // TV remote & keyboard navigation (OK/Enter, Arrows, Play/Pause, R/0 to restart)
+  document.addEventListener('keydown', (e) => {
+    const k = e.key;
+    const ansIdx = scenes.indexOf(ans);
+    const endIdx = scenes.indexOf($('#sc-end'));
+
+    if (k === 'm' || k === 'M' || k === 'MediaPlayPause') {
+      e.preventDefault();
+      $('#music').click();
+      return;
+    }
+    if (k === 'r' || k === 'R' || k === '0') {
+      e.preventDefault();
+      if (!tapped) { tapped = true; Music.firstTap(); }
+      answered = false;
+      ans.classList.remove('is-chosen');
+      choices.classList.remove('is-hidden');
+      reply.classList.remove('on');
+      again.classList.remove('on');
+      $$('[data-yes]').forEach((b) => b.classList.remove('is-picked'));
+      body.classList.remove('is-warm');
+      busy = false;
+      go(0);
+      return;
+    }
+    if (k === 'ArrowLeft' || k === 'PageUp' || k === 'MediaRewind') {
+      e.preventDefault();
+      if (!tapped) { tapped = true; Music.firstTap(); }
+      if (cur > 0 && cur < endIdx) { busy = false; go(cur - 1); }
+      return;
+    }
+    if (cur === ansIdx) {
+      const yesMain = $('[data-yes]', choices);
+      const speechless = $('#speechless');
+      const yesAgain = $('[data-yes]', again);
+      if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'ArrowUp') {
+        e.preventDefault();
+        if (!choices.classList.contains('is-hidden')) {
+          (document.activeElement === yesMain ? speechless : yesMain).focus();
+        } else if (again.classList.contains('on')) {
+          yesAgain.focus();
+        }
+        return;
+      }
+      if (k === 'Enter' || k === ' ') {
+        e.preventDefault();
+        if (!tapped) { tapped = true; Music.firstTap(); }
+        const ae = document.activeElement;
+        if (!choices.classList.contains('is-hidden')) {
+          (ae === speechless ? speechless : yesMain).click();
+        } else if (again.classList.contains('on')) {
+          yesAgain.click();
+        }
+        return;
+      }
+    }
+    if (k === 'Enter' || k === ' ' || k === 'ArrowRight' || k === 'PageDown' || k === 'MediaFastForward') {
+      e.preventDefault();
+      if (!tapped) { tapped = true; Music.firstTap(); }
+      if (cur >= 0 && cur < ansIdx) { busy = false; go(cur + 1); }
+    }
+  });
+
   /* ---------------------------------------------------------
      START
      --------------------------------------------------------- */

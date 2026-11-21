@@ -324,3 +324,9 @@ em { font-style: italic; }
   .bg i, .sweep i, .halo.on, .btn::before, .btn--gold, .ring::after, .gold, .you, .ring__mono, .t-names { animation: none !important; }
   .ln, .split .w, .sc { transition-duration: .4s !important; transition-delay: 0s !important; filter: none !important; }
 }
+
+.btn:focus-visible, .music:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  box-shadow: 0 0 24px rgba(184, 145, 63, .35);
+}
