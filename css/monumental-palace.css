@@ -1,0 +1,1163 @@
+/* ==========================================================================
+   ALEX & BIANCA — PALAT MONUMENTAL DE MARMURĂ & FLORI ALBE
+   Exact faithful recreation of User Reference (Poza 8)
+   Aesthetic: Grand Palace Ballroom, Crystal Chandeliers, White Rose Arches, Champagne Silk
+   ========================================================================== */
+
+:root {
+  --palace-cream: #faf5ee;
+  --palace-ivory: #ffffff;
+  --palace-gold: #c29d53;
+  --palace-gold-dark: #93732c;
+  --palace-gold-light: #f5e3b5;
+  --palace-gold-grad: linear-gradient(135deg, #bda05d 0%, #faebb8 50%, #9e7422 100%);
+  --palace-gold-btn: linear-gradient(180deg, #b89548 0%, #8c6b24 100%);
+  --palace-border: rgba(194, 157, 83, 0.45);
+  --palace-text: #2c241c;
+  --palace-text-muted: #5e5246;
+  --palace-shadow: 0 10px 30px rgba(45, 30, 15, 0.08);
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Alex Brush', cursive;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --ease-palace: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background-color: #120e0a;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--palace-cream);
+  color: var(--palace-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   1. CINEMATIC INTRO (100% PRESERVED & APPROVED)
+   ========================================================================== */
+
+.intro-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #140e09;
+  transition: opacity 1.2s var(--ease-palace), transform 1.2s var(--ease-palace), visibility 1.2s;
+}
+
+.intro-scene.is-dismissed {
+  opacity: 0;
+  transform: scale(1.04);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-scene__bg {
+  position: absolute;
+  inset: 0;
+  background: url('../bg-intro.png') center center / cover no-repeat;
+  transform: scale(1.01);
+}
+
+.intro-scene__veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(16, 12, 8, 0.05) 0%, rgba(12, 8, 5, 0.45) 80%, rgba(8, 5, 3, 0.75) 100%);
+  pointer-events: none;
+  animation: introCandleFlicker 7s ease-in-out infinite alternate;
+}
+
+@keyframes introCandleFlicker {
+  0% { opacity: 0.85; }
+  35% { opacity: 0.95; }
+  70% { opacity: 0.88; }
+  100% { opacity: 1; }
+}
+
+.intro-scene__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.intro-scene__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.intro-scene__eyebrow {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-indent: 0.45em;
+  text-transform: uppercase;
+  color: #f7eedf;
+  margin-bottom: 1.25rem;
+  opacity: 0.95;
+}
+
+.intro-scene__rings-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.intro-scene__ring-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.75) 100%);
+}
+
+.intro-scene__ring-line--right {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.75) 0%, rgba(212, 175, 55, 0) 100%);
+}
+
+.intro-scene__rings-svg {
+  width: 70px;
+  height: 42px;
+  overflow: visible;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+}
+
+.intro-scene__rings-svg .ring {
+  fill: none;
+  stroke: url(#goldRingGrad);
+  stroke-width: 3.2;
+}
+
+.intro-scene__rings-svg .ring-sparkle {
+  fill: #fff8e0;
+  animation: sparkleTwinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes sparkleTwinkle {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.3); }
+}
+
+.intro-scene__names {
+  font-family: var(--font-script);
+  font-size: clamp(3.2rem, 8.5vw, 6.8rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: #fff9ee;
+  letter-spacing: 0.02em;
+  margin: 0.1rem 0 0.5rem;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.4);
+}
+
+.intro-scene__amp {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.85em;
+  color: #e5c378;
+  margin: 0 0.25rem;
+}
+
+.intro-scene__flourish {
+  width: min(320px, 80vw);
+  height: 28px;
+  margin: 0.5rem auto 1.5rem;
+  display: block;
+}
+
+.intro-scene__flourish path {
+  fill: none;
+  stroke: url(#goldFlourishGrad);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.intro-scene__flourish path.heart {
+  fill: url(#goldRingGrad);
+  stroke: none;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
+}
+
+.intro-scene__date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1.6rem;
+  border-radius: 9999px;
+  background: rgba(18, 14, 10, 0.65);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.2vw, 0.92rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f7eedf;
+  margin-bottom: 2.2rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.intro-scene__cal-icon {
+  width: 17px;
+  height: 17px;
+  stroke: #dfbe78;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.intro-scene__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 2.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #1a1209;
+  background: var(--palace-gold-grad);
+  box-shadow: 0 6px 28px rgba(212, 175, 55, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-scene__cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 36px rgba(212, 175, 55, 0.7);
+}
+
+.intro-scene__cta-arrow {
+  font-size: 1.15em;
+  transition: transform 0.3s ease;
+}
+
+.intro-scene__cta:hover .intro-scene__cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   2. MONUMENTAL PALACE SECOND PAGE (EXACT IMAGE 8 COMPOSITION)
+   ========================================================================== */
+
+.palace-site {
+  display: none;
+  opacity: 0;
+  background: var(--palace-cream) radial-gradient(circle at 50% 15%, #ffffff 0%, #faf5ee 65%);
+  position: relative;
+  transition: opacity 1.2s var(--ease-palace);
+  overflow-x: hidden;
+}
+
+.palace-site.is-active {
+  display: block;
+  opacity: 1;
+}
+
+/* Side Floral Borders (Left & Right Framing) */
+.palace-floral-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(100px, 16vw, 240px);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.92;
+}
+
+.palace-floral-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(140px, 20vw, 280px);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.95;
+}
+
+.palace-floral-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: clamp(140px, 20vw, 280px);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.95;
+}
+
+/* Main Content Center Wrapper (max-width 1000px like image 8) */
+.palace-main-wrap {
+  position: relative;
+  z-index: 20;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+/* TOP HEADER */
+.palace-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  background: rgba(250, 245, 238, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--palace-border);
+  padding: 0.65rem 1.5rem;
+}
+
+.palace-header__inner {
+  max-width: 1020px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.palace-monogram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--palace-gold-dark);
+}
+
+.palace-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 860px) {
+  .palace-nav-group {
+    display: none;
+  }
+}
+
+.palace-nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--palace-text);
+  transition: color 0.2s ease;
+}
+
+.palace-nav-link:hover {
+  color: var(--palace-gold);
+}
+
+.palace-nav-btn {
+  padding: 0.45rem 1.4rem;
+  border-radius: 9999px;
+  background: var(--palace-gold-btn);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(184, 149, 72, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.palace-nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   HERO: MONUMENTAL BALLROOM WITH ALEX & BIANCA
+   ========================================================================== */
+
+.palace-hero {
+  padding: 3rem 1rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .palace-hero {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+}
+
+.palace-hero__couple {
+  display: flex;
+  justify-content: center;
+}
+
+.palace-couple-frame {
+  width: 100%;
+  max-width: 360px;
+  height: 290px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(50, 35, 20, 0.15);
+  border: 1px solid var(--palace-border);
+  background: #ffffff;
+}
+
+.palace-couple-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.palace-hero__text {
+  text-align: center;
+}
+
+.palace-crown-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.palace-crown-icon {
+  width: 32px;
+  height: 24px;
+  color: var(--palace-gold);
+}
+
+.palace-tag {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--palace-text);
+}
+
+.palace-tiny-rings {
+  width: 22px;
+  height: 14px;
+  color: var(--palace-gold);
+  margin-top: 0.1rem;
+}
+
+.palace-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--palace-gold-dark);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.palace-hero__title .palace-amp {
+  font-family: var(--font-script);
+  font-size: 1.1em;
+  font-weight: 400;
+  color: var(--palace-gold);
+  margin: 0 0.2rem;
+}
+
+.palace-hero__date {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-style: italic;
+  color: var(--palace-text);
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.palace-hero__quote {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--palace-text-muted);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 auto 1.25rem;
+}
+
+.palace-filigree-divider {
+  width: 90px;
+  height: 12px;
+  margin: 0 auto;
+  color: var(--palace-gold);
+}
+
+/* ==========================================================================
+   COUNTDOWN CARD: MAI SUNT PÂNĂ LA NUNTA NOASTRĂ
+   ========================================================================== */
+
+.palace-countdown-card {
+  background: #ffffff;
+  border: 1px solid var(--palace-border);
+  border-radius: 4px;
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--palace-shadow);
+  position: relative;
+  margin-bottom: 3.5rem;
+}
+
+.palace-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--palace-gold);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.palace-corner--tl { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+.palace-corner--tr { top: 6px; right: 6px; border-width: 1px 1px 0 0; }
+.palace-corner--bl { bottom: 6px; left: 6px; border-width: 0 0 1px 1px; }
+.palace-corner--br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+.palace-cd-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--palace-text);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.palace-cd-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 3rem);
+}
+
+.palace-cd-val {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-weight: 500;
+  color: var(--palace-text);
+  line-height: 1;
+  display: block;
+}
+
+.palace-cd-lbl {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--palace-gold-dark);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.palace-cd-sep {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--palace-border);
+}
+
+/* ==========================================================================
+   POVESTEA NOASTRĂ (WITH BRUSH-STROKE SUNSET COUPLE)
+   ========================================================================== */
+
+.palace-story {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .palace-story {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.palace-story__left {
+  text-align: center;
+}
+
+.palace-script-title {
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  color: var(--palace-text);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.palace-script-flanked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.palace-script-flanked::before,
+.palace-script-flanked::after {
+  content: '';
+  width: 35px;
+  height: 1px;
+  background: var(--palace-gold);
+}
+
+.palace-heart-icon {
+  color: var(--palace-gold);
+  font-size: 0.95rem;
+  margin-bottom: 0.65rem;
+}
+
+.palace-story__p {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--palace-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.palace-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid var(--palace-border);
+  background: #ffffff;
+  color: var(--palace-text);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(45, 30, 15, 0.06);
+  transition: all 0.25s ease;
+}
+
+.palace-btn-pill:hover {
+  background: var(--palace-gold-btn);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+.palace-story__right {
+  display: flex;
+  justify-content: center;
+}
+
+.palace-brush-frame {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(50, 35, 20, 0.1);
+}
+
+.palace-brush-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   NAȘII NOȘTRI & LĂUTARII NOȘTRI (TWO-COLUMN SPREAD)
+   ========================================================================== */
+
+.palace-dual-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 860px) {
+  .palace-dual-section {
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .palace-dual-section::after {
+    content: '';
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--palace-border) 50%, transparent 100%);
+    transform: translateX(-50%);
+  }
+}
+
+.palace-col-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.palace-cards-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.palace-person-card {
+  background: #ffffff;
+  border: 1px solid var(--palace-border);
+  border-radius: 4px;
+  padding: 0.65rem 0.65rem 0.95rem;
+  text-align: center;
+  box-shadow: var(--palace-shadow);
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.palace-person-card:hover {
+  transform: translateY(-3px);
+}
+
+.palace-person-photo {
+  width: 100%;
+  height: 165px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.65rem;
+}
+
+.palace-person-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.palace-person-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--palace-text);
+}
+
+/* ==========================================================================
+   VIDEOGRAF: CREWETZEL EVENTS (BANNER WITH CAMERA & FILMSTRIP)
+   ========================================================================== */
+
+.palace-video-banner {
+  background: #ffffff;
+  border: 1px solid var(--palace-border);
+  border-radius: 4px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: var(--palace-shadow);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 800px) {
+  .palace-video-banner {
+    grid-template-columns: 0.65fr 1fr 0.75fr;
+  }
+}
+
+.palace-video-cam {
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.palace-video-cam img {
+  max-height: 110px;
+  width: auto;
+  object-fit: contain;
+}
+
+.palace-video-text {
+  text-align: center;
+}
+
+.palace-video-script {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--palace-gold-dark);
+  display: block;
+}
+
+.palace-video-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--palace-text);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.palace-video-desc {
+  font-size: 0.82rem;
+  color: var(--palace-text-muted);
+  line-height: 1.55;
+}
+
+.palace-video-film {
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.palace-video-film img {
+  max-height: 110px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   PROGRAMUL NUNȚII & LOCAȚIA EVENIMENTULUI
+   ========================================================================== */
+
+.palace-info-dual {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 860px) {
+  .palace-info-dual {
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .palace-info-dual::after {
+    content: '';
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--palace-border) 50%, transparent 100%);
+    transform: translateX(-50%);
+  }
+}
+
+/* Program List */
+.palace-agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.palace-agenda-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.palace-agenda-icon {
+  font-size: 1.35rem;
+  color: var(--palace-gold-dark);
+}
+
+.palace-agenda-time {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--palace-text);
+  min-width: 55px;
+}
+
+.palace-agenda-name {
+  font-size: 0.92rem;
+  color: var(--palace-text-muted);
+}
+
+/* Location Column */
+.palace-venue-side {
+  text-align: center;
+}
+
+.palace-venue-photo {
+  width: 100%;
+  max-width: 360px;
+  height: 160px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border: 1px solid var(--palace-border);
+  box-shadow: var(--palace-shadow);
+}
+
+.palace-venue-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.palace-venue-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--palace-text);
+  margin-bottom: 0.25rem;
+}
+
+.palace-venue-address {
+  font-size: 0.85rem;
+  color: var(--palace-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   GALERIE FOTO
+   ========================================================================== */
+
+.palace-gallery {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.palace-gal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.palace-gal-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--palace-border);
+  background: #ffffff;
+  color: var(--palace-gold-dark);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--palace-shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.palace-gal-btn:hover {
+  background: var(--palace-gold-btn);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.palace-gal-strip {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.5rem 0;
+}
+
+.palace-gal-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.palace-gal-thumb {
+  width: 130px;
+  height: 105px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--palace-border);
+  box-shadow: var(--palace-shadow);
+  cursor: pointer;
+  background: #ffffff;
+  transition: transform 0.25s ease;
+}
+
+.palace-gal-thumb:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.palace-gal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   CONFIRMĂ PREZENȚA (RSVP)
+   ========================================================================== */
+
+.palace-rsvp {
+  margin-bottom: 3rem;
+}
+
+.palace-rsvp-card {
+  background: #ffffff;
+  border: 1px solid var(--palace-border);
+  border-radius: 4px;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  box-shadow: 0 15px 40px rgba(45, 30, 15, 0.08);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .palace-rsvp-card {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+}
+
+.palace-rsvp-left {
+  text-align: center;
+}
+
+.palace-rsvp-desc {
+  font-size: 0.92rem;
+  color: var(--palace-text-muted);
+  line-height: 1.6;
+}
+
+.palace-form-field {
+  margin-bottom: 0.85rem;
+}
+
+.palace-input, .palace-select, .palace-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #faf6f0;
+  border: 1px solid rgba(194, 157, 83, 0.4);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--palace-text);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.palace-textarea {
+  resize: vertical;
+}
+
+.palace-input:focus, .palace-select:focus, .palace-textarea:focus {
+  border-color: var(--palace-gold-dark);
+}
+
+.palace-submit-btn {
+  width: 100%;
+  padding: 0.9rem 1.8rem;
+  border-radius: 9999px;
+  background: var(--palace-gold-btn);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 18px rgba(184, 149, 72, 0.4);
+  transition: all 0.25s ease;
+  margin-top: 0.4rem;
+}
+
+.palace-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(184, 149, 72, 0.55);
+}
+
+/* ==========================================================================
+   LIGHTBOX MODAL
+   ========================================================================== */
+
+.palace-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 14, 10, 0.94);
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.palace-lightbox.is-open {
+  display: flex;
+}
+
+.palace-lightbox__img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 3px solid #ffffff;
+  border-radius: 4px;
+}
+
+.palace-lightbox__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: #ffffff;
+  font-size: 2.2rem;
+}
