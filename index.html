@@ -3,462 +3,593 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#120e0a">
-  <title>Alex &amp; Bianca — The Wedding · 15 Octombrie 2027</title>
-  <meta name="description" content="Alex &amp; Bianca — Invitație oficială la nuntă. 15 Octombrie 2027, Lavin Bruchsal.">
+  <meta name="theme-color" content="#ffffff">
+  <title>The AB Wedding — Alex &amp; Bianca</title>
+  <meta name="description" content="Alex &amp; Bianca — Ne căsătorim. 15 Octombrie 2027.">
+  <meta property="og:title" content="The AB Wedding — Alex &amp; Bianca">
+  <meta property="og:description" content="Ne căsătorim · 15 • 10 • 2027">
+  <meta property="og:image" content="assets/img/hero-desktop.jpg?v=2">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/monumental-palace.css?v=mp1">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23120e0a%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2240%22 fill=%22%23c29d53%22>AB</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=ab26">
+  <link rel="stylesheet" href="css/light.css?v=ab26">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23ffffff%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2240%22 fill=%22%23b8913f%22>AB</text></svg>">
 </head>
 <body class="is-locked">
 
-  <!-- Shared SVG Gradients for Gold Elements -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="goldRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#ffe8a8"/>
-        <stop offset="35%" stop-color="#d4af37"/>
-        <stop offset="70%" stop-color="#9a7428"/>
-        <stop offset="100%" stop-color="#e8cf8c"/>
-      </linearGradient>
-      <linearGradient id="goldFlourishGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="rgba(212, 175, 55, 0)"/>
-        <stop offset="25%" stop-color="rgba(240, 215, 140, 0.75)"/>
-        <stop offset="50%" stop-color="rgba(255, 235, 180, 0.95)"/>
-        <stop offset="75%" stop-color="rgba(240, 215, 140, 0.75)"/>
-        <stop offset="100%" stop-color="rgba(212, 175, 55, 0)"/>
-      </linearGradient>
-    </defs>
-  </svg>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="letterbox" aria-hidden="true"><span></span><span></span></div>
+  <div class="bloom" aria-hidden="true"></div>
 
-  <!-- =========================================================================
-       1. CINEMATIC INTRO (100% PRESERVED & APPROVED)
-       ========================================================================= -->
-  <section class="intro-scene" id="introScene" aria-label="Alex și Bianca Invitație">
-    <div class="intro-scene__bg" aria-hidden="true"></div>
-    <div class="intro-scene__veil" aria-hidden="true"></div>
-    <canvas class="intro-scene__particles" id="introParticles" aria-hidden="true"></canvas>
+  <!-- ============================================================
+       INTRO — THE ENVELOPE
+       ============================================================ -->
+  <section class="intro" id="intro" aria-label="Invitație">
+    <div class="intro__halo" aria-hidden="true"></div>
+    <div class="intro__rays" aria-hidden="true"></div>
+    <div class="intro__beam" aria-hidden="true"></div>
+    <div class="intro__beam intro__beam--2" aria-hidden="true"></div>
 
-    <div class="intro-scene__content">
-      <!-- "T H E   W E D D I N G" -->
-      <p class="intro-scene__eyebrow">The Wedding</p>
+    <header class="intro__brand">
+      <span class="brand-mark">AB</span>
+      <span class="brand-line"></span>
+      <span class="brand-text">The Wedding</span>
+    </header>
 
-      <!-- Intertwined Gold Wedding Rings -->
-      <div class="intro-scene__rings-wrap" aria-hidden="true">
-        <span class="intro-scene__ring-line"></span>
-        <svg class="intro-scene__rings-svg" viewBox="0 0 70 42">
-          <!-- Left Ring -->
-          <ellipse cx="26" cy="21" rx="16" ry="14" class="ring"/>
-          <!-- Right Ring Intertwined -->
-          <ellipse cx="44" cy="21" rx="16" ry="14" class="ring"/>
-          <!-- Overlap accent -->
-          <path d="M35 10 C38 12, 38 28, 35 32" stroke="url(#goldRingGrad)" stroke-width="3.2" fill="none"/>
-          <!-- Shimmer sparkle -->
-          <circle cx="21" cy="11" r="2.5" class="ring-sparkle"/>
-          <circle cx="49" cy="11" r="2.5" class="ring-sparkle"/>
-        </svg>
-        <span class="intro-scene__ring-line intro-scene__ring-line--right"></span>
+    <div class="stage" id="stage">
+      <div class="env" id="env" role="button" tabindex="0" aria-label="Deschide invitația">
+        <div class="env__shadow"></div>
+
+        <!-- back wall + gold lining -->
+        <div class="env__back">
+          <div class="env__lining"></div>
+        </div>
+        <div class="env__glow"></div>
+
+        <!-- the card -->
+        <div class="card" id="card">
+          <div class="card__frame"></div>
+          <span class="card__eyebrow">Invitație</span>
+          <span class="card__mono">AB</span>
+          <span class="card__names"><b class="capA">A</b>lex <i>&amp;</i> Bianca</span>
+          <span class="card__date">15 · 10 · 2027</span>
+        </div>
+
+        <!-- front pocket -->
+        <div class="env__pocket">
+          <div class="env__fold env__fold--l"></div>
+          <div class="env__fold env__fold--r"></div>
+          <div class="env__fold env__fold--b"></div>
+        </div>
+
+        <!-- flap -->
+        <div class="env__flap" id="flap">
+          <div class="env__flap-face env__flap-face--out"></div>
+          <div class="env__flap-face env__flap-face--in"></div>
+        </div>
+
+        <!-- wax seal -->
+        <div class="seal" id="seal">
+          <svg class="seal__half seal__half--l" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-art"/></svg>
+          <svg class="seal__half seal__half--r" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-art"/></svg>
+          <span class="seal__shine"></span>
+        </div>
+
+        <div class="env__sheen"></div>
       </div>
+    </div>
 
-      <!-- "Alex & Bianca" -->
-      <h1 class="intro-scene__names">Alex <span class="intro-scene__amp">&amp;</span> Bianca</h1>
-
-      <!-- Heart Flourish Underline -->
-      <svg class="intro-scene__flourish" viewBox="0 0 320 28" aria-hidden="true">
-        <path d="M10 14 C60 14, 100 22, 142 15 C147 14, 150 12, 152 14" />
-        <path class="heart" d="M160 21 C157 18, 151 14, 151 9 C151 5.5, 153.5 3, 157 3 C159 3, 160 4.5, 160 5.5 C160 4.5, 161 3, 163 3 C166.5 3, 169 5.5, 169 9 C169 14, 163 18, 160 21 Z" />
-        <path d="M168 14 C170 12, 173 14, 178 15 C220 22, 260 14, 310 14" />
-      </svg>
-
-      <!-- Calendar + Date -->
-      <div class="intro-scene__date-badge">
-        <svg class="intro-scene__cal-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-          <circle cx="8" cy="14" r="1.2" fill="#dfbe78"/>
-          <circle cx="12" cy="14" r="1.2" fill="#dfbe78"/>
-          <circle cx="16" cy="14" r="1.2" fill="#dfbe78"/>
-          <circle cx="8" cy="18" r="1.2" fill="#dfbe78"/>
-          <circle cx="12" cy="18" r="1.2" fill="#dfbe78"/>
-        </svg>
-        <span>15 Octombrie 2027</span>
-      </div>
-
-      <!-- CTA Button -->
-      <button class="intro-scene__cta" id="discoverBtn" type="button" aria-label="Deschide invitația la nuntă">
-        <span>Descoperă invitația</span>
-        <span class="intro-scene__cta-arrow" aria-hidden="true">&rarr;</span>
+    <div class="intro__copy">
+      <h1 class="intro__names"><b class="capA">A</b>lex <span>&amp;</span> Bianca</h1>
+      <button class="intro__cta" id="openBtn" type="button">
+        <span class="cta-line"></span>
+        <span class="cta-text">Deschide invitația</span>
+        <span class="cta-line"></span>
       </button>
+      <p class="intro__hint">Atinge plicul</p>
     </div>
   </section>
 
-  <!-- =========================================================================
-       2. MONUMENTAL PALACE SECOND PAGE (EXACT IMAGE 8 RECREATION)
-       ========================================================================= -->
-  <main class="palace-site" id="palaceSite" aria-hidden="true">
+  <!-- shared SVG: wax seal artwork -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <radialGradient id="wax" cx="38%" cy="32%" r="75%">
+        <stop offset="0%" stop-color="#fff3cf"/>
+        <stop offset="18%" stop-color="#e9cd8a"/>
+        <stop offset="48%" stop-color="#c49a4a"/>
+        <stop offset="78%" stop-color="#7d5a1f"/>
+        <stop offset="100%" stop-color="#3a2708"/>
+      </radialGradient>
+      <radialGradient id="waxBed" cx="45%" cy="40%" r="65%">
+        <stop offset="0%" stop-color="#d9b56a"/>
+        <stop offset="55%" stop-color="#a77d33"/>
+        <stop offset="100%" stop-color="#5c3f10"/>
+      </radialGradient>
+      <linearGradient id="waxRim" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#fff6dc" stop-opacity=".9"/>
+        <stop offset="45%" stop-color="#e2c27c" stop-opacity=".25"/>
+        <stop offset="100%" stop-color="#1c1203" stop-opacity=".6"/>
+      </linearGradient>
+      <filter id="waxDrop" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000" flood-opacity=".75"/>
+      </filter>
+      <filter id="emboss">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.1" result="b"/>
+        <feSpecularLighting in="b" surfaceScale="3" specularConstant=".9" specularExponent="22" lighting-color="#fff2cc" result="s">
+          <fePointLight x="20" y="10" z="60"/>
+        </feSpecularLighting>
+        <feComposite in="s" in2="SourceAlpha" operator="in" result="sl"/>
+        <feComposite in="SourceGraphic" in2="sl" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+      </filter>
+      <g id="seal-art">
+        <path filter="url(#waxDrop)" fill="url(#wax)" d="M60 5c9 1 13-3 21 2s8 10 15 15 11 9 12 18-4 13-1 21 3 14-3 20-12 6-17 12-9 11-18 12-13-4-21-2-15 4-22-2-6-12-13-17S2 75 2 66s5-13 3-21-3-15 3-21 13-5 18-11S36 4 45 4s8 2 15 1z"/>
+        <path fill="none" stroke="url(#waxRim)" stroke-width="2.5" d="M60 11c8 1 12-2 18 2s7 9 13 13 9 8 10 15-3 12-1 19 2 12-3 17-10 6-15 11-8 9-15 10-12-3-19-2-13 3-19-2-5-10-11-15S9 73 9 65s4-12 3-19-2-13 3-18 11-5 16-10 7-8 15-8 7 2 14 1z"/>
+        <circle cx="60" cy="60" r="35" fill="url(#waxBed)"/>
+        <circle cx="60" cy="60" r="35" fill="none" stroke="#3b2808" stroke-opacity=".7" stroke-width="1.6"/>
+        <circle cx="60" cy="60" r="31.5" fill="none" stroke="#f6e2a8" stroke-opacity=".55" stroke-width=".7" stroke-dasharray="1.2 2.2"/>
+        <!-- debossed monogram: dark lower-right, light upper-left -->
+        <text x="61.2" y="72.2" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="34" font-weight="500" letter-spacing="-1" fill="#3a2706" fill-opacity=".85">AB</text>
+        <text x="59.2" y="70.2" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="34" font-weight="500" letter-spacing="-1" fill="#fff4d2" fill-opacity=".55">AB</text>
+        <text x="60" y="71" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="34" font-weight="500" letter-spacing="-1" fill="#a47a30" filter="url(#emboss)">AB</text>
+      </g>
+    </defs>
+  </svg>
 
-    <!-- White Rose Floral Arches on the Borders -->
-    <img src="assets/img/floral-top-left.jpg" alt="" class="palace-floral-left" aria-hidden="true">
-    <img src="assets/img/floral-bottom-left.jpg" alt="" class="palace-floral-bottom-left" aria-hidden="true">
-    <img src="assets/img/floral-bottom-right.jpg" alt="" class="palace-floral-bottom-right" aria-hidden="true">
+  <!-- ============================================================
+       MAIN EXPERIENCE
+       ============================================================ -->
+  <main class="site" id="site" aria-hidden="true">
 
-    <!-- Top Sticky Header -->
-    <header class="palace-header">
-      <div class="palace-header__inner">
-        <!-- Laurel Monogram -->
-        <a href="#hero" class="palace-monogram" aria-label="Alex &amp; Bianca">
-          <span>⚜ A&amp;B ⚜</span>
-        </a>
-
-        <!-- Navigation Links -->
-        <nav class="palace-nav-group">
-          <a href="#hero" class="palace-nav-link">Acasă</a>
-          <a href="#povestea" class="palace-nav-link">Povestea noastră</a>
-          <a href="#nasii" class="palace-nav-link">Nașii</a>
-          <a href="#lautarii" class="palace-nav-link">Lăutarii</a>
-          <a href="#videograf" class="palace-nav-link">Videograf</a>
-          <a href="#program" class="palace-nav-link">Program</a>
-          <a href="#locatie" class="palace-nav-link">Locații</a>
-          <a href="#galerie" class="palace-nav-link">Galerie</a>
-          <a href="#rsvp" class="palace-nav-btn">Confirmare</a>
-        </nav>
+    <!-- HERO -->
+    <section class="hero scene" id="hero">
+      <div class="hero__media" data-parallax="0.35">
+        <picture>
+          <source media="(min-width: 900px)" srcset="assets/img/hero-desktop.jpg?v=2">
+          <img src="assets/img/hero-mobile.jpg?v=2" alt="Alex și Bianca" class="hero__img">
+        </picture>
       </div>
-    </header>
+      <div class="hero__veil"></div>
 
-    <!-- Main Content Container (Max width 980px like image 8) -->
-    <div class="palace-main-wrap">
+      <!-- couture frame -->
+      <div class="hero__frame" aria-hidden="true">
+        <i class="hf hf--t"></i><i class="hf hf--b"></i><i class="hf hf--l"></i><i class="hf hf--r"></i>
+        <svg class="hf-corner hf-corner--tl" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+        <svg class="hf-corner hf-corner--tr" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+        <svg class="hf-corner hf-corner--bl" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+        <svg class="hf-corner hf-corner--br" viewBox="0 0 60 60"><path d="M2 58V20Q2 2 20 2h38M10 58V24Q10 10 24 10h34"/><circle cx="20" cy="20" r="2.4"/></svg>
+      </div>
 
-      <!-- 1. HERO SECTION: BALLROOM WITH ALEX & BIANCA -->
-      <section class="palace-hero" id="hero">
-        <!-- Left: Alex & Bianca Ballroom Portrait -->
-        <div class="palace-hero__couple">
-          <div class="palace-couple-frame">
-            <img src="assets/img/hero-ballroom-couple.jpg" alt="Alex &amp; Bianca">
-          </div>
-        </div>
-
-        <!-- Right: Royal Typography -->
-        <div class="palace-hero__text">
-          <div class="palace-crown-wrap">
-            <svg class="palace-crown-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M5 16 L3 5 L8.5 10 L12 4 L15.5 10 L21 5 L19 16 Z M5 18 L19 18 L19 20 L5 20 Z"/>
-            </svg>
-            <span class="palace-tag">NUNTA NOASTRĂ</span>
-            <svg class="palace-tiny-rings" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="8" cy="7" r="5"/>
-              <circle cx="16" cy="7" r="5"/>
-            </svg>
-          </div>
-
-          <h2 class="palace-hero__title">
-            ALEX <span class="palace-amp">&amp;</span> BIANCA
-          </h2>
-
-          <div class="palace-hero__date">15.10.2027</div>
-
-          <p class="palace-hero__quote">
-            Cu bucurie în suflet, vă invităm să fiți alături de noi într-o zi de neuitat.
-          </p>
-
-          <svg class="palace-filigree-divider" viewBox="0 0 100 12" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M0 6 H40 M60 6 H100"/>
-            <circle cx="50" cy="6" r="3" fill="currentColor"/>
+      <div class="hero__content">
+        <div class="hero__crest" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="56"/>
+            <circle cx="60" cy="60" r="50" stroke-dasharray="1.5 3.5"/>
+            <path d="M24 78c6 14 20 24 36 24s30-10 36-24M30 84l-4 4M36 90l-3 5M84 90l3 5M90 84l4 4"/>
           </svg>
+          <span>AB</span>
         </div>
-      </section>
-
-      <!-- 2. COUNTDOWN CARD: MAI SUNT PÂNĂ LA NUNTA NOASTRĂ -->
-      <section class="palace-countdown-card" id="detalii" aria-label="Numărătoare inversă">
-        <span class="palace-corner palace-corner--tl"></span>
-        <span class="palace-corner palace-corner--tr"></span>
-        <span class="palace-corner palace-corner--bl"></span>
-        <span class="palace-corner palace-corner--br"></span>
-
-        <span class="palace-cd-title">MAI SUNT PÂNĂ LA NUNTA NOASTRĂ</span>
-
-        <div class="palace-cd-grid">
-          <div class="palace-cd-box">
-            <span class="palace-cd-val" id="pDays">000</span>
-            <span class="palace-cd-lbl">ZILE</span>
-          </div>
-          <span class="palace-cd-sep">/</span>
-          <div class="palace-cd-box">
-            <span class="palace-cd-val" id="pHours">00</span>
-            <span class="palace-cd-lbl">ORE</span>
-          </div>
-          <span class="palace-cd-sep">/</span>
-          <div class="palace-cd-box">
-            <span class="palace-cd-val" id="pMinutes">00</span>
-            <span class="palace-cd-lbl">MINUTE</span>
-          </div>
-          <span class="palace-cd-sep">/</span>
-          <div class="palace-cd-box">
-            <span class="palace-cd-val" id="pSeconds">00</span>
-            <span class="palace-cd-lbl">SECUNDE</span>
-          </div>
+        <p class="hero__kick">Ne căsătorim</p>
+        <h2 class="hero__names">
+          <span class="split" data-split>Alex</span>
+          <span class="hero__amp">&amp;</span>
+          <span class="split" data-split>Bianca</span>
+        </h2>
+        <p class="hero__sub">și vă invităm să ne fiți alături</p>
+        <svg class="hero__orn" viewBox="0 0 240 20" aria-hidden="true">
+          <path d="M0 10h96M144 10h96"/>
+          <path d="M104 10l8-6 8 6-8 6z"/>
+          <circle cx="120" cy="10" r="2.2"/>
+          <path d="M120 10l8-6 8 6-8 6z"/>
+        </svg>
+        <div class="hero__date">
+          <span>Vineri</span>
+          <strong>15 Octombrie</strong>
+          <span>2027</span>
         </div>
-      </section>
+      </div>
 
-      <!-- 3. POVESTEA NOASTRĂ (WITH BRUSH-STROKE SUNSET COUPLE) -->
-      <section class="palace-story" id="povestea">
-        <div class="palace-story__left">
-          <h3 class="palace-script-title">Povestea noastră</h3>
-          <div class="palace-heart-icon">♡</div>
-          <p class="palace-story__p">
-            Două suflete, o singură poveste...<br>
-            O poveste despre încredere, sprijin, iubire și visuri comune, care ne-a adus aici – în fața celui mai frumos „Da!”
-          </p>
-          <a href="#detalii" class="palace-btn-pill">
-            <span>DESCOPERĂ POVESTEA</span>
-            <span>&rarr;</span>
+      <a class="scroll-cue" href="#date" aria-label="Derulează">
+        <span class="scroll-cue__line"></span>
+        <span class="scroll-cue__txt">Scroll</span>
+      </a>
+    </section>
+
+    <!-- SAVE THE DATE -->
+    <section class="std scene" id="date">
+      <div class="std__glow" aria-hidden="true"></div>
+      <div class="std__inner">
+        <p class="eyebrow r">Capitolul I</p>
+        <h2 class="std__title">
+          <span class="std__word r">Save</span>
+          <span class="std__word std__word--mid r"><em>the</em></span>
+          <span class="std__word r">Date</span>
+        </h2>
+        <p class="std__date r">15 <i>•</i> 10 <i>•</i> 2027</p>
+
+        <div class="count r" aria-label="Numărătoare inversă">
+          <div class="count__cell"><span class="count__num" id="cdD">000</span><span class="count__lbl">Zile</span></div>
+          <div class="count__cell"><span class="count__num" id="cdH">00</span><span class="count__lbl">Ore</span></div>
+          <div class="count__cell"><span class="count__num" id="cdM">00</span><span class="count__lbl">Minute</span></div>
+          <div class="count__cell"><span class="count__num" id="cdS">00</span><span class="count__lbl">Secunde</span></div>
+        </div>
+
+        <button class="link-gold r" id="icsBtn" type="button">Adaugă în calendar</button>
+      </div>
+    </section>
+
+    <!-- PROMISIUNEA NOASTRĂ -->
+    <section class="story scene" id="story">
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul II</p>
+        <h2 class="sec-title r">Promisiunea <em>noastră</em></h2>
+      </header>
+
+      <article class="chapter chapter--a">
+        <figure class="chapter__img mask" data-parallax="-0.08">
+          <img src="assets/img/story-2.jpg" alt="Buchet de nuntă" loading="lazy">
+        </figure>
+        <div class="chapter__text">
+          <span class="chapter__num r">01</span>
+          <h3 class="chapter__title r">Un jurământ pentru o viață.</h3>
+          <p class="chapter__body r">Fiecare floare, fiecare lumină și fiecare zâmbet poartă emoția unui nou început pe care îl pășim împreună.</p>
+        </div>
+      </article>
+
+      <article class="chapter chapter--b">
+        <figure class="chapter__img mask" data-parallax="-0.08">
+          <img src="assets/img/story-1.jpg" alt="Masa festivă și verighetele" loading="lazy">
+        </figure>
+        <figure class="chapter__float mask" data-parallax="0.12">
+          <img src="assets/img/story-3.jpg" alt="Inelul de logodnă" loading="lazy">
+        </figure>
+        <div class="chapter__text">
+          <span class="chapter__num r">02</span>
+          <h3 class="chapter__title r">Iubirea devine sărbătoare.</h3>
+          <p class="chapter__body r">O seară cu șampanie, lumină caldă și oameni dragi, în care bucuria noastră se împarte cu toți cei prezenți.</p>
+        </div>
+      </article>
+
+      <article class="chapter chapter--a">
+        <figure class="chapter__img mask" data-parallax="-0.08">
+          <img src="assets/img/story-4.jpg" alt="Verighetele de aur" loading="lazy" style="object-position: 50% 50%">
+        </figure>
+        <div class="chapter__text">
+          <span class="chapter__num r">03</span>
+          <h3 class="chapter__title r">Două inimi, același drum.</h3>
+          <p class="chapter__body r">De la emoția din fața altarului până la ultimul dans, alegem să ne fim sprijin și acasă, pentru totdeauna: <em>da</em>.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline scene" id="timeline">
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul III</p>
+        <h2 class="sec-title r">Ziua <em>cea mare</em></h2>
+      </header>
+
+      <ol class="tl" id="tl">
+        <li class="tl__rail" aria-hidden="true"><span class="tl__fill" id="tlFill"></span></li>
+
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">15:30</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><path d="M16 3v6M13 6h6M8 29V15l8-6 8 6v14M13 29v-7h6v7"/></svg>
+            <h3>Ceremonia religioasă</h3>
+            <p>Catedrala Sf. Iosif</p>
+          </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">18:00</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><path d="M10 4h6l-1 9a2 2 0 01-4 0zM13 15v12M10 27h6M22 4l-2 8a2 2 0 004 0z"/></svg>
+            <h3>Primirea invitaților</h3>
+            <p>Cocktail &amp; șampanie pe terasă</p>
+          </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">19:00</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><circle cx="16" cy="17" r="8"/><path d="M5 5v8M3 5v4a2 2 0 004 0V5M5 13v14M27 5c-2 2-2 6 0 8v14"/></svg>
+            <h3>Cina</h3>
+            <p>Meniu semnat de chef</p>
+          </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__dot"></span>
+          <span class="tl__time">21:00</span>
+          <div class="tl__info">
+            <svg class="tl__icon" viewBox="0 0 32 32"><path d="M12 24V7l14-3v17"/><circle cx="9" cy="24" r="3"/><circle cx="23" cy="21" r="3"/></svg>
+            <h3>Petrecerea</h3>
+            <p>Primul dans și până dimineața</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section class="places scene" id="places">
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul IV</p>
+        <h2 class="sec-title r">Locațiile</h2>
+      </header>
+
+      <article class="place">
+        <figure class="place__img mask" data-parallax="-0.1">
+          <img src="assets/img/catedrala.jpg" alt="Catedrala Sf. Iosif" loading="lazy" style="object-position: 50% 15%">
+        </figure>
+        <div class="place__panel r">
+          <span class="corner corner--tl"></span><span class="corner corner--br"></span>
+          <p class="place__kind">Ceremonie</p>
+          <h3 class="place__name">Catedrala Sf. Iosif</h3>
+          <p class="place__addr">Str. General Berthelot 19<br>București</p>
+          <p class="place__time">15:30</p>
+          <a class="btn-map" href="https://maps.google.com/?q=Catedrala+Sfantul+Iosif+Bucuresti" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span>Vezi pe hartă</span>
           </a>
         </div>
+      </article>
 
-        <div class="palace-story__right">
-          <div class="palace-brush-frame">
-            <img src="assets/img/story-brush-sunset.jpg" alt="Alex și Bianca — Povestea noastră">
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. NAȘII NOȘTRI & LĂUTARII NOȘTRI -->
-      <section class="palace-dual-section">
-        <!-- Nașii noștri -->
-        <div class="palace-column" id="nasii">
-          <div class="palace-col-title">
-            <h3 class="palace-script-title palace-script-flanked">Nașii noștri</h3>
-          </div>
-          <div class="palace-cards-pair">
-            <!-- Romi & Sanda -->
-            <div class="palace-person-card">
-              <span class="palace-corner palace-corner--tl"></span>
-              <span class="palace-corner palace-corner--tr"></span>
-              <span class="palace-corner palace-corner--bl"></span>
-              <span class="palace-corner palace-corner--br"></span>
-              <div class="palace-person-photo">
-                <img src="assets/img/romi-sanda.jpg" alt="Romi &amp; Sanda" loading="lazy">
-              </div>
-              <p class="palace-person-name">Romi &amp; Sanda</p>
-            </div>
-
-            <!-- Marius & Paula -->
-            <div class="palace-person-card">
-              <span class="palace-corner palace-corner--tl"></span>
-              <span class="palace-corner palace-corner--tr"></span>
-              <span class="palace-corner palace-corner--bl"></span>
-              <span class="palace-corner palace-corner--br"></span>
-              <div class="palace-person-photo">
-                <img src="assets/img/marius-paula.jpg" alt="Marius &amp; Paula" loading="lazy">
-              </div>
-              <p class="palace-person-name">Marius &amp; Paula</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Lăutarii noștri -->
-        <div class="palace-column" id="lautarii">
-          <div class="palace-col-title">
-            <h3 class="palace-script-title palace-script-flanked">Lăutarii noștri</h3>
-          </div>
-          <div class="palace-cards-pair">
-            <!-- Florin Salam -->
-            <div class="palace-person-card">
-              <span class="palace-corner palace-corner--tl"></span>
-              <span class="palace-corner palace-corner--tr"></span>
-              <span class="palace-corner palace-corner--bl"></span>
-              <span class="palace-corner palace-corner--br"></span>
-              <div class="palace-person-photo">
-                <img src="assets/img/florin-salam.jpg" alt="Florin Salam" loading="lazy">
-              </div>
-              <p class="palace-person-name">Florin Salam</p>
-            </div>
-
-            <!-- Puișor de la Mediaș -->
-            <div class="palace-person-card">
-              <span class="palace-corner palace-corner--tl"></span>
-              <span class="palace-corner palace-corner--tr"></span>
-              <span class="palace-corner palace-corner--bl"></span>
-              <span class="palace-corner palace-corner--br"></span>
-              <div class="palace-person-photo">
-                <img src="assets/img/puisor-de-la-medias.jpg" alt="Puișor de la Mediaș" loading="lazy">
-              </div>
-              <p class="palace-person-name">Puișor de la Mediaș</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. VIDEOGRAF: CREWETZEL EVENTS (BANNER) -->
-      <section class="palace-video-banner" id="videograf">
-        <span class="palace-corner palace-corner--tl"></span>
-        <span class="palace-corner palace-corner--tr"></span>
-        <span class="palace-corner palace-corner--bl"></span>
-        <span class="palace-corner palace-corner--br"></span>
-
-        <!-- Left: Camera -->
-        <div class="palace-video-cam">
-          <img src="assets/img/crewetzel-camera.jpg" alt="Crewetzel Events Cinema Camera">
-        </div>
-
-        <!-- Center: Text -->
-        <div class="palace-video-text">
-          <span class="palace-video-script">Amintiri pentru totdeauna</span>
-          <span class="palace-video-brand">CREWETZEL EVENTS</span>
-          <p class="palace-video-desc">
-            Povestea nunții noastre, surprinsă cu profesionalism, emoție și stil cinematografic.
-          </p>
-        </div>
-
-        <!-- Right: Filmstrip -->
-        <div class="palace-video-film">
-          <img src="assets/img/crewetzel-filmstrip.jpg" alt="Golden Filmstrip">
-        </div>
-      </section>
-
-      <!-- 6. PROGRAMUL NUNȚII & LOCAȚIILE EVENIMENTULUI -->
-      <section class="palace-info-dual">
-        <!-- Programul nunții -->
-        <div class="palace-column" id="program">
-          <div class="palace-col-title">
-            <h3 class="palace-script-title palace-script-flanked">Programul nunții</h3>
-          </div>
-          <div class="palace-agenda-list">
-            <div class="palace-agenda-item">
-              <span class="palace-agenda-icon">🥂</span>
-              <span class="palace-agenda-time">18:00</span>
-              <span class="palace-agenda-name">Primirea invitaților</span>
-            </div>
-            <div class="palace-agenda-item">
-              <span class="palace-agenda-icon">💍</span>
-              <span class="palace-agenda-time">19:00</span>
-              <span class="palace-agenda-name">Cununia religioasă</span>
-            </div>
-            <div class="palace-agenda-item">
-              <span class="palace-agenda-icon">🍽️</span>
-              <span class="palace-agenda-time">21:00</span>
-              <span class="palace-agenda-name">Petrecerea Lavin Bruchsal</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Locațiile evenimentului -->
-        <div class="palace-column palace-venue-side" id="locatie">
-          <div class="palace-col-title">
-            <h3 class="palace-script-title palace-script-flanked">Locațiile evenimentului</h3>
-          </div>
-          <div class="palace-venue-photo">
-            <img src="assets/img/lavin-events.jpg" alt="Lavin Events Bruchsal" loading="lazy">
-          </div>
-          <h4 class="palace-venue-name">LAVIN BRUCHSAL</h4>
-          <p class="palace-venue-address">📍 Bruchsal, Germania</p>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Lavin+Events+John-Deere-Strasse+19+76646+Bruchsal" target="_blank" rel="noopener" class="palace-btn-pill">
-            <span>VEZI PE HARTĂ</span>
-            <span>&rarr;</span>
+      <article class="place place--rev">
+        <figure class="place__img mask" data-parallax="-0.1">
+          <img src="assets/img/lavin-events.jpg" alt="Lavin Events Bruchsal" loading="lazy" style="object-position: 50% 50%">
+        </figure>
+        <div class="place__panel r">
+          <span class="corner corner--tl"></span><span class="corner corner--br"></span>
+          <p class="place__kind">Recepție</p>
+          <h3 class="place__name">Lavin Events</h3>
+          <p class="place__addr">John-Deere-Straße 19<br>76646 Bruchsal</p>
+          <p class="place__time">18:00</p>
+          <a class="btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Lavin+Events+John-Deere-Strasse+19+76646+Bruchsal" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span>Vezi pe hartă</span>
           </a>
         </div>
-      </section>
+      </article>
+    </section>
 
-      <!-- 7. GALERIE FOTO -->
-      <section class="palace-gallery" id="galerie">
-        <h3 class="palace-script-title palace-script-flanked">Galerie foto</h3>
+    <!-- CAPITOLUL V · OAMENI DRAGI ALĂTURI DE NOI -->
+    <section class="honors scene" id="honors">
+      <div class="honors__glow" aria-hidden="true"></div>
 
-        <div class="palace-gal-nav">
-          <button class="palace-gal-btn" id="pGalPrev" type="button" aria-label="Fotografie anterioară">&lsaquo;</button>
+      <!-- HEADER CAPITOL -->
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul V</p>
+        <h2 class="sec-title r">Oameni <em>dragi</em> alături de noi</h2>
+        <p class="honors__lead r">Pentru o zi atât de importantă, îi avem aproape pe cei care fac parte din povestea noastră.</p>
+      </header>
 
-          <div class="palace-gal-strip" id="pGalStrip">
-            <div class="palace-gal-thumb">
-              <img src="assets/img/story-2.jpg" alt="Flori albe" loading="lazy">
-            </div>
-            <div class="palace-gal-thumb">
-              <img src="assets/img/story-4.jpg" alt="Verighetele" loading="lazy">
-            </div>
-            <div class="palace-gal-thumb">
-              <img src="assets/img/story-1.jpg" alt="Masa festivă" loading="lazy">
-            </div>
-            <div class="palace-gal-thumb">
-              <img src="assets/img/story-3.jpg" alt="Aranjament floral" loading="lazy">
-            </div>
-            <div class="palace-gal-thumb">
-              <img src="assets/img/lavin-events.jpg" alt="Lavin Events" loading="lazy">
-            </div>
-            <div class="palace-gal-thumb">
-              <img src="assets/img/hero-desktop.jpg" alt="Alex și Bianca" loading="lazy">
-            </div>
-          </div>
-
-          <button class="palace-gal-btn" id="pGalNext" type="button" aria-label="Fotografie următoare">&rsaquo;</button>
+      <!-- PRIMA PARTE – NAȘII -->
+      <div class="honors__subhead r">
+        <div class="honors__badge">
+          <span class="honors__badge-line"></span>
+          <span class="honors__badge-txt">Părinți Spirituali</span>
+          <span class="honors__badge-line"></span>
         </div>
-      </section>
+        <h3 class="honors__group-title">Nașii <em>noștri</em></h3>
+        <p class="honors__group-desc">Cei care ne vor fi alături la începutul acestui nou capitol.</p>
+      </div>
 
-      <!-- 8. CONFIRMĂ PREZENȚA (RSVP) -->
-      <section class="palace-rsvp" id="rsvp">
-        <div class="palace-rsvp-card">
-          <span class="palace-corner palace-corner--tl"></span>
-          <span class="palace-corner palace-corner--tr"></span>
-          <span class="palace-corner palace-corner--bl"></span>
-          <span class="palace-corner palace-corner--br"></span>
-
-          <!-- Left Intro -->
-          <div class="palace-rsvp-left">
-            <h3 class="palace-script-title">Veți fi alături de noi?</h3>
-            <div class="palace-heart-icon">♡</div>
-            <p class="palace-rsvp-desc">
-              Vă rugăm să confirmați prezența<br>până la data stabilită.
-            </p>
+      <div class="godparents">
+        <!-- Romi & Sanda -->
+        <article class="godparent r">
+          <div class="godparent__media">
+            <div class="godparent__frame">
+              <span class="godparent__corner godparent__corner--tl"></span>
+              <span class="godparent__corner godparent__corner--br"></span>
+              <div class="godparent__ph">
+                <svg class="godparent__ph-icon" viewBox="0 0 64 64" aria-hidden="true">
+                  <circle cx="26" cy="34" r="14" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                  <circle cx="38" cy="34" r="14" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M26 20l2-4 2 4M36 20l2-4 2 4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                  <circle cx="32" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+                <span class="godparent__ph-tag">Portret · În curând</span>
+              </div>
+              <img class="godparent__img" src="assets/img/romi-sanda.jpg" alt="Romi &amp; Sanda" loading="lazy" style="object-position: 50% 20%;">
+            </div>
+            <div class="godparent__halo"></div>
           </div>
-
-          <!-- Right Form -->
-          <div class="palace-rsvp-right">
-            <form onsubmit="event.preventDefault(); submitPalaceRsvp();">
-              <div class="palace-form-field">
-                <input type="text" id="pGuestName" class="palace-input" placeholder="Nume și prenume *" required>
-              </div>
-
-              <div class="palace-form-field">
-                <select id="pAttendance" class="palace-select">
-                  <option value="yes">Confirmați participarea? * &nbsp;&nbsp; Da, cu mare drag</option>
-                  <option value="no">Confirmați participarea? * &nbsp;&nbsp; Cu regret nu pot</option>
-                </select>
-              </div>
-
-              <div class="palace-form-field">
-                <select id="pGuestCount" class="palace-select">
-                  <option value="1">Număr persoane * &nbsp;&nbsp; 1 persoană</option>
-                  <option value="2" selected>Număr persoane * &nbsp;&nbsp; 2 persoane</option>
-                  <option value="3">Număr persoane * &nbsp;&nbsp; 3 persoane</option>
-                  <option value="4">Număr persoane * &nbsp;&nbsp; 4 persoane</option>
-                  <option value="5+">Număr persoane * &nbsp;&nbsp; 5+ persoane</option>
-                </select>
-              </div>
-
-              <div class="palace-form-field">
-                <textarea id="pNotes" class="palace-textarea" rows="2" placeholder="Mesaj (opțional)"></textarea>
-              </div>
-
-              <button type="submit" class="palace-submit-btn">
-                CONFIRMĂ PARTICIPAREA &rarr;
-              </button>
-            </form>
+          <div class="godparent__info">
+            <div class="godparent__orn" aria-hidden="true"><i></i><b></b><i></i></div>
+            <h4 class="godparent__name">Romi <span class="amp">&amp;</span> Sanda</h4>
           </div>
+        </article>
+
+        <div class="godparents__sep r" aria-hidden="true"><i></i><b></b><i></i></div>
+
+        <!-- Marius & Paula -->
+        <article class="godparent r">
+          <div class="godparent__media">
+            <div class="godparent__frame">
+              <span class="godparent__corner godparent__corner--tl"></span>
+              <span class="godparent__corner godparent__corner--br"></span>
+              <div class="godparent__ph">
+                <svg class="godparent__ph-icon" viewBox="0 0 64 64" aria-hidden="true">
+                  <circle cx="26" cy="34" r="14" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                  <circle cx="38" cy="34" r="14" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M26 20l2-4 2 4M36 20l2-4 2 4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                  <circle cx="32" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+                <span class="godparent__ph-tag">Portret · În curând</span>
+              </div>
+              <img class="godparent__img" src="assets/img/marius-paula.jpg" alt="Marius &amp; Paula" loading="lazy" style="object-position: 50% 30%;">
+            </div>
+            <div class="godparent__halo"></div>
+          </div>
+          <div class="godparent__info">
+            <div class="godparent__orn" aria-hidden="true"><i></i><b></b><i></i></div>
+            <h4 class="godparent__name">Marius <span class="amp">&amp;</span> Paula</h4>
+          </div>
+        </article>
+      </div>
+
+      <!-- TRANZIȚIE VIZUALĂ CĂTRE MUZICĂ -->
+      <div class="honors__transit r" aria-hidden="true">
+        <span class="t-line"></span>
+        <span class="t-motif">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.6 7.6 2.4-7.6 2.4-2.4 7.6-2.4-7.6-7.6-2.4 7.6-2.4z" fill="currentColor"/></svg>
+        </span>
+        <span class="t-line"></span>
+      </div>
+
+      <!-- A DOUA PARTE – MUZICA SERII -->
+      <div class="music-sec">
+        <div class="honors__subhead r">
+          <p class="honors__lead-music">Iar petrecerea va suna așa…</p>
+          <h3 class="honors__group-title">Lăutarii <em>noștri</em></h3>
         </div>
-      </section>
 
-    </div>
+        <div class="artists r">
+          <!-- Artist 1: Florin Salam -->
+          <article class="artist-card artist-card--a">
+            <div class="artist-card__aura"></div>
+            <div class="artist-card__frame">
+              <div class="artist-card__ph">
+                <span class="artist-card__crest">FS</span>
+                <span class="artist-card__label">Voce &amp; Energie</span>
+              </div>
+              <img class="artist-card__img" src="assets/img/florin-salam.jpg" alt="Florin Salam" loading="lazy" style="object-position: 50% 18%;">
+            </div>
+            <h4 class="artist-card__name">Florin Salam</h4>
+          </article>
+
+          <!-- Divider & -->
+          <div class="artists__amp" aria-hidden="true">
+            <span class="artists__amp-char">&amp;</span>
+          </div>
+
+          <!-- Artist 2: Puișor de la Mediaș -->
+          <article class="artist-card artist-card--b">
+            <div class="artist-card__aura"></div>
+            <div class="artist-card__frame">
+              <div class="artist-card__ph">
+                <span class="artist-card__crest">PM</span>
+                <span class="artist-card__label">Emoție &amp; Petrecere</span>
+              </div>
+              <img class="artist-card__img" src="assets/img/puisor-de-la-medias.jpg" alt="Puișor de la Mediaș" loading="lazy" style="object-position: 62% 28%;">
+            </div>
+            <h4 class="artist-card__name">Puișor de la Mediaș</h4>
+          </article>
+        </div>
+
+        <p class="artists__quote r">„O noapte. Două voci. O petrecere pe care vrem să nu o uităm niciodată.”</p>
+
+        <div class="honors__date r" aria-label="Data petrecerii">
+          <span>15 · 10 · 2027</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp scene" id="rsvp">
+      <div class="rsvp__glow" aria-hidden="true"></div>
+      <header class="sec-head">
+        <p class="eyebrow r">Capitolul VI</p>
+        <h2 class="sec-title r">Vei fi <em>alături</em> de noi?</h2>
+        <p class="rsvp__lead r">Te rugăm să confirmi până la 1 august 2027.</p>
+      </header>
+
+      <div class="rsvp__panel r" id="rsvpPanel">
+        <form class="form" id="rsvpForm" novalidate>
+          <div class="field">
+            <input id="fName" name="name" type="text" placeholder=" " autocomplete="name" required>
+            <label for="fName">Nume și prenume</label>
+            <span class="field__line"></span>
+            <span class="field__err">Te rugăm să îți scrii numele.</span>
+          </div>
+
+          <div class="choice" role="radiogroup" aria-label="Participare">
+            <button type="button" class="choice__opt is-on" data-attend="yes" role="radio" aria-checked="true">Particip</button>
+            <button type="button" class="choice__opt" data-attend="no" role="radio" aria-checked="false">Nu pot participa</button>
+            <span class="choice__pill" aria-hidden="true"></span>
+          </div>
+
+          <div class="collapse" id="attendFields">
+            <div class="collapse__inner">
+              <div class="steppers">
+                <div class="stepper">
+                  <span class="stepper__lbl">Număr persoane</span>
+                  <div class="stepper__ctl">
+                    <button type="button" data-step="guests" data-d="-1" aria-label="Mai puțin">−</button>
+                    <output id="guests">2</output>
+                    <button type="button" data-step="guests" data-d="1" aria-label="Mai mult">+</button>
+                  </div>
+                </div>
+                <div class="stepper">
+                  <span class="stepper__lbl">Copii</span>
+                  <div class="stepper__ctl">
+                    <button type="button" data-step="kids" data-d="-1" aria-label="Mai puțin">−</button>
+                    <output id="kids">0</output>
+                    <button type="button" data-step="kids" data-d="1" aria-label="Mai mult">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field field--area">
+            <textarea id="fMsg" name="message" rows="2" placeholder=" "></textarea>
+            <label for="fMsg">Mesaj pentru miri</label>
+            <span class="field__line"></span>
+          </div>
+
+          <p class="wa-note">Confirmă pe WhatsApp la</p>
+          <div class="wa-pair">
+            <button class="btn-confirm" type="submit" data-to="alex">
+              <span class="btn-confirm__txt"><b class="capA">A</b>lex</span>
+              <span class="btn-confirm__spin" aria-hidden="true"></span>
+            </button>
+            <button class="btn-confirm" type="submit" data-to="bianca">
+              <span class="btn-confirm__txt">Bianca</span>
+              <span class="btn-confirm__spin" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+
+        <div class="thanks" id="thanks" aria-live="polite">
+          <svg class="thanks__mark" viewBox="0 0 80 80" aria-hidden="true">
+            <circle cx="40" cy="40" r="36"/>
+            <path d="M25 41l10 10 20-22"/>
+          </svg>
+          <h3 class="thanks__title">Mulțumim<span id="thanksName"></span>.</h3>
+          <p class="thanks__txt">Abia așteptăm să sărbătorim împreună.</p>
+          <p class="thanks__note">Răspunsul tău a fost trimis</p>
+          <button type="button" class="btn-reset" id="resetRsvp">Completează din nou</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="finale scene" id="finale">
+      <div class="finale__glow" aria-hidden="true"></div>
+      <div class="finale__mono r">AB</div>
+      <p class="finale__quote r">„Abia așteptăm să trăim această zi împreună.”</p>
+      <div class="finale__rule r"></div>
+      <p class="finale__sign r"><span>Cu drag,</span><b class="capA">A</b>lex &amp; Bianca</p>
+      <p class="finale__foot">The AB Wedding · 15.10.2027</p>
+    </section>
   </main>
 
-  <!-- LIGHTBOX MODAL -->
-  <div class="palace-lightbox" id="pLightbox" aria-hidden="true">
-    <button class="palace-lightbox__close" id="pLbClose" aria-label="Închide">&times;</button>
-    <img class="palace-lightbox__img" id="pLbImg" src="" alt="Vizualizare fotografie">
-  </div>
+  <!-- back to top -->
+  <button class="totop" id="toTop" type="button" aria-label="Înapoi sus">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    <span>Sus</span>
+  </button>
 
-  <script src="js/monumental-palace.js?v=mp1"></script>
+  <!-- music -->
+  <button class="music" id="music" type="button" aria-label="Pornește muzica" aria-pressed="false">
+    <span class="music__note">♪</span>
+    <span class="music__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+
+  <script src="js/main.js?v=ab27"></script>
 </body>
 </html>
