@@ -1,0 +1,1177 @@
+/* ==========================================================================
+   ALEX & BIANCA — THE ROYAL IVORY WEDDING WEBSITE (EXACT USER REFERENCE MATCH)
+   Palette: Rich Ivory, Pale Champagne Silk, Warm Gold, Soft White Florals
+   ========================================================================== */
+
+:root {
+  --ivory-bg: #faf6f0;
+  --ivory-card: #ffffff;
+  --ivory-dark: #f3ecdf;
+  --text-dark: #3a322a;
+  --text-muted: #6e6459;
+  --gold-primary: #bfa15f;
+  --gold-accent: #9d7b38;
+  --gold-light: #e8d7ad;
+  --gold-gradient: linear-gradient(135deg, #c7a760 0%, #ecdcb4 50%, #a9843c 100%);
+  --gold-border: rgba(191, 161, 95, 0.45);
+  --shadow-soft: 0 8px 25px rgba(60, 45, 30, 0.06);
+  --shadow-card: 0 12px 35px rgba(60, 45, 30, 0.08);
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Great Vibes', 'Alex Brush', cursive;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Cinzel', 'Playfair Display', serif;
+  --ease-luxe: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background-color: #140e09;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--ivory-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   1. CINEMATIC INTRO (UNCHANGED — 100% PRESERVED & APPROVED)
+   ========================================================================== */
+
+.intro-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #140e09;
+  transition: opacity 1.2s var(--ease-luxe), transform 1.2s var(--ease-luxe), visibility 1.2s;
+}
+
+.intro-scene.is-dismissed {
+  opacity: 0;
+  transform: scale(1.04);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-scene__bg {
+  position: absolute;
+  inset: 0;
+  background: url('../bg-intro.png') center center / cover no-repeat;
+  transform: scale(1.01);
+}
+
+.intro-scene__veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(16, 12, 8, 0.05) 0%, rgba(12, 8, 5, 0.45) 80%, rgba(8, 5, 3, 0.75) 100%);
+  pointer-events: none;
+  animation: introCandleFlicker 7s ease-in-out infinite alternate;
+}
+
+@keyframes introCandleFlicker {
+  0% { opacity: 0.85; }
+  35% { opacity: 0.95; }
+  70% { opacity: 0.88; }
+  100% { opacity: 1; }
+}
+
+.intro-scene__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.intro-scene__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.intro-scene__eyebrow {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-indent: 0.45em;
+  text-transform: uppercase;
+  color: #f7eedf;
+  margin-bottom: 1.25rem;
+  opacity: 0.95;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.intro-scene__rings-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 0.75rem;
+}
+
+.intro-scene__ring-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.7) 100%);
+}
+
+.intro-scene__ring-line--right {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.7) 0%, rgba(212, 175, 55, 0) 100%);
+}
+
+.intro-scene__rings-svg {
+  width: 60px;
+  height: 40px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.intro-scene__rings-svg .ring {
+  fill: none;
+  stroke: url(#goldRingGrad);
+  stroke-width: 3.2;
+}
+
+.intro-scene__rings-svg .ring-sparkle {
+  fill: #fffdf5;
+  opacity: 0;
+  animation: ringShimmer 4s ease-in-out infinite 1s;
+}
+
+@keyframes ringShimmer {
+  0%, 75% { opacity: 0; transform: scale(0.2); }
+  85% { opacity: 1; transform: scale(1.4); }
+  95%, 100% { opacity: 0; transform: scale(0.2); }
+}
+
+.intro-scene__names {
+  font-family: var(--font-script);
+  font-size: clamp(3.2rem, 7.8vw, 7rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: #fff9ee;
+  margin: 0.2rem 0;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 15px rgba(220, 180, 120, 0.45), 0 4px 30px rgba(0, 0, 0, 0.7);
+}
+
+.intro-scene__amp {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 400;
+  color: #eed4aa;
+  padding: 0 0.15em;
+  text-shadow: 0 0 20px rgba(238, 212, 170, 0.6);
+}
+
+.intro-scene__flourish {
+  width: clamp(260px, 40vw, 360px);
+  height: 28px;
+  margin: 0.1rem auto 1.5rem;
+  overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.intro-scene__flourish path {
+  stroke: url(#goldFlourishGrad);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.intro-scene__flourish .heart {
+  stroke: url(#goldFlourishGrad);
+  stroke-width: 1.6;
+  fill: none;
+  animation: heartPulse 3.5s ease-in-out infinite;
+  transform-origin: 160px 14px;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.intro-scene__date-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.25rem;
+  color: #f7eedf;
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1.35vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.intro-scene__cal-icon {
+  width: 19px;
+  height: 19px;
+  stroke: #dfbe78;
+  stroke-width: 1.6;
+  fill: none;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 6px rgba(223, 190, 120, 0.4));
+}
+
+.intro-scene__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 0.95rem 2.4rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(225, 192, 122, 0.75);
+  background: rgba(32, 23, 16, 0.48);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 1vw, 0.88rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(201, 162, 82, 0.22), inset 0 0 15px rgba(225, 192, 122, 0.12), 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s var(--ease-luxe);
+}
+
+.intro-scene__cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(255, 230, 165, 0.95);
+  background: rgba(45, 32, 22, 0.65);
+}
+
+.intro-scene__cta-arrow {
+  display: inline-block;
+  font-size: 1.15em;
+  transition: transform 0.3s ease;
+}
+
+.intro-scene__cta:hover .intro-scene__cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   2. ROYAL WEDDING IVORY EXPERIENCE (SECOND PAGE — EXACT MATCH TO REFERENCE)
+   ========================================================================== */
+
+.royal-site {
+  display: none;
+  opacity: 0;
+  background-color: var(--ivory-bg);
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(245, 238, 225, 0.5) 100%),
+    linear-gradient(180deg, #faf7f2 0%, #f6f0e4 50%, #faf6f0 100%);
+  color: var(--text-dark);
+  position: relative;
+  overflow: hidden;
+  transition: opacity 1.2s var(--ease-luxe);
+}
+
+.royal-site.is-active {
+  display: block;
+  opacity: 1;
+}
+
+/* Luxury Decorative Ivory Roses Framing on Left & Right */
+.royal-decor-frame {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.45;
+}
+
+.royal-decor-frame--left {
+  left: 0;
+  background: radial-gradient(circle at 0% 15%, rgba(245, 235, 215, 0.9) 0%, transparent 60%),
+              radial-gradient(circle at 0% 75%, rgba(245, 235, 215, 0.9) 0%, transparent 60%);
+}
+
+.royal-decor-frame--right {
+  right: 0;
+  background: radial-gradient(circle at 100% 15%, rgba(245, 235, 215, 0.9) 0%, transparent 60%),
+              radial-gradient(circle at 100% 75%, rgba(245, 235, 215, 0.9) 0%, transparent 60%);
+}
+
+/* Top Sticky Navigation Bar */
+.royal-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  background: rgba(250, 246, 240, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(191, 161, 95, 0.25);
+  padding: 0.75rem 2rem;
+  box-shadow: 0 4px 20px rgba(60, 45, 30, 0.04);
+}
+
+.royal-nav__inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.royal-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gold-accent);
+}
+
+.royal-nav__brand svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--gold-accent);
+}
+
+.royal-nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+@media (max-width: 992px) {
+  .royal-nav__menu {
+    display: none;
+  }
+}
+
+.royal-nav__link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: color 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.royal-nav__link:hover {
+  color: var(--gold-accent);
+}
+
+.royal-nav__cta {
+  padding: 0.5rem 1.6rem;
+  border-radius: 9999px;
+  background: var(--gold-gradient);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(191, 161, 95, 0.35);
+  transition: all 0.3s ease;
+}
+
+.royal-nav__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(191, 161, 95, 0.5);
+}
+
+/* Main Container */
+.royal-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   HERO / NUNTA NOASTRĂ (TOP SECTION)
+   ========================================================================== */
+
+.royal-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 860px) {
+  .royal-hero {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.royal-hero__photo-wrap {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.royal-hero__photo {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 9999px 9999px 8px 8px;
+  border: 4px solid #ffffff;
+  box-shadow: 0 15px 40px rgba(60, 45, 30, 0.12);
+}
+
+.royal-hero__content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.royal-hero__crown {
+  width: 38px;
+  height: 28px;
+  margin: 0 auto 0.5rem;
+  fill: var(--gold-accent);
+  filter: drop-shadow(0 2px 4px rgba(191, 161, 95, 0.3));
+}
+
+.royal-hero__kicker {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  margin-bottom: 0.25rem;
+}
+
+.royal-hero__heart-flourish {
+  font-size: 0.9rem;
+  color: var(--gold-accent);
+  margin-bottom: 0.5rem;
+}
+
+.royal-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+}
+
+.royal-hero__title em {
+  font-family: var(--font-script);
+  font-size: 1.2em;
+  font-style: normal;
+  color: var(--gold-accent);
+  padding: 0 0.15em;
+}
+
+.royal-hero__date {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--gold-accent);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.25rem;
+}
+
+.royal-hero__sub {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 440px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.royal-hero__ornament {
+  width: 140px;
+  height: 16px;
+  margin: 0 auto;
+}
+
+.royal-hero__ornament path {
+  stroke: var(--gold-primary);
+  fill: none;
+  stroke-width: 1.2;
+}
+
+/* ==========================================================================
+   COUNTDOWN BANNER (MAI SUNT PÂNĂ LA NUNTA NOASTRĂ)
+   ========================================================================== */
+
+.royal-countdown-box {
+  background: #ffffff;
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.royal-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--gold-primary);
+  border-style: solid;
+  pointer-events: none;
+}
+.royal-corner--tl { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+.royal-corner--tr { top: 6px; right: 6px; border-width: 1px 1px 0 0; }
+.royal-corner--bl { bottom: 6px; left: 6px; border-width: 0 0 1px 1px; }
+.royal-corner--br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+.royal-countdown-tag {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.royal-countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3.5vw, 3rem);
+  flex-wrap: wrap;
+}
+
+.royal-cd-cell {
+  text-align: center;
+  min-width: 70px;
+}
+
+.royal-cd-num {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1;
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+.royal-cd-lbl {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.royal-cd-slash {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--gold-border);
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   POVESTEA NOASTRĂ (OUR STORY SECTION)
+   ========================================================================== */
+
+.royal-story {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4.5rem;
+}
+
+@media (min-width: 860px) {
+  .royal-story {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.royal-story__text-side {
+  text-align: center;
+}
+
+.royal-script-title {
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 4.5vw, 3.6rem);
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.royal-script-title--flanked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.royal-script-title--flanked::before,
+.royal-script-title--flanked::after {
+  content: '';
+  width: 35px;
+  height: 1px;
+  background: var(--gold-gradient);
+}
+
+.royal-heart-flourish {
+  font-size: 0.85rem;
+  color: var(--gold-accent);
+  margin-bottom: 1.25rem;
+}
+
+.royal-story__quote {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+}
+
+.royal-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.8rem;
+  border-radius: 9999px;
+  border: 1px solid var(--gold-primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(60, 45, 30, 0.05);
+  transition: all 0.3s ease;
+}
+
+.royal-btn-pill:hover {
+  background: var(--gold-gradient);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.royal-story__photo-side {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 4px solid #ffffff;
+}
+
+.royal-story__photo-side img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+/* ==========================================================================
+   NAȘII NOȘTRI & LĂUTARII NOȘTRI (DUAL 2-COLUMN SECTION)
+   ========================================================================== */
+
+.royal-dual-sec {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .royal-dual-sec {
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .royal-dual-sec::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--gold-border) 50%, transparent 100%);
+    transform: translateX(-50%);
+  }
+}
+
+.royal-col-head {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.royal-dual-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.royal-person-card {
+  background: #ffffff;
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  padding: 0.65rem 0.65rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.royal-person-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.royal-person-frame {
+  width: 100%;
+  height: 175px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.royal-person-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.royal-person-tag {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   VIDEOGRAF / CREWETZEL EVENTS (BANNER SECTION)
+   ========================================================================== */
+
+.royal-cinema-banner {
+  background: #ffffff;
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  padding: 1.75rem 2.5rem;
+  margin-bottom: 4.5rem;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .royal-cinema-banner {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+}
+
+.royal-cinema-media {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 180px;
+}
+
+.royal-cinema-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.royal-cinema-info {
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .royal-cinema-info {
+    text-align: left;
+  }
+}
+
+.royal-cinema-script {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--gold-accent);
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.royal-cinema-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.2em;
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.royal-cinema-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   PROGRAMUL NUNȚII & LOCAȚIA EVENIMENTULUI (DUAL SECTION)
+   ========================================================================== */
+
+.royal-info-dual {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .royal-info-dual {
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .royal-info-dual::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--gold-border) 50%, transparent 100%);
+    transform: translateX(-50%);
+  }
+}
+
+/* Program / Timeline */
+.royal-agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 0.5rem 1rem;
+}
+
+.royal-agenda-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.royal-agenda-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-accent);
+  font-size: 1.3rem;
+}
+
+.royal-agenda-time {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  min-width: 55px;
+}
+
+.royal-agenda-name {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Venue Section */
+.royal-venue-side {
+  text-align: center;
+}
+
+.royal-venue-frame {
+  width: 100%;
+  max-width: 380px;
+  height: 180px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 auto 1.25rem;
+  border: 2px solid var(--gold-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.royal-venue-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.royal-venue-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.royal-venue-city {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+/* ==========================================================================
+   GALERIE FOTO (HORIZONTAL STRIP)
+   ========================================================================== */
+
+.royal-gallery-sec {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.royal-gallery-strip-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.royal-gallery-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  background: #ffffff;
+  color: var(--gold-accent);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.2s ease;
+}
+
+.royal-gallery-btn:hover {
+  background: var(--gold-gradient);
+  color: #ffffff;
+}
+
+.royal-gallery-strip {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.5rem 0;
+}
+
+.royal-gallery-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.royal-gallery-item {
+  width: 130px;
+  height: 110px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.royal-gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.royal-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   RSVP (VEȚI FI ALĂTURI DE NOI? — IVORY PARCHMENT CARD)
+   ========================================================================== */
+
+.royal-rsvp-card {
+  background: #ffffff;
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .royal-rsvp-card {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.royal-rsvp-intro {
+  text-align: center;
+}
+
+.royal-rsvp-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.royal-form-field {
+  margin-bottom: 0.95rem;
+}
+
+.royal-input,
+.royal-select,
+.royal-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--ivory-bg);
+  border: 1px solid rgba(191, 161, 95, 0.4);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.royal-input:focus,
+.royal-select:focus,
+.royal-textarea:focus {
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 10px rgba(191, 161, 95, 0.2);
+}
+
+.royal-btn-submit {
+  width: 100%;
+  padding: 0.9rem 1.8rem;
+  border-radius: 9999px;
+  background: var(--gold-gradient);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 18px rgba(191, 161, 95, 0.4);
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.royal-btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(191, 161, 95, 0.55);
+}
+
+/* ==========================================================================
+   LIGHTBOX
+   ========================================================================== */
+
+.royal-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 14, 10, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.royal-lightbox.is-open {
+  display: flex;
+}
+
+.royal-lightbox__img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 4px solid #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+}
+
+.royal-lightbox__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: #ffffff;
+  font-size: 2.2rem;
+}
