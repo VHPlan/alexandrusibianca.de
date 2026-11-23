@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0f0b08">
+  <meta name="theme-color" content="#0b0806">
   <title>Alex &amp; Bianca — The Wedding · 15 Octombrie 2027</title>
   <meta name="description" content="Alex &amp; Bianca — Invitație oficială la nuntă. 15 Octombrie 2027, Lavin Bruchsal.">
 
@@ -12,10 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/storybook.css?v=sb1">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230f0b08%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2240%22 fill=%22%23d4af37%22>AB</text></svg>">
+  <link rel="stylesheet" href="css/cinema.css?v=c1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230b0806%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2240%22 fill=%22%23d4af37%22>AB</text></svg>">
 </head>
-<body class="is-locked">
+<body>
 
   <!-- Shared SVG Gradients for Gold Elements -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -100,478 +100,424 @@
   </section>
 
   <!-- =========================================================================
-       2. DIGITAL STORYBOOK FULL-SCREEN CONTAINER
+       2. CINEMATIC STORIES STAGE (HORIZONTAL FULLSCREEN KEYNOTE / STORIES)
        ========================================================================= -->
-  <main class="storybook-container" id="storybookSite" aria-hidden="true">
-    <canvas class="storybook-ambient-canvas" id="storybookAmbientCanvas" aria-hidden="true"></canvas>
+  <main class="cinema-stage" id="cinemaStage" aria-hidden="true">
+    <canvas class="cinema-particles" id="cinemaParticles" aria-hidden="true"></canvas>
 
-    <!-- Floating Minimal Header -->
-    <header class="sb-header">
-      <div class="sb-header__brand">
-        <span class="sb-header__monogram">AB</span>
-        <span class="sb-header__tag">Alex &amp; Bianca · 15.10.2027</span>
+    <!-- Top Navigation Bar: Segmented Progress & Actions -->
+    <header class="cinema-topbar">
+      <!-- Stories Progress Bar -->
+      <div class="cinema-progress-track">
+        <div class="cinema-bar-segment is-active" data-index="0"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="1"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="2"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="3"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="4"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="5"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="6"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="7"><span class="cinema-bar-fill"></span></div>
+        <div class="cinema-bar-segment" data-index="8"><span class="cinema-bar-fill"></span></div>
       </div>
-      <a href="#chap-rsvp" class="sb-header__rsvp-link">Confirmă Prezența</a>
+
+      <!-- Brand and Controls -->
+      <div class="cinema-nav-row">
+        <div class="cinema-brand">
+          <span class="cinema-monogram">AB</span>
+          <span class="cinema-title-tag">Alex &amp; Bianca · 15.10.2027</span>
+        </div>
+        <div class="cinema-controls-top">
+          <button class="cinema-btn-pill" onclick="cinemaGoToSlide(7)">Confirmă Prezența</button>
+        </div>
+      </div>
     </header>
 
-    <!-- Floating Chapter Navigation Dots Track -->
-    <nav class="sb-nav-track" aria-label="Navigare Capitole">
-      <button class="sb-nav-dot is-active" data-target="chap-cover" aria-label="Copertă">
-        <span class="sb-nav-dot__label">Copertă</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-story" aria-label="Capitolul I">
-        <span class="sb-nav-dot__label">I · Promisiunea</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-godparents" aria-label="Capitolul II">
-        <span class="sb-nav-dot__label">II · Nașii</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-music" aria-label="Capitolul III">
-        <span class="sb-nav-dot__label">III · Muzica</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-agenda" aria-label="Capitolul IV">
-        <span class="sb-nav-dot__label">IV · Program</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-venue" aria-label="Capitolul V">
-        <span class="sb-nav-dot__label">V · Locația</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-gallery" aria-label="Capitolul VI">
-        <span class="sb-nav-dot__label">VI · Galerie</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-rsvp" aria-label="Capitolul VII">
-        <span class="sb-nav-dot__label">VII · RSVP</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-      <button class="sb-nav-dot" data-target="chap-colophon" aria-label="Încheiere">
-        <span class="sb-nav-dot__label">Sigiliu</span>
-        <span class="sb-nav-dot__pip"></span>
-      </button>
-    </nav>
+    <!-- Side Navigation Arrows -->
+    <button class="cinema-side-arrow cinema-side-arrow--left" id="cinemaPrevBtn" aria-label="Slide anterior">&#10094;</button>
+    <button class="cinema-side-arrow cinema-side-arrow--right" id="cinemaNextBtn" aria-label="Slide următor">&#10095;</button>
 
-    <!-- CHAPTER 0: COPERTA REGALĂ (COVER & LIVE COUNTDOWN) -->
-    <section class="sb-chapter" id="chap-cover">
-      <div class="sb-chapter__bg" style="background-image: url('assets/img/hero-desktop.jpg');"></div>
-      <div class="sb-chapter__veil"></div>
+    <!-- Bottom Swipe / Tap Hint -->
+    <div class="cinema-bottom-cue" aria-hidden="true">
+      <span>Atinge ecranul sau folosește săgețile pentru a naviga</span>
+    </div>
 
-      <div class="sb-chapter__content">
-        <div class="sb-cover-layout">
-          <div class="sb-cover-details">
-            <span class="sb-cover-kicker">Ediție Regală · Nunta Noastră</span>
-            <h2 class="sb-cover-title">
-              Alex &amp; Bianca
-              <em>O promisiune pentru totdeauna</em>
-            </h2>
-            <p class="sb-cover-lead">
-              Vă invităm cu emoție și bucurie să fiți martorii legământului nostru de iubire, într-o zi de neuitat învăluită în lumină caldă, eleganță și muzică aleasă.
-            </p>
+    <!-- Slides Container -->
+    <div class="cinema-slides-wrapper">
 
-            <!-- Typographic Countdown Pill -->
-            <div class="sb-countdown-strip" aria-label="Numărătoare inversă">
-              <div class="sb-cd-unit">
-                <span class="sb-cd-val" id="sbDays">00</span>
-                <span class="sb-cd-lbl">Zile</span>
-              </div>
-              <span class="sb-cd-div">·</span>
-              <div class="sb-cd-unit">
-                <span class="sb-cd-val" id="sbHours">00</span>
-                <span class="sb-cd-lbl">Ore</span>
-              </div>
-              <span class="sb-cd-div">·</span>
-              <div class="sb-cd-unit">
-                <span class="sb-cd-val" id="sbMinutes">00</span>
-                <span class="sb-cd-lbl">Minute</span>
-              </div>
-              <span class="sb-cd-div">·</span>
-              <div class="sb-cd-unit">
-                <span class="sb-cd-val" id="sbSeconds">00</span>
-                <span class="sb-cd-lbl">Secunde</span>
+      <!-- SLIDE 0: COPERTA REGALĂ (ALEX & BIANCA & COUNTDOWN) -->
+      <div class="cinema-slide is-current" data-slide="0">
+        <div class="cinema-slide__bg" style="background-image: url('assets/img/hero-desktop.jpg');"></div>
+        <div class="cinema-slide__veil"></div>
+
+        <div class="cinema-slide__content">
+          <div class="slide-cover-layout">
+            <div class="slide-cover-text">
+              <span class="cinema-slide-tag">Ediție Regală · Nunta Noastră</span>
+              <h2 class="slide-cover-title">
+                Alex &amp; Bianca
+                <em>O promisiune pentru totdeauna</em>
+              </h2>
+              <p class="slide-cover-lead">
+                Vă invităm cu emoție și bucurie să fiți martorii legământului nostru de iubire, într-o zi de neuitat învăluită în lumină caldă, eleganță și muzică aleasă.
+              </p>
+
+              <!-- Live Countdown Dial Strip -->
+              <div class="slide-countdown-box" aria-label="Numărătoare inversă">
+                <div style="text-align:center;">
+                  <span class="slide-cd-val" id="cDays">00</span>
+                  <span class="slide-cd-lbl">Zile</span>
+                </div>
+                <span class="slide-cd-sep">·</span>
+                <div style="text-align:center;">
+                  <span class="slide-cd-val" id="cHours">00</span>
+                  <span class="slide-cd-lbl">Ore</span>
+                </div>
+                <span class="slide-cd-sep">·</span>
+                <div style="text-align:center;">
+                  <span class="slide-cd-val" id="cMinutes">00</span>
+                  <span class="slide-cd-lbl">Minute</span>
+                </div>
+                <span class="slide-cd-sep">·</span>
+                <div style="text-align:center;">
+                  <span class="slide-cd-val" id="cSeconds">00</span>
+                  <span class="slide-cd-lbl">Secunde</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="sb-cover-frame">
-            <img src="assets/img/hero-desktop.jpg" alt="Alex și Bianca">
-            <div class="sb-cover-frame-badge">
-              <span>Data Celebrării</span>
-              <strong>15 Octombrie 2027</strong>
+            <div class="slide-cover-portrait">
+              <img src="assets/img/hero-desktop.jpg" alt="Alex și Bianca">
+              <div class="slide-cover-badge">
+                <span>Data Celebrării</span>
+                <strong>15 Octombrie 2027</strong>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- CHAPTER 1: PROMISIUNEA NOASTRĂ (STORY & VOWS) -->
-    <section class="sb-chapter" id="chap-story">
-      <div class="sb-chapter__bg" style="background-image: url('assets/img/story-1.jpg');"></div>
-      <div class="sb-chapter__veil"></div>
+      <!-- SLIDE 1: PROMISIUNEA NOASTRĂ & JURĂMÂNTUL -->
+      <div class="cinema-slide" data-slide="1">
+        <div class="cinema-slide__bg" style="background-image: url('assets/img/story-1.jpg');"></div>
+        <div class="cinema-slide__veil"></div>
 
-      <div class="sb-chapter__content">
-        <header class="sb-head">
-          <span class="sb-head__tag">Capitolul I</span>
-          <h3 class="sb-head__title">Promisiunea <em>noastră</em></h3>
-        </header>
-
-        <div class="sb-story-folio">
-          <div class="sb-story-mosaic">
-            <div class="sb-story-mosaic__card">
-              <img src="assets/img/story-2.jpg" alt="Flori elegante" loading="lazy">
-            </div>
-            <div class="sb-story-mosaic__card">
-              <img src="assets/img/story-3.jpg" alt="Inelul de logodnă" loading="lazy">
-            </div>
-            <div class="sb-story-mosaic__card">
-              <img src="assets/img/story-1.jpg" alt="Masa festivă" loading="lazy">
-            </div>
-            <div class="sb-story-mosaic__card">
-              <img src="assets/img/story-4.jpg" alt="Verighetele din aur" loading="lazy">
-            </div>
-          </div>
-
-          <div class="sb-story-text">
-            <blockquote class="sb-story-quote">
+        <div class="cinema-slide__content">
+          <span class="cinema-slide-tag">Capitolul I</span>
+          <div class="slide-vow-container">
+            <blockquote class="slide-vow-quote">
               „Iubirea nu înseamnă să ne privim unul pe celălalt, ci să privim amândoi în aceeași direcție.”
             </blockquote>
-            <p class="sb-story-p">
-              Fiecare pas parcurs împreună ne-a adus mai aproape de acest moment de taină. O zi în care jurămintele noastre devin legământ pe viață, iar bucuria noastră este desăvârșită doar alături de voi, familia și prietenii noștri cei mai apropiați.
+            <p class="slide-vow-p">
+              Fiecare clipă parcursă împreună ne-a adus mai aproape de acest moment sfânt. O zi în care promisiunile noastre devin legământ pe viață, iar bucuria noastră este deplină doar alături de voi, familia și prietenii noștri cei mai dragi.
             </p>
-            <p class="sb-story-p">
-              Vă așteptăm cu inima deschisă să sărbătorim iubirea într-o atmosferă regală, cu șampanie fină, lumina caldă a lumânărilor și amintiri nepieritoare.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTER 2: PĂRINȚII SPIRITUALI (NAȘII NOȘTRI — ROYAL DIPTYCH) -->
-    <section class="sb-chapter" id="chap-godparents">
-      <div class="sb-chapter__bg" style="background-image: url('bg-intro.png');"></div>
-      <div class="sb-chapter__veil"></div>
-
-      <div class="sb-chapter__content">
-        <header class="sb-head">
-          <span class="sb-head__tag">Capitolul II</span>
-          <h3 class="sb-head__title">Părinții <em>Spirituali</em></h3>
-        </header>
-
-        <div class="sb-diptych">
-          <!-- Romi & Sanda -->
-          <div class="sb-godparent-arch">
-            <div class="sb-godparent-portrait">
-              <img src="assets/img/romi-sanda.jpg" alt="Romi și Sanda" loading="lazy">
-            </div>
-            <h4 class="sb-godparent-names">Romi &amp; Sanda</h4>
-            <span class="sb-godparent-role">Nașii Noștri</span>
-            <p class="sb-godparent-desc">
-              Călăuze cu suflet nobil și înțelepciune, alături de noi la primii pași pe acest drum binecuvântat al căsniciei noastre.
-            </p>
-          </div>
-
-          <!-- Marius & Paula -->
-          <div class="sb-godparent-arch">
-            <div class="sb-godparent-portrait">
-              <img src="assets/img/marius-paula.jpg" alt="Marius și Paula" loading="lazy">
-            </div>
-            <h4 class="sb-godparent-names">Marius &amp; Paula</h4>
-            <span class="sb-godparent-role">Nașii Noștri</span>
-            <p class="sb-godparent-desc">
-              Modele de demnitate, dragoste și statornicie, a căror căldură și sprijin ne luminează și ne inspiră pasul spre viitor.
+            <p class="slide-vow-p">
+              Vă așteptăm cu sufletul deschis să sărbătorim dragostea într-o atmosferă regală, cu șampanie fină, lumină caldă și amintiri de neprețuit.
             </p>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- CHAPTER 3: MUZICA NOASTRĂ (ARTIST SPOTLIGHT) -->
-    <section class="sb-chapter" id="chap-music">
-      <div class="sb-chapter__bg" style="background-image: url('assets/img/hero-mobile.jpg');"></div>
-      <div class="sb-chapter__veil"></div>
+      <!-- SLIDE 2: PĂRINȚII SPIRITUALI (NAȘII NOȘTRI — ARCHED DIPTYCH) -->
+      <div class="cinema-slide" data-slide="2">
+        <div class="cinema-slide__bg" style="background-image: url('bg-intro.png');"></div>
+        <div class="cinema-slide__veil"></div>
 
-      <div class="sb-chapter__content">
-        <header class="sb-head">
-          <span class="sb-head__tag">Capitolul III</span>
-          <h3 class="sb-head__title">Muzica &amp; <em>Voia Bună</em></h3>
-        </header>
+        <div class="cinema-slide__content">
+          <span class="cinema-slide-tag">Capitolul II · Părinții Spirituali</span>
 
-        <div class="sb-music-stage">
-          <div class="sb-music-grid">
-            <!-- Florin Salam -->
-            <div class="sb-artist-panel">
-              <div class="sb-artist-image">
-                <img src="assets/img/florin-salam.jpg" alt="Florin Salam" loading="lazy">
-                <span class="sb-artist-badge">Invitat Special</span>
+          <div class="slide-godparent-diptych">
+            <!-- Romi & Sanda -->
+            <div class="slide-godparent-card">
+              <div class="slide-godparent-frame">
+                <img src="assets/img/romi-sanda.jpg" alt="Romi și Sanda" loading="lazy">
               </div>
-              <div class="sb-artist-content">
-                <h4 class="sb-artist-name">Florin Salam</h4>
-                <p class="sb-artist-desc">
-                  Regele muzicii de petrecere va crea o atmosferă incendiară și momente memorabile pentru toți oaspeții noștri.
-                </p>
-              </div>
+              <h4 class="slide-godparent-name">Romi &amp; Sanda</h4>
+              <span class="slide-godparent-subtitle">Nașii Noștri</span>
+              <p class="slide-godparent-desc">
+                Călăuze cu suflet cald și înțelepciune, alături de noi la primii pași din acest nou drum al familiei noastre.
+              </p>
             </div>
 
-            <!-- Puișor de la Mediaș -->
-            <div class="sb-artist-panel">
-              <div class="sb-artist-image">
-                <img src="assets/img/puisor-de-la-medias.jpg" alt="Puișor de la Mediaș" loading="lazy">
-                <span class="sb-artist-badge">Muzică Tradițională &amp; Live</span>
+            <!-- Marius & Paula -->
+            <div class="slide-godparent-card">
+              <div class="slide-godparent-frame">
+                <img src="assets/img/marius-paula.jpg" alt="Marius și Paula" loading="lazy">
               </div>
-              <div class="sb-artist-content">
-                <h4 class="sb-artist-name">Puișor de la Mediaș</h4>
-                <p class="sb-artist-desc">
-                  Virtuozitate, ritmuri autentice și voie bună neîntreruptă până în zorii dimineții.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Videographer Ribbon -->
-          <div class="sb-film-ribbon">
-            <svg class="sb-film-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="23 7 16 12 23 17 23 7"></polygon>
-              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-            </svg>
-            <div class="sb-film-text">
-              <span>Cinematografie &amp; Amintiri Video</span>
-              <strong>Crewetzel Events</strong>
+              <h4 class="slide-godparent-name">Marius &amp; Paula</h4>
+              <span class="slide-godparent-subtitle">Nașii Noștri</span>
+              <p class="slide-godparent-desc">
+                Modele de demnitate, dragoste și statornicie, care ne luminează și ne inspiră pasul spre viitor.
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- CHAPTER 4: PROGRAMUL NUNȚII (AGENDA) -->
-    <section class="sb-chapter" id="chap-agenda">
-      <div class="sb-chapter__bg" style="background-image: url('assets/img/lavin-events.jpg');"></div>
-      <div class="sb-chapter__veil"></div>
+      <!-- SLIDE 3: MUZICA NOASTRĂ (FLORIN SALAM & PUIȘOR DE LA MEDIAȘ) -->
+      <div class="cinema-slide" data-slide="3">
+        <div class="cinema-slide__bg" style="background-image: url('assets/img/hero-mobile.jpg');"></div>
+        <div class="cinema-slide__veil"></div>
 
-      <div class="sb-chapter__content">
-        <header class="sb-head">
-          <span class="sb-head__tag">Capitolul IV</span>
-          <h3 class="sb-head__title">Desfășurarea <em>Zilei</em></h3>
-        </header>
+        <div class="cinema-slide__content">
+          <span class="cinema-slide-tag">Capitolul III · Muzica &amp; Voia Bună</span>
 
-        <div class="sb-agenda-track">
-          <div class="sb-agenda-card">
-            <span class="sb-agenda-time">15:30</span>
-            <div class="sb-agenda-info">
-              <h4>Ceremonia Religioasă</h4>
-              <p>Taina Sfintei Cununii și binecuvântarea noului nostru legământ.</p>
+          <div class="slide-artists-stage">
+            <div class="slide-artists-row">
+              <!-- Florin Salam -->
+              <div class="slide-artist-tile">
+                <div class="slide-artist-photo">
+                  <img src="assets/img/florin-salam.jpg" alt="Florin Salam" loading="lazy">
+                  <span class="slide-artist-pill">Invitat Special</span>
+                </div>
+                <div class="slide-artist-info">
+                  <h4>Florin Salam</h4>
+                  <p>Regele muzicii de petrecere va crea o atmosferă incendiară pentru toți invitații noștri.</p>
+                </div>
+              </div>
+
+              <!-- Puișor de la Mediaș -->
+              <div class="slide-artist-tile">
+                <div class="slide-artist-photo">
+                  <img src="assets/img/puisor-de-la-medias.jpg" alt="Puișor de la Mediaș" loading="lazy">
+                  <span class="slide-artist-pill">Muzică Tradițională &amp; Live</span>
+                </div>
+                <div class="slide-artist-info">
+                  <h4>Puișor de la Mediaș</h4>
+                  <p>Virtuozitate, ritmuri autentice și voie bună autentică până în zorii dimineții.</p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="sb-agenda-card">
-            <span class="sb-agenda-time">18:00</span>
-            <div class="sb-agenda-info">
-              <h4>Primirea Invitaților</h4>
-              <p>Cocktail de bun venit, șampanie fină și socializare pe terasă.</p>
-            </div>
-          </div>
-
-          <div class="sb-agenda-card">
-            <span class="sb-agenda-time">19:30</span>
-            <div class="sb-agenda-info">
-              <h4>Cina Festivă</h4>
-              <p>Meniu culinar regal acompaniat de vinuri alese și muzică de salon.</p>
-            </div>
-          </div>
-
-          <div class="sb-agenda-card">
-            <span class="sb-agenda-time">21:00</span>
-            <div class="sb-agenda-info">
-              <h4>Dansul Mirilor &amp; Petrecerea</h4>
-              <p>Deschiderea ringului de dans și o noapte spectaculoasă alături de artiștii noștri.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTER 5: LOCAȚIA REGALĂ (LAVIN BRUCHSAL) -->
-    <section class="sb-chapter" id="chap-venue">
-      <div class="sb-chapter__bg" style="background-image: url('assets/img/lavin-events.jpg');"></div>
-      <div class="sb-chapter__veil"></div>
-
-      <div class="sb-chapter__content">
-        <header class="sb-head">
-          <span class="sb-head__tag">Capitolul V</span>
-          <h3 class="sb-head__title">Locația <em>Evenimentului</em></h3>
-        </header>
-
-        <div class="sb-venue-showcase">
-          <div class="sb-venue-photo">
-            <img src="assets/img/lavin-events.jpg" alt="Lavin Events Bruchsal" loading="lazy">
-          </div>
-          <div class="sb-venue-content">
-            <span class="sb-venue-tag">Sala Festivă</span>
-            <h4 class="sb-venue-title">Lavin Events Bruchsal</h4>
-            <div class="sb-venue-address">
-              Un spațiu exclusivist, amenajat cu rafinament regal pentru o sărbătoare memorabilă.
-              <strong>John-Deere-Straße 19</strong>
-              <span>76646 Bruchsal, Germania</span>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Lavin+Events+John-Deere-Strasse+19+76646+Bruchsal" target="_blank" rel="noopener" class="sb-venue-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
+            <!-- Videographer Credit -->
+            <div class="slide-cinema-credit">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
               </svg>
-              <span>Deschide în Google Maps</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTER 6: MOMENTE & GALERIE -->
-    <section class="sb-chapter" id="chap-gallery">
-      <div class="sb-chapter__bg" style="background-image: url('assets/img/story-2.jpg');"></div>
-      <div class="sb-chapter__veil"></div>
-
-      <div class="sb-chapter__content">
-        <header class="sb-head">
-          <span class="sb-head__tag">Capitolul VI</span>
-          <h3 class="sb-head__title">Momente &amp; <em>Detalii</em></h3>
-        </header>
-
-        <div class="sb-gallery-spread">
-          <div class="sb-gallery-tile">
-            <img src="assets/img/story-1.jpg" alt="Masa festivă" loading="lazy">
-            <div class="sb-gallery-overlay">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
-          </div>
-          <div class="sb-gallery-tile">
-            <img src="assets/img/story-2.jpg" alt="Flori albe" loading="lazy">
-            <div class="sb-gallery-overlay">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
-          </div>
-          <div class="sb-gallery-tile">
-            <img src="assets/img/story-3.jpg" alt="Inelul de logodnă" loading="lazy">
-            <div class="sb-gallery-overlay">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
-          </div>
-          <div class="sb-gallery-tile">
-            <img src="assets/img/story-4.jpg" alt="Verighetele din aur" loading="lazy">
-            <div class="sb-gallery-overlay">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <div>
+                <span>Cinematografie &amp; Amintiri Video</span>
+                <strong>Crewetzel Events</strong>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- CHAPTER 7: CONFIRMARE PREZENȚĂ (RSVP REGAL) -->
-    <section class="sb-chapter" id="chap-rsvp">
-      <div class="sb-chapter__bg" style="background-image: url('bg-intro.png');"></div>
-      <div class="sb-chapter__veil"></div>
+      <!-- SLIDE 4: PROGRAMUL ZILEI (AGENDA) -->
+      <div class="cinema-slide" data-slide="4">
+        <div class="cinema-slide__bg" style="background-image: url('assets/img/lavin-events.jpg');"></div>
+        <div class="cinema-slide__veil"></div>
 
-      <div class="sb-chapter__content">
-        <header class="sb-head">
-          <span class="sb-head__tag">Capitolul VII</span>
-          <h3 class="sb-head__title">Veți fi alături <em>de noi?</em></h3>
-        </header>
+        <div class="cinema-slide__content">
+          <span class="cinema-slide-tag">Capitolul IV · Desfășurarea Zilei</span>
 
-        <div class="sb-rsvp-folio">
-          <form id="sbRsvpForm" onsubmit="event.preventDefault();">
-            <div class="sb-form-group">
-              <label for="sbGuestName" class="sb-form-label">Numele și Prenumele Dumneavoastră</label>
-              <input type="text" id="sbGuestName" class="sb-form-input" placeholder="ex: Familia Popescu / Ion &amp; Maria" required>
-            </div>
-
-            <div class="sb-form-group">
-              <label class="sb-form-label">Răspunsul Dumneavoastră</label>
-              <div class="sb-radio-pair">
-                <label class="sb-radio-opt">
-                  <input type="radio" name="sbAttendance" value="yes" checked>
-                  <span>Confirm cu bucurie prezența</span>
-                </label>
-                <label class="sb-radio-opt">
-                  <input type="radio" name="sbAttendance" value="no">
-                  <span>Cu regret nu voi putea participa</span>
-                </label>
+          <div class="slide-agenda-grid">
+            <div class="slide-agenda-item">
+              <span class="slide-agenda-time">15:30</span>
+              <div class="slide-agenda-text">
+                <h4>Ceremonia Religioasă</h4>
+                <p>Taina Sfintei Cununii și binecuvântarea noului nostru legământ.</p>
               </div>
             </div>
 
-            <div class="sb-form-group">
-              <label class="sb-form-label">Număr de Persoane</label>
-              <div class="sb-stepper-row">
-                <div class="sb-stepper-box">
-                  <span style="font-size: 0.85rem; color: #fff;">Adulți:</span>
-                  <div class="sb-stepper-controls">
-                    <button type="button" class="sb-stepper-btn" onclick="sbAdjustAdults(-1)">−</button>
-                    <span class="sb-stepper-val" id="sbAdultVal">2</span>
-                    <button type="button" class="sb-stepper-btn" onclick="sbAdjustAdults(1)">+</button>
-                  </div>
-                </div>
-                <div class="sb-stepper-box">
-                  <span style="font-size: 0.85rem; color: #fff;">Copii:</span>
-                  <div class="sb-stepper-controls">
-                    <button type="button" class="sb-stepper-btn" onclick="sbAdjustChildren(-1)">−</button>
-                    <span class="sb-stepper-val" id="sbChildVal">0</span>
-                    <button type="button" class="sb-stepper-btn" onclick="sbAdjustChildren(1)">+</button>
-                  </div>
-                </div>
+            <div class="slide-agenda-item">
+              <span class="slide-agenda-time">18:00</span>
+              <div class="slide-agenda-text">
+                <h4>Primirea Invitaților</h4>
+                <p>Cocktail de bun venit, șampanie fină și socializare pe terasă.</p>
               </div>
             </div>
 
-            <div class="sb-form-group">
-              <label for="sbNotes" class="sb-form-label">Mesaj sau Preferințe Meniu (Opțional)</label>
-              <textarea id="sbNotes" class="sb-form-textarea" rows="2" placeholder="Preferințe alimentare, urări sau alte detalii..."></textarea>
+            <div class="slide-agenda-item">
+              <span class="slide-agenda-time">19:30</span>
+              <div class="slide-agenda-text">
+                <h4>Cina Festivă</h4>
+                <p>Meniu culinar regal acompaniat de vinuri alese și muzică de salon.</p>
+              </div>
             </div>
 
-            <div class="sb-whatsapp-actions">
-              <button type="button" class="sb-btn-wa" onclick="sbSendWhatsApp('alex')">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.228-.553-1.879-.774-3.08-2.684-3.173-.807-.095-.123-.746-.992-.746-1.893 0-.9.471-1.344.639-1.527.167-.184.364-.23.486-.23.121 0 .243.002.348.007.112.006.262-.042.41.314.152.365.517 1.262.562 1.354.045.092.076.2.015.323-.061.123-.092.2-.182.308-.091.107-.191.24-.273.323-.092.091-.188.19-.081.374.107.184.475.784 1.02 1.27.701.625 1.293.818 1.476.91.183.092.29-.076.398-.2.107-.123.456-.534.578-.718.121-.184.243-.153.41-.092.167.061 1.063.501 1.246.592.182.092.304.138.349.215.046.077.046.446-.098.851zM12.031 2c-5.523 0-10 4.477-10 10 0 1.765.457 3.424 1.258 4.871l-1.334 4.875 5.006-1.313c1.403.766 3.008 1.2 4.708 1.2 5.523 0 10-4.477 10-10s-4.477-10-10-10z"/>
-                </svg>
-                <span>Trimite lui Alex</span>
-              </button>
-              <button type="button" class="sb-btn-wa sb-btn-wa--bianca" onclick="sbSendWhatsApp('bianca')">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.228-.553-1.879-.774-3.08-2.684-3.173-.807-.095-.123-.746-.992-.746-1.893 0-.9.471-1.344.639-1.527.167-.184.364-.23.486-.23.121 0 .243.002.348.007.112.006.262-.042.41.314.152.365.517 1.262.562 1.354.045.092.076.2.015.323-.061.123-.092.2-.182.308-.091.107-.191.24-.273.323-.092.091-.188.19-.081.374.107.184.475.784 1.02 1.27.701.625 1.293.818 1.476.91.183.092.29-.076.398-.2.107-.123.456-.534.578-.718.121-.184.243-.153.41-.092.167.061 1.063.501 1.246.592.182.092.304.138.349.215.046.077.046.446-.098.851zM12.031 2c-5.523 0-10 4.477-10 10 0 1.765.457 3.424 1.258 4.871l-1.334 4.875 5.006-1.313c1.403.766 3.008 1.2 4.708 1.2 5.523 0 10-4.477 10-10s-4.477-10-10-10z"/>
-                </svg>
-                <span>Trimite Biancăi</span>
-              </button>
+            <div class="slide-agenda-item">
+              <span class="slide-agenda-time">21:00</span>
+              <div class="slide-agenda-text">
+                <h4>Dansul Mirilor &amp; Petrecerea</h4>
+                <p>Deschiderea ringului de dans și o noapte de neuitat alături de artiștii noștri.</p>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- CHAPTER 8: SIGILIU & ÎNCHEIERE (COLOPHON) -->
-    <section class="sb-chapter" id="chap-colophon">
-      <div class="sb-chapter__bg" style="background-image: url('assets/img/hero-desktop.jpg');"></div>
-      <div class="sb-chapter__veil"></div>
+      <!-- SLIDE 5: LOCAȚIA REGALĂ (LAVIN BRUCHSAL) -->
+      <div class="cinema-slide" data-slide="5">
+        <div class="cinema-slide__bg" style="background-image: url('assets/img/lavin-events.jpg');"></div>
+        <div class="cinema-slide__veil"></div>
 
-      <div class="sb-chapter__content">
-        <div class="sb-colophon">
-          <div class="sb-colophon-seal">AB</div>
-          <p class="sb-colophon-quote">
-            „Vă mulțumim din adâncul inimii că alegeți să fiți alături de noi la cel mai important și frumos început al vieții noastre!”
-          </p>
-          <p class="sb-colophon-copy">
-            Alex &amp; Bianca · 15 Octombrie 2027 · Lavin Bruchsal
-          </p>
+        <div class="cinema-slide__content">
+          <span class="cinema-slide-tag">Capitolul V · Locația Evenimentului</span>
+
+          <div class="slide-venue-card">
+            <div class="slide-venue-img">
+              <img src="assets/img/lavin-events.jpg" alt="Lavin Events Bruchsal" loading="lazy">
+            </div>
+            <div class="slide-venue-body">
+              <span class="slide-venue-tag">Sala Festivă</span>
+              <h4 class="slide-venue-name">Lavin Events Bruchsal</h4>
+              <div class="slide-venue-addr">
+                Un spațiu exclusivist, amenajat cu rafinament regal pentru o sărbătoare memorabilă.
+                <strong>John-Deere-Straße 19</strong>
+                <span>76646 Bruchsal, Germania</span>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Lavin+Events+John-Deere-Strasse+19+76646+Bruchsal" target="_blank" rel="noopener" class="slide-venue-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Deschide în Google Maps</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
 
+      <!-- SLIDE 6: MOMENTE & GALERIE -->
+      <div class="cinema-slide" data-slide="6">
+        <div class="cinema-slide__bg" style="background-image: url('assets/img/story-2.jpg');"></div>
+        <div class="cinema-slide__veil"></div>
+
+        <div class="cinema-slide__content">
+          <span class="cinema-slide-tag">Capitolul VI · Galerie Foto</span>
+
+          <div class="slide-gallery-quad">
+            <div class="slide-gallery-cell">
+              <img src="assets/img/story-1.jpg" alt="Masa festivă" loading="lazy">
+              <div class="slide-gallery-glass">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+            </div>
+            <div class="slide-gallery-cell">
+              <img src="assets/img/story-2.jpg" alt="Flori albe" loading="lazy">
+              <div class="slide-gallery-glass">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+            </div>
+            <div class="slide-gallery-cell">
+              <img src="assets/img/story-3.jpg" alt="Inelul de logodnă" loading="lazy">
+              <div class="slide-gallery-glass">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+            </div>
+            <div class="slide-gallery-cell">
+              <img src="assets/img/story-4.jpg" alt="Verighetele din aur" loading="lazy">
+              <div class="slide-gallery-glass">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7: CONFIRMARE PREZENȚĂ (RSVP REGAL) -->
+      <div class="cinema-slide" data-slide="7">
+        <div class="cinema-slide__bg" style="background-image: url('bg-intro.png');"></div>
+        <div class="cinema-slide__veil"></div>
+
+        <div class="cinema-slide__content">
+          <span class="cinema-slide-tag">Capitolul VII · Confirmare Prezență</span>
+
+          <div class="slide-rsvp-sheet">
+            <form id="cRsvpForm" onsubmit="event.preventDefault();">
+              <div class="slide-form-field">
+                <label for="cGuestName" class="slide-field-label">Numele și Prenumele Dumneavoastră</label>
+                <input type="text" id="cGuestName" class="slide-field-input" placeholder="ex: Familia Popescu / Ion &amp; Maria" required>
+              </div>
+
+              <div class="slide-form-field">
+                <label class="slide-field-label">Răspunsul Dumneavoastră</label>
+                <div class="slide-radio-row">
+                  <label class="slide-radio-box">
+                    <input type="radio" name="cAttendance" value="yes" checked>
+                    <span>Confirm cu bucurie prezența</span>
+                  </label>
+                  <label class="slide-radio-box">
+                    <input type="radio" name="cAttendance" value="no">
+                    <span>Cu regret nu pot participa</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="slide-form-field">
+                <label class="slide-field-label">Număr de Persoane</label>
+                <div class="slide-stepper-pair">
+                  <div class="slide-stepper-unit">
+                    <span style="font-size:0.85rem;color:#fff;">Adulți:</span>
+                    <div style="display:flex;align-items:center;gap:0.75rem;">
+                      <button type="button" class="slide-stepper-btn" onclick="cAdjustAdults(-1)">−</button>
+                      <span class="slide-stepper-digit" id="cAdultVal">2</span>
+                      <button type="button" class="slide-stepper-btn" onclick="cAdjustAdults(1)">+</button>
+                    </div>
+                  </div>
+                  <div class="slide-stepper-unit">
+                    <span style="font-size:0.85rem;color:#fff;">Copii:</span>
+                    <div style="display:flex;align-items:center;gap:0.75rem;">
+                      <button type="button" class="slide-stepper-btn" onclick="cAdjustChildren(-1)">−</button>
+                      <span class="slide-stepper-digit" id="cChildVal">0</span>
+                      <button type="button" class="slide-stepper-btn" onclick="cAdjustChildren(1)">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slide-form-field">
+                <label for="cNotes" class="slide-field-label">Mesaj sau Preferințe Meniu (Opțional)</label>
+                <textarea id="cNotes" class="slide-field-textarea" rows="2" placeholder="Preferințe alimentare, urări sau alte detalii..."></textarea>
+              </div>
+
+              <div class="slide-wa-buttons">
+                <button type="button" class="slide-btn-whatsapp" onclick="cSendWhatsApp('alex')">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.228-.553-1.879-.774-3.08-2.684-3.173-.807-.095-.123-.746-.992-.746-1.893 0-.9.471-1.344.639-1.527.167-.184.364-.23.486-.23.121 0 .243.002.348.007.112.006.262-.042.41.314.152.365.517 1.262.562 1.354.045.092.076.2.015.323-.061.123-.092.2-.182.308-.091.107-.191.24-.273.323-.092.091-.188.19-.081.374.107.184.475.784 1.02 1.27.701.625 1.293.818 1.476.91.183.092.29-.076.398-.2.107-.123.456-.534.578-.718.121-.184.243-.153.41-.092.167.061 1.063.501 1.246.592.182.092.304.138.349.215.046.077.046.446-.098.851zM12.031 2c-5.523 0-10 4.477-10 10 0 1.765.457 3.424 1.258 4.871l-1.334 4.875 5.006-1.313c1.403.766 3.008 1.2 4.708 1.2 5.523 0 10-4.477 10-10s-4.477-10-10-10z"/>
+                  </svg>
+                  <span>Trimite lui Alex</span>
+                </button>
+                <button type="button" class="slide-btn-whatsapp slide-btn-whatsapp--bianca" onclick="cSendWhatsApp('bianca')">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.228-.553-1.879-.774-3.08-2.684-3.173-.807-.095-.123-.746-.992-.746-1.893 0-.9.471-1.344.639-1.527.167-.184.364-.23.486-.23.121 0 .243.002.348.007.112.006.262-.042.41.314.152.365.517 1.262.562 1.354.045.092.076.2.015.323-.061.123-.092.2-.182.308-.091.107-.191.24-.273.323-.092.091-.188.19-.081.374.107.184.475.784 1.02 1.27.701.625 1.293.818 1.476.91.183.092.29-.076.398-.2.107-.123.456-.534.578-.718.121-.184.243-.153.41-.092.167.061 1.063.501 1.246.592.182.092.304.138.349.215.046.077.046.446-.098.851zM12.031 2c-5.523 0-10 4.477-10 10 0 1.765.457 3.424 1.258 4.871l-1.334 4.875 5.006-1.313c1.403.766 3.008 1.2 4.708 1.2 5.523 0 10-4.477 10-10s-4.477-10-10-10z"/>
+                  </svg>
+                  <span>Trimite Biancăi</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: SIGILIU REGAL & ÎNCHEIERE -->
+      <div class="cinema-slide" data-slide="8">
+        <div class="cinema-slide__bg" style="background-image: url('assets/img/hero-desktop.jpg');"></div>
+        <div class="cinema-slide__veil"></div>
+
+        <div class="cinema-slide__content">
+          <div class="slide-closing-box">
+            <div class="slide-closing-seal">AB</div>
+            <p class="slide-closing-text">
+              „Vă mulțumim din adâncul inimii că alegeți să fiți alături de noi la cel mai important și frumos început al vieții noastre!”
+            </p>
+            <p class="slide-closing-meta">
+              Alex &amp; Bianca · 15 Octombrie 2027 · Lavin Bruchsal
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
   <!-- LIGHTBOX MODAL -->
-  <div class="sb-lightbox" id="sbLightbox" aria-hidden="true">
-    <button class="sb-lightbox__close" id="sbLbClose" aria-label="Închide">&times;</button>
-    <button class="sb-lightbox__prev" id="sbLbPrev" aria-label="Anterior">&#10094;</button>
-    <img class="sb-lightbox__img" id="sbLightboxImg" src="" alt="Vizualizare fotografie">
-    <button class="sb-lightbox__next" id="sbLbNext" aria-label="Următor">&#10095;</button>
+  <div id="cLightbox" style="display:none;position:fixed;inset:0;background:rgba(8,6,4,0.95);backdrop-filter:blur(16px);z-index:10000;align-items:center;justify-content:center;padding:2rem;">
+    <button id="cLbClose" style="position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:2.4rem;background:none;border:none;cursor:pointer;">&times;</button>
+    <img id="cLightboxImg" src="" alt="Vizualizare fotografie" style="max-width:90vw;max-height:85vh;object-fit:contain;border:2px solid var(--gold-border-bright);border-radius:4px;">
   </div>
 
-  <script src="js/storybook.js?v=sb1"></script>
+  <script src="js/cinema.js?v=c1"></script>
 </body>
 </html>
