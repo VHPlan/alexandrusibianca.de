@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+@theme {
+  --color-espresso: #1a120d;
+  --color-espresso-2: #221812;
+  --color-cocoa: #2f231b;
+  --color-cocoa-2: #3b2c22;
+  --color-ivory: #faf6ef;
+  --color-ivory-2: #f5eee2;
+  --color-champagne: #e8d8bb;
+  --color-gold: #c6a26a;
+  --color-gold-light: #e4cc9c;
+  --color-gold-deep: #9c7a45;
+  --color-ink: #2a1f18;
+  --color-muted: #6f5f50;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-script: var(--font-alex-brush), "Alex Brush", cursive;
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+
+  --animate-hero-zoom: hero-zoom 14s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-shimmer: shimmer 6s ease-in-out infinite;
+
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1.14);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
+  @keyframes shimmer {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-espresso);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+
+.font-serif {
+  font-variant-numeric: lining-nums;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-gold) 40%, transparent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  /* Refined metallic gold text — padded so tall/slanted script glyphs never clip */
+  .text-gold-metal {
+    display: inline-block;
+    padding: 0.22em 0.24em;
+    margin: -0.22em -0.24em;
+    background: linear-gradient(
+      100deg,
+      #a8834a 0%,
+      #e9d4a6 28%,
+      #c9a46a 50%,
+      #f1e2bf 72%,
+      #a8834a 100%
+    );
+    background-size: 220% 100%;
+    animation: var(--animate-shimmer);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+  }
+
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 9999px;
+    padding: 0.85rem 1.9rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2a1d12;
+    background: linear-gradient(135deg, #f0e0bd 0%, #d8b97f 45%, #c29b5e 100%);
+    box-shadow:
+      0 10px 30px -12px rgba(198, 162, 106, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease,
+      filter 0.4s ease;
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow:
+      0 18px 40px -14px rgba(198, 162, 106, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .btn-gold:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-outline-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 9999px;
+    padding: 0.8rem 1.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid color-mix(in oklab, var(--color-gold) 70%, transparent);
+    color: var(--color-gold-deep);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-outline-gold:hover {
+    background: var(--color-gold);
+    color: #fff;
+    border-color: var(--color-gold);
+  }
+
+  /* Fine double gold hairline frame */
+  .gold-frame {
+    position: relative;
+  }
+  .gold-frame::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border: 1px solid color-mix(in oklab, var(--color-gold) 55%, transparent);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .satin-ivory {
+    background-color: var(--color-ivory);
+    background-image:
+      radial-gradient(ellipse 65% 45% at 22% 48%, rgba(255, 255, 255, 0.72), transparent 65%),
+      radial-gradient(ellipse 55% 40% at 85% 58%, rgba(232, 216, 187, 0.32), transparent 65%),
+      linear-gradient(180deg, var(--color-ivory) 0%, var(--color-ivory) 14%, var(--color-ivory-2) 86%, var(--color-ivory-2) 100%);
+  }
+
+  .dark-satin {
+    background-color: var(--color-espresso);
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(198, 162, 106, 0.12), transparent 70%),
+      radial-gradient(ellipse 60% 60% at 0% 100%, rgba(80, 55, 38, 0.5), transparent 70%),
+      linear-gradient(180deg, #1d140f 0%, #160f0b 100%);
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
